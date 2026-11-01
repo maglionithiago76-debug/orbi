@@ -1,0 +1,23 @@
+{
+ "name": "Panificadora em Anápolis Sabor e Tradição",
+ "short_name": "Panificadora",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#7A3E1D",
+ "theme_color": "#7A3E1D",
+ "lang": "pt-BR",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "name": "Açaí Exemplo",
+ "short_name": "Açaí Exemplo",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#4B1C61",
+ "theme_color": "#4B1C61",
+ "lang": "pt-BR",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}

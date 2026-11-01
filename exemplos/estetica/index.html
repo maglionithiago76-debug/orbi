@@ -52,6 +52,11 @@ footer { padding:2rem 0 3rem; font-size:.9rem; opacity:.75; }
   @keyframes light { from { filter:brightness(.55) saturate(.6); } to { filter:none; } }
 }
 </style>
+<!-- pwa -->
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#3A2533">
+<link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Estética Exe">
+<!-- /pwa -->
 </head>
 <body>
 
@@ -81,5 +86,22 @@ footer { padding:2rem 0 3rem; font-size:.9rem; opacity:.75; }
 </main>
 <footer><div class="wrap">© Estética Exemplo. Site feito pelo Achei. Foto ilustrativa: PattayaPatrol, CC BY-SA 4.0 (Wikimedia Commons).</div></footer>
 <a class="float" href="https://wa.me/5535920059158?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Est%C3%A9tica%20Exemplo%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." aria-label="Conversar no WhatsApp">WhatsApp</a>
+<!-- pwa -->
+<button id="pwa-install" hidden style="position:fixed;left:1rem;bottom:1rem;z-index:50;border:0;border-radius:99px;
+padding:.7rem 1.1rem;font:600 .95rem system-ui,sans-serif;background:#3A2533;color:#F3D6DF;box-shadow:0 4px 14px rgba(0,0,0,.25)">
+📲 Instalar app</button>
+<script>
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+(() => {
+  const b = document.getElementById("pwa-install"); let ev = null;
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (standalone) return;
+  addEventListener("beforeinstallprompt", e => { e.preventDefault(); ev = e; b.hidden = false; });
+  if (/iphone|ipad/i.test(navigator.userAgent)) b.hidden = false;
+  b.onclick = () => ev ? (ev.prompt(), ev.userChoice.then(() => b.hidden = true))
+    : alert("Para instalar: toque em Compartilhar e depois em \"Adicionar à Tela de Início\".");
+})();
+</script>
+<!-- /pwa -->
 </body>
 </html>

@@ -22,10 +22,32 @@ h3 { font:700 1.05rem/1.3 "Nunito Sans", sans-serif; } li p { font-size:.9rem; o
 .r a { background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:.85rem; padding:.3rem .8rem; border-radius:6px; }
 :focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
 footer { text-align:center; font-size:.85rem; opacity:.7; padding:2rem 1rem; }
-</style></head><body>
+</style><!-- pwa -->
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#4B1C61">
+<link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Açaí Exemplo">
+<!-- /pwa -->
+</head><body>
 
 <header><h1>Açaí Exemplo</h1><p>Cardápio · peça direto pelo WhatsApp (35) 92005-9158</p></header>
 <nav><a href="#s0">Copos</a><a href="#s1">Tigelas</a><a href="#s2">Adicionais</a></nav>
 <main><section id="s0"><h2>Copos</h2><ul><li><div><h3>Açaí 300 ml</h3><p>Com 2 acompanhamentos</p></div><div class="r"><b>R$ 16</b><a href="https://wa.me/5535920059158?text=Ol%C3%A1%21%20Quero%20pedir%3A%20A%C3%A7a%C3%AD%20300%20ml">Pedir</a></div></li><li><div><h3>Açaí 500 ml</h3><p>Com 3 acompanhamentos</p></div><div class="r"><b>R$ 22</b><a href="https://wa.me/5535920059158?text=Ol%C3%A1%21%20Quero%20pedir%3A%20A%C3%A7a%C3%AD%20500%20ml">Pedir</a></div></li></ul></section><section id="s1"><h2>Tigelas</h2><ul><li><div><h3>Tigela tropical</h3><p>Açaí, banana, morango e granola</p></div><div class="r"><b>R$ 28</b><a href="https://wa.me/5535920059158?text=Ol%C3%A1%21%20Quero%20pedir%3A%20Tigela%20tropical">Pedir</a></div></li></ul></section><section id="s2"><h2>Adicionais</h2><ul><li><div><h3>Leite ninho</h3></div><div class="r"><b>R$ 3</b><a href="https://wa.me/5535920059158?text=Ol%C3%A1%21%20Quero%20pedir%3A%20Leite%20ninho">Pedir</a></div></li><li><div><h3>Nutella</h3></div><div class="r"><b>R$ 5</b><a href="https://wa.me/5535920059158?text=Ol%C3%A1%21%20Quero%20pedir%3A%20Nutella">Pedir</a></div></li></ul></section></main>
 <footer>Cardápio digital feito pelo Achei.</footer>
+<!-- pwa -->
+<button id="pwa-install" hidden style="position:fixed;left:1rem;bottom:1rem;z-index:50;border:0;border-radius:99px;
+padding:.7rem 1.1rem;font:600 .95rem system-ui,sans-serif;background:#4B1C61;color:#F7E3FF;box-shadow:0 4px 14px rgba(0,0,0,.25)">
+📲 Instalar app</button>
+<script>
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+(() => {
+  const b = document.getElementById("pwa-install"); let ev = null;
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (standalone) return;
+  addEventListener("beforeinstallprompt", e => { e.preventDefault(); ev = e; b.hidden = false; });
+  if (/iphone|ipad/i.test(navigator.userAgent)) b.hidden = false;
+  b.onclick = () => ev ? (ev.prompt(), ev.userChoice.then(() => b.hidden = true))
+    : alert("Para instalar: toque em Compartilhar e depois em \"Adicionar à Tela de Início\".");
+})();
+</script>
+<!-- /pwa -->
 </body></html>
