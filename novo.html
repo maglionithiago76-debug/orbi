@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Achei – sua empresa inteira num app</title>
+<meta name="description" content="Site e app sob medida, com a parte administrativa da empresa: pedidos, estoque, caixa e equipe. Você vê pronto antes de pagar.">
+<meta property="og:title" content="Achei – quem procura, acha você">
+<meta property="og:description" content="Sites e apps para grandes negócios. Você vê pronto antes de pagar.">
+<meta property="og:image" content="https://maglionithiago76-debug.github.io/achei/img/og.jpg">
+<meta name="theme-color" content="#0E1520">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E1520; --ink:#F1F3F6; --muted:#B9C2CF; --navy:#16202E; --paper:#E8EBEF; --sign:#F2C94C; --signDim:#4A4220; --accent:#1C7C54;
+  --m:clamp(20px,2.4vw,32px); --display:"Big Shoulders Display",Impact,sans-serif; --text:"Figtree",system-ui,sans-serif;
+  --s1:clamp(15px,1vw,16px); --s2:clamp(17px,1.25vw,19px); --s3:clamp(28px,3vw,44px); --s4:clamp(48px,7vw,120px); --s5:clamp(96px,24vw,420px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font:400 var(--s2)/1.55 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--sign);outline-offset:3px}
+::selection{background:var(--sign);color:var(--navy)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;background:var(--accent);color:#fff;font:700 var(--s2)/1 var(--text);text-decoration:none;border:0;border-radius:999px;cursor:pointer;transition:transform .25s cubic-bezier(.2,.7,.2,1),background-color .25s}
+.btn:hover{background:#209060;transform:translateY(-2px)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn.light{background:var(--sign);color:var(--navy)}
+.btn.light:hover{background:#FFD95E}
+.ul{text-decoration:underline 2px transparent;text-underline-offset:5px;transition:text-decoration-color .25s}
+.ul:hover,.ul:focus-visible{text-decoration-color:currentColor}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px var(--m);color:#fff;transition:background-color .35s,transform .35s}
+.nav.solid{background:var(--bg)}
+.nav .word{font:900 30px/1 var(--display);letter-spacing:-.02em;text-decoration:none;color:var(--sign)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:var(--s1);font-weight:600}
+.nav .btn{min-height:44px;padding:0 20px;font-size:15px}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* the app scene: a phone assembles the company's app while the page scrolls */
+#cine{position:relative;background:var(--bg);overflow:hidden}
+.mono{position:absolute;left:0;top:50%;translate:0 -50%;width:250vw;height:auto;pointer-events:none;user-select:none}
+.stage{position:relative;min-height:100svh;display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:center;padding:96px var(--m) 48px}
+.hero{grid-column:1/8;position:relative;z-index:2}
+.hero h1{font:900 clamp(64px,8.6vw,150px)/.86 var(--display);letter-spacing:-.035em;text-transform:uppercase}
+.hero h1 .line{display:block;overflow:hidden;padding-top:.2em;margin-top:-.16em}
+.hero h1 .line>span{display:block}
+.hero .lead{margin-top:28px;max-width:40ch;font-size:clamp(18px,1.5vw,21px);color:var(--ink)}
+.hero .act{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap}
+.chapters{grid-column:1/7;grid-row:1;list-style:none;position:relative;z-index:2}
+.chapters li+li{margin-top:56px}
+.chapters h2{font:800 clamp(44px,5.4vw,96px)/.9 var(--display);letter-spacing:-.03em;text-transform:uppercase}
+.chapters p{margin-top:18px;max-width:34ch;font-size:clamp(18px,1.4vw,21px)}
+.phoneslot{grid-column:8/13;grid-row:1;display:flex;justify-content:center;position:relative;z-index:1;perspective:1600px}
+.dev{position:relative;height:min(76svh,700px);aspect-ratio:9/19;background:#05080D;border-radius:48px;padding:11px;transform-style:preserve-3d}
+.dev .glass{position:relative;height:100%;border-radius:38px;overflow:hidden;background:#F4F5F7}
+.chip{position:absolute;z-index:3;display:flex;gap:10px;align-items:center;padding:12px 16px;border-radius:16px;background:#fff;color:var(--navy);font:600 15px/1.25 var(--text);white-space:nowrap;box-shadow:0 18px 40px rgba(0,0,0,.35)} /* taste-skill-ignore: floating notifications */
+.chip b{display:block;font-weight:700}
+.chip i{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:none;font-style:normal}
+.chip.warn i{background:#E0A100}
+.c1{left:-46%;top:16%}.c2{right:-40%;top:38%}.c3{left:-52%;top:62%}.c4{right:-36%;top:80%}
+
+/* app screens (interface fragments) */
+.scr{position:absolute;inset:0;display:flex;flex-direction:column;font:400 13px/1.35 var(--text);color:#16202E;background:#F4F5F7}
+.scr+.scr{display:none}
+.cine .scr+.scr{display:flex;visibility:hidden}
+.ab{padding:44px 16px 12px;background:#16202E;color:#fff}
+.ab small{display:block;font-size:13px;color:#B9C2CF}
+.ab strong{display:block;font:800 26px/1 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin-top:2px}
+.sb{padding:12px 14px;display:grid;gap:8px;align-content:start;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;background:#fff;border-radius:12px}
+.row b{font-weight:700}
+.row .k{color:#56637A}
+.pill{padding:3px 8px;border-radius:99px;font-size:12px;font-weight:700;background:#E3F1EA;color:#156043}
+.pill.y{background:#FFF1C9;color:#7A5A00}.pill.r{background:#FBE3E1;color:#9B2C22}.pill.g{background:#E8EBEF;color:#3D4A5C}
+.big2{font:900 30px/1 var(--display);letter-spacing:-.01em}
+.tot{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tot .row{display:block}
+.bars{display:flex;align-items:end;gap:6px;height:90px;padding:10px 12px;background:#fff;border-radius:12px}
+.bars span{flex:1;background:#1C7C54;border-radius:4px 4px 0 0}
+.bars span.n{background:#B9C2CF}
+.lvl{height:6px;border-radius:3px;background:#E8EBEF;margin-top:6px;overflow:hidden}
+.lvl i{display:block;height:100%;background:#1C7C54}.lvl i.lo{background:#D2462F}
+.cta2{display:flex;justify-content:center;align-items:center;min-height:42px;border-radius:99px;background:#1C7C54;color:#fff;font-weight:700}
+.site .hero2{height:44%;position:relative;background:#000}
+.site .hero2 img{width:100%;height:100%;object-fit:cover;opacity:.7}
+.site .hero2 div{position:absolute;left:16px;right:16px;bottom:14px;color:#fff}
+.site .hero2 strong{display:block;font:900 34px/.9 var(--display);text-transform:uppercase}
+.tabs{margin-top:auto;display:flex;justify-content:space-around;padding:10px 6px 16px;background:#fff;font-size:12px;font-weight:600;color:#56637A}
+.tabs span.on{color:#1C7C54}
+
+/* pinned mode */
+.cine .stage{height:100svh;min-height:0}
+.cine .chapters li{position:absolute;left:0;right:0;top:50%;translate:0 -50%;margin:0;visibility:hidden}
+.cine .hero{grid-row:1}
+.nocine .chip{display:none}
+.nocine .chapters{grid-row:2;margin-top:80px}
+.nocine .phoneslot{grid-row:1/3}
+@media (max-width:860px){
+  .stage{grid-template-columns:1fr;align-content:start;padding-top:88px}
+  .hero,.chapters,.phoneslot{grid-column:1/-1}
+  .hero h1{font-size:13vw}
+  .phoneslot{grid-row:2;margin-top:24px}
+  .dev{height:640px;zoom:.7}
+  @media (max-height:740px){.dev{zoom:.6}}
+  .cine .stage{align-content:stretch;grid-template-rows:auto 1fr}
+  .cine .chapters{grid-row:1;min-height:170px}
+  .cine .chapters li{top:0;translate:none}
+  .cine .hero{position:absolute;left:0;right:0;top:88px;margin:0}
+  .cine .phoneslot{grid-row:2;align-self:start}
+  .chapters h2{font-size:12vw}
+  .chapters p{font-size:17px;margin-top:10px}
+  .c1{left:-30%;top:12%}.c2{right:-28%;top:36%}.c3{left:-32%;top:60%}.c4{right:-26%;top:80%}
+  .nocine .phoneslot{grid-row:2}.nocine .chapters{grid-row:3}
+}
+
+/* sections after the scene */
+main{background:var(--paper);color:var(--navy);position:relative;z-index:2}
+.sec{padding:clamp(110px,16vh,200px) var(--m)}
+.sec h2{font:800 var(--s3)/1 var(--display);letter-spacing:-.01em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
+
+/* live thing */
+#veja{background:var(--paper)}
+#veja .grid{align-items:center;row-gap:56px}
+#veja .copy{grid-column:1/7}
+#veja h2{font-size:var(--s4);line-height:.9}
+#veja .copy>p{margin-top:28px;max-width:40ch;color:var(--navy)}
+form.make{margin-top:36px;display:grid;gap:22px;max-width:520px}
+form.make label{display:grid;gap:8px;font-weight:700;font-size:var(--s1)}
+form.make input{font:600 22px/1.2 var(--text);padding:14px 16px;border:2px solid var(--navy);border-radius:8px;background:#fff;color:var(--navy);width:100%}
+.types{position:relative;display:flex;flex-wrap:wrap;gap:10px;border:0}
+.types legend{font-weight:700;font-size:var(--s1);margin-bottom:10px}
+.types input{position:absolute;opacity:0;pointer-events:none}
+.types label{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#D6DBE2;color:var(--navy);cursor:pointer;font-weight:600;transition:background-color .2s,transform .2s}
+.types label:hover{transform:translateY(-2px)}
+.types input:checked+label{background:var(--navy);color:var(--sign)}
+.types input:focus-visible+label{outline:3px solid var(--accent);outline-offset:2px}
+#veja .phonewrap{grid-column:8/13;display:flex;justify-content:center}
+.phone{width:min(360px,100%);aspect-ratio:9/18.5;background:#0B111A;border-radius:44px;padding:12px;position:relative}
+.phone .scr{height:100%;border-radius:34px;overflow:hidden;background:var(--pbg,#F3E9D2);color:var(--pink,#2B1A10);display:flex;flex-direction:column;transition:background-color .4s,color .4s}
+.phone .cover{position:relative;height:46%;overflow:hidden;background:#000}
+.phone .cover img{width:100%;height:100%;object-fit:cover;opacity:.78;transition:opacity .35s}
+.phone .cover .nm{position:absolute;left:18px;right:18px;bottom:16px;color:#fff;font:900 40px/.9 var(--display);text-transform:uppercase;letter-spacing:-.02em;overflow-wrap:anywhere}
+.phone .body{padding:16px 18px;display:grid;gap:10px;font-size:14px;line-height:1.4}
+.phone .body .tag{font-weight:700;font-size:15px}
+.phone .body ul{list-style:none;display:grid;gap:6px}
+.phone .body li{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:8px;background:var(--pcard,rgba(0,0,0,.06))}
+.phone .wa{margin-top:4px;display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:999px;background:var(--pacc,#1C7C54);color:var(--pacct,#fff);font-weight:700;font-size:15px}
+.phone .inst{font-size:13px;opacity:.9}
+#veja .send{margin-top:8px}
+
+/* features: one-size name columns */
+#faz{background:var(--paper)}
+#faz h2{grid-column:1/-1;margin-bottom:72px}
+#faz .col{grid-column:span 3;font-size:17px;line-height:1.3}
+#faz .col strong{display:block;font-weight:700;margin-bottom:18px;font-size:19px}
+#faz .col li{list-style:none;color:#3D4A5C;padding:3px 0}
+#faz .col a{color:var(--navy);font-weight:600}
+#faz .note{grid-column:10/13;grid-row:2;align-self:start;font-size:17px;color:var(--navy);min-height:5em}
+
+
+/* showcase band */
+#modelos{background:var(--navy);color:var(--ink);padding-left:0;padding-right:0}
+#modelos h2{padding:0 var(--m);margin-bottom:56px}
+.band{display:flex;height:68svh;min-height:420px}
+.band a{position:relative;flex:2;overflow:hidden;text-decoration:none;color:#fff;transition:flex-grow .5s cubic-bezier(.2,.7,.2,1)}
+.band a:nth-child(1){flex-grow:5}.band a:nth-child(3){flex-grow:3}
+.band a:hover,.band a:focus-visible{flex-grow:6}
+.band img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.band a:hover img{transform:scale(1.05)}
+.band span{position:absolute;left:0;top:0;padding:22px 24px 40px;background:rgba(5,8,13,.55);font:800 28px/1 var(--display);text-transform:uppercase}
+.band span small{display:block;font:400 15px/1.4 var(--text);margin-top:6px;text-transform:none}
+#modelos .cap{padding:20px var(--m) 0;font-size:16px;color:var(--muted);max-width:calc(60ch + 2 * var(--m))}
+
+/* how it works: diagonal */
+#como{background:var(--paper)}
+#como h2{grid-column:7/13;font-size:clamp(36px,4vw,64px)}
+.diag{position:relative}
+.st{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+.st img{width:100%;height:auto;object-fit:cover}
+.st p{max-width:36ch;font-size:17px}
+.st h3{font:800 26px/1.05 var(--display);text-transform:uppercase;margin-bottom:8px}
+#como .grid{margin-bottom:64px}.st1{margin-top:0}.st1 img{grid-column:1/5;aspect-ratio:3/4}.st1 .txt{grid-column:5/9;padding-top:24px}
+.st2{margin-top:-140px}.st2 img{grid-column:6/9;aspect-ratio:1}.st2 .txt{grid-column:9/13;padding-top:24px}
+.st3{margin-top:120px}.st3 .txt{grid-column:2/7;grid-row:1;text-align:left;padding-top:24px}.st3 img{grid-column:8/13;aspect-ratio:16/10}
+
+/* proof band */
+.run{background:var(--sign);color:var(--navy);overflow:hidden;height:34vh;min-height:200px;display:flex;align-items:center}
+.run .track{display:flex;white-space:nowrap;font:900 8vw/1 var(--display);text-transform:uppercase;letter-spacing:-.02em;animation:run 40s linear infinite}
+.run .track span{display:inline-flex;align-items:center}
+.run .track span::after{content:"";width:.28em;height:.28em;border-radius:50%;background:currentColor;margin:0 .45em}
+@keyframes run{to{transform:translateX(-50%)}}
+.runcap{padding:20px var(--m) 0;font-size:18px;background:var(--paper);max-width:calc(60ch + 2 * var(--m))}
+
+/* numbers */
+#dados{background:var(--paper)}
+#dados h2{margin-bottom:64px}
+#dados .row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+#dados .n{font:900 clamp(72px,10vw,160px)/.85 var(--display);letter-spacing:-.03em;color:var(--accent)}
+#dados p{margin-top:14px;max-width:30ch}
+#dados p small{display:block;margin-top:8px;font-size:14px;color:#3D4A5C}
+
+/* faq table */
+#duvidas{background:var(--paper)}
+.qa{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding-top:80px}
+.qa:first-child{padding-top:0}
+.qa h3,.qa .h{grid-column:1/7;font:700 clamp(26px,2.6vw,40px)/1.1 var(--text);letter-spacing:-.01em}
+.qa .h{color:#56637A;text-transform:none;font-family:var(--text)}
+.qa p{grid-column:8/13;max-width:40ch;padding-top:.35em}
+
+/* closing, inverted */
+#fim{background:var(--navy);color:var(--ink);min-height:92svh;display:grid;grid-template-rows:1fr auto;padding:clamp(110px,16vh,200px) var(--m) 40px}
+#fim h2{font:900 clamp(64px,10.5vw,190px)/.88 var(--display);letter-spacing:-.04em;text-transform:uppercase;max-width:12ch}
+#fim .foot{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+#fim .foot p{max-width:40ch;font-size:20px}
+
+footer{background:#0B111A;color:var(--ink);min-height:70svh;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto auto;padding:40px var(--m) 24px}
+footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;font-size:15px}
+footer .cols b{display:block;margin-bottom:6px}
+footer .cols li{list-style:none;color:var(--muted)}
+footer .cols a{color:var(--muted)}
+footer .mark{font:900 26vw/.78 var(--display);letter-spacing:-.05em;color:var(--sign);text-transform:uppercase;margin-top:48px;white-space:nowrap}
+footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:75ch}
+
+/* entrance */
+.js .rv{opacity:0;transform:translateY(24px)}
+
+@media (max-width:860px){
+  .grid,.st,.qa{grid-template-columns:1fr;column-gap:0}
+  #veja .copy,#veja .phonewrap,#faz .col,#faz .note,#como h2,.qa h3,.qa .h,.qa p{grid-column:1/-1}
+  #faz .col{margin-bottom:40px}
+  #faz .note{display:none}
+  #faz h2{margin-bottom:48px}
+  .band{flex-wrap:wrap;height:84svh}
+  .band a{flex:0 0 36%;height:50%}.band a:nth-child(1),.band a:nth-child(4){flex-basis:64%}
+  .st{margin-top:56px!important}
+  .st img,.st .txt{grid-column:1/-1!important;grid-row:auto!important}
+  .st1 img{width:100%}.st2 img{width:62%;margin-left:auto}.st3 img{width:78%}
+  .st .txt{padding-top:16px!important}
+  .run{height:22vh}.run .track{font-size:15vw}
+  #dados .row{grid-template-columns:1fr;gap:88px}
+  .qa{padding-top:56px}.qa p{padding-top:12px}
+  footer .cols{grid-template-columns:1fr 1fr;row-gap:32px}
+  #fim .foot .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  .run .track{animation:none}
+  .js .rv{opacity:1;transform:none}
+  *{transition:none!important}
+}
+@media (min-width:560px) and (max-width:860px){#faz .grid{grid-template-columns:1fr 1fr;column-gap:24px}#faz .grid h2{grid-column:1/-1}#faz .grid .col{grid-column:auto}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Principal">
+  <a class="word" href="#topo">Achei</a>
+  <ul>
+    <li><a class="ul" href="#veja">Veja o seu</a></li>
+    <li><a class="ul" href="#modelos">Modelos</a></li>
+    <li><a class="ul" href="#como">Como funciona</a></li>
+    <li><a class="ul" href="#duvidas">Dúvidas</a></li>
+  </ul>
+  <a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Vi%20o%20site%20do%20Achei%20e%20quero%20saber%20mais.">WhatsApp</a>
+</nav>
+
+<div id="cine" aria-label="Apresentação">
+  <svg class="mono" aria-hidden="true" viewBox="0 0 3000 520" preserveAspectRatio="xMinYMid meet"><text x="0" y="470" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="900" font-size="600" letter-spacing="-24" fill="#141D2B">ACHEI · ACHEI · ACHEI</text></svg>
+  <div class="stage">
+    <div class="hero" id="topo">
+      <h1><span class="line"><span>Sua empresa</span></span><span class="line"><span>inteira num app</span></span></h1>
+      <p class="lead">Site, app e a parte administrativa: pedidos, estoque, caixa e equipe. Feito sob medida para grandes negócios.</p>
+      <div class="act"><a class="btn light" href="#veja">Veja o seu agora</a><a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Quero%20um%20app%20para%20a%20minha%20empresa.">Falar no WhatsApp</a></div>
+    </div>
+    <ol class="chapters">
+      <li><h2>O cliente te acha</h2><p>Site no Google e app no celular do cliente, com o seu nome e o seu ícone.</p></li>
+      <li><h2>O pedido entra sozinho</h2><p>Pedido e agendamento pelo app, direto para você. Sem taxa de aplicativo.</p></li>
+      <li><h2>Estoque sem susto</h2><p>Avisa o que está acabando e já monta a lista de compras.</p></li>
+      <li><h2>O caixa no controle</h2><p>Entradas, saídas, contas a pagar e o saldo do mês, sem planilha.</p></li>
+      <li><h2>A equipe organizada</h2><p>Escala, ponto e comissão de cada um no mesmo lugar.</p></li>
+      <li><h2>Tudo num app só</h2><p>Do cliente ao administrativo, do jeito que a sua empresa funciona.</p></li>
+    </ol>
+    <div class="phoneslot">
+      <div class="dev" id="dev">
+        <div class="chip c1"><i></i><span><b>Novo pedido #483</b>R$ 86,00 · Marina</span></div>
+        <div class="chip warn c2"><i></i><span><b>Estoque baixo</b>Farinha: 4 kg</span></div>
+        <div class="chip c3"><i></i><span><b>Pix recebido</b>R$ 180,00</span></div>
+        <div class="chip c4"><i></i><span><b>Carla bateu o ponto</b>08:02</span></div>
+        <div class="glass" data-ui role="img" aria-label="Modelo de app de uma empresa: site, pedidos, estoque, caixa, equipe e relatórios">
+          <div class="scr site">
+            <div class="hero2"><img src="stock/padaria.jpg" alt="" width="1400" height="1050"><div><strong>Empório Bela Vista</strong>Aberto agora · fecha às 20h</div></div>
+            <div class="sb">
+              <div class="row"><span>Pão de queijo (kg)</span><b>R$ 49,90</b></div>
+              <div class="row"><span>Café especial 250 g</span><b>R$ 32,00</b></div>
+              <div class="row"><span>Cesta café da manhã</span><b>R$ 119,00</b></div>
+              <div class="row"><span>Bolo de fubá inteiro</span><b>R$ 38,00</b></div>
+              <div class="cta2">Pedir pelo app</div>
+              <div class="row"><span class="k">Rua das Flores, 120 · Centro</span><b>Como chegar</b></div>
+            </div>
+            <div class="tabs"><span class="on">Início</span><span>Pedidos</span><span>Estoque</span><span>Caixa</span><span>Equipe</span></div>
+          </div>
+          <div class="scr">
+            <div class="ab"><small>Hoje · 37 pedidos</small><strong>Pedidos</strong></div>
+            <div class="sb">
+              <div class="row"><span><b>#483 Marina</b><br><span class="k">2 itens · entrega</span></span><span><b>R$ 86,00</b><br><span class="pill y">Novo</span></span></div>
+              <div class="row"><span><b>#482 João</b><br><span class="k">1 item · retirada</span></span><span><b>R$ 42,50</b><br><span class="pill y">Preparando</span></span></div>
+              <div class="row"><span><b>#481 Ana</b><br><span class="k">5 itens · entrega</span></span><span><b>R$ 120,00</b><br><span class="pill">Saiu</span></span></div>
+              <div class="row"><span><b>#480 Pedro</b><br><span class="k">3 itens · mesa 4</span></span><span><b>R$ 64,90</b><br><span class="pill g">Entregue</span></span></div>
+              <div class="row"><span><b>#479 Luiza</b><br><span class="k">Encomenda · sáb 9h</span></span><span><b>R$ 210,00</b><br><span class="pill g">Agendado</span></span></div>
+              <div class="row"><span><b>#478 Marcos</b><br><span class="k">4 itens · retirada</span></span><span><b>R$ 58,30</b><br><span class="pill g">Entregue</span></span></div>
+              <div class="row"><span>Faturado hoje</span><b>R$ 2.163,00</b></div>
+            </div>
+            <div class="tabs"><span>Início</span><span class="on">Pedidos</span><span>Estoque</span><span>Caixa</span><span>Equipe</span></div>
+          </div>
+          <div class="scr">
+            <div class="ab"><small>2 itens abaixo do mínimo</small><strong>Estoque</strong></div>
+            <div class="sb">
+              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Farinha</b><span>4 de 10 kg</span></span><div class="lvl"><i class="lo" style="width:40%"></i></div></div>
+              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Açúcar</b><span>3 de 8 kg</span></span><div class="lvl"><i class="lo" style="width:37%"></i></div></div>
+              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Café em grão</b><span>12 de 10 pct</span></span><div class="lvl"><i style="width:100%"></i></div></div>
+              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Leite</b><span>30 de 24 L</span></span><div class="lvl"><i style="width:100%"></i></div></div>
+              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Queijo minas</b><span>9 de 6 kg</span></span><div class="lvl"><i style="width:100%"></i></div></div>
+              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Embalagens</b><span>220 de 300</span></span><div class="lvl"><i style="width:73%"></i></div></div>
+              <div class="cta2">Gerar lista de compras (2)</div>
+            </div>
+            <div class="tabs"><span>Início</span><span>Pedidos</span><span class="on">Estoque</span><span>Caixa</span><span>Equipe</span></div>
+          </div>
+          <div class="scr">
+            <div class="ab"><small>Novembro</small><strong>Caixa</strong></div>
+            <div class="sb">
+              <div class="tot"><div class="row"><span class="k">Entradas</span><div class="big2">48.320</div></div><div class="row"><span class="k">Saídas</span><div class="big2">31.940</div></div></div>
+              <div class="row"><span>Saldo do mês</span><b>R$ 16.380,00</b></div>
+              <div class="bars" aria-hidden="true"><span style="height:55%"></span><span style="height:70%"></span><span style="height:48%"></span><span style="height:82%"></span><span style="height:64%"></span><span style="height:100%"></span><span class="n" style="height:30%"></span></div>
+              <div class="row"><span>Aluguel · 05/11</span><span class="pill r">R$ 4.500,00</span></div>
+              <div class="row"><span>Fornecedor · 08/11</span><span class="pill y">R$ 2.180,00</span></div>
+            </div>
+            <div class="tabs"><span>Início</span><span>Pedidos</span><span>Estoque</span><span class="on">Caixa</span><span>Equipe</span></div>
+          </div>
+          <div class="scr">
+            <div class="ab"><small>Hoje · 3 na escala</small><strong>Equipe</strong></div>
+            <div class="sb">
+              <div class="row"><span><b>Carla</b><br><span class="k">Caixa · 8h às 16h</span></span><span class="pill">Entrou 08:02</span></div>
+              <div class="row"><span><b>Rafael</b><br><span class="k">Entregas · 10h às 18h</span></span><span class="pill g">A caminho</span></div>
+              <div class="row"><span><b>Bruna</b><br><span class="k">Cozinha · 6h às 14h</span></span><span class="pill">Entrou 05:58</span></div>
+              <div class="row"><span><b>Diego</b><br><span class="k">Folga hoje · volta amanhã</span></span><span class="pill g">Folga</span></div>
+              <div class="row"><span>Comissão do Rafael (mês)</span><b>R$ 640,00</b></div>
+              <div class="row"><span>Horas da equipe (semana)</span><b>132 h</b></div>
+              <div class="row"><span>Tarefa: conferir a entrega</span><span class="pill y">Bruna</span></div>
+            </div>
+            <div class="tabs"><span>Início</span><span>Pedidos</span><span>Estoque</span><span>Caixa</span><span class="on">Equipe</span></div>
+          </div>
+          <div class="scr">
+            <div class="ab"><small>Novembro até agora</small><strong>Relatório</strong></div>
+            <div class="sb">
+              <div class="tot"><div class="row"><span class="k">Pedidos</span><div class="big2">827</div></div><div class="row"><span class="k">Ticket médio</span><div class="big2">58,43</div></div></div>
+              <div class="row"><span>Mais vendido</span><b>Pão de queijo</b></div>
+              <div class="row"><span>Melhor dia</span><b>Sábado</b></div>
+              <div class="row"><span>Clientes que voltaram</span><b>312</b></div>
+              <div class="bars" aria-hidden="true"><span style="height:62%"></span><span style="height:74%"></span><span style="height:88%"></span><span style="height:100%"></span></div>
+              <div class="row"><span class="k">Últimas 4 semanas</span><b>+14% na última</b></div>
+              <div class="cta2">Enviar resumo no WhatsApp</div>
+            </div>
+            <div class="tabs"><span class="on">Início</span><span>Pedidos</span><span>Estoque</span><span>Caixa</span><span>Equipe</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<main>
+  <section class="sec" id="veja" aria-labelledby="veja-h">
+    <div class="grid">
+      <div class="copy">
+        <h2 id="veja-h" class="rv">Veja o seu agora</h2>
+        <p class="rv">Escreva o nome do seu negócio e escolha o tipo. O celular ao lado mostra como fica. O de verdade é feito sob medida, com suas fotos e preços.</p>
+        <form class="make rv" id="make" action="https://wa.me/5535920059158" method="get">
+          <label>Nome do negócio
+            <input id="nome" name="nome" maxlength="34" autocomplete="organization" placeholder="Ex.: Barbearia do Zé" value="">
+          </label>
+          <fieldset class="types" id="tipos">
+            <legend>Tipo</legend>
+            <input type="radio" name="tipo" id="t-barbearia" value="barbearia" checked><label for="t-barbearia">Barbearia</label>
+            <input type="radio" name="tipo" id="t-padaria" value="padaria"><label for="t-padaria">Padaria</label>
+            <input type="radio" name="tipo" id="t-pet" value="pet"><label for="t-pet">Pet shop</label>
+            <input type="radio" name="tipo" id="t-oficina" value="oficina"><label for="t-oficina">Oficina</label>
+            <input type="radio" name="tipo" id="t-restaurante" value="restaurante"><label for="t-restaurante">Restaurante</label>
+            <input type="radio" name="tipo" id="t-estetica" value="estetica"><label for="t-estetica">Estética</label>
+          </fieldset>
+          <div><button class="btn send" type="submit">Quero o meu assim</button></div>
+        </form>
+      </div>
+      <div class="phonewrap rv">
+        <div class="phone" data-ui role="img" aria-label="Prévia do site no celular">
+          <div class="scr" id="scr">
+            <div class="cover"><img id="p-img" src="stock/barbearia.jpg" alt="" width="1400" height="1076"><div class="nm" id="p-nome">Barbearia do Zé</div></div>
+            <div class="body">
+              <div class="tag" id="p-tag">Corte e barba com hora marcada</div>
+              <ul id="p-list"></ul>
+              <div class="wa" id="p-wa">Agendar pelo WhatsApp</div>
+              <div class="inst">Seg a sáb · 9h às 19h · Instalar app</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faz" aria-labelledby="faz-h">
+    <div class="grid">
+      <h2 id="faz-h" class="rv">O app pode ter tudo</h2>
+      <div class="col rv"><strong>Para o cliente</strong><ul>
+        <li data-n="Uma página feita para celular, que aparece no Google.">Site no Google</li>
+        <li data-n="O cliente instala com um toque e fica com o seu ícone no celular.">App com o seu ícone</li>
+        <li data-n="Fotos e preços num link só, com QR Code para a mesa.">Cardápio e catálogo</li>
+        <li data-n="O cliente marca sozinho; você vê o dia organizado."><a class="ul" href="apps/agenda/">Agendamento</a></li>
+        <li data-n="Pedido pelo celular, com status, sem taxa de aplicativo."><a class="ul" href="apps/pedidos/">Pedidos</a></li>
+        <li data-n="Cartão de carimbos no celular, pro cliente voltar."><a class="ul" href="apps/fidelidade/">Fidelidade</a></li>
+      </ul></div>
+      <div class="col rv"><strong>Para a gestão</strong><ul>
+        <li data-n="Entradas, saídas e o saldo do dia e do mês.">Caixa e financeiro</li>
+        <li data-n="Lembrete de cada conta antes de vencer.">Contas a pagar e receber</li>
+        <li data-n="Avisa o que está acabando e monta a lista de compras."><a class="ul" href="apps/estoque/">Estoque e compras</a></li>
+        <li data-n="Orçamento pronto para mandar no WhatsApp.">Orçamentos e recibos</li>
+        <li data-n="Quem comprou, quando e o quê, para chamar de volta.">Cadastro de clientes</li>
+        <li data-n="Vendas, ticket médio e o que mais sai, num resumo.">Relatórios</li>
+      </ul></div>
+      <div class="col rv"><strong>Para a equipe</strong><ul>
+        <li data-n="Quem trabalha em cada dia e em cada turno.">Escala de trabalho</li>
+        <li data-n="Entrada e saída registradas pelo celular.">Ponto pelo celular</li>
+        <li data-n="Comissão calculada por venda ou por serviço.">Comissões</li>
+        <li data-n="Lista do que precisa ser feito no dia.">Tarefas do dia</li>
+        <li data-n="Cada um vê só o que precisa ver.">Acesso por função</li>
+      </ul></div>
+      <p class="note" id="faz-note" aria-live="polite">Cada empresa escolhe as partes que precisa. A gente monta só o que faz sentido para você.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="modelos" aria-labelledby="modelos-h">
+    <h2 id="modelos-h" class="rv">Modelos prontos</h2>
+    <div class="band">
+      <a href="exemplos/barbearia/"><img src="stock/barbearia.jpg" alt="Barbearia antiga com cadeiras e espelhos" width="1400" height="1076" loading="lazy"><span>Barbearia<small>Agenda e WhatsApp</small></span></a>
+      <a href="exemplos/padaria/"><img src="stock/padaria.jpg" alt="Pães numa padaria" width="1400" height="1050" loading="lazy"><span>Padaria<small>Encomendas</small></span></a>
+      <a href="exemplos/pet/"><img src="stock/pet.jpg" alt="Cachorro num pet shop" width="1400" height="933" loading="lazy"><span>Pet shop<small>Banho e tosa</small></span></a>
+      <a href="exemplos/oficina/"><img src="stock/oficina.jpg" alt="Oficina mecânica" width="1400" height="931" loading="lazy"><span>Oficina<small>Orçamento</small></span></a>
+    </div>
+    <p class="cap">Toque para abrir. São modelos: o seu é montado do jeito que o seu negócio funciona.</p>
+  </section>
+
+  <div class="run" aria-hidden="true"><div class="track">
+    <span>Barbearia</span><span>Padaria</span><span>Pet shop</span><span>Oficina</span><span>Dentista</span><span>Pizzaria</span><span>Açaí</span><span>Estética</span><span>Restaurante</span><span>Lanchonete</span>
+    <span>Barbearia</span><span>Padaria</span><span>Pet shop</span><span>Oficina</span><span>Dentista</span><span>Pizzaria</span><span>Açaí</span><span>Estética</span><span>Restaurante</span><span>Lanchonete</span>
+  </div></div>
+  <p class="runcap">Os tipos de negócio para os quais já temos modelo pronto. Não achou o seu? A gente monta.</p>
+
+  <section class="sec" id="como" aria-labelledby="como-h">
+    <div class="grid"><h2 id="como-h" class="rv">Como funciona</h2></div>
+    <div class="diag">
+      <div class="st st1"><img class="rv" src="img/rua.webp" alt="Rua movimentada à noite em São Paulo" width="2400" height="1459" loading="lazy" style="object-position:30% 50%"><div class="txt rv"><h3>Primeiro dia</h3><p>Você conta o que mais dá trabalho no dia a dia e manda fotos, serviços e preços. A gente faz o resto.</p></div></div>
+      <div class="st st2"><img class="rv" src="exemplos/padaria/print.png" alt="Modelo de site de padaria aberto num celular" width="520" height="900" loading="lazy" style="object-position:50% 20%;background:#E8EBEF"><div class="txt rv"><h3>Até 5 dias depois</h3><p>Você vê tudo pronto no seu celular e pede os ajustes. Uma rodada está inclusa.</p></div></div>
+      <div class="st st3"><div class="txt rv"><h3>Só então</h3><p>Aprovou? Paga por Pix. Nada antes: sem sinal, sem mensalidade no site.</p></div><img class="rv" src="img/ponte.webp" alt="Ponte Octavio Frias, em São Paulo, iluminada à noite" width="2400" height="1582" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="dados" aria-labelledby="dados-h">
+    <h2 id="dados-h" class="rv">Por que isso traz cliente</h2>
+    <div class="row">
+      <div class="rv"><div class="n" data-count="76">76%</div><p>de quem procura algo perto pelo celular visita um negócio em até 1 dia.<small>Google, Think with Google (2016)</small></p></div>
+      <div class="rv"><div class="n" data-count="88">88%</div><p>das pessoas usariam um negócio que responde todas as avaliações (47% se não responde nenhuma).<small>BrightLocal, Local Consumer Review Survey 2024</small></p></div>
+      <div class="rv"><div class="n" data-count="70">70%</div><p>mais chance de o cliente visitar um negócio com perfil completo no Google.<small>Google, ajuda do Perfil da Empresa</small></p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="duvidas" aria-labelledby="duvidas-h">
+    <div class="qa"><h2 class="h" id="duvidas-h">Dúvidas</h2></div>
+    <div class="qa rv"><h3>O app faz a parte administrativa?</h3><p>Sim. Além do que o cliente vê, ele pode ter caixa, contas, estoque, equipe e relatórios. Você escolhe as partes, e a gente monta do jeito que a sua empresa funciona.</p></div>
+    <div class="qa rv"><h3>Preciso pagar para ver?</h3><p>Não. Você vê pronto e só paga depois de aprovar.</p></div>
+    <div class="qa rv"><h3>O app fica na Play Store?</h3><p>Não precisa: ele instala direto pelo site, com um toque em "Instalar app". Sem custo de loja e sempre atualizado.</p></div>
+    <div class="qa rv"><h3>Tem mensalidade?</h3><p>O site e o cardápio não: é um pagamento só, com hospedagem inclusa. Só os serviços do Google e do Instagram são mensais, e você cancela quando quiser.</p></div>
+    <div class="qa rv"><h3>Quanto tempo leva?</h3><p>Até 5 dias depois que você manda as fotos e as informações.</p></div>
+    <div class="qa rv"><h3>Já tenho Instagram. Por que um site?</h3><p>O site aparece no Google quando alguém procura o seu tipo de serviço na sua cidade, e reúne endereço, horário e WhatsApp num link só.</p></div>
+    <div class="qa rv"><h3>E se eu quiser mudar algo depois?</h3><p>Uma rodada de ajustes está inclusa. Depois disso, tem um plano mensal para manter tudo atualizado.</p></div>
+  </section>
+
+  <section id="fim" aria-labelledby="fim-h">
+    <h2 id="fim-h" class="rv">Quem procura, acha você</h2>
+    <div class="foot">
+      <p class="rv">Mande uma mensagem. A gente responde no WhatsApp, sem robô.</p>
+      <a class="btn light rv" href="https://wa.me/5535920059158?text=Oi!%20Quero%20que%20meu%20neg%C3%B3cio%20seja%20achado.">Falar no WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="cols">
+    <ul><li><b>Achei</b></li><li>Sites e apps para grandes negócios</li></ul>
+    <ul><li><b>Navegar</b></li><li><a class="ul" href="#veja">Veja o seu</a></li><li><a class="ul" href="#modelos">Modelos</a></li><li><a class="ul" href="#duvidas">Dúvidas</a></li></ul>
+    <ul><li><b>Contato</b></li><li><a class="ul" href="https://wa.me/5535920059158">WhatsApp (35) 92005-9158</a></li></ul>
+    <ul><li><b>Atendimento</b></li><li>Seg a sex, 9h às 18h</li></ul>
+  </div>
+  <div></div>
+  <div class="mark" aria-hidden="true">Achei</div>
+  <p class="legal" id="creditos">Este site não coleta dados nem usa rastreamento. Fotos: Wikimedia Commons —
+    Avenida Paulista: Wilfredor (CC BY-SA 4.0);
+    Ponte Octavio Frias: Marcosleal (CC BY-SA 3.0); fotos dos modelos: autores listados nos modelos (licenças CC). Imagens ilustrativas.</p>
+</footer>
+
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="vendor/lenis.min.js" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', () => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+
+  /* ---------- live preview ---------- */
+  const T = {
+    barbearia:{img:'stock/barbearia.jpg',tag:'Corte e barba com hora marcada',wa:'Agendar pelo WhatsApp',bg:'#1B2233',ink:'#F1EAD8',acc:'#E7C66A',acct:'#1B2233',card:'rgba(255,255,255,.08)',ex:'Barbearia do Zé',
+      list:[['Corte','R$ 35'],['Barba','R$ 25'],['Corte + barba','R$ 55']]},
+    padaria:{img:'stock/padaria.jpg',tag:'Pão quentinho às 6h e às 16h',wa:'Encomendar pelo WhatsApp',bg:'#F6E9D2',ink:'#4A2410',acc:'#7A3E1D',acct:'#F6E2B8',card:'rgba(122,62,29,.10)',ex:'Padaria Santa Clara',
+      list:[['Pão francês (kg)','R$ 16'],['Bolo de fubá','R$ 22'],['Café da manhã','R$ 19']]},
+    pet:{img:'stock/pet.jpg',tag:'Banho e tosa com busca em casa',wa:'Agendar banho',bg:'#FFF4E2',ink:'#14353A',acc:'#F2A33A',acct:'#14353A',card:'rgba(20,53,58,.08)',ex:'Pet Amigo',
+      list:[['Banho pequeno','R$ 45'],['Banho e tosa','R$ 75'],['Busca e entrega','R$ 10']]},
+    oficina:{img:'stock/oficina.jpg',tag:'Revisão e orçamento pelo WhatsApp',wa:'Pedir orçamento',bg:'#1E1E1E',ink:'#F4F1E8',acc:'#F2C230',acct:'#1E1E1E',card:'rgba(255,255,255,.08)',ex:'Auto Center Silva',
+      list:[['Troca de óleo','R$ 120'],['Alinhamento','R$ 80'],['Revisão completa','sob orçamento']]},
+    restaurante:{img:'stock/restaurante.jpg',tag:'Almoço caseiro, de segunda a sábado',wa:'Pedir pelo WhatsApp',bg:'#F3E9D2',ink:'#2E3A2A',acc:'#2E4A3A',acct:'#F3E9D2',card:'rgba(46,74,58,.10)',ex:'Restaurante da Vó',
+      list:[['Prato feito','R$ 24'],['Marmita grande','R$ 22'],['Suco natural','R$ 8']]},
+    estetica:{img:'stock/estetica.jpg',tag:'Sobrancelha, unhas e limpeza de pele',wa:'Agendar horário',bg:'#F4E8E3',ink:'#3A2A2A',acc:'#8C4A5A',acct:'#fff',card:'rgba(58,42,42,.07)',ex:'Studio Bella',
+      list:[['Design de sobrancelha','R$ 40'],['Manicure','R$ 30'],['Limpeza de pele','R$ 120']]}
+  };
+  const nome = $('#nome'), scr = $('#scr');
+  const cur = () => (document.querySelector('input[name=tipo]:checked')||{}).value || 'barbearia';
+  function paint(){
+    const t = T[cur()];
+    scr.style.setProperty('--pbg',t.bg); scr.style.setProperty('--pink',t.ink); scr.style.setProperty('--pacc',t.acc);
+    scr.style.setProperty('--pacct',t.acct); scr.style.setProperty('--pcard',t.card);
+    $('#p-nome').textContent = nome.value.trim() || t.ex;
+    nome.placeholder = 'Ex.: ' + t.ex;
+    const img = $('#p-img'); if (!img.src.endsWith(t.img)) { img.style.opacity = 0; setTimeout(()=>{img.src=t.img; img.onload=()=>img.style.opacity=.78},150); }
+    $('#p-tag').textContent = t.tag; $('#p-wa').textContent = t.wa;
+    $('#p-list').innerHTML = t.list.map(([a,b]) => `<li><span>${a}</span><b>${b}</b></li>`).join('');
+  }
+  nome.addEventListener('input', paint); $$('input[name=tipo]').forEach(r => r.addEventListener('change', paint)); paint();
+  $('#make').addEventListener('submit', e => {
+    e.preventDefault();
+    const n = nome.value.trim(), lbl = document.querySelector(`label[for=t-${cur()}]`).textContent;
+    const msg = n ? `Oi! Vi o site do Achei e quero um site assim para o ${n} (${lbl.toLowerCase()}).` : `Oi! Vi o site do Achei e quero um site assim para o meu negócio (${lbl.toLowerCase()}).`;
+    location.href = 'https://wa.me/5535920059158?text=' + encodeURIComponent(msg);
+  });
+
+  /* ---------- features note ---------- */
+  const note = $('#faz-note');
+  $$('#faz li').forEach(li => { const show = () => note.textContent = li.dataset.n;
+    li.addEventListener('mouseenter', show); li.addEventListener('focusin', show); });
+
+  /* ---------- nav ---------- */
+  const nav = $('.nav');
+  const onScroll = () => nav.classList.toggle('solid', scrollY > innerHeight * .5 && $('main').getBoundingClientRect().top < 80);
+  addEventListener('scroll', onScroll, {passive:true});
+
+  if (reduce || !window.gsap || !window.ScrollTrigger) { // light fallback
+    document.documentElement.classList.add('nocine'); return;
+  }
+  document.documentElement.classList.add('js','cine');
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* smooth scroll */
+  let lenis;
+  if (window.Lenis) {
+    lenis = new Lenis({lerp:.09, smoothWheel:true});
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const el = $(a.getAttribute('href')); if (el) { e.preventDefault(); lenis.scrollTo(el === $('#topo') ? 0 : el, {offset: 0}); }}));
+  }
+
+  /* hero load: masked lines rise, phone arrives */
+  gsap.from('.hero h1 .line>span', {yPercent:110, duration:.85, ease:'expo.out', stagger:.1, delay:.05});
+  gsap.from(['.hero .lead','.hero .act'], {y:20, opacity:0, duration:.7, ease:'power3.out', delay:.35, stagger:.08});
+  const small = matchMedia('(max-width:860px)').matches;
+  gsap.set('#dev', {rotationX:26, rotationZ:-7, yPercent:small ? 72 : 10, transformOrigin:'50% 80%'});
+  gsap.from('#dev', {yPercent:40, opacity:0, duration:1.2, ease:'expo.out', delay:.2});
+  gsap.set('.chip', {autoAlpha:0, scale:.6});
+  gsap.set('.scr+.scr', {autoAlpha:0});
+
+  /* the build: each chapter swaps the phone's screen */
+  const lis = $$('.chapters li'), screens = $$('.scr'), chips = $$('.chip');
+  const step = 1.2, start = .8, n = lis.length, total = start + n * step;
+  const tl = gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#cine', start:'top top', end:'+=' + (n * 115) + '%', scrub:1, pin:true, anticipatePin:1}});
+  tl.to('.mono', {xPercent:-38, duration:total}, 0)
+    .to('.hero', {y:-80, autoAlpha:0, duration:.5}, 0)
+    .to('#dev', {rotationX:0, rotationZ:0, yPercent:0, duration:.8, ease:'power2.out'}, 0);
+  lis.forEach((li, i) => {
+    const s = start + i * step;
+    tl.fromTo(li, {autoAlpha:0, y:50}, {autoAlpha:1, y:0, duration:.3}, s);
+    if (i > 0) {
+      tl.fromTo(screens[i], {autoAlpha:0, yPercent:6}, {autoAlpha:1, yPercent:0, duration:.3}, s)
+        .to(screens[i - 1], {autoAlpha:0, duration:.05}, s + .3);
+      if (chips[i - 1]) tl.to(chips[i - 1], {autoAlpha:1, scale:1, duration:.25, ease:'back.out(2)'}, s + .15);
+    }
+    if (i < n - 1) tl.to(li, {autoAlpha:0, y:-50, duration:.25}, s + step - .3);
+  });
+  tl.to('#dev', {rotationY:-14, scale:.96, duration:.6, ease:'power1.inOut'}, total - step + .2)
+    .to({}, {duration:.4}, total);
+
+  /* section entrances */
+  $$('.sec, #fim, .runcap').forEach(sec => {
+    const items = sec.querySelectorAll('.rv'); if (!items.length) return;
+    gsap.to(items, {opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.08, scrollTrigger:{trigger:sec, start:'top 78%', once:true}});
+  });
+
+  /* slow drift on pictures */
+  $$('.st img, .band img').forEach(img => gsap.fromTo(img, {yPercent:-4}, {yPercent:4, ease:'none', scrollTrigger:{trigger:img, start:'top bottom', end:'bottom top', scrub:true}}));
+
+  /* counters */
+  $$('[data-count]').forEach(el => { const n = +el.dataset.count, o = {v:0};
+    gsap.to(o, {v:n, duration:1.6, ease:'power2.out', scrollTrigger:{trigger:el, start:'top 85%', once:true}, onUpdate:() => el.textContent = Math.round(o.v) + '%'}); });
+
+  /* footer wordmark rises */
+  gsap.fromTo('footer .mark', {yPercent:35}, {yPercent:0, ease:'none', scrollTrigger:{trigger:'footer', start:'top bottom', end:'bottom bottom', scrub:true}});
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+});
+</script>
+</body>
+</html>
