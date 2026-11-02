@@ -134,6 +134,26 @@ img{display:block;max-width:100%}
 @media (max-width:860px){.hint{bottom:18px;font-size:14px}}
 @media (prefers-reduced-motion:reduce){.hint .mouse i{animation:none}}
 
+
+/* skip the scene */
+.skip{position:absolute;right:var(--m);bottom:28px;z-index:4;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:99px;background:#1A2540;color:var(--ink);font:700 15px/1 var(--text);text-decoration:none}
+.skip:hover{background:#22304D}
+@media (max-width:860px){.skip{bottom:86px;right:auto;left:50%;transform:translateX(-50%);min-height:38px;font-size:13px;padding:0 16px}}
+
+/* overview of every service */
+#tudo{background:var(--bg)}
+#tudo>.grid h2{grid-column:1/9}
+#tudo>.grid p{grid-column:9/13;align-self:end;color:var(--muted)}
+.all{margin-top:64px;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px 24px}
+.all a,.all div{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:20px 22px;border-radius:18px;background:#0F1626;text-decoration:none;height:100%;transition:background-color .25s,transform .25s}
+.all a:hover{background:#16203A;transform:translateY(-2px)}
+.all b{font:700 19px/1.25 var(--display);letter-spacing:-.03em}
+.all a b::after{content:"  →";color:var(--lime)}
+.all span{grid-column:1;color:var(--muted);font-size:15px}
+.all em{grid-row:1;grid-column:2;font-style:normal;font-weight:700;font-size:13px;color:var(--lime);white-space:nowrap;align-self:start;padding-top:3px}
+.go{margin-top:44px;display:flex;gap:12px;flex-wrap:wrap}
+@media (max-width:860px){#tudo>.grid h2,#tudo>.grid p{grid-column:1/-1}#tudo>.grid p{margin-top:20px}.all{grid-template-columns:1fr;margin-top:40px}.all a,.all div{grid-template-columns:1fr}.all em{grid-row:auto;grid-column:1;padding-top:6px}.go .btn{width:100%}}
+
 /* ---------- sections ---------- */
 main{position:relative;z-index:2;background:var(--bg)}
 .sec{padding:clamp(110px,16vh,190px) var(--m)}
@@ -144,7 +164,7 @@ main{position:relative;z-index:2;background:var(--bg)}
 #perde{background:var(--bg2)}
 #perde h2{grid-column:1/9;max-width:16ch}
 #perde .intro{grid-column:9/13;align-self:end;color:var(--muted)}
-.leaks{margin-top:88px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.leaks{margin-top:72px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .leaks div{padding:28px 24px 28px;background:#121A2C;border-radius:20px}
 .leaks .n{font:700 clamp(48px,5vw,84px)/1 var(--display);letter-spacing:-.05em;color:var(--lime)}
 .leaks h3{margin-top:18px;font:700 19px/1.3 var(--text)}
@@ -333,7 +353,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 .js .rv{opacity:0;transform:translateY(24px)}
 
 @media (max-width:960px){
-  .leaks{grid-template-columns:1fr 1fr}
+  .leaks{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr 1fr;row-gap:48px}
 }
 @media (max-width:860px){
@@ -350,7 +370,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
   footer .cols{grid-template-columns:1fr 1fr;row-gap:32px}
   #fim .foot .btn{width:100%}
 }
-@media (max-width:520px){.leaks{grid-template-columns:1fr}.steps{grid-template-columns:1fr}}
+@media (max-width:520px){.leaks{grid-template-columns:1fr;gap:12px}.leaks div{padding:22px}.leaks .n{font-size:56px}.leaks h3{margin-top:10px}.steps{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none}*{transition:none!important}}
 </style>
 </head>
@@ -359,8 +379,8 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
   <a class="word" href="#topo"><i aria-hidden="true"></i>orbi</a>
   <ul>
     <li><a class="ul" href="#perde">Por que agora</a></li>
-    <li><a class="ul" href="#servicos">Serviços</a></li>
-    <li><a class="ul" href="#mais">E mais</a></li>
+    <li><a class="ul" href="#tudo">Serviços</a></li>
+    
     <li><a class="ul" href="#duvidas">Dúvidas</a></li>
   </ul>
   <a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Quero%20colocar%20minha%20empresa%20no%20futuro.">WhatsApp</a>
@@ -368,12 +388,13 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 
 <div id="cine">
   <canvas id="net" aria-hidden="true"></canvas>
+  <a class="skip" href="#perde" id="skip">Pular animação ↓</a>
   <a class="hint" href="#perde" id="hint"><span class="mouse" aria-hidden="true"><i></i></span>Role a página para baixo e veja a mágica</a>
   <div class="stage">
     <header class="hero" id="topo">
       <h1><span class="line"><span>Sua empresa</span></span><span class="line"><span>no <em>futuro</em>.</span></span></h1>
       <p class="lead">Ou fora dele. Site, app de gestão, cardápio digital, Instagram e Google. Tecnologia de empresa grande, feita sob medida para a sua. Você vê pronto antes de pagar.</p>
-      <div class="act"><a class="btn" href="#servicos">Ver os serviços</a><a class="btn ghost" href="https://wa.me/5535920059158?text=Oi!%20Quero%20colocar%20minha%20empresa%20no%20futuro.">Falar no WhatsApp</a></div>
+      <div class="act"><a class="btn" href="#tudo">Ver todos os serviços</a><a class="btn ghost" href="https://wa.me/5535920059158?text=Oi!%20Quero%20colocar%20minha%20empresa%20no%20futuro.">Falar no WhatsApp</a></div>
     </header>
     <ol class="chapters">
       <li><h2>Ele procura no Google e paga no Pix.</h2><p>76% dos brasileiros já usam Pix. Quem compra hoje decide pelo celular, antes de sair de casa.</p><small>Banco Central, pesquisa "O brasileiro e sua relação com o dinheiro", 2024</small></li>
@@ -438,20 +459,40 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
   <section class="sec" id="perde" aria-labelledby="perde-h">
     <div class="grid">
       <h2 id="perde-h" class="rv">Ficar parado custa dinheiro.</h2>
-      <p class="intro rv">Não é moda. É onde o cliente está, e é como as empresas que crescem se organizam. Veja onde o dinheiro escapa.</p>
+      <p class="intro rv">O cliente decide pelo celular. Quem não aparece, não vende.</p>
     </div>
     <div class="leaks">
       <div class="rv"><div class="n" data-count="76">76%</div><h3>de quem procura algo perto pelo celular visita um negócio em até 1 dia.</h3><p>Se você não aparece nessa busca, a visita vai para outro.</p><small>Google, Think with Google, 2016</small></div>
-      <div class="rv"><div class="n" data-count="70">70%</div><h3>dos pequenos negócios já vendem com ferramentas digitais.</h3><p>O seu concorrente provavelmente já está lá.</p><small>Sebrae, Pulso dos Pequenos Negócios, 2024</small></div>
       <div class="rv"><div class="n" data-count="88">88%</div><h3>das pessoas usariam um negócio que responde todas as avaliações.</h3><p>Só 47% usariam um que não responde nenhuma.</p><small>BrightLocal, Local Consumer Review Survey, 2024</small></div>
       <div class="rv"><div class="n" data-count="70">70%</div><h3>mais chance de visita com o perfil do Google completo.</h3><p>Foto, horário e serviços certos trazem gente pela porta.</p><small>Google, ajuda do Perfil da Empresa</small></div>
     </div>
   </section>
 
+  <section class="sec" id="tudo" aria-labelledby="tudo-h">
+    <div class="grid">
+      <h2 id="tudo-h" class="rv">Tudo o que a gente faz.</h2>
+      <p class="rv">Toque em um serviço para ver o modelo. Já sabe o que quer? Pule direto para falar com a gente.</p>
+    </div>
+    <ol class="all">
+      <li class="rv"><a href="#s1"><b>Site que vira app</b><span>Aparece no Google, WhatsApp em um toque, preços, mapa e horário. Instala no celular do cliente.</span><em>Pagamento único</em></a></li>
+      <li class="rv"><a href="#s2"><b>App de gestão</b><span>Pedidos, estoque, caixa, contas a pagar e receber, equipe e relatórios num app só.</span><em>Implantação + mensal</em></a></li>
+      <li class="rv"><a href="#s3"><b>Cardápio digital</b><span>Fotos, QR Code na mesa e pedido pronto no seu WhatsApp, sem taxa de aplicativo.</span><em>Pagamento único</em></a></li>
+      <li class="rv"><a href="#s4"><b>Instagram profissional</b><span>Posts e legendas prontos, calendário do mês, ou a gente cuida da conta inteira.</span><em>Plano mensal</em></a></li>
+      <li class="rv"><a href="#s5"><b>Google em dia</b><span>Respostas de todas as avaliações, fotos, horário e serviços sempre certos.</span><em>Mensal · 1º mês grátis</em></a></li>
+      <li class="rv"><div><b>Atendimento automático no WhatsApp</b><span>Responde preço, horário e endereço na hora, até de madrugada.</span><em>Sob consulta</em></div></li>
+      <li class="rv"><div><b>Agendamento online</b><span>O cliente marca o serviço, o dia e o horário sozinho.</span><em>Sob consulta</em></div></li>
+      <li class="rv"><div><b>Loja online</b><span>Catálogo com carrinho e Pix. O pedido cai no seu WhatsApp.</span><em>Sob consulta</em></div></li>
+      <li class="rv"><div><b>Logo e identidade visual</b><span>Logo, cores e artes com a mesma cara em tudo.</span><em>Sob consulta</em></div></li>
+      <li class="rv"><div><b>Vídeos curtos para Reels</b><span>Promoções e produtos em vídeo, feitos com as suas fotos.</span><em>Sob consulta</em></div></li>
+      <li class="rv"><div><b>Sistema sob medida</b><span>Orçamentos, ordens de serviço, clientes: o que hoje é feito no papel.</span><em>Sob consulta</em></div></li>
+    </ol>
+    <div class="go rv"><a class="btn" href="#fim">Já sei o que quero: ir direto para o final</a><a class="btn ghost" href="#servicos">Ver cada serviço em detalhe</a></div>
+  </section>
+
   <section class="sec" id="servicos" aria-labelledby="servicos-h">
     <div class="grid">
-      <h2 id="servicos-h" class="rv">Tudo o que a Orbi faz.</h2>
-      <p class="rv">Cinco serviços, cada um feito sob medida. Os celulares abaixo são modelos: o seu leva o seu nome, as suas fotos e o jeito que a sua empresa trabalha.</p>
+      <h2 id="servicos-h" class="rv">Cada serviço em detalhe.</h2>
+      <p class="rv">Os celulares são modelos. O seu leva o seu nome, as suas fotos e o jeito que a sua empresa trabalha.</p>
     </div>
 
     <article class="svc" aria-labelledby="s1">
@@ -647,22 +688,6 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
     </article>
   </section>
 
-  <section class="sec" id="mais" aria-labelledby="mais-h">
-    <div class="grid">
-      <h2 id="mais-h" class="rv">E dá para fazer muito mais.</h2>
-      <p class="rv">Os cinco acima são os mais pedidos. Se a sua empresa precisa de outra coisa com tecnologia, conta pra gente: a gente monta sob medida.</p>
-    </div>
-    <ul class="extra">
-      <li class="rv"><b>Atendimento automático no WhatsApp</b><span>Responde preço, horário e endereço na hora, até de madrugada, e passa para você o que precisa de gente.</span></li>
-      <li class="rv"><b>Agendamento online</b><span>O cliente escolhe o serviço, o dia e o horário sozinho. Você recebe tudo organizado.</span></li>
-      <li class="rv"><b>Loja online</b><span>Catálogo com carrinho e pagamento por Pix. O pedido cai no seu WhatsApp.</span></li>
-      <li class="rv"><b>Logo e identidade visual</b><span>Logo, cores e artes com a mesma cara em tudo: fachada, cardápio, Instagram e uniforme.</span></li>
-      <li class="rv"><b>Vídeos curtos para Reels</b><span>Vídeos de promoção e de produto feitos com as suas fotos, prontos para postar.</span></li>
-      <li class="rv"><b>Sistema sob medida</b><span>Orçamentos, ordens de serviço, controle de clientes ou o que a sua empresa fizer no papel hoje.</span></li>
-    </ul>
-    <p class="extra-cta rv"><a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Quero%20saber%20se%20voc%C3%AAs%20fazem%20uma%20coisa%20para%20a%20minha%20empresa.">Perguntar se a gente faz</a></p>
-  </section>
-
   <section class="sec" id="veja" aria-labelledby="veja-h">
     <div class="grid">
       <div class="copy">
@@ -732,7 +757,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 <footer>
   <div class="cols">
     <ul><li><b>Orbi</b></li><li>Tecnologia para empresas</li></ul>
-    <ul><li><b>Navegar</b></li><li><a class="ul" href="#servicos">Serviços</a></li><li><a class="ul" href="#veja">Veja o seu</a></li><li><a class="ul" href="#duvidas">Dúvidas</a></li></ul>
+    <ul><li><b>Navegar</b></li><li><a class="ul" href="#tudo">Serviços</a></li><li><a class="ul" href="#veja">Veja o seu</a></li><li><a class="ul" href="#duvidas">Dúvidas</a></li></ul>
     <ul><li><b>Contato</b></li><li><a class="ul" href="https://wa.me/5535920059158">WhatsApp (35) 92005-9158</a></li></ul>
     <ul><li><b>Atendimento</b></li><li>Seg a sex, 9h às 18h</li></ul>
   </div>
@@ -895,7 +920,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lenis = new Lenis({lerp:.09, smoothWheel:true});
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
-    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const el = $(a.getAttribute('href')); if (el) { e.preventDefault(); lenis.scrollTo(el === $('#topo') ? 0 : el); }}));
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const el = $(a.getAttribute('href')); if (el) { e.preventDefault(); lenis.scrollTo(el === $("#topo") ? 0 : el, {offset: el.id === "perde" ? 0 : -70}); }}));
   }
   let visible = true;
   new IntersectionObserver(e => visible = e[0].isIntersecting).observe($('#cine'));
@@ -913,7 +938,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const tl = gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#cine', start:'top top', end:'+=520%', scrub:1, pin:true, anticipatePin:1}});
   tl.to(P, {p:1, duration:10, onUpdate:() => prog = P.p}, 0)
     .to('.hero', {y:-80, autoAlpha:0, duration:1}, .2)
-    .to('#hint', {autoAlpha:0, duration:.4}, 0);
+    .to('#hint', {autoAlpha:0, duration:.4}, 0)
+    .to('#skip', {autoAlpha:0, duration:.3}, 11.2);
   const at = [1.3, 3.4, 5.4, 7.6];
   lis.forEach((li, i) => {
     tl.fromTo(li, {autoAlpha:0, y:50}, {autoAlpha:1, y:0, duration:.6}, at[i]);
@@ -939,7 +965,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* entrances */
   $$('.sec, #fim').forEach(sec => {
-    const groups = sec.querySelectorAll(':scope > .grid, :scope > .leaks, :scope > .svc, :scope > .steps, :scope > .qa, :scope > .foot, :scope > h2, :scope > .extra, :scope > .extra-cta');
+    const groups = sec.querySelectorAll(':scope > .grid, :scope > .leaks, :scope > .svc, :scope > .steps, :scope > .qa, :scope > .foot, :scope > h2, :scope > .all, :scope > .go');
     groups.forEach(g => { const items = g.matches('.rv') ? [g] : g.querySelectorAll('.rv'); if (!items.length) return;
       gsap.to(items, {opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.07, scrollTrigger:{trigger:g, start:'top 82%', once:true}}); });
   });
