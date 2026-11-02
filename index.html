@@ -104,7 +104,7 @@ img{display:block;max-width:100%}
 .cine .chapters li{position:absolute;left:0;right:0;top:50%;translate:0 -50%;margin:0;visibility:hidden}
 .cine .hero{grid-row:1}
 .cine .phoneslot{visibility:hidden}
-.nocine .chip{display:none}
+.nocine .chip,.nocine .skip{display:none}
 .nocine .chapters{grid-row:2;margin-top:80px}
 .nocine .phoneslot{grid-row:1/3}
 @media (max-width:860px){
@@ -136,7 +136,7 @@ img{display:block;max-width:100%}
 
 
 /* skip the scene */
-.skip{position:absolute;right:var(--m);bottom:28px;z-index:4;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:99px;background:#1A2540;color:var(--ink);font:700 15px/1 var(--text);text-decoration:none}
+.skip{border:0;cursor:pointer;position:absolute;right:var(--m);bottom:28px;z-index:4;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:99px;background:#1A2540;color:var(--ink);font:700 15px/1 var(--text);text-decoration:none}
 .skip:hover{background:#22304D}
 @media (max-width:860px){.skip{bottom:86px;right:auto;left:50%;transform:translateX(-50%);min-height:38px;font-size:13px;padding:0 16px}}
 
@@ -388,7 +388,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 
 <div id="cine">
   <canvas id="net" aria-hidden="true"></canvas>
-  <a class="skip" href="#perde" id="skip">Pular animação ↓</a>
+  <button class="skip" id="skip" type="button">▶ Assistir sem rolar</button>
   <a class="hint" href="#perde" id="hint"><span class="mouse" aria-hidden="true"><i></i></span>Role a página para baixo e veja a mágica</a>
   <div class="stage">
     <header class="hero" id="topo">
@@ -400,54 +400,57 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
       <li><h2>Ele procura no Google e paga no Pix.</h2><p>76% dos brasileiros já usam Pix. Quem compra hoje decide pelo celular, antes de sair de casa.</p><small>Banco Central, pesquisa "O brasileiro e sua relação com o dinheiro", 2024</small></li>
       <li><h2>Quem não está no celular, perde a venda.</h2><p>70% dos pequenos negócios já usam ferramentas digitais para vender. O cliente que não te acha compra de quem aparece.</p><small>Sebrae, Pulso dos Pequenos Negócios, 9ª edição, 2024</small></li>
       <li><h2>Caderno e planilha custam caro.</h2><p>Pedido esquecido, estoque que acaba, conta que vence sem ninguém ver. Cada erro é dinheiro saindo pela porta.</p></li>
-      <li><h2>Tudo num app só. Do cliente ao caixa.</h2><p>A Orbi monta a tecnologia que a sua empresa precisa, do jeito que ela funciona.</p></li>
+      <li><h2>Tudo junto, feito por uma equipe só.</h2><p>Site, cardápio, app de gestão, Instagram e Google, um conversando com o outro. Do jeito que a sua empresa funciona.</p></li>
     </ol>
     <div class="phoneslot">
       <div class="dev" id="dev">
-        <div class="chip c1"><i></i><span><b>Novo pedido #483</b>R$ 86,00 · Marina</span></div>
-        <div class="chip warn c2"><i></i><span><b>Estoque baixo</b>Farinha: 4 kg</span></div>
-        <div class="chip c3"><i></i><span><b>Pix recebido</b>R$ 180,00</span></div>
-        <div class="chip c4"><i></i><span><b>Carla bateu o ponto</b>08:02</span></div>
-        <div class="glass" data-ui role="img" aria-label="Modelo de app de uma empresa: loja, pedidos, estoque e caixa">
-          <div class="scr site">
-            <div class="hero2"><img src="stock/padaria.jpg" alt="" width="1400" height="1050"><div><strong>Empório Bela Vista</strong>Aberto agora · fecha às 20h</div></div>
-            <div class="sb">
-              <div class="row"><span>Pão de queijo (kg)</span><b>R$ 49,90</b></div>
-              <div class="row"><span>Café especial 250 g</span><b>R$ 32,00</b></div>
-              <div class="row"><span>Cesta café da manhã</span><b>R$ 119,00</b></div>
-              <div class="cta2">Pedir pelo app</div>
-            </div>
-            <div class="tabs"><span class="on">Início</span><span>Pedidos</span><span>Estoque</span><span>Caixa</span></div>
+        <div class="chip c1"><i></i><span><b>Achado no Google</b>"barbearia perto de mim"</span></div>
+        <div class="chip c2"><i></i><span><b>Pedido da mesa 7</b>Chegou no WhatsApp</span></div>
+        <div class="chip c3"><i></i><span><b>Post do dia publicado</b>Com legenda pronta</span></div>
+        <div class="chip warn c4"><i></i><span><b>Estoque baixo</b>Farinha: 4 kg</span></div>
+        <div class="glass" data-ui role="img" aria-label="Modelos dos serviços da Orbi: site, cardápio, app de gestão, Instagram e Google">
+          <div class="scr ms">
+            <div class="top"><img src="modelos/img/barber-hero.webp" alt="" width="1800" height="1201"><span class="badge">Aberto agora</span><div class="t"><strong>Navalha Club</strong><span>Site · barbearia · até 20h</span></div></div>
+            <div class="b"><div class="two"><div class="cta">Agendar</div><div class="cta o">Como chegar</div></div><div class="r"><span>Corte</span><b>R$ 45</b></div><div class="r"><span>Barba completa</span><b>R$ 35</b></div><div class="r"><span>Corte + barba</span><b>R$ 75</b></div><div class="inst"><i></i><span><b>Instalar app</b><br>O ícone da barbearia no celular</span></div></div>
+          </div>
+          <div class="scr mc">
+            <div class="hd"><strong>Cantina Rossi</strong><span>Cardápio · mesa 7 · pedido no WhatsApp</span></div>
+            <div class="cats"><span class="on">Pizzas</span><span>Massas</span><span>Bebidas</span></div>
+            <div class="it"><img src="modelos/img/pizza-hero.webp" alt="" width="1800" height="1080"><span><b>Margherita</b><small>Muçarela de búfala e manjericão</small><em>R$ 59,00</em></span><span class="add">+</span></div>
+            <div class="it"><img src="modelos/img/lasagna.webp" alt="" width="1800" height="1350"><span><b>Lasanha</b><small>Serve 1 com fome</small><em>R$ 48,00</em></span><span class="add">+</span></div>
+            <div class="it"><img src="modelos/img/tiramisu.webp" alt="" width="1800" height="1355"><span><b>Tiramisù</b><small>Feito hoje</small><em>R$ 22,00</em></span><span class="add">+</span></div>
+            <div class="cart"><span>3 itens</span><span>Pedir · R$ 129,00</span></div>
           </div>
           <div class="scr">
-            <div class="ab"><small>Hoje · 37 pedidos</small><strong>Pedidos</strong></div>
+            <div class="ab"><small>App de gestão · hoje</small><strong>Pedidos</strong></div>
             <div class="sb">
               <div class="row"><span><b>#483 Marina</b><br><span class="k">2 itens · entrega</span></span><span><b>R$ 86,00</b><br><span class="pill y">Novo</span></span></div>
               <div class="row"><span><b>#482 João</b><br><span class="k">1 item · retirada</span></span><span><b>R$ 42,50</b><br><span class="pill y">Preparando</span></span></div>
               <div class="row"><span><b>#481 Ana</b><br><span class="k">5 itens · entrega</span></span><span><b>R$ 120,00</b><br><span class="pill">Saiu</span></span></div>
               <div class="row"><span>Faturado hoje</span><b>R$ 2.163,00</b></div>
             </div>
-            <div class="tabs"><span>Início</span><span class="on">Pedidos</span><span>Estoque</span><span>Caixa</span></div>
+            <div class="tabs"><span class="on">Pedidos</span><span>Estoque</span><span>Caixa</span><span>Equipe</span></div>
           </div>
           <div class="scr">
-            <div class="ab"><small>2 itens abaixo do mínimo</small><strong>Estoque</strong></div>
-            <div class="sb">
-              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Farinha</b><span>4 de 10 kg</span></span><div class="lvl"><i class="lo" style="width:40%"></i></div></div>
-              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Açúcar</b><span>3 de 8 kg</span></span><div class="lvl"><i class="lo" style="width:37%"></i></div></div>
-              <div class="row" style="display:block"><span style="display:flex;justify-content:space-between"><b>Café em grão</b><span>12 de 10 pct</span></span><div class="lvl"><i style="width:100%"></i></div></div>
-              <div class="cta2">Gerar lista de compras (2)</div>
-            </div>
-            <div class="tabs"><span>Início</span><span>Pedidos</span><span class="on">Estoque</span><span>Caixa</span></div>
-          </div>
-          <div class="scr">
-            <div class="ab"><small>Novembro</small><strong>Caixa</strong></div>
+            <div class="ab"><small>App de gestão · novembro</small><strong>Caixa</strong></div>
             <div class="sb">
               <div class="tot"><div class="row"><span class="k">Entradas</span><div class="big2">48.320</div></div><div class="row"><span class="k">Saídas</span><div class="big2">31.940</div></div></div>
               <div class="row"><span>Saldo do mês</span><b>R$ 16.380,00</b></div>
               <div class="bars" aria-hidden="true"><span style="height:55%"></span><span style="height:70%"></span><span style="height:48%"></span><span style="height:82%"></span><span style="height:64%"></span><span style="height:100%"></span><span class="n" style="height:30%"></span></div>
-              <div class="row"><span>Aluguel · 05/11</span><span class="pill r">R$ 4.500,00</span></div>
+              <div class="row"><span>Aluguel · 05/11</span><span class="pill r">A pagar</span></div>
             </div>
-            <div class="tabs"><span>Início</span><span>Pedidos</span><span>Estoque</span><span class="on">Caixa</span></div>
+            <div class="tabs"><span>Pedidos</span><span>Estoque</span><span class="on">Caixa</span><span>Equipe</span></div>
+          </div>
+          <div class="scr mi">
+            <div class="hd"><span>studiobella.estetica</span><span>Instagram</span></div>
+            <div class="pf"><div class="av">SB</div><div class="st"><span><b>148</b>posts</span><span><b>3.920</b>seguidores</span><span><b>212</b>seguindo</span></div></div>
+            <div class="bio"><b>Studio Bella · Estética</b>Sobrancelha, unhas e pele · Agende pelo link</div>
+            <div class="gd"><div class="tx d">Semana da sobrancelha</div><div><img src="stock/estetica.jpg" alt="" width="1400" height="933"></div><div class="tx l">3 cuidados com a pele</div><div><img src="stock/estetica.jpg" alt="" width="1400" height="933" style="object-position:80% 50%"></div><div class="tx">Agenda de dezembro aberta</div><div class="tx l">Mitos sobre unhas</div></div>
+          </div>
+          <div class="scr mg">
+            <div class="sr">padaria perto de mim</div>
+            <div class="card"><strong>Padaria Santa Clara</strong><div class="stars">Google · Padaria · Centro</div><div class="op">Aberto · fecha às 20h</div><div class="act"><span>Rotas</span><span>Ligar</span><span>Site</span><span>Zap</span></div><div class="pics"><img src="modelos/img/paodequeijo.webp" alt="" width="1800" height="1197"><img src="stock/padaria.jpg" alt="" width="1400" height="1050"><img src="stock/padaria.jpg" alt="" width="1400" height="1050" style="object-position:10% 80%"></div></div>
+            <div class="rv2"><div class="who">Cliente · avaliação de exemplo</div><p>Pão sempre quentinho, mas demorou no sábado.</p><div class="rep"><b>Resposta do proprietário</b>Obrigado! Sábado reforçamos o balcão. Volte sempre.</div></div>
           </div>
         </div>
       </div>
@@ -926,6 +929,11 @@ document.addEventListener('DOMContentLoaded', () => {
   new IntersectionObserver(e => visible = e[0].isIntersecting).observe($('#cine'));
   gsap.ticker.add(() => { if (visible) draw(); });
 
+  /* autoplay: scrolls through the whole scene by itself */
+  $('#skip').addEventListener('click', () => { const st = tl.scrollTrigger, to = st.end - 2;
+    if (lenis) lenis.scrollTo(to, {duration: 16, easing: t => t, lock: false});
+    else window.scrollTo({top: to, behavior: 'smooth'}); });
+
   /* hero load */
   gsap.from('.hero h1 .line>span', {yPercent:110, duration:.9, ease:'expo.out', stagger:.1, delay:.05});
   gsap.from(['.hero .lead','.hero .act'], {y:20, opacity:0, duration:.7, ease:'power3.out', delay:.4, stagger:.08});
@@ -939,7 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
   tl.to(P, {p:1, duration:10, onUpdate:() => prog = P.p}, 0)
     .to('.hero', {y:-80, autoAlpha:0, duration:1}, .2)
     .to('#hint', {autoAlpha:0, duration:.4}, 0)
-    .to('#skip', {autoAlpha:0, duration:.3}, 11.2);
+    .to('#skip', {autoAlpha:0, duration:.3}, .3);
   const at = [1.3, 3.4, 5.4, 7.6];
   lis.forEach((li, i) => {
     tl.fromTo(li, {autoAlpha:0, y:50}, {autoAlpha:1, y:0, duration:.6}, at[i]);
@@ -947,11 +955,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   tl.fromTo('.phoneslot', {autoAlpha:0}, {autoAlpha:1, duration:.6}, 8.3);
   screens.slice(1).forEach((s, i) => {
-    const t0 = 9 + i * .9;
+    const t0 = 8.9 + i * .52;
     tl.fromTo(s, {autoAlpha:0, yPercent:6}, {autoAlpha:1, yPercent:0, duration:.4}, t0)
       .to(screens[i], {autoAlpha:0, duration:.05}, t0 + .4);
   });
-  chips.forEach((c, i) => tl.to(c, {autoAlpha:1, scale:1, duration:.35, ease:'back.out(2)'}, 8.7 + i * .7));
+  chips.forEach((c, i) => tl.to(c, {autoAlpha:1, scale:1, duration:.3, ease:'back.out(2)'}, 9.1 + i * .6));
   tl.to({}, {duration:1.2}, 11.6);
 
   /* app model: screens rotate while visible */
