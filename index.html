@@ -151,8 +151,19 @@ img{display:block;max-width:100%}
 .all a b::after{content:"  →";color:var(--lime)}
 .all span{grid-column:1;color:var(--muted);font-size:15px}
 .all em{grid-row:1;grid-column:2;font-style:normal;font-weight:700;font-size:13px;color:var(--lime);white-space:nowrap;align-self:start;padding-top:3px}
+.all .also{grid-column:1/-1}
+.all .also div{grid-template-columns:1fr}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tags span{padding:8px 14px;border-radius:99px;background:#1A2540;color:var(--ink);font-size:14px;font-weight:600}
 .go{margin-top:44px;display:flex;gap:12px;flex-wrap:wrap}
 @media (max-width:860px){#tudo>.grid h2,#tudo>.grid p{grid-column:1/-1}#tudo>.grid p{margin-top:20px}.all{grid-template-columns:1fr;margin-top:40px}.all a,.all div{grid-template-columns:1fr}.all em{grid-row:auto;grid-column:1;padding-top:6px}.go .btn{width:100%}}
+
+
+/* step-by-step button */
+main section,#fim{scroll-margin-top:70px}
+.next{position:fixed;right:20px;bottom:20px;z-index:45;display:inline-flex;align-items:center;min-height:52px;padding:0 22px;border:0;border-radius:99px;background:var(--lime);color:#0A1200;font:800 16px/1 var(--text);cursor:pointer;transition:transform .25s,opacity .3s}
+.next:hover{transform:translateY(-2px)}
+.next.up{background:#1A2540;color:var(--ink)}
 
 /* ---------- sections ---------- */
 main{position:relative;z-index:2;background:var(--bg)}
@@ -271,50 +282,6 @@ main{position:relative;z-index:2;background:var(--bg)}
 .mg .rv2 .rep b{display:block;font-size:11px;color:#1A73E8}
 
 
-/* more */
-#mais{background:var(--bg2)}
-#mais>.grid h2{grid-column:1/9}
-#mais>.grid p{grid-column:9/13;align-self:end;color:var(--muted)}
-.extra{margin-top:72px;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.extra li{padding:30px 28px;border-radius:22px;background:#121A2C;display:grid;gap:10px;align-content:start;transition:transform .3s,background-color .3s}
-.extra li:hover{transform:translateY(-4px);background:#16203A}
-.extra b{font:700 22px/1.2 var(--display);letter-spacing:-.03em}
-.extra b::before{content:"";display:block;width:14px;height:14px;border-radius:50%;background:var(--lime);margin-bottom:18px}
-.extra span{color:var(--muted);font-size:16px}
-.extra-cta{margin-top:48px}
-@media (max-width:960px){.extra{grid-template-columns:1fr 1fr}}
-@media (max-width:860px){#mais>.grid h2,#mais>.grid p{grid-column:1/-1}#mais>.grid p{margin-top:24px}.extra{margin-top:48px}}
-@media (max-width:560px){.extra{grid-template-columns:1fr}}
-
-/* live preview */
-#veja{background:var(--paper);color:var(--navy)}
-#veja .grid{align-items:center;row-gap:56px}
-#veja .copy{grid-column:1/7}
-#veja .copy>p{margin-top:28px;max-width:40ch}
-form.make{margin-top:36px;display:grid;gap:22px;max-width:520px}
-form.make label{display:grid;gap:8px;font-weight:700;font-size:var(--s1)}
-form.make input{font:600 22px/1.2 var(--text);padding:14px 16px;border:2px solid var(--navy);border-radius:10px;background:#fff;color:var(--navy);width:100%}
-.types{position:relative;display:flex;flex-wrap:wrap;gap:10px;border:0}
-.types legend{font-weight:700;font-size:var(--s1);margin-bottom:10px}
-.types input{position:absolute;opacity:0;pointer-events:none}
-.types label{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#D6DBE2;color:var(--navy);cursor:pointer;font-weight:600;transition:background-color .2s,transform .2s}
-.types label:hover{transform:translateY(-2px)}
-.types input:checked+label{background:var(--navy);color:var(--lime)}
-.types input:focus-visible+label{outline:3px solid var(--navy);outline-offset:2px}
-#veja .btn{background:var(--navy);color:#fff}
-#veja .btn:hover{background:#1C2A44}
-#veja .phonewrap{grid-column:8/13;display:flex;justify-content:center}
-.phone{width:min(340px,100%);aspect-ratio:9/18.5;background:#02040A;border-radius:44px;padding:11px;position:relative}
-.phone .scr2{height:100%;border-radius:34px;overflow:hidden;background:var(--pbg,#F3E9D2);color:var(--pink,#2B1A10);display:flex;flex-direction:column;transition:background-color .4s,color .4s}
-.phone .cover{position:relative;height:46%;overflow:hidden;background:#000}
-.phone .cover img{width:100%;height:100%;object-fit:cover;opacity:.78;transition:opacity .35s}
-.phone .cover .nm{position:absolute;left:18px;right:18px;bottom:16px;color:#fff;font:700 30px/1 var(--display);letter-spacing:-.04em;overflow-wrap:anywhere}
-.phone .body{padding:16px 18px;display:grid;gap:10px;font-size:14px;line-height:1.4}
-.phone .body .tag{font-weight:700;font-size:15px}
-.phone .body ul{list-style:none;display:grid;gap:6px}
-.phone .body li{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border-radius:8px;background:var(--pcard,rgba(0,0,0,.06))}
-.phone .wa{margin-top:4px;display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:999px;background:var(--pacc,#1C7C54);color:var(--pacct,#fff);font-weight:700;font-size:15px}
-.phone .inst{font-size:13px;opacity:.9}
 
 /* how it works */
 #como{background:var(--bg2)}
@@ -378,7 +345,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 <nav class="nav" aria-label="Principal">
   <a class="word" href="#topo"><i aria-hidden="true"></i>orbi</a>
   <ul>
-    <li><a class="ul" href="#perde">Por que agora</a></li>
+    
     <li><a class="ul" href="#tudo">Serviços</a></li>
     
     <li><a class="ul" href="#duvidas">Dúvidas</a></li>
@@ -388,19 +355,17 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 
 <div id="cine">
   <canvas id="net" aria-hidden="true"></canvas>
-  <button class="skip" id="skip" type="button">▶ Assistir sem rolar</button>
-  <a class="hint" href="#perde" id="hint"><span class="mouse" aria-hidden="true"><i></i></span>Role a página para baixo e veja a mágica</a>
+  <a class="hint" href="#perde" id="hint"><span class="mouse" aria-hidden="true"><i></i></span>Role para baixo</a>
   <div class="stage">
     <header class="hero" id="topo">
       <h1><span class="line"><span>Sua empresa</span></span><span class="line"><span>no <em>futuro</em>.</span></span></h1>
-      <p class="lead">Ou fora dele. Site, app de gestão, cardápio digital, Instagram e Google. Tecnologia de empresa grande, feita sob medida para a sua. Você vê pronto antes de pagar.</p>
+      <p class="lead">Site, app de gestão, cardápio, Instagram e Google, feitos sob medida. Você só paga depois de ver pronto.</p>
       <div class="act"><a class="btn" href="#tudo">Ver todos os serviços</a><a class="btn ghost" href="https://wa.me/5535920059158?text=Oi!%20Quero%20colocar%20minha%20empresa%20no%20futuro.">Falar no WhatsApp</a></div>
     </header>
     <ol class="chapters">
-      <li><h2>Ele procura no Google e paga no Pix.</h2><p>76% dos brasileiros já usam Pix. Quem compra hoje decide pelo celular, antes de sair de casa.</p><small>Banco Central, pesquisa "O brasileiro e sua relação com o dinheiro", 2024</small></li>
-      <li><h2>Quem não está no celular, perde a venda.</h2><p>70% dos pequenos negócios já usam ferramentas digitais para vender. O cliente que não te acha compra de quem aparece.</p><small>Sebrae, Pulso dos Pequenos Negócios, 9ª edição, 2024</small></li>
-      <li><h2>Caderno e planilha custam caro.</h2><p>Pedido esquecido, estoque que acaba, conta que vence sem ninguém ver. Cada erro é dinheiro saindo pela porta.</p></li>
-      <li><h2>Tudo junto, feito por uma equipe só.</h2><p>Site, cardápio, app de gestão, Instagram e Google, um conversando com o outro. Do jeito que a sua empresa funciona.</p></li>
+      <li><h2>O cliente te procura pelo celular.</h2><p>Se não te acha, compra do concorrente.</p></li>
+      <li><h2>Caderno e planilha custam caro.</h2><p>Pedido esquecido e estoque que acaba é dinheiro perdido.</p></li>
+      <li><h2>Tudo junto, numa equipe só.</h2><p>Site, cardápio, app de gestão, Instagram e Google.</p></li>
     </ol>
     <div class="phoneslot">
       <div class="dev" id="dev">
@@ -458,19 +423,9 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
   </div>
 </div>
 
-<main>
-  <section class="sec" id="perde" aria-labelledby="perde-h">
-    <div class="grid">
-      <h2 id="perde-h" class="rv">Ficar parado custa dinheiro.</h2>
-      <p class="intro rv">O cliente decide pelo celular. Quem não aparece, não vende.</p>
-    </div>
-    <div class="leaks">
-      <div class="rv"><div class="n" data-count="76">76%</div><h3>de quem procura algo perto pelo celular visita um negócio em até 1 dia.</h3><p>Se você não aparece nessa busca, a visita vai para outro.</p><small>Google, Think with Google, 2016</small></div>
-      <div class="rv"><div class="n" data-count="88">88%</div><h3>das pessoas usariam um negócio que responde todas as avaliações.</h3><p>Só 47% usariam um que não responde nenhuma.</p><small>BrightLocal, Local Consumer Review Survey, 2024</small></div>
-      <div class="rv"><div class="n" data-count="70">70%</div><h3>mais chance de visita com o perfil do Google completo.</h3><p>Foto, horário e serviços certos trazem gente pela porta.</p><small>Google, ajuda do Perfil da Empresa</small></div>
-    </div>
-  </section>
+<button class="next" id="next" type="button" aria-label="Ir para a próxima parte">Próximo ↓</button>
 
+<main>
   <section class="sec" id="tudo" aria-labelledby="tudo-h">
     <div class="grid">
       <h2 id="tudo-h" class="rv">Tudo o que a gente faz.</h2>
@@ -482,12 +437,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
       <li class="rv"><a href="#s3"><b>Cardápio digital</b><span>Fotos, QR Code na mesa e pedido pronto no seu WhatsApp, sem taxa de aplicativo.</span><em>Pagamento único</em></a></li>
       <li class="rv"><a href="#s4"><b>Instagram profissional</b><span>Posts e legendas prontos, calendário do mês, ou a gente cuida da conta inteira.</span><em>Plano mensal</em></a></li>
       <li class="rv"><a href="#s5"><b>Google em dia</b><span>Respostas de todas as avaliações, fotos, horário e serviços sempre certos.</span><em>Mensal · 1º mês grátis</em></a></li>
-      <li class="rv"><div><b>Atendimento automático no WhatsApp</b><span>Responde preço, horário e endereço na hora, até de madrugada.</span><em>Sob consulta</em></div></li>
-      <li class="rv"><div><b>Agendamento online</b><span>O cliente marca o serviço, o dia e o horário sozinho.</span><em>Sob consulta</em></div></li>
-      <li class="rv"><div><b>Loja online</b><span>Catálogo com carrinho e Pix. O pedido cai no seu WhatsApp.</span><em>Sob consulta</em></div></li>
-      <li class="rv"><div><b>Logo e identidade visual</b><span>Logo, cores e artes com a mesma cara em tudo.</span><em>Sob consulta</em></div></li>
-      <li class="rv"><div><b>Vídeos curtos para Reels</b><span>Promoções e produtos em vídeo, feitos com as suas fotos.</span><em>Sob consulta</em></div></li>
-      <li class="rv"><div><b>Sistema sob medida</b><span>Orçamentos, ordens de serviço, clientes: o que hoje é feito no papel.</span><em>Sob consulta</em></div></li>
+      <li class="rv also"><div><b>Também fazemos</b><p class="tags"><span>Atendimento automático no WhatsApp</span><span>Agendamento online</span><span>Loja online</span><span>Logo e identidade visual</span><span>Vídeos para Reels</span><span>Sistema sob medida</span></p></div></li>
     </ol>
     <div class="go rv"><a class="btn" href="#fim">Já sei o que quero: ir direto para o final</a><a class="btn ghost" href="#servicos">Ver cada serviço em detalhe</a></div>
   </section>
@@ -515,15 +465,9 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
       </div>
       <div class="txt">
         <h3 id="s1" class="rv">Site que vira app</h3>
-        <p class="say rv"><b>Um site que trabalha 24 horas por você. </b>Quem procura o seu serviço na cidade te encontra, vê preço, horário e endereço, e chama no WhatsApp com um toque. E instala como app, com o seu ícone no celular do cliente.</p>
+        <p class="say rv"><b>Um site que trabalha 24 horas por você. </b></p>
         <span class="bill rv">Pagamento único · hospedagem inclusa</span>
-        <ul class="feat rv">
-          <li>Feito para aparecer no Google</li><li>Botão do WhatsApp e do Instagram</li>
-          <li>Serviços e preços sempre à vista</li><li>Mapa, horário e "aberto agora"</li>
-          <li>Galeria com as suas fotos</li><li>Agendamento ou orçamento</li>
-          <li>Instala como app, sem loja</li><li>Rápido mesmo no 4G fraco</li>
-        </ul>
-        <p class="more rv"><b>Dá para colocar mais:</b> área do cliente, cupom, link na bio, página de cada serviço, cardápio, catálogo, o que a sua empresa precisar.</p>
+        <ul class="feat rv"><li>Feito para aparecer no Google</li><li>Botão do WhatsApp e do Instagram</li><li>Serviços e preços sempre à vista</li><li>Mapa, horário e "aberto agora"</li><li>Galeria com as suas fotos</li><li>Agendamento ou orçamento</li></ul>
         <div class="links rv"><a class="live" href="modelos/barbearia/">Abrir o modelo funcionando →</a></div>
       </div>
     </article>
@@ -583,17 +527,9 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
       </div>
       <div class="txt">
         <h3 id="s2" class="rv">App de gestão</h3>
-        <p class="say rv"><b>A empresa inteira no bolso, até o administrativo. </b>Pedidos, estoque, caixa, contas e equipe num app só, feito em cima do jeito que a sua empresa já trabalha. Você abre o celular e sabe como está o negócio, de qualquer lugar.</p>
+        <p class="say rv"><b>A empresa inteira no bolso, até o administrativo. </b></p>
         <span class="bill rv">Implantação + plano mensal com suporte</span>
-        <ul class="feat rv">
-          <li>Pedidos e encomendas</li><li>Agenda de horários</li>
-          <li>Estoque com aviso de falta</li><li>Lista de compras automática</li>
-          <li>Caixa, entradas e saídas</li><li>Contas a pagar e a receber</li>
-          <li>Orçamentos e recibos</li><li>Cadastro de clientes</li>
-          <li>Escala, ponto e comissões</li><li>Acesso por função</li>
-          <li>Relatórios do mês</li><li>Cartão fidelidade</li>
-        </ul>
-        <p class="more rv"><b>Dá para colocar mais:</b> se a sua empresa faz, o app pode fazer. A gente monta só as partes que você usa e acrescenta outras quando precisar.</p>
+        <ul class="feat rv"><li>Pedidos e encomendas</li><li>Agenda de horários</li><li>Estoque com aviso de falta</li><li>Lista de compras automática</li><li>Caixa, entradas e saídas</li><li>Contas a pagar e a receber</li></ul>
         <div class="links rv"><a class="live" href="modelos/app/">Testar o app funcionando →</a></div>
       </div>
     </article>
@@ -613,15 +549,9 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
       </div>
       <div class="txt">
         <h3 id="s3" class="rv">Cardápio digital</h3>
-        <p class="say rv"><b>O cliente escolhe e o pedido chega pronto. </b>Cardápio com fotos e preços, QR Code na mesa e pedido direto no seu WhatsApp, sem taxa de aplicativo de entrega. Mudou o preço? Muda na hora, sem reimprimir nada.</p>
+        <p class="say rv"><b>O cliente escolhe e o pedido chega pronto. </b></p>
         <span class="bill rv">Pagamento único · sem taxa por pedido</span>
-        <ul class="feat rv">
-          <li>Fotos de cada prato</li><li>Categorias e busca</li>
-          <li>QR Code para as mesas</li><li>Pedido no seu WhatsApp</li>
-          <li>Adicionais e observações</li><li>Entrega, retirada ou mesa</li>
-          <li>Horário de funcionamento</li><li>Instala como app</li>
-        </ul>
-        <p class="more rv"><b>Dá para colocar mais:</b> combos, promoção do dia, taxa por bairro, pagamento por Pix e ligação com o estoque do app de gestão.</p>
+        <ul class="feat rv"><li>Fotos de cada prato</li><li>Categorias e busca</li><li>QR Code para as mesas</li><li>Pedido no seu WhatsApp</li><li>Adicionais e observações</li><li>Entrega, retirada ou mesa</li></ul>
         <div class="links rv"><a class="live" href="modelos/cardapio/">Fazer um pedido no modelo →</a></div>
       </div>
     </article>
@@ -649,15 +579,9 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
       </div>
       <div class="txt">
         <h3 id="s4" class="rv">Instagram profissional</h3>
-        <p class="say rv"><b>Um perfil com cara de marca grande. </b>Artes com a cara da sua empresa, legendas que vendem e um calendário do mês. Você escolhe: recebe os posts prontos para só postar, ou a gente cuida da conta inteira e posta por você.</p>
+        <p class="say rv"><b>Um perfil com cara de marca grande. </b></p>
         <span class="bill rv">Plano mensal · cancele quando quiser</span>
-        <ul class="feat rv">
-          <li>Identidade visual do perfil</li><li>Posts e carrosséis prontos</li>
-          <li>Legendas e hashtags</li><li>Calendário do mês</li>
-          <li>Stories e destaques</li><li>Posts de promoção</li>
-          <li>Bio e link organizados</li><li>Postagem por nós (plano completo)</li>
-        </ul>
-        <p class="more rv"><b>Dá para colocar mais:</b> vídeos curtos (Reels) feitos com as suas fotos, campanhas de datas especiais e artes para o status do WhatsApp.</p>
+        <ul class="feat rv"><li>Identidade visual do perfil</li><li>Posts e carrosséis prontos</li><li>Legendas e hashtags</li><li>Calendário do mês</li><li>Stories e destaques</li><li>Posts de promoção</li></ul>
       </div>
     </article>
 
@@ -679,52 +603,22 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
       </div>
       <div class="txt">
         <h3 id="s5" class="rv">Google em dia</h3>
-        <p class="say rv"><b>Sua vitrine no Google, sempre arrumada. </b>A gente responde as avaliações toda semana, no tom da sua empresa, e mantém foto, horário e serviços certos. É o que o cliente vê antes de decidir se vai até você.</p>
+        <p class="say rv"><b>Sua vitrine no Google, sempre arrumada. </b></p>
         <span class="bill rv">Plano mensal · 1º mês grátis</span>
-        <ul class="feat rv">
-          <li>Respostas de todas as avaliações</li><li>Horário e feriados certos</li>
-          <li>Fotos novas no perfil</li><li>Serviços e produtos cadastrados</li>
-          <li>Novidades no perfil</li><li>Relatório simples do mês</li>
-        </ul>
-        <p class="more rv"><b>Dá para colocar mais:</b> link de agendamento, perguntas e respostas, e o seu site novo ligado ao perfil.</p>
+        <ul class="feat rv"><li>Respostas de todas as avaliações</li><li>Horário e feriados certos</li><li>Fotos novas no perfil</li><li>Serviços e produtos cadastrados</li><li>Novidades no perfil</li><li>Relatório simples do mês</li></ul>
       </div>
     </article>
   </section>
 
-  <section class="sec" id="veja" aria-labelledby="veja-h">
+  <section class="sec" id="perde" aria-labelledby="perde-h">
     <div class="grid">
-      <div class="copy">
-        <h2 id="veja-h" class="rv">Veja o seu agora.</h2>
-        <p class="rv">Escreva o nome do seu negócio e escolha o tipo. O celular ao lado mostra como fica. O de verdade é feito sob medida, com as suas fotos e os seus preços.</p>
-        <form class="make rv" id="make" action="https://wa.me/5535920059158" method="get">
-          <label>Nome do negócio
-            <input id="nome" name="nome" maxlength="34" autocomplete="organization" placeholder="Ex.: Barbearia do Zé" value="">
-          </label>
-          <fieldset class="types" id="tipos">
-            <legend>Tipo</legend>
-            <input type="radio" name="tipo" id="t-barbearia" value="barbearia" checked><label for="t-barbearia">Barbearia</label>
-            <input type="radio" name="tipo" id="t-padaria" value="padaria"><label for="t-padaria">Padaria</label>
-            <input type="radio" name="tipo" id="t-pet" value="pet"><label for="t-pet">Pet shop</label>
-            <input type="radio" name="tipo" id="t-oficina" value="oficina"><label for="t-oficina">Oficina</label>
-            <input type="radio" name="tipo" id="t-restaurante" value="restaurante"><label for="t-restaurante">Restaurante</label>
-            <input type="radio" name="tipo" id="t-estetica" value="estetica"><label for="t-estetica">Estética</label>
-          </fieldset>
-          <div><button class="btn" type="submit">Quero o meu assim</button></div>
-        </form>
-      </div>
-      <div class="phonewrap rv">
-        <div class="phone" data-ui role="img" aria-label="Prévia do site no celular">
-          <div class="scr2" id="scr">
-            <div class="cover"><img id="p-img" src="stock/barbearia.jpg" alt="" width="1400" height="1076"><div class="nm" id="p-nome">Barbearia do Zé</div></div>
-            <div class="body">
-              <div class="tag" id="p-tag">Corte e barba com hora marcada</div>
-              <ul id="p-list"></ul>
-              <div class="wa" id="p-wa">Agendar pelo WhatsApp</div>
-              <div class="inst">Seg a sáb · 9h às 19h · Instalar app</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 id="perde-h" class="rv">Ficar parado custa dinheiro.</h2>
+      <p class="intro rv">O cliente decide pelo celular. Quem não aparece, não vende.</p>
+    </div>
+    <div class="leaks">
+      <div class="rv"><div class="n" data-count="76">76%</div><h3>de quem procura algo perto pelo celular visita um negócio em até 1 dia.</h3><p>Se você não aparece nessa busca, a visita vai para outro.</p><small>Google, Think with Google, 2016</small></div>
+      <div class="rv"><div class="n" data-count="88">88%</div><h3>das pessoas usariam um negócio que responde todas as avaliações.</h3><p>Só 47% usariam um que não responde nenhuma.</p><small>BrightLocal, Local Consumer Review Survey, 2024</small></div>
+      <div class="rv"><div class="n" data-count="70">70%</div><h3>mais chance de visita com o perfil do Google completo.</h3><p>Foto, horário e serviços certos trazem gente pela porta.</p><small>Google, ajuda do Perfil da Empresa</small></div>
     </div>
   </section>
 
@@ -741,11 +635,8 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
   <section class="sec" id="duvidas" aria-labelledby="duvidas-h">
     <div class="qa h0"><h2 class="h" id="duvidas-h">Dúvidas.</h2></div>
     <div class="qa rv"><h3>O que é pagamento único e o que é mensal?</h3><p>Site e cardápio digital: pagamento único, com hospedagem inclusa. Instagram, Google em dia e o app de gestão: plano mensal, porque a gente trabalha para você todo mês. Cancele quando quiser.</p></div>
-    <div class="qa rv"><h3>O app faz a parte administrativa?</h3><p>Sim. Pedidos, caixa, contas, estoque, equipe e relatórios. Você escolhe as partes, e a gente monta do jeito que a sua empresa funciona.</p></div>
     <div class="qa rv"><h3>Preciso pagar para ver?</h3><p>Não. Você vê tudo pronto e só paga depois de aprovar.</p></div>
-    <div class="qa rv"><h3>O app fica na Play Store?</h3><p>Não precisa: ele instala direto pelo site, com um toque em "Instalar app". Sem custo de loja e sempre atualizado.</p></div>
     <div class="qa rv"><h3>Quanto tempo leva?</h3><p>Até 5 dias depois que a gente conversa e você aprova o que vai ter.</p></div>
-    <div class="qa rv"><h3>Já tenho Instagram. Por que um site?</h3><p>O site aparece no Google quando alguém procura o seu serviço na cidade, e junta endereço, horário e WhatsApp num link só. Um ajuda o outro.</p></div>
   </section>
 
   <section id="fim" aria-labelledby="fim-h">
@@ -760,7 +651,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 <footer>
   <div class="cols">
     <ul><li><b>Orbi</b></li><li>Tecnologia para empresas</li></ul>
-    <ul><li><b>Navegar</b></li><li><a class="ul" href="#tudo">Serviços</a></li><li><a class="ul" href="#veja">Veja o seu</a></li><li><a class="ul" href="#duvidas">Dúvidas</a></li></ul>
+    <ul><li><b>Navegar</b></li><li><a class="ul" href="#tudo">Serviços</a></li><li><a class="ul" href="#duvidas">Dúvidas</a></li></ul>
     <ul><li><b>Contato</b></li><li><a class="ul" href="https://wa.me/5535920059158">WhatsApp (35) 92005-9158</a></li></ul>
     <ul><li><b>Atendimento</b></li><li>Seg a sex, 9h às 18h</li></ul>
   </div>
@@ -771,46 +662,10 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 
 <script src="vendor/gsap.min.js" defer></script>
 <script src="vendor/ScrollTrigger.min.js" defer></script>
-<script src="vendor/lenis.min.js" defer></script>
 <script defer>
 document.addEventListener('DOMContentLoaded', () => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-
-  /* ---------- live preview ---------- */
-  const T = {
-    barbearia:{img:'stock/barbearia.jpg',tag:'Corte e barba com hora marcada',wa:'Agendar pelo WhatsApp',bg:'#1B2233',ink:'#F1EAD8',acc:'#E7C66A',acct:'#1B2233',card:'rgba(255,255,255,.08)',ex:'Barbearia do Zé',
-      list:[['Corte','R$ 35'],['Barba','R$ 25'],['Corte + barba','R$ 55']]},
-    padaria:{img:'stock/padaria.jpg',tag:'Pão quentinho às 6h e às 16h',wa:'Encomendar pelo WhatsApp',bg:'#F6E9D2',ink:'#4A2410',acc:'#7A3E1D',acct:'#F6E2B8',card:'rgba(122,62,29,.10)',ex:'Padaria Santa Clara',
-      list:[['Pão francês (kg)','R$ 16'],['Bolo de fubá','R$ 22'],['Café da manhã','R$ 19']]},
-    pet:{img:'stock/pet.jpg',tag:'Banho e tosa com busca em casa',wa:'Agendar banho',bg:'#FFF4E2',ink:'#14353A',acc:'#F2A33A',acct:'#14353A',card:'rgba(20,53,58,.08)',ex:'Pet Amigo',
-      list:[['Banho pequeno','R$ 45'],['Banho e tosa','R$ 75'],['Busca e entrega','R$ 10']]},
-    oficina:{img:'stock/oficina.jpg',tag:'Revisão e orçamento pelo WhatsApp',wa:'Pedir orçamento',bg:'#1E1E1E',ink:'#F4F1E8',acc:'#F2C230',acct:'#1E1E1E',card:'rgba(255,255,255,.08)',ex:'Auto Center Silva',
-      list:[['Troca de óleo','R$ 120'],['Alinhamento','R$ 80'],['Revisão completa','sob orçamento']]},
-    restaurante:{img:'stock/restaurante.jpg',tag:'Almoço caseiro, de segunda a sábado',wa:'Pedir pelo WhatsApp',bg:'#F3E9D2',ink:'#2E3A2A',acc:'#2E4A3A',acct:'#F3E9D2',card:'rgba(46,74,58,.10)',ex:'Restaurante da Vó',
-      list:[['Prato feito','R$ 24'],['Marmita grande','R$ 22'],['Suco natural','R$ 8']]},
-    estetica:{img:'stock/estetica.jpg',tag:'Sobrancelha, unhas e limpeza de pele',wa:'Agendar horário',bg:'#F4E8E3',ink:'#3A2A2A',acc:'#8C4A5A',acct:'#fff',card:'rgba(58,42,42,.07)',ex:'Studio Bella',
-      list:[['Design de sobrancelha','R$ 40'],['Manicure','R$ 30'],['Limpeza de pele','R$ 120']]}
-  };
-  const nome = $('#nome'), scr = $('#scr');
-  const cur = () => (document.querySelector('input[name=tipo]:checked')||{}).value || 'barbearia';
-  function paint(){
-    const t = T[cur()];
-    scr.style.setProperty('--pbg',t.bg); scr.style.setProperty('--pink',t.ink); scr.style.setProperty('--pacc',t.acc);
-    scr.style.setProperty('--pacct',t.acct); scr.style.setProperty('--pcard',t.card);
-    $('#p-nome').textContent = nome.value.trim() || t.ex;
-    nome.placeholder = 'Ex.: ' + t.ex;
-    const img = $('#p-img'); if (!img.src.endsWith(t.img)) { img.style.opacity = 0; setTimeout(()=>{img.src=t.img; img.onload=()=>img.style.opacity=.78},150); }
-    $('#p-tag').textContent = t.tag; $('#p-wa').textContent = t.wa;
-    $('#p-list').innerHTML = t.list.map(([a,b]) => `<li><span>${a}</span><b>${b}</b></li>`).join('');
-  }
-  nome.addEventListener('input', paint); $$('input[name=tipo]').forEach(r => r.addEventListener('change', paint)); paint();
-  $('#make').addEventListener('submit', e => {
-    e.preventDefault();
-    const n = nome.value.trim(), lbl = document.querySelector(`label[for=t-${cur()}]`).textContent;
-    const msg = n ? `Oi! Vi o site da Orbi e quero um assim para o ${n} (${lbl.toLowerCase()}).` : `Oi! Vi o site da Orbi e quero um assim para o meu negócio (${lbl.toLowerCase()}).`;
-    location.href = 'https://wa.me/5535920059158?text=' + encodeURIComponent(msg);
-  });
 
   /* ---------- nav ---------- */
   const nav = $('.nav');
@@ -918,21 +773,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.classList.add('js','cine');
   size();
   gsap.registerPlugin(ScrollTrigger);
-  let lenis;
-  if (window.Lenis) {
-    lenis = new Lenis({lerp:.09, smoothWheel:true});
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
-    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const el = $(a.getAttribute('href')); if (el) { e.preventDefault(); lenis.scrollTo(el === $("#topo") ? 0 : el, {offset: el.id === "perde" ? 0 : -70}); }}));
-  }
   let visible = true;
   new IntersectionObserver(e => visible = e[0].isIntersecting).observe($('#cine'));
   gsap.ticker.add(() => { if (visible) draw(); });
-
-  /* autoplay: scrolls through the whole scene by itself */
-  $('#skip').addEventListener('click', () => { const st = tl.scrollTrigger, to = st.end - 2;
-    if (lenis) lenis.scrollTo(to, {duration: 16, easing: t => t, lock: false});
-    else window.scrollTo({top: to, behavior: 'smooth'}); });
 
   /* hero load */
   gsap.from('.hero h1 .line>span', {yPercent:110, duration:.9, ease:'expo.out', stagger:.1, delay:.05});
@@ -940,27 +783,47 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.set('.chip', {autoAlpha:0, scale:.6});
   gsap.set('#dev .scr+.scr', {autoAlpha:0});
 
-  /* the scrubbed scene */
+  /* the scene: hero + three steps; every swipe lands on a step */
   const P = {p:0};
   const lis = $$('.chapters li'), screens = $$('#dev .scr'), chips = $$('#dev .chip');
-  const tl = gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#cine', start:'top top', end:'+=520%', scrub:1, pin:true, anticipatePin:1}});
-  tl.to(P, {p:1, duration:10, onUpdate:() => prog = P.p}, 0)
-    .to('.hero', {y:-80, autoAlpha:0, duration:1}, .2)
-    .to('#hint', {autoAlpha:0, duration:.4}, 0)
-    .to('#skip', {autoAlpha:0, duration:.3}, .3);
-  const at = [1.3, 3.4, 5.4, 7.6];
-  lis.forEach((li, i) => {
-    tl.fromTo(li, {autoAlpha:0, y:50}, {autoAlpha:1, y:0, duration:.6}, at[i]);
-    if (i < lis.length - 1) tl.to(li, {autoAlpha:0, y:-50, duration:.5}, at[i + 1] - .7);
+  const tl = gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#cine', start:'top top', end:'+=300%', scrub:.5, pin:true, anticipatePin:1,
+    snap:{snapTo:'labelsDirectional', inertia:false, duration:{min:.35, max:.8}, delay:.04, ease:'power2.inOut'}}});
+  tl.addLabel('s0', 0).to(P, {p:1, duration:6, onUpdate:() => prog = P.p}, 0)
+    .to('.hero', {y:-80, autoAlpha:0, duration:.8}, .3)
+    .to('#hint', {autoAlpha:0, duration:.3}, 0);
+  [[1.3, 2.7], [3.3, 4.7], [5.2, null]].forEach(([inT, outT], i) => {
+    tl.fromTo(lis[i], {autoAlpha:0, y:50}, {autoAlpha:1, y:0, duration:.5}, inT);
+    if (outT) tl.to(lis[i], {autoAlpha:0, y:-50, duration:.4}, outT);
   });
-  tl.fromTo('.phoneslot', {autoAlpha:0}, {autoAlpha:1, duration:.6}, 8.3);
-  screens.slice(1).forEach((s, i) => {
-    const t0 = 8.9 + i * .52;
-    tl.fromTo(s, {autoAlpha:0, yPercent:6}, {autoAlpha:1, yPercent:0, duration:.4}, t0)
-      .to(screens[i], {autoAlpha:0, duration:.05}, t0 + .4);
+  tl.addLabel('s1', 2).addLabel('s2', 4).fromTo('.phoneslot', {autoAlpha:0}, {autoAlpha:1, duration:.6}, 5.1).addLabel('s3', 6);
+  /* once the phone is up, its screens and notifications play by themselves */
+  let si = 0, sTimer = null;
+  const show = on => { clearInterval(sTimer);
+    if (!on) return;
+    gsap.to(chips, {autoAlpha:1, scale:1, duration:.4, ease:'back.out(2)', stagger:.35});
+    sTimer = setInterval(() => { const n = (si + 1) % screens.length;
+      gsap.fromTo(screens[n], {autoAlpha:0, yPercent:5}, {autoAlpha:1, yPercent:0, duration:.45, ease:'power3.out'});
+      gsap.to(screens[si], {autoAlpha:0, duration:.25, delay:.2}); si = n; }, 2200); };
+  ScrollTrigger.create({trigger:'#cine', start:() => tl.scrollTrigger.start + (tl.scrollTrigger.end - tl.scrollTrigger.start) * .85, end:'max', onToggle:st => show(st.isActive)});
+
+  /* in-page links glide (done in JS: a CSS smooth scroll would fight the snapping) */
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const el = $(a.getAttribute('href')); if (!el) return; e.preventDefault();
+    window.scrollTo({top: el.id === 'topo' ? 0 : el.getBoundingClientRect().top + scrollY - 70, behavior:'smooth'}); }));
+
+  /* "Próximo": step through the scene, then section by section */
+  const stops = [$('#tudo'), ...$$('.svc .mock'), $('#perde'), $('#como'), $('#duvidas'), $('#fim')].filter(Boolean);
+  const nb = $('#next');
+  nb.addEventListener('click', () => {
+    const st = tl.scrollTrigger, len = st.end - st.start;
+    if (nb.classList.contains('up')) { window.scrollTo({top:0, behavior:'smooth'}); return; }
+    if (scrollY < st.end - 4) { const t = (scrollY - st.start) / len * tl.duration();
+      const nextL = ['s1','s2','s3'].map(l => tl.labels[l]).find(v => v > t + .05);
+      if (nextL !== undefined) { window.scrollTo({top: Math.round(st.start + nextL / tl.duration() * len), behavior:"auto"}); return; } }
+    const el = stops.find(e => e.getBoundingClientRect().top > 90);
+    if (el) window.scrollTo({top: el.getBoundingClientRect().top + scrollY - 70, behavior:'smooth'});
   });
-  chips.forEach((c, i) => tl.to(c, {autoAlpha:1, scale:1, duration:.3, ease:'back.out(2)'}, 9.1 + i * .6));
-  tl.to({}, {duration:1.2}, 11.6);
+  addEventListener('scroll', () => { const atEnd = $('#fim').getBoundingClientRect().top < innerHeight * .5;
+    nb.classList.toggle('up', atEnd); nb.textContent = atEnd ? 'Voltar ao topo ↑' : 'Próximo ↓'; }, {passive:true});
 
   /* app model: screens rotate while visible */
   const cyc = $$('#appcycle .scr'); let ci = 0, timer = null;
