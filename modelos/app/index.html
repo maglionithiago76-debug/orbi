@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Empório Bela Vista · App de gestão (modelo Orbi)</title>
+<meta name="description" content="Modelo de app de gestão feito pela Orbi: pedidos, estoque, caixa, contas e equipe num app só. Toque e use.">
+<meta name="theme-color" content="#0E1626">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060A12;--ink:#EEF2FA;--muted:#A9B3C6;--lime:#C8FF3D;--app:#F3F5F8;--navy:#0E1626;--txt:#16202E;--k:#5B677D;--ok:#1F8A5B;--warn:#B07A00;--bad:#C23B2B;--display:"Unbounded",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.wrap{min-height:100%;display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;max-width:1240px;margin:0 auto;padding:40px clamp(20px,4vw,48px)}
+.side .tag{display:inline-block;padding:7px 14px;border-radius:99px;background:#1A2540;color:var(--lime);font-weight:700;font-size:14px}
+.side h1{margin-top:22px;font:800 clamp(40px,4.6vw,72px)/1 var(--display);letter-spacing:-.045em}
+.side h1 em{font-style:normal;color:var(--lime)}
+.side p{margin-top:22px;max-width:44ch;color:var(--muted);font-size:18px}
+.side ul{margin-top:26px;list-style:none;display:grid;gap:10px;font-size:17px}
+.side li{padding-left:26px;position:relative}
+.side li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border:2.5px solid var(--lime);border-radius:50%}
+.side .acts{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:99px;background:var(--lime);color:#0A1200;font-weight:800;text-decoration:none}
+.btn.g{background:#1A2540;color:var(--ink)}
+.phone{width:390px;height:min(820px,calc(100svh - 80px));border-radius:52px;padding:12px;background:#02040A;box-shadow:0 0 0 1.5px #2A3550} /* taste-skill-ignore: device frame */
+.app{position:relative;height:100%;border-radius:40px;overflow:hidden;background:var(--app);color:var(--txt);display:flex;flex-direction:column;font-size:15px}
+@media(max-width:900px){.wrap{display:block;padding:0}.side{display:none}.phone{width:100%;height:100svh;border-radius:0;padding:0;box-shadow:none}.app{border-radius:0}}
+
+.top{padding:46px 18px 16px;background:var(--navy);color:#fff}
+.top small{display:block;color:#B9C2CF;font-size:13px}
+.top strong{display:block;margin-top:4px;font:700 24px/1.1 var(--display);letter-spacing:-.03em}
+.demo{text-decoration:none;position:absolute;top:12px;right:14px;padding:4px 10px;border-radius:99px;background:var(--lime);color:#0A1200;font-size:11px;font-weight:800}
+.body{flex:1;overflow:auto;padding:14px;display:grid;gap:10px;align-content:start}
+.card{padding:14px;border-radius:16px;background:#fff}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.k{color:var(--k);font-size:13px}
+.big{font:700 26px/1.1 var(--display);letter-spacing:-.04em;margin-top:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pill{padding:4px 10px;border-radius:99px;font-size:12px;font-weight:800;white-space:nowrap}
+.p-new{background:#FFF1C9;color:#7A5A00}.p-prep{background:#E3ECFF;color:#2747A3}.p-out{background:#E3F1EA;color:#156043}.p-done{background:#E8EBEF;color:#3D4A5C}
+.p-low{background:#FBE3E1;color:#9B2C22}
+button.pill{min-height:30px}
+.lvl{height:7px;border-radius:4px;background:#E8EBEF;overflow:hidden;margin-top:8px}
+.lvl i{display:block;height:100%;background:var(--ok);transition:width .35s}
+.lvl i.lo{background:var(--bad)}
+.step{display:inline-flex;align-items:center;gap:2px;border-radius:99px;background:#EEF1F5}
+.step button{width:34px;height:34px;border-radius:50%;font-weight:800;font-size:18px}
+.step span{min-width:30px;text-align:center;font-weight:800}
+.cta{display:flex;justify-content:center;align-items:center;min-height:48px;border-radius:14px;background:var(--navy);color:#fff;font-weight:800;width:100%}
+.cta.l{background:var(--lime);color:#0A1200}
+.bars{display:flex;align-items:end;gap:7px;height:96px;margin-top:10px}
+.bars span{flex:1;border-radius:6px 6px 0 0;background:#2E7D5B;position:relative;transition:height .5s}
+.bars span.t{background:var(--navy)}
+.bars em{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-style:normal;font-size:11px;color:var(--k)}
+.alert{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;background:#FBE3E1;color:#7A2219;font-weight:700;font-size:14px}
+.tabs{display:flex;justify-content:space-around;padding:8px 6px calc(10px + env(safe-area-inset-bottom));background:#fff}
+.tabs button{flex:1;display:grid;justify-items:center;gap:3px;padding:6px 0;font-size:11px;font-weight:700;color:var(--k)}
+.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2}
+.tabs button[aria-current=page]{color:var(--txt)}
+.tabs button[aria-current=page] svg{stroke:var(--txt)}
+input,select{width:100%;min-height:44px;padding:0 12px;border-radius:12px;border:0;background:#EEF1F5;font:600 15px var(--sans);color:var(--txt)}
+form{display:grid;gap:8px}
+.toast{position:absolute;left:14px;right:14px;top:14px;z-index:9;display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:16px;background:#fff;color:var(--txt);font-weight:700;font-size:14px;box-shadow:0 14px 34px rgba(0,0,0,.25);transform:translateY(-140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)} /* taste-skill-ignore: notification */
+.toast.on{transform:none}
+.toast i{width:10px;height:10px;border-radius:50%;background:var(--ok);flex:none}
+.modal{position:absolute;inset:0;z-index:8;background:rgba(14,22,38,.5);display:none;align-items:end}
+.modal.on{display:flex}
+.modal .pn{width:100%;padding:20px 16px 24px;border-radius:24px 24px 0 0;background:#fff;display:grid;gap:10px;animation:up .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(100%)}}
+.modal h3{font:700 20px/1.1 var(--display);letter-spacing:-.03em}
+.fade{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="side">
+    <span class="tag">Modelo de app de gestão · toque e use</span>
+    <h1>A empresa inteira <em>no bolso.</em></h1>
+    <p>Este é um app funcionando, com dados de exemplo de um empório fictício. Mude o status de um pedido, dê baixa no estoque, lance uma despesa, bata o ponto. Tudo responde.</p>
+    <ul><li>Pedidos com status</li><li>Estoque que avisa o que falta</li><li>Caixa, contas a pagar e a receber</li><li>Equipe: ponto e comissão</li><li>Instala no celular como app</li></ul>
+    <div class="acts"><a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Testei%20o%20modelo%20de%20app%20de%20gest%C3%A3o%20e%20quero%20um%20para%20a%20minha%20empresa.">Quero um para a minha empresa</a><a class="btn g" href="https://maglionithiago76-debug.github.io/orbi/">Voltar para a Orbi</a></div>
+  </div>
+  <div class="phone">
+    <div class="app" id="app">
+      <div class="toast" id="toast" role="status"><i></i><span></span></div>
+      <header class="top"><a class="demo" href="https://maglionithiago76-debug.github.io/orbi/">MODELO · ORBI</a><small id="sub"></small><strong id="ttl"></strong></header>
+      <div class="body" id="body"></div>
+      <nav class="tabs" id="tabs" aria-label="Seções do app"></nav>
+      <div class="modal" id="modal"><div class="pn" id="pn"></div></div>
+    </div>
+  </div>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+const brl = v => 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+const KEY = 'orbi-app-demo-v1';
+const ST = ['Novo','Preparando','Saiu','Entregue'], SC = ['p-new','p-prep','p-out','p-done'];
+const fresh = () => ({
+  orders:[{id:483,c:'Marina',d:'2 itens · entrega',v:86,s:0},{id:482,c:'João',d:'1 item · retirada',v:42.5,s:1},{id:481,c:'Ana',d:'5 itens · entrega',v:120,s:2},{id:480,c:'Pedro',d:'3 itens · mesa 4',v:64.9,s:3},{id:479,c:'Luiza',d:'Encomenda · sáb 9h',v:210,s:0}],
+  stock:[{n:'Farinha',u:'kg',q:4,min:10,max:25},{n:'Açúcar',u:'kg',q:3,min:8,max:20},{n:'Café em grão',u:'pct',q:12,min:10,max:20},{n:'Leite',u:'L',q:30,min:24,max:48},{n:'Queijo minas',u:'kg',q:9,min:6,max:15},{n:'Embalagens',u:'un',q:220,min:300,max:600}],
+  cash:[{d:'Vendas do dia',v:2163,t:'in'},{d:'Pix · Encomenda Luiza',v:210,t:'in'},{d:'Fornecedor de café',v:-640,t:'out'},{d:'Energia',v:-412.3,t:'out'}],
+  bills:[{d:'Aluguel',v:4500,due:'05/11'},{d:'Fornecedor de farinha',v:2180,due:'08/11'},{d:'Internet',v:129.9,due:'10/11'}],
+  team:[{n:'Carla',r:'Caixa · 8h às 16h',in:'08:02',com:0},{n:'Rafael',r:'Entregas · 10h às 18h',in:null,com:640},{n:'Bruna',r:'Cozinha · 6h às 14h',in:'05:58',com:0},{n:'Diego',r:'Folga hoje',in:null,off:true,com:0}],
+  week:[1680,1920,1540,2210,1980,2860,2163]
+});
+let S; try { S = JSON.parse(localStorage.getItem(KEY)) || fresh(); } catch { S = fresh(); }
+const save = () => localStorage.setItem(KEY, JSON.stringify(S));
+let tab = 'home';
+const TABS = [['home','Início','M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z'],['orders','Pedidos','M6 3h12v18l-3-2-3 2-3-2-3 2zM9 8h6M9 12h6'],['stock','Estoque','M3 7l9-4 9 4-9 4zM3 7v10l9 4 9-4V7M12 11v10'],['cash','Caixa','M3 6h18v12H3zM3 10h18M7 15h3'],['team','Equipe','M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M17 11a3 3 0 1 0 0-6M22 21a5 5 0 0 0-5-5']];
+function toast(t){ const el = $('#toast'); el.lastElementChild.textContent = t; el.classList.add('on'); clearTimeout(toast.h); toast.h = setTimeout(() => el.classList.remove('on'), 2200); }
+const low = () => S.stock.filter(i => i.q < i.min);
+const cashIn = () => S.cash.filter(c => c.v > 0).reduce((a, c) => a + c.v, 0), cashOut = () => -S.cash.filter(c => c.v < 0).reduce((a, c) => a + c.v, 0);
+function head(sub, t){ $('#sub').textContent = sub; $('#ttl').textContent = t; }
+function view(){
+  const b = $('#body'); b.classList.remove('fade'); void b.offsetWidth; b.classList.add('fade');
+  $('#tabs').innerHTML = TABS.map(([id, l, d]) => `<button data-t="${id}" ${id === tab ? 'aria-current="page"' : ''}><svg viewBox="0 0 24 24"><path d="${d}"/></svg>${l}</button>`).join('');
+  $('#tabs').querySelectorAll('button').forEach(x => x.onclick = () => { tab = x.dataset.t; view(); });
+  const open = S.orders.filter(o => o.s < 3).length, today = S.week[6];
+  if (tab === 'home') { head(new Date().toLocaleDateString('pt-BR', {weekday:'long', day:'numeric', month:'long'}), 'Bom dia, Marina');
+    const mx = Math.max(...S.week);
+    b.innerHTML = (low().length ? `<button class="alert" data-go="stock">${low().length} itens abaixo do mínimo no estoque · ver</button>` : '') +
+      `<div class="two"><div class="card"><span class="k">Vendas hoje</span><div class="big">${brl(today).replace('R$ ','')}</div></div><div class="card"><span class="k">Pedidos abertos</span><div class="big">${open}</div></div></div>
+      <div class="card"><div class="row"><span class="k">Saldo do mês</span><b>${brl(cashIn() - cashOut() + 13800)}</b></div></div>
+      <div class="card"><div class="row"><b>Últimos 7 dias</b><span class="pill p-out">+18%</span></div><div class="bars">${S.week.map((v, i) => `<span class="${i === 6 ? 't' : ''}" style="height:${v / mx * 100}%"><em>${['S','T','Q','Q','S','S','H'][i]}</em></span>`).join('')}</div><div style="height:16px"></div></div>
+      <div class="card"><div class="row"><span class="k">Próxima conta</span><span class="pill p-low">${S.bills[0] ? S.bills[0].due : '—'}</span></div><div class="row" style="margin-top:6px"><b>${S.bills[0] ? S.bills[0].d : 'Nenhuma'}</b><b>${S.bills[0] ? brl(S.bills[0].v) : ''}</b></div></div>
+      <button class="cta" data-reset>Recomeçar o exemplo</button>`;
+  }
+  if (tab === 'orders') { head(`Hoje · ${S.orders.length} pedidos`, 'Pedidos');
+    b.innerHTML = `<button class="cta l" data-new>+ Novo pedido</button>` + S.orders.map((o, i) => `<div class="card row"><span><b>#${o.id} ${o.c}</b><br><span class="k">${o.d}</span></span><span style="text-align:right"><b>${brl(o.v)}</b><br><button class="pill ${SC[o.s]}" data-o="${i}">${ST[o.s]} ›</button></span></div>`).join('') +
+      `<div class="card row"><span class="k">Toque no status para avançar</span><b>${brl(S.orders.reduce((a, o) => a + o.v, 0))}</b></div>`;
+  }
+  if (tab === 'stock') { head(`${low().length} itens abaixo do mínimo`, 'Estoque');
+    b.innerHTML = S.stock.map((it, i) => `<div class="card"><div class="row"><span><b>${it.n}</b> ${it.q < it.min ? '<span class="pill p-low">baixo</span>' : ''}<br><span class="k">mínimo ${it.min} ${it.u}</span></span><span class="step"><button data-s="${i}" data-d="-1" aria-label="Tirar">−</button><span>${it.q}</span><button data-s="${i}" data-d="1" aria-label="Pôr">+</button></span></div><div class="lvl"><i class="${it.q < it.min ? 'lo' : ''}" style="width:${Math.min(100, it.q / it.max * 100)}%"></i></div></div>`).join('') +
+      `<button class="cta" data-list>Gerar lista de compras (${low().length})</button>`;
+  }
+  if (tab === 'cash') { head(new Date().toLocaleDateString('pt-BR', {month:'long'}), 'Caixa');
+    b.innerHTML = `<div class="two"><div class="card"><span class="k">Entradas</span><div class="big" style="color:var(--ok)">${brl(cashIn()).replace('R$ ','')}</div></div><div class="card"><span class="k">Saídas</span><div class="big" style="color:var(--bad)">${brl(cashOut()).replace('R$ ','')}</div></div></div>
+      <button class="cta l" data-add>+ Lançar entrada ou saída</button>
+      <div class="card"><b>Contas a pagar</b>${S.bills.length ? '' : '<p class="k" style="margin-top:6px">Tudo pago.</p>'}${S.bills.map((x, i) => `<div class="row" style="margin-top:10px"><span>${x.d}<br><span class="k">vence ${x.due} · ${brl(x.v)}</span></span><button class="pill p-low" data-pay="${i}">Pagar</button></div>`).join('')}</div>
+      <div class="card"><b>Lançamentos</b>${S.cash.slice().reverse().map(c => `<div class="row" style="margin-top:10px"><span>${c.d}</span><b style="color:${c.v > 0 ? 'var(--ok)' : 'var(--bad)'}">${c.v > 0 ? '+' : '−'} ${brl(Math.abs(c.v))}</b></div>`).join('')}</div>`;
+  }
+  if (tab === 'team') { head(`Hoje · ${S.team.filter(p => !p.off).length} na escala`, 'Equipe');
+    b.innerHTML = S.team.map((p, i) => `<div class="card row"><span><b>${p.n}</b><br><span class="k">${p.r}</span></span>${p.off ? '<span class="pill p-done">Folga</span>' : p.in ? `<span class="pill p-out">Entrou ${p.in}</span>` : `<button class="pill p-new" data-in="${i}">Bater ponto</button>`}</div>`).join('') +
+      `<div class="card row"><span>Comissão do Rafael (mês)</span><b>${brl(S.team[1].com)}</b></div><div class="card row"><span>Horas da equipe (semana)</span><b>132 h</b></div>`;
+  }
+  bind();
+}
+function modal(html){ $('#pn').innerHTML = html; $('#modal').classList.add('on'); }
+$('#modal').onclick = e => { if (e.target.id === 'modal') $('#modal').classList.remove('on'); };
+function bind(){
+  const b = $('#body');
+  b.querySelectorAll('[data-go]').forEach(x => x.onclick = () => { tab = x.dataset.go; view(); });
+  b.querySelectorAll('[data-o]').forEach(x => x.onclick = () => { const o = S.orders[+x.dataset.o]; o.s = (o.s + 1) % 4; save(); view(); toast(`Pedido #${o.id}: ${ST[o.s]}${o.s === 2 ? ' · cliente avisado no WhatsApp' : ''}`); });
+  b.querySelectorAll('[data-s]').forEach(x => x.onclick = () => { const it = S.stock[+x.dataset.s], was = it.q < it.min; it.q = Math.max(0, it.q + +x.dataset.d); save(); view(); if (!was && it.q < it.min) toast(`Estoque baixo: ${it.n} (${it.q} ${it.u})`); });
+  b.querySelectorAll('[data-pay]').forEach(x => x.onclick = () => { const bl = S.bills.splice(+x.dataset.pay, 1)[0]; S.cash.push({d:bl.d, v:-bl.v, t:'out'}); save(); view(); toast(`${bl.d} pago · ${brl(bl.v)}`); });
+  b.querySelectorAll('[data-in]').forEach(x => x.onclick = () => { const p = S.team[+x.dataset.in]; p.in = new Date().toTimeString().slice(0, 5); save(); view(); toast(`${p.n} bateu o ponto às ${p.in}`); });
+  const r = b.querySelector('[data-reset]'); if (r) r.onclick = () => { S = fresh(); save(); view(); toast('Exemplo recomeçado'); };
+  const l = b.querySelector('[data-list]'); if (l) l.onclick = () => modal(`<h3>Lista de compras</h3>${low().length ? low().map(i => `<div class="row card" style="background:#F3F5F8"><b>${i.n}</b><span>comprar ${i.max - i.q} ${i.u}</span></div>`).join('') : '<p class="k">Nada em falta.</p>'}<button class="cta" onclick="toast('Lista enviada ao fornecedor no WhatsApp');document.getElementById('modal').classList.remove('on')">Mandar ao fornecedor</button>`);
+  const n = b.querySelector('[data-new]'); if (n) n.onclick = () => { modal(`<h3>Novo pedido</h3><form id="fo"><input name="c" placeholder="Cliente" required><input name="d" placeholder="O que pediu" required><input name="v" inputmode="decimal" placeholder="Valor (ex.: 45,90)" required><button class="cta l">Salvar pedido</button></form>`);
+    $('#fo').onsubmit = e => { e.preventDefault(); const f = new FormData(e.target); const id = Math.max(...S.orders.map(o => o.id)) + 1; S.orders.unshift({id, c:f.get('c'), d:f.get('d'), v:parseFloat(String(f.get('v')).replace(',', '.')) || 0, s:0}); save(); $('#modal').classList.remove('on'); view(); toast(`Pedido #${id} criado`); }; };
+  const a = b.querySelector('[data-add]'); if (a) a.onclick = () => { modal(`<h3>Lançamento</h3><form id="fa"><select name="t"><option value="in">Entrada</option><option value="out">Saída</option></select><input name="d" placeholder="Descrição" required><input name="v" inputmode="decimal" placeholder="Valor" required><button class="cta l">Lançar</button></form>`);
+    $('#fa').onsubmit = e => { e.preventDefault(); const f = new FormData(e.target), v = parseFloat(String(f.get('v')).replace(',', '.')) || 0; S.cash.push({d:f.get('d'), v: f.get('t') === 'in' ? v : -v}); save(); $('#modal').classList.remove('on'); view(); toast('Lançamento salvo'); }; };
+}
+view();
+setTimeout(() => toast('Novo pedido #484 · R$ 58,30 · Pix'), 2500);
+setTimeout(() => { if (!S.orders.some(o => o.id === 484)) { S.orders.unshift({id:484, c:'Tiago', d:'Pix · retirada', v:58.3, s:0}); save(); if (tab === 'orders' || tab === 'home') view(); } }, 2600);
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>

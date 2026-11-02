@@ -7,7 +7,7 @@
 <meta name="description" content="Site, app de gestão, cardápio digital, Instagram e Google, feitos sob medida para a sua empresa. Você vê pronto antes de pagar.">
 <meta property="og:title" content="Orbi – sua empresa no futuro">
 <meta property="og:description" content="Site, app de gestão, cardápio digital, Instagram e Google, sob medida. Você vê pronto antes de pagar.">
-<meta property="og:image" content="https://maglionithiago76-debug.github.io/achei/img/og.jpg">
+<meta property="og:image" content="https://maglionithiago76-debug.github.io/orbi/img/og.jpg">
 <meta name="theme-color" content="#060A12">
 <link rel="icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,6 +125,15 @@ img{display:block;max-width:100%}
   .nocine .phoneslot{grid-row:2}.nocine .chapters{grid-row:3}
 }
 
+
+/* scroll hint */
+.hint{position:absolute;left:50%;bottom:28px;z-index:3;transform:translateX(-50%);display:flex;align-items:center;gap:12px;padding:10px 18px 10px 12px;border-radius:99px;background:rgba(18,26,44,.85);color:var(--ink);font:700 15px/1.2 var(--text);text-decoration:none;white-space:nowrap}
+.hint .mouse{width:22px;height:34px;border-radius:12px;border:2px solid var(--lime);position:relative;flex:none}
+.hint .mouse i{position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--lime);animation:wheel 1.6s ease-in-out infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:1}70%{transform:translateY(10px);opacity:0}100%{opacity:0}}
+@media (max-width:860px){.hint{bottom:18px;font-size:14px}}
+@media (prefers-reduced-motion:reduce){.hint .mouse i{animation:none}}
+
 /* ---------- sections ---------- */
 main{position:relative;z-index:2;background:var(--bg)}
 .sec{padding:clamp(110px,16vh,190px) var(--m)}
@@ -164,6 +173,8 @@ main{position:relative;z-index:2;background:var(--bg)}
 .links{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
 .links a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:99px;background:#162036;font-size:15px;font-weight:600;text-decoration:none;transition:background-color .2s}
 .links a:hover{background:#22304D}
+.links a.live{min-height:52px;padding:0 24px;background:var(--lime);color:#0A1200;font-size:16px}
+.links a.live:hover{background:#D9FF75}
 
 /* phone frame for models */
 .ph{width:min(330px,100%);aspect-ratio:9/19;background:#02040A;border-radius:44px;padding:10px;border:1.5px solid #2A3550;position:relative}
@@ -238,6 +249,22 @@ main{position:relative;z-index:2;background:var(--bg)}
 .mg .rv2 p{margin-top:4px;color:#3C4043}
 .mg .rv2 .rep{margin-top:8px;padding:8px 10px;border-left:3px solid #1A73E8;background:#fff;border-radius:0 8px 8px 0}
 .mg .rv2 .rep b{display:block;font-size:11px;color:#1A73E8}
+
+
+/* more */
+#mais{background:var(--bg2)}
+#mais>.grid h2{grid-column:1/9}
+#mais>.grid p{grid-column:9/13;align-self:end;color:var(--muted)}
+.extra{margin-top:72px;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.extra li{padding:30px 28px;border-radius:22px;background:#121A2C;display:grid;gap:10px;align-content:start;transition:transform .3s,background-color .3s}
+.extra li:hover{transform:translateY(-4px);background:#16203A}
+.extra b{font:700 22px/1.2 var(--display);letter-spacing:-.03em}
+.extra b::before{content:"";display:block;width:14px;height:14px;border-radius:50%;background:var(--lime);margin-bottom:18px}
+.extra span{color:var(--muted);font-size:16px}
+.extra-cta{margin-top:48px}
+@media (max-width:960px){.extra{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){#mais>.grid h2,#mais>.grid p{grid-column:1/-1}#mais>.grid p{margin-top:24px}.extra{margin-top:48px}}
+@media (max-width:560px){.extra{grid-template-columns:1fr}}
 
 /* live preview */
 #veja{background:var(--paper);color:var(--navy)}
@@ -333,7 +360,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
   <ul>
     <li><a class="ul" href="#perde">Por que agora</a></li>
     <li><a class="ul" href="#servicos">Serviços</a></li>
-    <li><a class="ul" href="#veja">Veja o seu</a></li>
+    <li><a class="ul" href="#mais">E mais</a></li>
     <li><a class="ul" href="#duvidas">Dúvidas</a></li>
   </ul>
   <a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Quero%20colocar%20minha%20empresa%20no%20futuro.">WhatsApp</a>
@@ -341,6 +368,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
 
 <div id="cine">
   <canvas id="net" aria-hidden="true"></canvas>
+  <a class="hint" href="#perde" id="hint"><span class="mouse" aria-hidden="true"><i></i></span>Role a página para baixo e veja a mágica</a>
   <div class="stage">
     <header class="hero" id="topo">
       <h1><span class="line"><span>Sua empresa</span></span><span class="line"><span>no <em>futuro</em>.</span></span></h1>
@@ -452,7 +480,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
           <li>Instala como app, sem loja</li><li>Rápido mesmo no 4G fraco</li>
         </ul>
         <p class="more rv"><b>Dá para colocar mais:</b> área do cliente, cupom, link na bio, página de cada serviço, cardápio, catálogo, o que a sua empresa precisar.</p>
-        <div class="links rv"><a href="exemplos/barbearia/">Barbearia</a><a href="exemplos/dentista/">Dentista</a><a href="exemplos/estetica/">Estética</a><a href="exemplos/oficina/">Oficina</a><a href="exemplos/pet/">Pet shop</a><a href="exemplos/advogado/">Advocacia</a></div>
+        <div class="links rv"><a class="live" href="modelos/barbearia/">Abrir o modelo funcionando →</a></div>
       </div>
     </article>
 
@@ -522,7 +550,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
           <li>Relatórios do mês</li><li>Cartão fidelidade</li>
         </ul>
         <p class="more rv"><b>Dá para colocar mais:</b> se a sua empresa faz, o app pode fazer. A gente monta só as partes que você usa e acrescenta outras quando precisar.</p>
-        <div class="links rv"><a href="apps/pedidos/">Pedidos</a><a href="apps/estoque/">Estoque</a><a href="apps/agenda/">Agenda</a><a href="apps/fidelidade/">Fidelidade</a></div>
+        <div class="links rv"><a class="live" href="modelos/app/">Testar o app funcionando →</a></div>
       </div>
     </article>
 
@@ -550,7 +578,7 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
           <li>Horário de funcionamento</li><li>Instala como app</li>
         </ul>
         <p class="more rv"><b>Dá para colocar mais:</b> combos, promoção do dia, taxa por bairro, pagamento por Pix e ligação com o estoque do app de gestão.</p>
-        <div class="links rv"><a href="exemplos/restaurante/cardapio/">Cardápio de restaurante</a><a href="exemplos/pizzaria/">Pizzaria</a><a href="exemplos/acai/">Açaí</a><a href="exemplos/lanchonete/">Lanchonete</a></div>
+        <div class="links rv"><a class="live" href="modelos/cardapio/">Fazer um pedido no modelo →</a></div>
       </div>
     </article>
 
@@ -617,6 +645,22 @@ footer .legal{margin-top:20px;font-size:13px;color:var(--muted);max-width:80ch}
         <p class="more rv"><b>Dá para colocar mais:</b> link de agendamento, perguntas e respostas, e o seu site novo ligado ao perfil.</p>
       </div>
     </article>
+  </section>
+
+  <section class="sec" id="mais" aria-labelledby="mais-h">
+    <div class="grid">
+      <h2 id="mais-h" class="rv">E dá para fazer muito mais.</h2>
+      <p class="rv">Os cinco acima são os mais pedidos. Se a sua empresa precisa de outra coisa com tecnologia, conta pra gente: a gente monta sob medida.</p>
+    </div>
+    <ul class="extra">
+      <li class="rv"><b>Atendimento automático no WhatsApp</b><span>Responde preço, horário e endereço na hora, até de madrugada, e passa para você o que precisa de gente.</span></li>
+      <li class="rv"><b>Agendamento online</b><span>O cliente escolhe o serviço, o dia e o horário sozinho. Você recebe tudo organizado.</span></li>
+      <li class="rv"><b>Loja online</b><span>Catálogo com carrinho e pagamento por Pix. O pedido cai no seu WhatsApp.</span></li>
+      <li class="rv"><b>Logo e identidade visual</b><span>Logo, cores e artes com a mesma cara em tudo: fachada, cardápio, Instagram e uniforme.</span></li>
+      <li class="rv"><b>Vídeos curtos para Reels</b><span>Vídeos de promoção e de produto feitos com as suas fotos, prontos para postar.</span></li>
+      <li class="rv"><b>Sistema sob medida</b><span>Orçamentos, ordens de serviço, controle de clientes ou o que a sua empresa fizer no papel hoje.</span></li>
+    </ul>
+    <p class="extra-cta rv"><a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Quero%20saber%20se%20voc%C3%AAs%20fazem%20uma%20coisa%20para%20a%20minha%20empresa.">Perguntar se a gente faz</a></p>
   </section>
 
   <section class="sec" id="veja" aria-labelledby="veja-h">
@@ -868,7 +912,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const lis = $$('.chapters li'), screens = $$('#dev .scr'), chips = $$('#dev .chip');
   const tl = gsap.timeline({defaults:{ease:'none'}, scrollTrigger:{trigger:'#cine', start:'top top', end:'+=520%', scrub:1, pin:true, anticipatePin:1}});
   tl.to(P, {p:1, duration:10, onUpdate:() => prog = P.p}, 0)
-    .to('.hero', {y:-80, autoAlpha:0, duration:1}, .2);
+    .to('.hero', {y:-80, autoAlpha:0, duration:1}, .2)
+    .to('#hint', {autoAlpha:0, duration:.4}, 0);
   const at = [1.3, 3.4, 5.4, 7.6];
   lis.forEach((li, i) => {
     tl.fromTo(li, {autoAlpha:0, y:50}, {autoAlpha:1, y:0, duration:.6}, at[i]);
@@ -894,7 +939,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* entrances */
   $$('.sec, #fim').forEach(sec => {
-    const groups = sec.querySelectorAll(':scope > .grid, :scope > .leaks, :scope > .svc, :scope > .steps, :scope > .qa, :scope > .foot, :scope > h2');
+    const groups = sec.querySelectorAll(':scope > .grid, :scope > .leaks, :scope > .svc, :scope > .steps, :scope > .qa, :scope > .foot, :scope > h2, :scope > .extra, :scope > .extra-cta');
     groups.forEach(g => { const items = g.matches('.rv') ? [g] : g.querySelectorAll('.rv'); if (!items.length) return;
       gsap.to(items, {opacity:1, y:0, duration:.9, ease:'power3.out', stagger:.07, scrollTrigger:{trigger:g, start:'top 82%', once:true}}); });
   });

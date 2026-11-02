@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cantina Rossi · Cardápio (modelo Orbi)</title>
+<meta name="description" content="Modelo de cardápio digital feito pela Orbi: fotos, carrinho e pedido direto no WhatsApp, sem taxa.">
+<meta name="theme-color" content="#1D1410">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF5EA;--ink:#2A1A12;--muted:#7A6555;--red:#B8321F;--dark:#1D1410;--card:#fff;--line:#EADFCB;--gold:#F2C14E;--m:clamp(16px,3vw,40px);--serif:"DM Serif Display",Georgia,serif;--sans:"Figtree",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:110px}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.demo{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:8px var(--m);background:#C8FF3D;color:#0A1200;font:600 13px/1.3 var(--sans);text-align:center}
+.demo a{color:inherit;font-weight:800}
+
+.hero{position:relative;height:min(62svh,560px);overflow:hidden;background:var(--dark);color:#FBF5EA}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;transform-origin:center;animation:zoom 14s ease-out both}
+@keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero .in{position:absolute;left:0;right:0;bottom:0;padding:28px var(--m);max-width:1100px;margin:0 auto}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:99px;background:rgba(29,20,16,.8);font:700 13px/1 var(--sans)}
+.badge i{width:8px;height:8px;border-radius:50%;background:#4CC37A}.badge.off i{background:#E0624C}
+.hero h1{margin-top:14px;font:400 clamp(54px,9vw,120px)/.9 var(--serif);letter-spacing:-.01em}
+.hero h1 em{color:var(--gold)}
+.hero p{margin-top:12px;max-width:44ch;font-size:17px;color:#F1E6D3}
+.mode{margin-top:18px;display:inline-flex;padding:5px;border-radius:99px;background:rgba(251,245,234,.14);backdrop-filter:blur(6px)}
+.mode button{min-height:42px;padding:0 18px;border-radius:99px;font-weight:700;font-size:15px;color:#FBF5EA}
+.mode button[aria-pressed=true]{background:#FBF5EA;color:var(--ink)}
+
+.tabs{position:sticky;top:0;z-index:20;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:14px var(--m);scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;min-height:42px;display:inline-flex;align-items:center;padding:0 18px;border-radius:99px;background:#F0E4CF;color:var(--ink);text-decoration:none;font-weight:700;font-size:15px;transition:background-color .2s}
+.tabs a.on{background:var(--ink);color:#FBF5EA}
+.search{max-width:1100px;margin:6px auto 0;padding:0 var(--m)}
+.search input{width:100%;min-height:50px;padding:0 18px;border-radius:14px;border:0;background:#F0E4CF;font:500 16px var(--sans);color:var(--ink)}
+
+main{max-width:1100px;margin:0 auto;padding:0 var(--m)}
+.cat{padding-top:42px;scroll-margin-top:70px}
+.cat h2{font:400 clamp(34px,4.4vw,52px)/1 var(--serif)}
+.cat>p{margin-top:6px;color:var(--muted)}
+.grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.it{display:grid;grid-template-columns:1fr 112px;gap:14px;padding:14px;border-radius:20px;background:var(--card);align-items:start;transition:transform .25s}
+.it:hover{transform:translateY(-3px)}
+.it.np{grid-template-columns:1fr}
+.it img{width:112px;height:112px;object-fit:cover;border-radius:14px;grid-row:1;grid-column:2}
+.it h3{font:800 17px/1.25 var(--sans)}
+.it .tag{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:99px;background:#FCE7C2;color:#7A4A00;font-size:11px;font-weight:800;vertical-align:2px}
+.it p{margin-top:4px;font-size:14px;color:var(--muted)}
+.it .bot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px;align-self:end}
+.it .pr{font:800 18px/1 var(--sans);white-space:nowrap}
+.fld[hidden]{display:none}
+.qty{display:inline-flex;align-items:center;gap:4px;border-radius:99px;background:var(--ink);color:#FBF5EA}
+.qty button{width:38px;height:38px;border-radius:50%;font-size:20px;font-weight:700;color:#FBF5EA}
+.qty span{min-width:18px;text-align:center;font-weight:800}
+.add{min-height:38px;padding:0 16px;border-radius:99px;background:var(--red);color:#fff;font-weight:800;font-size:14px}
+
+.bar{position:fixed;left:50%;bottom:16px;z-index:30;transform:translate(-50%,140%);width:min(560px,calc(100% - 24px));display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 12px 12px 22px;border-radius:20px;background:#1E6B47;color:#fff;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.bar.show{transform:translate(-50%,0)}
+.bar b{font-size:17px}
+.bar small{display:block;opacity:.85;font-size:13px}
+.bar button{min-height:48px;padding:0 20px;border-radius:14px;background:#fff;color:#1E6B47;font-weight:800}
+.bump{animation:bump .35s}
+@keyframes bump{50%{transform:translate(-50%,0) scale(1.04)}}
+
+.sheet{position:fixed;inset:0;z-index:40;display:none}
+.sheet.open{display:block}
+.sheet .bg{position:absolute;inset:0;background:rgba(29,20,16,.55)}
+.sheet .pn{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(620px,100%);max-height:88svh;overflow:auto;padding:24px var(--m) 28px;border-radius:26px 26px 0 0;background:var(--bg);animation:up .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translate(-50%,100%)}}
+.pn h2{font:400 36px/1 var(--serif)}
+.line{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;margin-top:8px;border-radius:14px;background:#F0E4CF}
+.line small{display:block;color:var(--muted)}
+.fld{margin-top:16px;display:grid;gap:6px;font-weight:700;font-size:14px}
+.fld input,.fld textarea{min-height:48px;padding:12px 14px;border-radius:12px;border:0;background:#F0E4CF;font:500 16px var(--sans);color:var(--ink)}
+.sum{margin-top:18px;display:grid;gap:6px}
+.sum div{display:flex;justify-content:space-between}
+.sum .t{font:800 22px/1.2 var(--sans);margin-top:6px}
+.send{margin-top:20px;width:100%;min-height:56px;border-radius:16px;background:#1E6B47;color:#fff;font-weight:800;font-size:17px}
+.close{position:absolute;right:18px;top:18px;width:42px;height:42px;border-radius:50%;background:#F0E4CF;font-size:20px;font-weight:700}
+
+dialog{margin:auto;border:0;border-radius:24px;padding:26px;max-width:440px;width:calc(100% - 32px);background:var(--bg);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog h3{font:400 30px/1.05 var(--serif)}
+dialog .bubble{margin-top:16px;padding:14px 16px;border-radius:14px 14px 14px 4px;background:#DCF8C6;color:#111;font-size:14px;white-space:pre-line}
+dialog p{margin-top:12px;font-size:14px;color:var(--muted)}
+dialog .row{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+dialog a,dialog button.b{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:99px;background:var(--ink);color:#FBF5EA;text-decoration:none;font-weight:800;font-size:15px}
+dialog button.b.g{background:#F0E4CF;color:var(--ink)}
+
+footer{max-width:1100px;margin:70px auto 0;padding:30px var(--m);font-size:13px;color:var(--muted);display:grid;gap:8px}
+.empty{padding:30px 0;color:var(--muted)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero img{animation:none}}
+</style>
+</head>
+<body>
+<div class="demo">Modelo de cardápio feito pela Orbi · nome e preços fictícios <a href="https://maglionithiago76-debug.github.io/orbi/">Quero um assim</a></div>
+
+<header class="hero">
+  <img src="../img/pizza-hero.webp" alt="Pizzas napolitanas saindo do forno" width="1800" height="1080">
+  <div class="in">
+    <span class="badge" id="status"><i></i><span>Aberto · entrega em 35–50 min</span></span>
+    <h1>Cantina <em>Rossi</em></h1>
+    <p>Pizza napolitana no forno a lenha e massa fresca feita aqui todo dia.</p>
+    <div class="mode" role="group" aria-label="Como você quer receber">
+      <button aria-pressed="true" data-m="Entrega">Entrega</button><button aria-pressed="false" data-m="Retirada">Retirada</button><button aria-pressed="false" data-m="Mesa">Na mesa</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="Categorias"></nav>
+<div class="search"><input id="q" type="search" placeholder="Buscar no cardápio" aria-label="Buscar no cardápio"></div>
+<main id="menu"></main>
+
+<footer>
+  <div><b>Cantina Rossi</b> · modelo fictício para demonstração. Cardápio feito pela <a href="https://maglionithiago76-debug.github.io/orbi/"><b>Orbi</b></a>.</div>
+  <div>Fotos: Wikimedia Commons: Tony Webster (CC BY 2.0), Robot8A (CC BY-SA 4.0), Aaron Landry (CC BY 2.0), HutheMeow (CC BY-SA 4.0), Syced (CC0). Imagens ilustrativas.</div>
+</footer>
+
+<div class="bar" id="bar" role="region" aria-label="Seu pedido"><div><b id="b-tot">R$ 0,00</b><small id="b-n">0 itens</small></div><button id="open">Ver pedido</button></div>
+
+<div class="sheet" id="sheet" aria-modal="true" role="dialog" aria-labelledby="sh-h">
+  <div class="bg" id="bg"></div>
+  <div class="pn">
+    <button class="close" id="x" aria-label="Fechar">×</button>
+    <h2 id="sh-h">Seu pedido</h2>
+    <div id="lines"></div>
+    <label class="fld">Seu nome<input id="f-name" autocomplete="name" placeholder="Como te chamamos?"></label>
+    <label class="fld" id="w-addr">Endereço de entrega<input id="f-addr" autocomplete="street-address" placeholder="Rua, número e bairro"></label>
+    <label class="fld" id="w-mesa" hidden>Número da mesa<input id="f-mesa" inputmode="numeric" placeholder="Ex.: 7"></label>
+    <label class="fld">Observação<textarea id="f-obs" rows="2" placeholder="Ex.: sem cebola, troco para 100"></textarea></label>
+    <div class="sum"><div><span>Itens</span><span id="s-it"></span></div><div id="w-fee"><span>Entrega</span><span>R$ 6,00</span></div><div class="t"><span>Total</span><span id="s-tot"></span></div></div>
+    <button class="send" id="send">Enviar pedido pelo WhatsApp</button>
+  </div>
+</div>
+
+<dialog id="dlg">
+  <h3>Assim o pedido chega no WhatsApp da cantina:</h3>
+  <div class="bubble" id="msg"></div>
+  <p>Este é um modelo. No cardápio de verdade, o pedido vai direto para o seu WhatsApp, sem taxa de aplicativo.</p>
+  <div class="row"><a href="https://wa.me/5535920059158?text=Oi!%20Vi%20o%20modelo%20de%20card%C3%A1pio%20e%20quero%20um%20assim.">Quero um cardápio assim</a><button class="b g" id="dclose">Fechar</button></div>
+</dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+const brl = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+const MENU = [
+ ['Pizzas','Napolitanas, 8 pedaços, no forno a lenha',[
+  ['Margherita','Molho de tomate italiano, muçarela de búfala e manjericão',59,'pizza-hero','30% 50%','Mais pedida'],
+  ['Marinara','Tomate, alho, orégano e azeite. Sem queijo',49,'pizza-marinara','40% 70%'],
+  ['Calabresa da casa','Calabresa artesanal, cebola roxa e azeitona preta',62],
+  ['Quatro queijos','Muçarela, gorgonzola, parmesão e provolone',66],
+  ['Portuguesa','Presunto, ovo, cebola, ervilha e azeitona',64],
+  ['Nutella com morango','Doce, 4 pedaços',44,null,null,'Novo']]],
+ ['Massas','Massa fresca feita aqui todo dia',[
+  ['Lasanha à bolonhesa','Serve 1 com fome. Acompanha pão de alho',48,'lasagna','50% 45%'],
+  ['Talharim ao sugo','Tomate, manjericão e parmesão',39],
+  ['Nhoque ao funghi','Molho cremoso de cogumelos',46]]],
+ ['Sobremesas','',[
+  ['Tiramisù','Receita da nonna, no pote',22,'tiramisu','50% 50%','Feito hoje'],
+  ['Panna cotta','Com calda de frutas vermelhas',19]]],
+ ['Bebidas','',[
+  ['Refrigerante lata','350 ml',7],['Suco natural','Laranja, limão ou abacaxi com hortelã',12],['Água com gás','500 ml',6]]]
+];
+const cart = {}; let mode = 'Entrega';
+const params = new URLSearchParams(location.search); if (params.get('mesa')) mode = 'Mesa';
+
+/* open status (18h–23h30, closed Monday) */
+(() => { const d = new Date(), h = d.getHours() + d.getMinutes() / 60, open = d.getDay() !== 1 && h >= 18 && h < 23.5, el = $('#status');
+  if (!open) { el.classList.add('off'); el.lastElementChild.textContent = 'Fechado agora · abre às 18h (ter a dom)'; } })();
+
+function render(filter=''){
+  const f = filter.trim().toLowerCase();
+  $('#tabs').innerHTML = MENU.map((c, i) => `<a href="#c${i}" class="${i ? '' : 'on'}">${c[0]}</a>`).join('');
+  let html = '';
+  MENU.forEach((c, ci) => {
+    const items = c[2].map((it, ii) => ({it, id: ci + '-' + ii})).filter(({it}) => !f || (it[0] + it[1]).toLowerCase().includes(f));
+    if (!items.length) return;
+    html += `<section class="cat" id="c${ci}"><h2 class="rv">${c[0]}</h2>${c[1] ? `<p class="rv">${c[1]}</p>` : ''}<div class="grid">` +
+      items.map(({it, id}) => `<article class="it rv ${it[3] ? '' : 'np'}"><div><h3>${it[0]}${it[5] ? `<span class="tag">${it[5]}</span>` : ''}</h3><p>${it[1]}</p></div>` +
+      (it[3] ? `<img src="../img/${it[3]}.webp" alt="${it[0]}" loading="lazy" width="112" height="112" style="object-position:${it[4]}">` : '') +
+      `<div class="bot"><span class="pr">${brl(it[2])}</span><span data-ctl="${id}"></span></div></article>`).join('') + '</div></section>';
+  });
+  $('#menu').innerHTML = html || '<p class="empty">Nada encontrado. Tente outra palavra.</p>';
+  ctl(); reveal(); spy();
+}
+function item(id){ const [c, i] = id.split('-').map(Number); return MENU[c][2][i]; }
+function ctl(){
+  document.querySelectorAll('[data-ctl]').forEach(el => { const id = el.dataset.ctl, n = cart[id] || 0;
+    el.innerHTML = n ? `<span class="qty"><button aria-label="Tirar um" data-d="-1">−</button><span>${n}</span><button aria-label="Pôr mais um" data-d="1">+</button></span>` : `<button class="add" data-d="1">Adicionar</button>`;
+    el.querySelectorAll('button').forEach(b => b.onclick = () => { cart[id] = Math.max(0, (cart[id] || 0) + +b.dataset.d); if (!cart[id]) delete cart[id]; ctl(); bar(+b.dataset.d > 0); }); });
+}
+function totals(){ let n = 0, s = 0; for (const id in cart) { n += cart[id]; s += cart[id] * item(id)[2]; } const fee = mode === 'Entrega' && n ? 6 : 0; return {n, s, fee, t: s + fee}; }
+function bar(bump){ const {n, t} = totals(), b = $('#bar'); b.classList.toggle('show', n > 0); $('#b-tot').textContent = brl(t); $('#b-n').textContent = n + (n === 1 ? ' item' : ' itens') + ' · ' + mode.toLowerCase();
+  if (bump) { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); } }
+function sheet(){ const {s, fee, t} = totals();
+  $('#lines').innerHTML = Object.keys(cart).map(id => { const it = item(id); return `<div class="line"><span><b>${cart[id]}× ${it[0]}</b><small>${brl(it[2])} cada</small></span><b>${brl(cart[id] * it[2])}</b></div>`; }).join('');
+  $('#s-it').textContent = brl(s); $('#s-tot').textContent = brl(t);
+  $('#w-addr').hidden = mode !== 'Entrega'; $('#w-mesa').hidden = mode !== 'Mesa'; $('#w-fee').style.display = fee ? '' : 'none';
+  if (params.get('mesa')) $('#f-mesa').value = params.get('mesa'); }
+document.querySelectorAll('.mode button').forEach(b => { b.setAttribute('aria-pressed', b.dataset.m === mode); b.onclick = () => { mode = b.dataset.m; document.querySelectorAll('.mode button').forEach(x => x.setAttribute('aria-pressed', x === b)); bar(); }; });
+$('#open').onclick = () => { sheet(); $('#sheet').classList.add('open'); };
+$('#x').onclick = $('#bg').onclick = () => $('#sheet').classList.remove('open');
+$('#send').onclick = () => { const {s, fee, t} = totals();
+  const lines = Object.keys(cart).map(id => `• ${cart[id]}× ${item(id)[0]} · ${brl(cart[id] * item(id)[2])}`).join('\n');
+  const where = mode === 'Entrega' ? `🛵 Entrega: ${$('#f-addr').value || '(endereço)'}` : mode === 'Mesa' ? `🍽️ Mesa ${$('#f-mesa').value || '?'}` : '🏃 Retirada no balcão'; // taste-skill-ignore: WhatsApp message text
+  const obs = $('#f-obs').value ? `\n📝 ${$('#f-obs').value}` : ''; // taste-skill-ignore: WhatsApp message text
+  $('#msg').textContent = `Pedido de ${$('#f-name').value || '(nome)'}\n${lines}\n${where}${obs}\n${fee ? 'Entrega: ' + brl(fee) + '\n' : ''}Total: ${brl(t)}`;
+  $('#dlg').showModal(); };
+$('#dclose').onclick = () => $('#dlg').close();
+$('#q').oninput = e => render(e.target.value);
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }));
+function reveal(){ document.querySelectorAll('.rv:not(.in)').forEach(el => io.observe(el)); }
+let spyIO; function spy(){ if (spyIO) spyIO.disconnect(); spyIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }), {rootMargin:'-30% 0px -60% 0px'});
+  document.querySelectorAll('.cat').forEach(c => spyIO.observe(c)); }
+render(); bar();
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>
