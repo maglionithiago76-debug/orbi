@@ -1,0 +1,27 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pedidos · Modelo de app Achei</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../app.css"></head><body>
+<div class="demo">MODELO de demonstração · os dados ficam só neste celular</div>
+<header><h1>Lanchonete Modelo</h1><p>Peça pelo celular, sem taxa de aplicativo</p></header>
+<nav role="tablist"><button data-tab="cli" aria-selected="true">Cardápio</button><button data-tab="dono" aria-selected="false">Pedidos (dono)</button></nav>
+<main><section id="cli"><div id="menu"></div>
+<div class="card ok" id="cart" hidden><div class="row"><b>Total</b><b id="tot"></b></div>
+<label for="end">Entrega ou retirada?</label><select id="end"><option>Retirar no balcão</option><option>Entregar no endereço</option></select>
+<p style="margin-top:.8rem"><button class="btn" id="ok">Enviar pedido</button></p></div></section>
+<section id="dono" hidden><h2>Pedidos de hoje</h2><div id="list"></div><p class="muted">Cada pedido chega organizado, com valor e status. Toque pra avançar.</p></section></main>
+<footer>Modelo feito pelo <a href="../../">Achei</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
+<div class="toast" id="toast" role="status"></div>
+<script>const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
+const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));document.querySelectorAll("main section").forEach(s=>s.hidden=s.id!==b.dataset.tab);if(window.onTab)onTab(b.dataset.tab)});</script>
+<script>
+const M=[["X-Burguer",22],["X-Bacon",27],["X-Salada",24],["Batata frita",15],["Refrigerante lata",6],["Suco natural",9]],ST=["novo","preparando","pronto","entregue"];
+let q={};const O=()=>store("pd")||[{n:1,i:"2x X-Bacon, 1x Batata",v:69,s:1}],R=v=>"R$ "+v.toFixed(2).replace(".",",");
+function draw(){$("#menu").innerHTML=M.map(([n,p],i)=>`<div class="card row"><div><b>${n}</b><div class="muted">${R(p)}</div></div><div class="row"><button class="btn small ghost" aria-label="Tirar ${n}" onclick="add(${i},-1)">−</button><b aria-live="polite">${q[i]||0}</b><button class="btn small" aria-label="Pôr ${n}" onclick="add(${i},1)">+</button></div></div>`).join("");
+const t=M.reduce((s,[,p],i)=>s+p*(q[i]||0),0);$("#cart").hidden=!t;$("#tot").textContent=R(t);
+$("#list").innerHTML=O().slice().reverse().map((o,k)=>`<button class="card row" style="width:100%;text-align:left;font:inherit;cursor:pointer" onclick="adv(${o.n})"><div><b>Pedido #${o.n} · ${R(o.v)}</b><div class="muted">${o.i}</div></div><span class="chip" aria-pressed="${o.s===2}">${ST[o.s]}</span></button>`).join("")}
+function add(i,d){q[i]=Math.max(0,(q[i]||0)+d);draw()}
+function adv(n){const o=O();const x=o.find(x=>x.n===n);x.s=Math.min(3,x.s+1);store("pd",o);draw()}
+$("#ok").onclick=()=>{const o=O();const it=M.map(([n],i)=>q[i]?q[i]+"x "+n:"").filter(Boolean).join(", ");o.push({n:o.length+1,i:it+" · "+$("#end").value,v:M.reduce((s,[,p],i)=>s+p*(q[i]||0),0),s:0});store("pd",o);q={};toast("Pedido #"+o.length+" enviado!");draw()};draw();
+</script></body></html>

@@ -1,0 +1,23 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Estoque · Modelo de app Achei</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../app.css"></head><body>
+<div class="demo">MODELO de demonstração · os dados ficam só neste celular</div>
+<header><h1>Pet Shop Modelo</h1><p>Estoque na palma da mão, com aviso do que está acabando</p></header>
+<nav role="tablist"><button data-tab="cli" aria-selected="true">Estoque</button><button data-tab="dono" aria-selected="false">Comprar (lista)</button></nav>
+<main><section id="cli"><input id="busca" type="search" placeholder="Buscar produto" aria-label="Buscar produto"><div id="list" style="margin-top:.8rem"></div>
+<details class="card"><summary><b>+ Cadastrar produto</b></summary><label for="pn">Nome</label><input id="pn"><label for="pq">Quantidade</label><input id="pq" type="number" min="0" value="1"><label for="pm">Avisar quando ficar abaixo de</label><input id="pm" type="number" min="0" value="3"><p style="margin-top:.8rem"><button class="btn" id="addp">Salvar</button></p></details></section>
+<section id="dono" hidden><h2>Lista de compras</h2><div id="buy"></div><p class="muted">Monta sozinha com tudo que está abaixo do mínimo. Dá pra mandar pro fornecedor no WhatsApp.</p></section></main>
+<footer>Modelo feito pelo <a href="../../">Achei</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
+<div class="toast" id="toast" role="status"></div>
+<script>const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
+const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));document.querySelectorAll("main section").forEach(s=>s.hidden=s.id!==b.dataset.tab);if(window.onTab)onTab(b.dataset.tab)});</script>
+<script>
+const P=()=>store("es")||[{n:"Ração 15kg adulto",q:6,m:3},{n:"Ração 10kg filhote",q:2,m:3},{n:"Areia gato 4kg",q:12,m:5},{n:"Shampoo neutro",q:1,m:4},{n:"Coleira antipulgas",q:8,m:3},{n:"Petisco bifinho",q:20,m:10}];
+function draw(){const p=P(),s=$("#busca").value.toLowerCase();
+$("#list").innerHTML=p.map((x,i)=>[x,i]).filter(([x])=>x.n.toLowerCase().includes(s)).map(([x,i])=>`<div class="card row"><div><b>${x.n}</b><div class="muted ${x.q<x.m?"alert":""}">${x.q<x.m?"⚠ Acabando · ":""}mínimo ${x.m}</div></div><div class="row"><button class="btn small ghost" aria-label="Tirar 1 de ${x.n}" onclick="mv(${i},-1)">−</button><b class="big" style="font-size:1.6rem;min-width:2ch;text-align:center">${x.q}</b><button class="btn small" aria-label="Pôr 1 de ${x.n}" onclick="mv(${i},1)">+</button></div></div>`).join("");
+const b=p.filter(x=>x.q<x.m);$("#buy").innerHTML=b.length?b.map(x=>`<div class="card row"><span>${x.n}</span><b>comprar ${x.m*2-x.q}</b></div>`).join(""):'<p class="card ok">Nada faltando 👍</p>'}
+function mv(i,d){const p=P();p[i].q=Math.max(0,p[i].q+d);store("es",p);draw()}
+$("#busca").oninput=draw;$("#addp").onclick=()=>{const n=$("#pn").value.trim();if(!n)return toast("Digite o nome");const p=P();p.push({n,q:+$("#pq").value||0,m:+$("#pm").value||0});store("es",p);$("#pn").value="";toast("Produto salvo");draw()};draw();
+</script></body></html>
