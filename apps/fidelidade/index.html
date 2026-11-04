@@ -1,8 +1,8 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fidelidade · Modelo de app Achei</title><meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Fidelidade · Modelo de app Orbi</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../app.css"></head><body>
-<div class="demo">MODELO de demonstração · os dados ficam só neste celular</div>
+<div class="demo">Modelo de app feito pela Orbi · os dados ficam só neste celular</div>
 <header><h1>Açaí Modelo</h1><p>Cartão fidelidade no celular: 10 carimbos = 1 açaí grátis</p></header>
 <nav role="tablist"><button data-tab="cli" aria-selected="true">Meu cartão</button><button data-tab="dono" aria-selected="false">Caixa (dono)</button></nav>
 <main><section id="cli"><label for="tel">Seu celular</label><input id="tel" inputmode="tel" placeholder="(00) 90000-0000">
@@ -10,7 +10,7 @@
 <p class="muted" id="msg">Sem papel pra perder: o cartão fica no número do cliente.</p></section>
 <section id="dono" hidden><label for="tel2">Celular do cliente</label><input id="tel2" inputmode="tel" placeholder="(00) 90000-0000">
 <p style="margin:.8rem 0"><button class="btn" id="add">+ 1 carimbo</button></p><h2>Clientes que mais voltam</h2><div id="list"></div></section></main>
-<footer>Modelo feito pelo <a href="../../">Achei</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
+<footer>Modelo feito pela <a href="../../">Orbi</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
 <div class="toast" id="toast" role="status"></div>
 <script>const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
 const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
@@ -19,7 +19,7 @@ document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.query
 const C=()=>store("fd")||{"(11) 98888-0000":7,"(11) 97777-0000":3},k=v=>v.replace(/\D/g,"");
 function find(t){const c=C();return Object.keys(c).find(x=>k(x)===k(t)&&k(t))}
 function draw(){const c=C(),f=find($("#tel").value),n=f?c[f]%10:0;$("#n").textContent=n+"/10";
-$("#st").innerHTML=[...Array(10)].map((_,i)=>`<div style="aspect-ratio:1;border-radius:50%;display:grid;place-items:center;border:2px dashed var(--line);${i<n?"background:var(--sign);border:0":""}">${i<n?"★":""}</div>`).join("");
+$("#st").innerHTML=[...Array(10)].map((_,i)=>`<div style="aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--soft);${i<n?"background:var(--sign);border:0":""}">${i<n?"★":""}</div>`).join("");
 $("#msg").textContent=f?(c[f]>=10&&n===0?"🎉 Você ganhou 1 açaí grátis!":"Faltam "+(10-n)+" pro seu açaí grátis."):"Digite o celular. Teste: (11) 98888-0000";
 $("#list").innerHTML=Object.entries(c).sort((a,b)=>b[1]-a[1]).map(([t,v])=>`<div class="card row"><span>${t}</span><b>${v} visitas</b></div>`).join("")}
 $("#tel").oninput=draw;$("#add").onclick=()=>{const t=$("#tel2").value.trim();if(k(t).length<10)return toast("Digite o celular com DDD");const c=C(),f=find(t)||t;c[f]=(c[f]||0)+1;store("fd",c);toast(c[f]%10?"Carimbo dado ("+c[f]%10+"/10)":"10 carimbos! Açaí grátis 🎉");draw()};draw();

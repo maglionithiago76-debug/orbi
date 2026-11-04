@@ -1,8 +1,8 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Agenda · Modelo de app Achei</title><meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Agenda · Modelo de app Orbi</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../app.css"></head><body>
-<div class="demo">MODELO de demonstração · os dados ficam só neste celular</div>
+<div class="demo">Modelo de app feito pela Orbi · os dados ficam só neste celular</div>
 <header><h1>Barbearia Modelo</h1><p>Agende seu horário em 30 segundos</p></header>
 <nav role="tablist"><button data-tab="cli" aria-selected="true">Agendar</button><button data-tab="dono" aria-selected="false">Agenda do dia (dono)</button></nav>
 <main><section id="cli">
@@ -13,7 +13,7 @@
 <p style="margin:1rem 0"><button class="btn" id="ok" disabled>Confirmar agendamento</button></p>
 <p class="muted">Você recebe a confirmação e um lembrete no WhatsApp.</p></section>
 <section id="dono" hidden><h2>Agendamentos</h2><div id="list"></div><p class="muted">O dono vê tudo aqui, sem caderno e sem ficar respondendo mensagem.</p></section></main>
-<footer>Modelo feito pelo <a href="../../">Achei</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
+<footer>Modelo feito pela <a href="../../">Orbi</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
 <div class="toast" id="toast" role="status"></div>
 <script>const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
 const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));

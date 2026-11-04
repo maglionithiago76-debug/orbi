@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelúcia Pet · Banho e tosa (modelo Orbi)</title>
+<meta name="description" content="Modelo de site de pet shop feito pela Orbi: banho e tosa com agendamento, leva e traz, preços por porte e WhatsApp.">
+<meta name="theme-color" content="#F2F4F7">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F4F7;--bg2:#E4E9F1;--ink:#0F1B2D;--muted:#45536A;--blue:#1F4FE0;--sun:#FFD23F;--m:clamp(20px,3vw,40px);--disp:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;background:var(--blue);color:#fff;font:700 17px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:transform .25s,background-color .25s}
+.btn:hover{background:#1840B8;transform:translateY(-2px)}
+.btn.ghost{background:var(--bg2);color:var(--ink)}
+.demo{position:relative;z-index:60;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px var(--m);background:#C8FF3D;color:#0A1200;font:600 14px/1.3 var(--sans);text-align:center}
+.demo a{font-weight:700}
+nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px var(--m);background:var(--bg)}
+.logo{font:800 26px/1 var(--disp);letter-spacing:-.03em;text-decoration:none}
+.logo span{color:var(--blue)}
+nav ul{display:flex;gap:28px;list-style:none;font-weight:600;font-size:15px}
+nav ul a{text-decoration:none;color:var(--muted)}nav ul a:hover{color:var(--ink)}
+nav .btn{min-height:44px;padding:0 20px;font-size:15px}
+@media(max-width:800px){nav ul{display:none}}
+
+/* hero: headline left, the puppy grows to fill the screen as you scroll */
+.hero{position:relative;height:190svh}
+.hero .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;align-items:center}
+.hero .ph{position:absolute;inset:0;clip-path:inset(12% 6% 12% 52% round 40px);will-change:clip-path}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:translate(9%,6%) scale(1.35)}
+.hero .ph::after{content:"";position:absolute;inset:0;background:rgba(15,27,45,var(--dim,0))}
+.hero .txt{position:relative;z-index:2;padding:40px var(--m) 0;max-width:780px}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:99px;background:#fff;font:600 14px/1 var(--sans)}
+.status i{width:9px;height:9px;border-radius:50%;background:#1E9E57}
+.status.closed i{background:#D64B3A}
+.hero h1{margin-top:22px;font:800 clamp(54px,7.6vw,120px)/.92 var(--disp);letter-spacing:-.045em;transition:color .3s}
+.hero p{margin-top:22px;max-width:36ch;font-size:clamp(18px,1.5vw,21px);color:var(--muted);transition:color .3s}
+.hero .act{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+.hero.over h1,.hero.over p{color:#fff}
+.hero.over .btn.ghost{background:#fff}
+
+section{padding:clamp(100px,14vh,170px) var(--m)}
+h2{font:800 clamp(42px,5.6vw,88px)/.95 var(--disp);letter-spacing:-.04em}
+.lead{margin-top:18px;max-width:46ch;color:var(--muted)}
+
+/* sizes band */
+#portes{background:var(--blue);color:#fff}
+#portes .lead{color:#DCE5FF}
+.sizes{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:end}
+.size{display:grid;gap:8px}
+.size b{font:800 clamp(90px,13vw,210px)/.8 var(--disp);letter-spacing:-.05em;color:var(--sun)}
+.size:nth-child(1) b{font-size:clamp(60px,8vw,130px)}
+.size:nth-child(3) b{font-size:clamp(120px,18vw,290px)}
+.size span{font-size:17px;color:#DCE5FF}
+.size strong{font:700 21px/1.2 var(--sans)}
+
+/* booking */
+.book{margin-top:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.step{margin-bottom:34px}
+.step h3{font:700 16px/1 var(--sans);color:var(--blue);margin-bottom:14px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{border:0;cursor:pointer;min-height:48px;padding:10px 18px;border-radius:16px;background:#fff;color:var(--ink);font:600 16px/1.2 var(--sans);text-align:left;transition:background-color .2s,transform .2s}
+.opt small{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:3px}
+.opt:hover{transform:translateY(-2px)}
+.opt[aria-pressed=true]{background:var(--ink);color:#fff}
+.opt[aria-pressed=true] small{color:#C9D3E3}
+.opt:disabled{opacity:.35;cursor:not-allowed;transform:none;text-decoration:line-through}
+.ticket{position:sticky;top:96px;padding:30px;border-radius:28px;background:var(--sun);color:var(--ink)}
+.ticket h3{font:800 32px/1 var(--disp);letter-spacing:-.03em}
+.ticket dl{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:12px 18px;font-size:16px}
+.ticket dt{color:#4A4330}
+.ticket dd{font-weight:700;text-align:right}
+.ticket .tot{margin-top:22px;padding-top:18px;border-top:3px solid var(--ink);display:flex;justify-content:space-between;font:800 30px/1 var(--disp)}
+.ticket .btn{width:100%;margin-top:22px;background:var(--ink)}
+.ticket .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.ticket p{margin-top:12px;font-size:14px;color:#4A4330}
+
+/* services */
+#servicos{background:var(--bg2)}
+.svc{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:12px 40px}
+.svc li{list-style:none;display:grid;grid-template-columns:1fr auto;gap:4px 18px;padding:22px 26px;border-radius:22px;background:#fff}
+.svc b{font:700 21px/1.2 var(--sans)}
+.svc span{grid-column:1;color:var(--muted);font-size:16px}
+.svc em{grid-row:1/3;grid-column:2;align-self:center;font:800 30px/1 var(--disp);font-style:normal;color:var(--blue)}
+
+/* gallery */
+#casa{padding-left:0;padding-right:0;overflow:hidden}
+#casa .head{padding:0 var(--m)}
+.strip{margin-top:56px;display:flex;gap:24px;padding:0 var(--m);will-change:transform}
+.strip figure{flex:none;width:min(60vw,800px)}
+.strip figure:nth-child(2){width:min(40vw,540px)}
+.strip img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:32px}
+.strip figure:nth-child(2) img{aspect-ratio:4/5}
+.strip figcaption{margin-top:12px;font-size:16px;color:var(--muted)}
+
+/* info */
+#info{background:var(--ink);color:#fff}
+.info{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{padding:28px;border-radius:26px;background:#1B2A40}
+.card h3{font:700 16px/1 var(--sans);color:var(--sun);margin-bottom:16px}
+.hours{list-style:none;display:grid;gap:8px;font-size:16px}
+.hours li{display:flex;justify-content:space-between}
+.hours li.today{color:var(--sun);font-weight:700}
+.card p{color:#DCE3EE}
+.card .btn{margin-top:18px;min-height:46px;font-size:15px}
+
+.install{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;padding:26px 30px;border-radius:28px;background:var(--sun);color:var(--ink);margin:clamp(100px,14vh,170px) var(--m)}
+.install .ic{width:64px;height:64px;border-radius:18px;background:var(--blue);display:grid;place-items:center;color:var(--sun);font:800 34px/1 var(--disp)}
+.install b{display:block;font:800 26px/1.1 var(--disp)}
+.install .btn{background:var(--ink)}
+
+footer{padding:40px var(--m);background:#E4E9F1;font-size:14px;color:var(--muted);display:grid;gap:10px}
+footer b{color:var(--ink)}
+.fab{position:fixed;right:20px;bottom:20px;z-index:40;width:62px;height:62px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 30px rgba(0,0,0,.25)} /* taste-skill-ignore: floating action button */
+.fab svg{width:32px;height:32px;fill:#fff}
+
+dialog{margin:auto;border:0;border-radius:26px;padding:30px;max-width:440px;width:calc(100% - 40px);background:#fff;color:var(--ink)}
+dialog::backdrop{background:rgba(15,27,45,.7)}
+dialog h3{font:800 28px/1.05 var(--disp)}
+dialog .bubble{margin-top:18px;padding:14px 16px;border-radius:14px 14px 14px 4px;background:#DCF8C6;color:#111;font-size:15px;white-space:pre-line}
+dialog p{margin-top:14px;font-size:15px;color:var(--muted)}
+dialog .row{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+dialog .btn{min-height:48px;font-size:15px}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.sizes .rv:nth-child(2){transition-delay:.08s}.sizes .rv:nth-child(3){transition-delay:.16s}
+@media(max-width:900px){
+  .book,.svc,.info{grid-template-columns:1fr}
+  .sizes{grid-template-columns:1fr;gap:34px}
+  .ticket{position:static}
+  .hero .pin{align-items:end}
+  .hero .txt{padding:0 var(--m) 7svh}
+  .hero h1{font-size:clamp(46px,12.5vw,80px)}
+  .hero .ph{clip-path:inset(4% 5% 50% 5% round 28px)}
+  .hero .ph img{object-position:55% 0;transform:scale(1.12)}
+  .strip figure,.strip figure:nth-child(2){width:78vw}
+  .install{grid-template-columns:auto 1fr}.install .btn{grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero{height:auto}.hero .pin{position:relative;height:auto;min-height:100svh}.hero .ph{clip-path:inset(12% 6% 12% 52% round 40px)}}
+</style>
+</head>
+<body>
+<div class="demo">Modelo de site feito pela Orbi · nome e preços fictícios <a href="https://maglionithiago76-debug.github.io/orbi/">Quero um assim</a></div>
+<nav aria-label="Principal">
+  <a class="logo" href="#top">Pelúcia<span>.</span>pet</a>
+  <ul><li><a href="#portes">Portes</a></li><li><a href="#servicos">Preços</a></li><li><a href="#casa">O espaço</a></li><li><a href="#info">Horário</a></li></ul>
+  <a class="btn" href="#agendar">Agendar banho</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="pin">
+    <div class="ph"><img src="../img/pet-hero.webp" alt="Filhote de pastor alemão olhando para cima, de boca aberta" width="1800" height="1350"></div>
+    <div class="txt">
+      <span class="status" id="status"><i></i><span>Aberto agora</span></span>
+      <h1>Banho e tosa com leva e traz.</h1>
+      <p>Pet shop no Jardim América. Você agenda pelo celular, a gente busca o seu pet e devolve cheiroso.</p>
+      <div class="act"><a class="btn" href="#agendar">Agendar o banho</a><a class="btn ghost" href="#servicos">Ver preços</a></div>
+    </div>
+  </div>
+</header>
+
+<section id="portes" aria-labelledby="pt-h">
+  <h2 id="pt-h" class="rv">Preço pelo tamanho.</h2>
+  <p class="lead rv">Do yorkshire ao golden: o valor do banho muda só pelo porte, e você vê na hora, sem surpresa no balcão.</p>
+  <div class="sizes">
+    <div class="size rv"><b>P</b><strong>Até 10 kg</strong><span>Banho a partir de R$ 50</span></div>
+    <div class="size rv"><b>M</b><strong>De 10 a 25 kg</strong><span>Banho a partir de R$ 65</span></div>
+    <div class="size rv"><b>G</b><strong>Acima de 25 kg</strong><span>Banho a partir de R$ 85</span></div>
+  </div>
+</section>
+
+<section id="agendar" aria-labelledby="ag-h">
+  <h2 id="ag-h" class="rv">Agende em um minuto.</h2>
+  <p class="lead rv">Escolha o porte, o serviço e o horário. O pedido chega no WhatsApp do pet shop já com tudo preenchido.</p>
+  <div class="book">
+    <div>
+      <div class="step rv"><h3>Porte do pet</h3><div class="opts" id="o-size"></div></div>
+      <div class="step rv"><h3>Serviço</h3><div class="opts" id="o-svc"></div></div>
+      <div class="step rv"><h3>Dia</h3><div class="opts" id="o-day"></div></div>
+      <div class="step rv"><h3>Horário</h3><div class="opts" id="o-time"></div></div>
+      <div class="step rv"><h3>Leva e traz</h3><div class="opts" id="o-ride"></div></div>
+    </div>
+    <aside class="ticket rv" aria-live="polite">
+      <h3>Seu agendamento</h3>
+      <dl><dt>Porte</dt><dd id="t-size">—</dd><dt>Serviço</dt><dd id="t-svc">—</dd><dt>Dia</dt><dd id="t-day">—</dd><dt>Horário</dt><dd id="t-time">—</dd><dt>Leva e traz</dt><dd id="t-ride">Não</dd></dl>
+      <div class="tot"><span>Total</span><span id="t-tot">R$ 0</span></div>
+      <button class="btn" id="go" disabled>Confirmar pelo WhatsApp</button>
+      <p>Pagamento na entrega: Pix, cartão ou dinheiro.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="servicos" aria-labelledby="sv-h">
+  <h2 id="sv-h" class="rv">Serviços e preços.</h2>
+  <p class="lead rv">Valores para porte P. Para M e G, o agendamento acima já mostra o preço certo.</p>
+  <ul class="svc" id="svc-list"></ul>
+</section>
+
+<section id="casa" aria-labelledby="casa-h">
+  <div class="head"><h2 id="casa-h" class="rv">O espaço.</h2><p class="lead rv">Banho com água morna, secador silencioso e tosa sem pressa. Fotos ilustrativas.</p></div>
+  <div class="strip" id="strip">
+    <figure><img src="../img/pet-salon.webp" alt="Tosadora secando um cachorro pequeno na mesa de banho" width="1800" height="1197" loading="lazy"><figcaption>Banho e secagem</figcaption></figure>
+    <figure><img src="../img/pet-poodle.webp" alt="Poodle sendo tosado na mesa" width="1800" height="1200" loading="lazy" style="object-position:25% 50%"><figcaption>Tosa na tesoura</figcaption></figure>
+    <figure><img src="../img/pet-hero.webp" alt="Filhote feliz depois do banho" width="1800" height="1350" loading="lazy" style="object-position:70% 40%"><figcaption>Pronto pra voltar pra casa</figcaption></figure>
+  </div>
+</section>
+
+<section id="info" aria-labelledby="info-h">
+  <h2 id="info-h" class="rv">Onde e quando.</h2>
+  <div class="info">
+    <div class="card rv"><h3>Horário</h3><ul class="hours" id="hours"></ul></div>
+    <div class="card rv"><h3>Endereço</h3><p>Av. das Acácias, 480<br>Jardim América · ao lado da padaria</p><a class="btn" href="https://www.google.com/maps" target="_blank" rel="noopener">Como chegar</a></div>
+    <div class="card rv"><h3>Leva e traz</h3><p>Buscamos e devolvemos o seu pet em até 5 km, por R$ 15. Ele volta no mesmo dia.</p><a class="btn" href="#agendar">Agendar</a></div>
+  </div>
+</section>
+
+<div class="install rv"><div class="ic">P</div><div><b>O pet shop no seu celular.</b>Instale o app: um toque e o ícone fica na sua tela, sem loja.</div><button class="btn" id="inst">Instalar app</button></div>
+
+<footer>
+  <div><b>Pelúcia Pet</b> · modelo fictício para demonstração</div>
+  <div>Site feito pela <a href="https://maglionithiago76-debug.github.io/orbi/"><b>Orbi</b></a>. Este modelo não coleta dados.</div>
+  <div>Fotos: Wikimedia Commons: Marilyn Peddle (CC BY 2.0), japanese_craft_construction (CC BY 2.0), daveynin (CC BY 2.0).</div>
+</footer>
+
+<a class="fab" href="#agendar" aria-label="Agendar pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
+
+<dialog id="dlg">
+  <h3>Assim chega no WhatsApp do pet shop:</h3>
+  <div class="bubble" id="msg"></div>
+  <p>Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
+  <div class="row"><a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Vi%20o%20modelo%20do%20pet%20shop%20e%20quero%20um%20site%20assim.">Quero um site assim</a><button class="btn ghost" id="close">Fechar</button></div>
+</dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+const SIZES = [['P','até 10 kg',0],['M','10 a 25 kg',15],['G','acima de 25 kg',35]];
+const SVC = [['Banho','Shampoo neutro, secagem e perfume',50,60],['Banho + tosa higiênica','Patas, barriga e rostinho',70,90],['Banho + tosa completa','Na máquina ou na tesoura',95,120],['Hidratação','Pelo macio por semanas',35,30],['Corte de unhas','Rápido e sem estresse',20,15],['Escovação de dentes','Hálito em dia',20,15]];
+const HRS = [null,[8,18],[8,18],[8,18],[8,18],[8,18],[8,14]];
+const DOW = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'], DOWL = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+const S = {size:0, svc:null, day:null, time:null, ride:false};
+const money = v => 'R$ ' + v;
+const price = i => SVC[i][2] + (i < 3 ? SIZES[S.size][2] : 0);
+
+(() => { const d = new Date(), h = HRS[d.getDay()], now = d.getHours() + d.getMinutes() / 60, el = $('#status');
+  const open = h && now >= h[0] && now < h[1];
+  el.classList.toggle('closed', !open);
+  el.lastElementChild.textContent = open ? `Aberto agora · fecha às ${h[1]}h` : 'Fechado agora · agende para depois';
+  $('#hours').innerHTML = [1,2,3,4,5,6,0].map(i => `<li class="${i === d.getDay() ? 'today' : ''}"><span>${DOWL[i]}</span><span>${HRS[i] ? HRS[i][0] + 'h às ' + HRS[i][1] + 'h' : 'Fechado'}</span></li>`).join('');
+})();
+$('#svc-list').innerHTML = SVC.map(s => `<li class="rv"><b>${s[0]}</b><span>${s[1]} · ${s[3]} min</span><em>${money(s[2])}</em></li>`).join('');
+
+function btn(label, sub, on, click, dis){ const b = document.createElement('button'); b.className = 'opt'; b.type = 'button';
+  b.innerHTML = label + (sub ? `<small>${sub}</small>` : ''); b.setAttribute('aria-pressed', on); b.disabled = !!dis; b.onclick = click; return b; }
+function days(){ const out = []; const d = new Date(); for (let i = 0; out.length < 7 && i < 10; i++) { const x = new Date(d); x.setDate(d.getDate() + i); if (HRS[x.getDay()]) out.push(x); } return out; }
+function seed(n){ let x = Math.sin(n) * 10000; return x - Math.floor(x); }
+function render(){
+  $('#o-size').replaceChildren(...SIZES.map((s, i) => btn('Porte ' + s[0], s[1], S.size === i, () => { S.size = i; render(); })));
+  $('#o-svc').replaceChildren(...SVC.map((s, i) => btn(s[0], money(price(i)), S.svc === i, () => { S.svc = i; render(); })));
+  const ds = days();
+  $('#o-day').replaceChildren(...ds.map((d, i) => btn(i === 0 ? 'Hoje' : DOW[d.getDay()], d.getDate() + '/' + (d.getMonth() + 1), S.day === i, () => { S.day = i; S.time = null; render(); })));
+  const o3 = $('#o-time');
+  if (S.day === null) o3.innerHTML = '<span style="color:var(--muted)">Escolha o dia primeiro.</span>';
+  else { const d = ds[S.day], h = HRS[d.getDay()], now = new Date(), slots = [];
+    for (let t = h[0]; t < h[1] - .5; t += 1) { const past = S.day === 0 && t <= now.getHours(); const busy = seed(d.getDate() * 100 + t * 7) < .3;
+      const lbl = t + ':00'; slots.push(btn(lbl, '', S.time === lbl, () => { S.time = lbl; render(); }, past || busy)); }
+    o3.replaceChildren(...slots); }
+  $('#o-ride').replaceChildren(btn('Eu levo', '', !S.ride, () => { S.ride = false; render(); }), btn('Busquem em casa', '+ R$ 15', S.ride, () => { S.ride = true; render(); }));
+  const s = SVC[S.svc];
+  $('#t-size').textContent = 'Porte ' + SIZES[S.size][0]; $('#t-svc').textContent = s ? s[0] : '—';
+  $('#t-day').textContent = S.day === null ? '—' : DOWL[ds[S.day].getDay()] + ', ' + ds[S.day].getDate() + '/' + (ds[S.day].getMonth() + 1);
+  $('#t-time').textContent = S.time || '—'; $('#t-ride').textContent = S.ride ? 'Sim' : 'Não';
+  $('#t-tot').textContent = money(s ? price(S.svc) + (S.ride ? 15 : 0) : 0);
+  $('#go').disabled = !(s && S.day !== null && S.time);
+}
+render();
+$('#go').onclick = () => { const d = days()[S.day];
+  $('#msg').textContent = `Olá! Quero agendar:\n🐶 ${SVC[S.svc][0]} · porte ${SIZES[S.size][0]}\n📅 ${DOWL[d.getDay()]}, ${d.getDate()}/${d.getMonth() + 1} às ${S.time}\n🚗 Leva e traz: ${S.ride ? 'sim' : 'não'}\nTotal: ${$('#t-tot').textContent}`; // taste-skill-ignore: WhatsApp message text
+  $('#dlg').showModal(); };
+$('#close').onclick = () => $('#dlg').close();
+
+let deferred; addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; });
+$('#inst').onclick = async () => { if (deferred) { deferred.prompt(); deferred = null; } else alert('No celular: toque em "Compartilhar" ou no menu ⋮ e depois em "Adicionar à tela inicial".'); };
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+if (!reduce) {
+  const hero = $('.hero'), ph = $('.hero .ph'), img = ph.querySelector('img'), strip = $('#strip'), casa = $('#casa');
+  const small = matchMedia('(max-width:900px)').matches;
+  const tick = () => {
+    const r = hero.getBoundingClientRect(), p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+    const e = 1 - Math.pow(1 - p, 3), lerp = (a, b) => a + (b - a) * e;
+    ph.style.clipPath = small ? `inset(${lerp(4,0)}% ${lerp(5,0)}% ${lerp(50,0)}% ${lerp(5,0)}% round ${lerp(28,0)}px)` : `inset(${lerp(12,0)}% ${lerp(6,0)}% ${lerp(12,0)}% ${lerp(52,0)}% round ${lerp(40,0)}px)`;
+    ph.style.setProperty('--dim', (.45 * e).toFixed(3));
+    hero.classList.toggle('over', e > .55);
+    img.style.transform = small ? `scale(${1.12 - .12 * e})` : `translate(${9 * (1 - e)}%, ${6 * (1 - e)}%) scale(${1.35 - .35 * e})`;
+    const c = casa.getBoundingClientRect(), q = Math.min(1, Math.max(0, (innerHeight - c.top) / (innerHeight + c.height)));
+    strip.style.transform = `translateX(${-q * Math.max(0, strip.scrollWidth - innerWidth) * .9}px)`;
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+</script>
+</body>
+</html>

@@ -1,8 +1,8 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pedidos · Modelo de app Achei</title><meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Pedidos · Modelo de app Orbi</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../app.css"></head><body>
-<div class="demo">MODELO de demonstração · os dados ficam só neste celular</div>
+<div class="demo">Modelo de app feito pela Orbi · os dados ficam só neste celular</div>
 <header><h1>Lanchonete Modelo</h1><p>Peça pelo celular, sem taxa de aplicativo</p></header>
 <nav role="tablist"><button data-tab="cli" aria-selected="true">Cardápio</button><button data-tab="dono" aria-selected="false">Pedidos (dono)</button></nav>
 <main><section id="cli"><div id="menu"></div>
@@ -10,7 +10,7 @@
 <label for="end">Entrega ou retirada?</label><select id="end"><option>Retirar no balcão</option><option>Entregar no endereço</option></select>
 <p style="margin-top:.8rem"><button class="btn" id="ok">Enviar pedido</button></p></div></section>
 <section id="dono" hidden><h2>Pedidos de hoje</h2><div id="list"></div><p class="muted">Cada pedido chega organizado, com valor e status. Toque pra avançar.</p></section></main>
-<footer>Modelo feito pelo <a href="../../">Achei</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
+<footer>Modelo feito pela <a href="../../">Orbi</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
 <div class="toast" id="toast" role="status"></div>
 <script>const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
 const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
