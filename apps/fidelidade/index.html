@@ -1,26 +1,59 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fidelidade · Modelo de app Orbi</title><meta name="robots" content="noindex">
+<title>Fidelidade · Modelo de app Orbi</title><meta name="robots" content="noindex"><meta name="theme-color" content="#3B1A5A">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../app.css"></head><body>
+<link rel="stylesheet" href="../app.css">
+<style>
+.stamp{position:relative;overflow:hidden;border-radius:28px;padding:1.3rem 1.2rem 1.4rem;background:#3B1A5A;color:#fff}
+.stamp::before{content:"";position:absolute;width:16rem;height:16rem;right:-6rem;top:-7rem;border-radius:50%;background:#7B3FB0;opacity:.55}
+.stamp .row{position:relative}
+.stamp .big{font:800 3rem/1 var(--d);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.dots{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;margin-top:1.2rem}
+.dots span{aspect-ratio:1;border-radius:50%;border:2px dashed rgba(255,255,255,.35);display:grid;place-items:center;font:800 .95rem var(--d);color:rgba(255,255,255,.45)}
+.dots span.on{border:0;background:#E8D0FF;color:#3B1A5A;animation:pop .5s var(--ease) both}
+.dots span.gift{border-style:solid;border-color:#C8FF3D;color:#C8FF3D}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+.prog{position:relative;height:.45rem;border-radius:9px;background:rgba(255,255,255,.18);margin-top:1.2rem;overflow:hidden}
+.prog i{position:absolute;inset:0 auto 0 0;background:#C8FF3D;border-radius:9px;transition:width .8s var(--ease)}
+</style></head>
+<body style="--bg:#F4F0F7;--ink:#1E1428;--accent:#6A2FA0;--accent-ink:#fff;--line:#E5DCEC">
 <div class="demo">Modelo de app feito pela Orbi · os dados ficam só neste celular</div>
-<header><h1>Açaí Modelo</h1><p>Cartão fidelidade no celular: 10 carimbos = 1 açaí grátis</p></header>
-<nav role="tablist"><button data-tab="cli" aria-selected="true">Meu cartão</button><button data-tab="dono" aria-selected="false">Caixa (dono)</button></nav>
-<main><section id="cli"><label for="tel">Seu celular</label><input id="tel" inputmode="tel" placeholder="(00) 90000-0000">
-<div class="card" style="margin-top:1rem"><div class="row"><b>Carimbos</b><span class="big" id="n">0/10</span></div><div id="st" style="display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem;margin-top:.6rem"></div></div>
-<p class="muted" id="msg">Sem papel pra perder: o cartão fica no número do cliente.</p></section>
-<section id="dono" hidden><label for="tel2">Celular do cliente</label><input id="tel2" inputmode="tel" placeholder="(00) 90000-0000">
-<p style="margin:.8rem 0"><button class="btn" id="add">+ 1 carimbo</button></p><h2>Clientes que mais voltam</h2><div id="list"></div></section></main>
-<footer>Modelo feito pela <a href="../../">Orbi</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
+<header class="top plain">
+  <div class="brand"><b><i>R</i>Roxo Açaí</b><span class="pill">Cartão digital</span></div>
+  <div><h1>Volte 10 vezes, o 11º é nosso.</h1><p>Sem cartão de papel pra perder: os carimbos ficam no seu número.</p></div>
+</header>
+<nav class="seg" role="tablist"><button data-tab="cli" aria-selected="true">Meu cartão</button><button data-tab="dono" aria-selected="false">Caixa</button></nav>
+<main>
+<section id="cli">
+  <label for="tel" style="margin-top:0">Seu celular</label><input id="tel" inputmode="tel" placeholder="(00) 90000-0000">
+  <div class="stamp" style="margin-top:1rem"><div class="row"><b>Seus carimbos</b><span class="big" id="n">0/10</span></div><div class="dots" id="st"></div><div class="prog"><i id="pg" style="width:0"></i></div></div>
+  <p class="note" id="msg"></p>
+  <h2>Como funciona</h2>
+  <div class="stack"><div class="card who"><span class="av">1</span><span>Pediu um açaí, informa o celular no caixa.</span></div><div class="card who"><span class="av">2</span><span>O carimbo cai na hora, aqui no seu cartão.</span></div><div class="card who"><span class="av">3</span><span>No 10º carimbo, o próximo açaí é por conta da casa.</span></div></div>
+</section>
+<section id="dono" hidden>
+  <label for="tel2" style="margin-top:0">Celular do cliente</label><input id="tel2" inputmode="tel" placeholder="(00) 90000-0000">
+  <p style="margin:.8rem 0 0"><button class="btn" id="add">Dar 1 carimbo</button></p>
+  <div class="kpis" style="margin-top:1.2rem"><div class="card kpi"><small>Clientes no cartão</small><b id="k1">0</b></div><div class="card kpi"><small>Voltaram este mês</small><b id="k2">0</b></div></div>
+  <h2>Quem mais volta</h2><div class="stack" id="list"></div>
+</section>
+</main>
+<footer>Modelo feito pela <a href="../../">Orbi</a>. Cada app é feito do jeito que o seu negócio precisa.</footer>
 <div class="toast" id="toast" role="status"></div>
-<script>const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
-const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));document.querySelectorAll("main section").forEach(s=>s.hidden=s.id!==b.dataset.tab);if(window.onTab)onTab(b.dataset.tab)});</script>
 <script>
-const C=()=>store("fd")||{"(11) 98888-0000":7,"(11) 97777-0000":3},k=v=>v.replace(/\D/g,"");
-function find(t){const c=C();return Object.keys(c).find(x=>k(x)===k(t)&&k(t))}
-function draw(){const c=C(),f=find($("#tel").value),n=f?c[f]%10:0;$("#n").textContent=n+"/10";
-$("#st").innerHTML=[...Array(10)].map((_,i)=>`<div style="aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--soft);${i<n?"background:var(--sign);border:0":""}">${i<n?"★":""}</div>`).join("");
-$("#msg").textContent=f?(c[f]>=10&&n===0?"🎉 Você ganhou 1 açaí grátis!":"Faltam "+(10-n)+" pro seu açaí grátis."):"Digite o celular. Teste: (11) 98888-0000";
-$("#list").innerHTML=Object.entries(c).sort((a,b)=>b[1]-a[1]).map(([t,v])=>`<div class="card row"><span>${t}</span><b>${v} visitas</b></div>`).join("")}
-$("#tel").oninput=draw;$("#add").onclick=()=>{const t=$("#tel2").value.trim();if(k(t).length<10)return toast("Digite o celular com DDD");const c=C(),f=find(t)||t;c[f]=(c[f]||0)+1;store("fd",c);toast(c[f]%10?"Carimbo dado ("+c[f]%10+"/10)":"10 carimbos! Açaí grátis 🎉");draw()};draw();
-</script></body></html>
+const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)};
+const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-selected",x===b));document.querySelectorAll("main section").forEach(s=>s.hidden=s.id!==b.dataset.tab);draw()});
+const C=()=>store("fd2")||{"(11) 98888-0000":7,"(11) 97777-0000":13,"(11) 96666-0000":4},k=v=>v.replace(/\D/g,"");
+const find=t=>{const c=C();return Object.keys(c).find(x=>k(x)===k(t)&&k(t))};
+function draw(){const c=C(),f=find($("#tel").value),n=f?c[f]%10:0;
+  $("#n").textContent=n+"/10";$("#pg").style.width=n*10+"%";
+  $("#st").innerHTML=[...Array(10)].map((_,i)=>`<span class="${i<n?"on":i===9?"gift":""}" style="animation-delay:${i*60}ms">${i<n?"✓":i===9?"grátis":i+1}</span>`).join("");
+  $("#msg").textContent=f?(c[f]>=10&&n===0?"Você ganhou 1 açaí grátis! Mostra esta tela no caixa.":"Faltam "+(10-n)+" pro seu açaí grátis."):"Digite o celular pra ver seu cartão. Pra testar: (11) 98888-0000";
+  const e=Object.entries(c);$("#k1").textContent=e.length;$("#k2").textContent=e.filter(([,v])=>v>1).length;
+  $("#list").innerHTML=e.sort((a,b)=>b[1]-a[1]).map(([t,v])=>`<div class="card row"><div class="who"><span class="av">${v}</span><span>${t}</span></div><span class="tag ${v>=10?"ok":""}">${v} visitas</span></div>`).join("")}
+$("#tel").oninput=draw;
+$("#add").onclick=()=>{const t=$("#tel2").value.trim();if(k(t).length<10)return toast("Digite o celular com DDD");const c=C(),f=find(t)||t;c[f]=(c[f]||0)+1;store("fd2",c);toast(c[f]%10?"Carimbo dado ("+c[f]%10+"/10)":"10 carimbos! Açaí grátis");draw()};
+draw();
+</script>
+<script src="../../motion.js" defer></script>
+</body></html>

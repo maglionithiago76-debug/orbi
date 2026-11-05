@@ -254,5 +254,6 @@ render();
 setTimeout(() => { S.checkins++; save(); const k = $('#kchk'); if (k) k.textContent = S.checkins; toast('Check-in: Ana Souza · 18:02'); }, 3000);
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
+<script src="../../motion.js" defer></script>
 </body>
 </html>

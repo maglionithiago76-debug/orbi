@@ -1,30 +1,58 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Agenda · Modelo de app Orbi</title><meta name="robots" content="noindex">
+<title>Agenda · Modelo de app Orbi</title><meta name="robots" content="noindex"><meta name="theme-color" content="#16130F">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../app.css"></head><body>
+<link rel="stylesheet" href="../app.css"></head>
+<body style="--bg:#F2EEE7;--ink:#16130F;--accent:#C9A15B;--accent-ink:#16130F;--line:#E3DCCF">
 <div class="demo">Modelo de app feito pela Orbi · os dados ficam só neste celular</div>
-<header><h1>Barbearia Modelo</h1><p>Agende seu horário em 30 segundos</p></header>
-<nav role="tablist"><button data-tab="cli" aria-selected="true">Agendar</button><button data-tab="dono" aria-selected="false">Agenda do dia (dono)</button></nav>
-<main><section id="cli">
-<h2>1. Serviço</h2><div class="chips" id="svc"></div>
-<h2>2. Dia</h2><div class="chips" id="days"></div>
-<h2>3. Horário</h2><div class="chips" id="hours"></div>
-<label for="nome">Seu nome</label><input id="nome" autocomplete="name" placeholder="Ex.: João">
-<p style="margin:1rem 0"><button class="btn" id="ok" disabled>Confirmar agendamento</button></p>
-<p class="muted">Você recebe a confirmação e um lembrete no WhatsApp.</p></section>
-<section id="dono" hidden><h2>Agendamentos</h2><div id="list"></div><p class="muted">O dono vê tudo aqui, sem caderno e sem ficar respondendo mensagem.</p></section></main>
-<footer>Modelo feito pela <a href="../../">Orbi</a>. Cada app é montado do jeito que o seu negócio precisa.</footer>
+<header class="top"><img src="../../modelos/img/barber-hero.webp" alt="">
+  <div class="brand"><b><i>N</i>Navalha Club</b><span class="pill" id="open">Aberto agora</span></div>
+  <div><h1>Seu horário em 3 toques.</h1><p>Escolha o serviço, o dia e a hora. A confirmação chega no seu WhatsApp.</p></div>
+</header>
+<nav class="seg" role="tablist"><button data-tab="cli" aria-selected="true">Agendar</button><button data-tab="dono" aria-selected="false">Agenda do dono</button></nav>
+<main>
+<section id="cli">
+  <h2><i>1</i>Serviço</h2><div class="stack" id="svc"></div>
+  <h2><i>2</i>Dia</h2><div class="days" id="days"></div>
+  <h2><i>3</i>Horário</h2><div class="times" id="hours"></div>
+  <label for="nome">Seu nome</label><input id="nome" autocomplete="name" placeholder="Como te chamamos?">
+  <p class="note">Mudou de ideia? Dá pra remarcar pelo próprio link, sem precisar ligar.</p>
+</section>
+<section id="dono" hidden>
+  <div class="kpis"><div class="card kpi"><small>Horários hoje</small><b id="k1">0</b></div><div class="card kpi"><small>Previsto hoje</small><b id="k2">R$ 0</b></div></div>
+  <h2>Próximos clientes</h2><div class="stack" id="list"></div>
+  <p class="note">O dono vê a agenda do dia aqui, sem caderno e sem ficar respondendo mensagem.</p>
+</section>
+</main>
+<div class="bar off" id="bar"><div class="sum"><span id="s1">Escolha o horário</span><b id="s2"></b></div><button class="btn" id="ok" disabled>Agendar</button></div>
+<footer>Modelo feito pela <a href="../../">Orbi</a>. Cada app é feito do jeito que o seu negócio precisa.<br>Foto: Wikimedia Commons (CC BY).</footer>
 <div class="toast" id="toast" role="status"></div>
-<script>const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)};
-const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll("nav button").forEach(x=>x.setAttribute("aria-selected",x===b));document.querySelectorAll("main section").forEach(s=>s.hidden=s.id!==b.dataset.tab);if(window.onTab)onTab(b.dataset.tab)});</script>
 <script>
-const SV=[["Corte","R$ 40"],["Barba","R$ 30"],["Corte + barba","R$ 60"]],HR=["09:00","10:00","11:00","14:00","15:00","16:00","17:00"],W=["dom","seg","ter","qua","qui","sex","sáb"];
-let pick={s:0,d:1};const B=()=>store("ag")||[{n:"Carlos",s:"Corte",d:0,h:"10:00"},{n:"Rafa",s:"Barba",d:0,h:"15:00"}];
-const days=[...Array(6)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return i?W[d.getDay()]+" "+d.getDate():"Hoje"});
-function chips(el,items,key,dis=()=>false){el.innerHTML="";items.forEach((t,i)=>{const b=document.createElement("button");b.className="chip";b.textContent=Array.isArray(t)?t.join(" · "):t;b.disabled=dis(i);b.setAttribute("aria-pressed",pick[key]===i);b.onclick=()=>{pick[key]=i;if(key==="d")delete pick.h;draw()};el.appendChild(b)})}
-function draw(){chips($("#svc"),SV,"s");chips($("#days"),days,"d");chips($("#hours"),HR,"h",i=>pick.d===undefined||(pick.d===0&&+HR[i].slice(0,2)<=new Date().getHours())||B().some(x=>x.d===pick.d&&x.h===HR[i]));
-$("#ok").disabled=!(pick.s>=0&&pick.d>=0&&pick.h>=0&&$("#nome").value.trim());
-$("#list").innerHTML=B().sort((a,b)=>a.d-b.d||a.h.localeCompare(b.h)).map(x=>`<div class="card row"><div><b>${x.h} · ${days[x.d]}</b><div class="muted">${x.n} · ${x.s}</div></div><span class="chip">confirmado</span></div>`).join("")}
-$("#nome").oninput=draw;$("#ok").onclick=()=>{const b=B();b.push({n:$("#nome").value.trim(),s:SV[pick.s][0],d:pick.d,h:HR[pick.h]});store("ag",b);toast("Agendado! "+days[pick.d]+" às "+HR[pick.h]);pick={};$("#nome").value="";draw()};draw();
-</script></body></html>
+const $=s=>document.querySelector(s),toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)};
+const store=(k,v)=>v===undefined?JSON.parse(localStorage.getItem(k)||"null"):localStorage.setItem(k,JSON.stringify(v));
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-selected",x===b));document.querySelectorAll("main section").forEach(s=>s.hidden=s.id!==b.dataset.tab);$("#bar").hidden=b.dataset.tab!=="cli";draw()});
+const SV=[["Corte","40 min",40,"barber-chairs"],["Barba na navalha","30 min",30,"barber-beard"],["Corte + barba","1h10",60,"barber-hero"]];
+const HR=["09:00","10:00","11:00","13:30","14:30","15:30","16:30","17:30"],W=["dom","seg","ter","qua","qui","sex","sáb"];
+const days=[...Array(7)].map((_,i)=>{const d=new Date();d.setDate(d.getDate()+i);return{w:i?W[d.getDay()]:"hoje",n:d.getDate(),sun:d.getDay()===0,t:!i}}).filter(d=>!d.sun);
+const late=new Date().getHours()+new Date().getMinutes()/60>=17;let pick={s:0,d:late?1:0};
+const B=()=>store("ag2")||[{n:"Carlos Lima",s:"Corte",d:0,h:"10:00",v:40},{n:"Rafael Souza",s:"Corte + barba",d:0,h:"14:30",v:60},{n:"Diego Alves",s:"Barba na navalha",d:0,h:"16:30",v:30}];
+const R=v=>"R$ "+v;
+function draw(){
+  $("#svc").innerHTML=SV.map(([n,t,p,img],i)=>`<button class="card opt" aria-pressed="${pick.s===i}" onclick="pick.s=${i};draw()"><img class="th" src="../../modelos/img/${img}.webp" alt=""><span class="tx"><b>${n}</b><span class="muted">${t}</span></span><span class="pr">${R(p)}</span></button>`).join("");
+  $("#days").innerHTML=days.map((d,i)=>`<button class="day" aria-pressed="${pick.d===i}" onclick="pick.d=${i};delete pick.h;draw()"><small>${d.w}</small><b>${d.n}</b></button>`).join("");
+  const now=new Date().getHours()+new Date().getMinutes()/60;
+  $("#hours").innerHTML=HR.map((h,i)=>{const [hh,mm]=h.split(":").map(Number),off=(days[pick.d].t&&hh+mm/60<=now)||B().some(x=>x.d===pick.d&&x.h===h);return`<button class="time" aria-pressed="${pick.h===i}" ${off?"disabled":""} onclick="pick.h=${i};draw()">${h}</button>`}).join("");
+  const ready=pick.h!==undefined;
+  $("#bar").classList.toggle("off",!ready||$("#dono").hidden===false);
+  $("#s1").textContent=ready?SV[pick.s][0]+" · "+R(SV[pick.s][2]):"";
+  $("#s2").textContent=ready?(days[pick.d].w==="hoje"?"Hoje":days[pick.d].w+" "+days[pick.d].n)+" às "+HR[pick.h]:"";
+  $("#ok").disabled=!ready;
+  const today=B().filter(x=>days[x.d]&&days[x.d].t||x.d===0);$("#k1").textContent=today.length;$("#k2").textContent=R(today.reduce((a,x)=>a+x.v,0));
+  $("#list").innerHTML=B().sort((a,b)=>a.d-b.d||a.h.localeCompare(b.h)).map(x=>`<div class="card row"><div class="who"><span class="av">${x.n.split(" ").map(w=>w[0]).slice(0,2).join("")}</span><div><b>${x.h} · ${x.d?days[x.d].w+" "+days[x.d].n:"hoje"}</b><div class="muted">${x.n} · ${x.s}</div></div></div><span class="tag ok">confirmado</span></div>`).join("");
+}
+$("#ok").onclick=()=>{const n=$("#nome").value.trim();if(!n){$("#nome").focus();toast("Falta só o seu nome");return}
+  const b=B();b.push({n,s:SV[pick.s][0],d:pick.d,h:HR[pick.h],v:SV[pick.s][2]});store("ag2",b);toast("Agendado! "+$("#s2").textContent);delete pick.h;$("#nome").value="";draw()};
+const hr=new Date().getHours();const op=hr>=9&&hr<20;$("#open").textContent=op?"Aberto agora · até 20h":"Fechado · abre às 9h";$("#open").classList.toggle("shut",!op);
+draw();
+</script>
+<script src="../../motion.js" defer></script>
+</body></html>

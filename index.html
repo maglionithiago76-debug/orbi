@@ -25,7 +25,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg);scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:400 var(--s-body)/1.5 var(--f);-webkit-font-smoothing:antialiased;overflow-x:clip}
-a{color:inherit}img,video{display:block;max-width:100%}
+a{color:inherit}img,video{display:block;max-width:100%;height:auto}
 :focus-visible{outline:3px solid var(--accent);outline-offset:4px}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:.95}
@@ -52,7 +52,7 @@ p{max-width:60ch}
 
 /* hero */
 .hero{overflow-x:clip;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;padding:clamp(40px,8vh,90px) var(--m) clamp(70px,10vh,120px);min-height:calc(100svh - 74px)}
-.hero h1{font-size:clamp(58px,8.2vw,138px);line-height:.9;letter-spacing:-.05em}
+.hero h1{font-size:clamp(52px,6.4vw,116px);line-height:.9;letter-spacing:-.05em}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
 .hero h1 .ln span{display:block;transform:translateY(105%);animation:rise 1s var(--ease) forwards}
 .hero h1 .ln:nth-child(2) span{animation-delay:.11s}
@@ -63,16 +63,61 @@ p{max-width:60ch}
 .facts{margin-top:56px;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 40px;list-style:none;font-size:var(--s-small);color:var(--soft);opacity:0;animation:up .8s var(--ease) .7s forwards}
 .facts b{display:block;font-size:var(--s-body);color:var(--ink);font-weight:700}
 
-.stage{position:relative;height:min(78svh,760px);min-height:520px}
-.phone{position:absolute;width:clamp(180px,15.5vw,268px);aspect-ratio:390/844;border-radius:40px;border:9px solid #2A2B2F;background:#2A2B2F;overflow:hidden;will-change:transform}
+.stage{position:relative;height:min(78svh,760px);min-height:520px;perspective:1400px;perspective-origin:50% 30%}
+.phone{position:absolute;width:clamp(180px,15.5vw,268px);aspect-ratio:390/844;border-radius:40px;border:9px solid #2A2B2F;background:#2A2B2F;overflow:hidden;will-change:transform;transform-style:preserve-3d}
 .phone video,.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:31px}
-.stage .phone:nth-child(1){left:2%;top:14%;--r:-7deg;transform:rotate(var(--r))}
-.stage .phone:nth-child(2){left:31%;top:0;z-index:2;--r:0deg;width:clamp(200px,17.5vw,300px)}
-.stage .phone:nth-child(3){right:0;top:20%;--r:7deg;transform:rotate(var(--r))}
-.stage .phone{opacity:0;animation:pop 1.1s var(--ease) forwards}
-.stage .phone:nth-child(1){animation-delay:.35s}.stage .phone:nth-child(2){animation-delay:.2s}.stage .phone:nth-child(3){animation-delay:.5s}
-@keyframes pop{from{opacity:0;translate:0 60px}to{opacity:1;translate:0 0}}
-.stage figcaption{position:absolute;left:31%;bottom:0;font-size:var(--s-small);color:var(--soft)}
+.stage .phone:nth-child(1){left:2%;top:14%}
+.stage .phone:nth-child(2){left:31%;top:0;z-index:2;width:clamp(200px,17.5vw,300px)}
+.stage .phone:nth-child(3){right:0;top:20%}
+.stage .phone{opacity:0;animation:boot 1.3s var(--ease) forwards}
+.stage .phone:nth-child(1){animation-delay:.35s}.stage .phone:nth-child(2){animation-delay:.15s}.stage .phone:nth-child(3){animation-delay:.5s}
+@keyframes boot{from{opacity:0;translate:0 120px;scale:.86}to{opacity:1;translate:0 0;scale:1}}
+.stage figcaption{position:absolute;inset:auto 0 -6px 0;display:flex;justify-content:space-around;font-size:var(--s-small);color:var(--soft)}
+
+/* story: pinned, scrubbed by the scroll */
+.story{height:340vh;position:relative;background:var(--bg);transition:background-color .6s var(--ease)}
+.story .pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,80px);align-items:center;padding:clamp(70px,10vh,96px) var(--m) clamp(24px,5vh,48px);overflow:hidden}
+.story h2{font-size:clamp(40px,4.6vw,78px);max-width:16ch}
+.beats{list-style:none;margin-top:clamp(28px,6vh,64px);position:relative;min-height:12.5em}
+.beats li{position:absolute;inset:0 auto auto 0;max-width:34ch;opacity:0;visibility:hidden;transform:translateY(40px);transition:opacity .55s var(--ease),transform .7s var(--ease),visibility 0s linear .55s}
+.beats li.on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.beats li.past{transform:translateY(-40px)}
+.beats b{display:block;font-size:clamp(30px,3vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1}
+.beats p{margin-top:16px;font-size:var(--s-lead);line-height:1.35;color:var(--soft)}
+.beats .num{color:var(--accent);font-weight:800}
+.story .meter{position:absolute;left:var(--m);right:var(--m);bottom:clamp(16px,3vh,28px);height:6px;border-radius:9px;background:var(--surface);overflow:hidden}
+.story .meter i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:var(--accent);border-radius:9px}
+.device{display:flex;justify-content:center;perspective:1400px}
+.phone.big{position:relative;width:min(330px,34vh);transform-style:preserve-3d;will-change:transform;background:#F4F4F0;border-color:#2A2B2F}
+.scr{position:absolute;inset:0;border-radius:31px;overflow:hidden;opacity:0;transform:translateY(8%) scale(.96);transition:opacity .5s var(--ease),transform .7s var(--ease)}
+.scr.on{opacity:1;transform:none}
+.s0{background:#F4F4F0;color:#111214;padding:22px 14px;font-size:13px;line-height:1.35}
+.s0 .q{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:999px;background:#fff;font-size:15px;font-weight:500;min-height:46px}
+.s0 .q svg{flex:none;width:18px;height:18px;color:#6B6C66}
+.caret{display:inline-block;width:2px;height:18px;background:#111214;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.res{margin-top:12px;padding:14px;border-radius:18px;background:#fff;transition:transform .5s var(--ease),background-color .4s}
+.res small{display:block;color:#5C5D58;font-size:11px}
+.res b{display:block;margin-top:2px;font-size:15px;line-height:1.2}
+.res span{display:block;margin-top:4px;color:#4A4B47}
+.res em{display:inline-block;margin:10px 6px 0 0;padding:6px 10px;border-radius:999px;background:#ECECE6;font-style:normal;font-weight:700;font-size:12px}
+.res.hit.lit{background:var(--accent);transform:scale(1.03)}
+.res.hit.lit em{background:#111214;color:var(--accent)}
+.s1 img{width:100%;height:auto;object-fit:initial;border-radius:0;will-change:transform}
+.s2{background:var(--field);color:#111214;display:flex;flex-direction:column}
+.chat-h{display:flex;align-items:center;gap:10px;padding:20px 14px 12px;background:#1F2C26;color:#fff}
+.chat-h i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#111214;font-style:normal;font-weight:800}
+.chat-h small{margin-left:auto;font-size:11px;opacity:.75}
+.msgs{display:flex;flex-direction:column;gap:10px;padding:16px 12px;font-size:14px;line-height:1.35}
+.msgs p{max-width:82%;padding:10px 12px;border-radius:16px;opacity:0;transform:translateY(16px) scale(.94);transition:opacity .45s var(--ease),transform .5s var(--ease)}
+.msgs p.on{opacity:1;transform:none}
+.msgs .them{align-self:flex-start;background:#fff;border-top-left-radius:4px}
+.msgs .me{align-self:flex-end;background:#D3F5B0;border-top-right-radius:4px}
+.story.call{background:var(--accent)}
+.story.call h2,.story.call .beats b{color:var(--accent-ink)}
+.story.call .beats p{color:var(--field-soft)}
+.story.call .beats .num{color:var(--accent-ink)}
+.story.call .meter{background:#A9DB2C}.story.call .meter i{background:var(--accent-ink)}
 
 /* specialization */
 .spec{padding:var(--gap) var(--m) 0}
@@ -93,7 +138,7 @@ p{max-width:60ch}
 .sites .top{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
 .sites h2{grid-column:1/8}
 .sites .top p{grid-column:8/13}
-.models{margin-top:clamp(64px,9vh,110px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);align-items:start}
+.models{perspective:1300px;margin-top:clamp(64px,9vh,110px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);align-items:start}
 .model{text-decoration:none;display:block}
 .model:nth-child(2){margin-top:clamp(40px,8vh,110px)}
 .model .screen{position:relative;aspect-ratio:390/700;border-radius:36px;overflow:hidden;background:var(--surface)}
@@ -109,11 +154,11 @@ p{max-width:60ch}
 .incl li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--accent);translate:0 -2px}
 
 /* apps: light field */
-.apps{margin-top:var(--gap);padding:var(--gap) var(--m);background:var(--field);color:var(--field-ink)}
+.apps{perspective:1600px;margin-top:var(--gap);padding:var(--gap) var(--m);background:var(--field);color:var(--field-ink)}
 .apps .top{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
 .apps h2{grid-column:1/8}
 .apps .top p{grid-column:8/13;color:var(--field-ink)}
-.desk{margin-top:clamp(60px,9vh,100px);border-radius:28px;overflow:hidden;background:#111214;padding:14px}
+.desk{transform-origin:50% 100%;margin-top:clamp(60px,9vh,100px);border-radius:28px;overflow:hidden;background:#111214;padding:14px}
 .desk img{border-radius:16px;width:100%}
 .desk + .cap{margin-top:14px;font-size:var(--s-small);color:var(--field-soft)}
 .kinds{margin-top:clamp(90px,12vh,150px);display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
@@ -200,7 +245,16 @@ footer .legal p{max-width:80ch}
   .stage .phone:nth-child(2){width:44%;z-index:2}
   .desk{padding:8px;max-width:420px}
   .phone video,.phone img{border-radius:20px}
-  .stage figcaption{position:static}
+  .stage figcaption{position:static;display:none}
+  .story{height:300vh}
+  .story .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-items:start;gap:16px;padding-top:84px}
+  .story h2{font-size:clamp(30px,8.4vw,44px)}
+  .beats{margin-top:14px;min-height:7.6em}
+  .beats b{font-size:26px}
+  .beats p{margin-top:8px;font-size:16px}
+  .device{align-self:center}
+  .phone.big{width:min(240px,30svh);border-width:7px;border-radius:32px}
+  .scr{border-radius:25px}
   .facts{grid-template-columns:1fr 1fr}
   .spec .top,.sites .top,.apps .top,.incl,.kinds,.promise,footer .cols{grid-template-columns:1fr}
   .spec h2,.spec .top p,.sites h2,.sites .top p,.apps h2,.apps .top p,.incl h3,.incl ul,.list,.preview,.promise h2,.promise p,footer .reach,footer nav{grid-column:1/-1}
@@ -231,6 +285,8 @@ footer .legal p{max-width:80ch}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}
+  .story{height:auto}.story .pin{position:relative;height:auto}
+  .beats{min-height:0}.beats li{position:static;opacity:1;visibility:visible;transform:none;margin-bottom:24px}
   .rv{opacity:1;transform:none}
   .bar.pre > div{transform:none}
   html{scroll-behavior:auto}
@@ -241,16 +297,16 @@ footer .legal p{max-width:80ch}
 <header class="nav">
   <a class="word" href="#top" aria-label="Orbi, início"><i></i>orbi</a>
   <ul><li><a href="#sites">Sites</a></li><li><a href="#apps">Apps</a></li><li><a href="#como">Como funciona</a></li><li><a href="#duvidas">Dúvidas</a></li></ul>
-  <a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">Falar no WhatsApp</a>
+  <a class="btn" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">Falar no WhatsApp</a>
 </header>
 
 <main id="top">
 <section class="hero" aria-labelledby="h1">
   <div>
-    <h1 id="h1"><span class="ln"><span>Sites e apps</span></span><span class="ln"><span>sob medida.</span></span></h1>
-    <p class="sub">A Orbi é uma equipe especializada em criar o site e o app da sua empresa, do jeito que você pedir. Você só paga depois de ver pronto.</p>
+    <h1 id="h1"><span class="ln"><span>Mais clientes.</span></span><span class="ln"><span>Menos trabalho.</span></span></h1>
+    <p class="sub">A Orbi é uma equipe especializada em site e app para pequenas empresas: o site traz cliente pro seu WhatsApp, o app tira do seu dia o que dá trabalho.</p>
     <div class="act">
-      <a class="btn" href="https://wa.me/5535920059158?text=Oi!%20Quero%20um%20site%20ou%20app%20pra%20minha%20empresa.">Falar com a equipe</a>
+      <a class="btn" href="https://wa.me/5511927013668?text=Oi!%20Quero%20um%20site%20ou%20app%20pra%20minha%20empresa.">Falar com a equipe</a>
       <a class="btn alt" href="#sites">Ver os modelos</a>
     </div>
     <ul class="facts">
@@ -259,11 +315,45 @@ footer .legal p{max-width:80ch}
       <li><b>Sem mensalidade</b>hospedagem inclusa</li>
     </ul>
   </div>
-  <figure class="stage" aria-label="Três sites feitos pela Orbi rolando no celular">
-    <div class="phone" data-depth=".6"><video src="img/work/site-restaurante.mp4" poster="img/work/site-restaurante.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de restaurante rolando"></video></div>
-    <div class="phone" data-depth="1"><video src="img/work/site-barbearia.mp4" poster="img/work/site-barbearia.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de barbearia rolando"></video></div>
-    <div class="phone" data-depth=".8"><video src="img/work/site-petshop.mp4" poster="img/work/site-petshop.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de pet shop rolando"></video></div>
+  <figure class="stage" id="stage" aria-label="Um app de pedidos, um site de barbearia e um app de gestão feitos pela Orbi">
+    <div class="phone" data-depth=".7" data-side="-1"><video src="img/work/app-pedidos.mp4" poster="img/work/app-pedidos.webp" muted loop playsinline autoplay preload="metadata" aria-label="App de pedidos de uma pizzaria"></video></div>
+    <div class="phone" data-depth="1" data-side="0"><video src="img/work/site-barbearia.mp4" poster="img/work/site-barbearia.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de barbearia rolando"></video></div>
+    <div class="phone" data-depth=".85" data-side="1"><video src="img/work/app-gestao-phone.mp4" poster="img/work/app-gestao-phone.webp" muted loop playsinline autoplay preload="metadata" aria-label="App de gestão de uma academia"></video></div>
   </figure>
+</section>
+
+<section class="story" id="story" aria-labelledby="story-h">
+  <div class="pin">
+    <div class="copy">
+      <h2 id="story-h">Ninguém quer um site. Quer cliente chamando.</h2>
+      <ol class="beats">
+        <li class="on"><b>Alguém procura</b><p><span class="num" data-n="76">76%</span> de quem pesquisa um negócio perto pelo celular visita um em até 1 dia (Google). A decisão é rápida.</p></li>
+        <li><b>Acha você</b><p>Seu site abre rápido, mostra serviços, fotos e preços, e não deixa dúvida.</p></li>
+        <li><b>E chama no seu WhatsApp</b><p>Um toque e a conversa começa, com a mensagem já escrita. É aí que a venda acontece.</p></li>
+      </ol>
+    </div>
+    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+    <div class="device" aria-hidden="true">
+      <div class="phone big" data-ui>
+        <div class="scr s0 on">
+          <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span id="typed"></span><i class="caret"></i></div>
+          <div class="res hit"><small>navalhaclub.com.br</small><b>Navalha Club · Barbearia no Centro</b><span>Corte, barba e agendamento online. Aberto hoje até 20h.</span><em>Site</em><em>Rotas</em><em>WhatsApp</em></div>
+          <div class="res"><small>outra-barbearia.com</small><b>Barbearia do bairro</b><span>Sem site. Só telefone.</span></div>
+          <div class="res"><small>guia-local.com</small><b>10 barbearias perto de você</b><span>Lista com endereços e telefones.</span></div>
+        </div>
+        <div class="scr s1"><img id="siteimg" src="img/work/site-barbearia-full.webp" alt="" width="720" height="4200" loading="lazy"></div>
+        <div class="scr s2">
+          <div class="chat-h"><i>L</i><b>Lucas</b><small>chegou pelo site</small></div>
+          <div class="msgs">
+            <p class="them">Oi! Vi o site de vocês. Tem horário sábado às 10h?</p>
+            <p class="me">Tem sim! Já reservei pra você: sábado, 10h, corte.</p>
+            <p class="them">Perfeito, obrigado!</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="spec" aria-labelledby="spec-h">
@@ -272,14 +362,14 @@ footer .legal p{max-width:80ch}
     <p class="rv d1">A gente não faz de tudo: só site e app para pequenas empresas. Com o foco todo nisso, sai rápido, bonito e funcionando de verdade.</p>
   </div>
   <div class="duo">
-    <a href="#sites" class="rv"><b>Site</b><strong>Para o cliente achar você.</strong><p>Aparece no Google, mostra seus serviços e preços e leva direto pro seu WhatsApp. O cliente ainda instala no celular como um app.</p><span class="go">Ver modelos de site →</span></a>
-    <a href="#apps" class="rv d1"><b>App</b><strong>Para você trabalhar menos.</strong><p>Agenda, pedidos, estoque, clientes, financeiro: o que mais dá trabalho na sua empresa vira um app, no computador e no celular.</p><span class="go">Ver modelos de app →</span></a>
+    <a href="#sites" class="rv"><b>Site</b><strong>Pra vender mais.</strong><p>Quem procura no Google acha você, vê serviços, fotos e preços, e chama no seu WhatsApp em um toque. E ainda instala no celular como um app.</p><span class="go">Ver modelos de site →</span></a>
+    <a href="#apps" class="rv d1"><b>App</b><strong>Pra trabalhar menos.</strong><p>Agenda, pedidos, estoque, clientes, financeiro: o que hoje toma o seu tempo vira um app de qualquer tipo, no computador e no celular.</p><span class="go">Ver modelos de app →</span></a>
   </div>
 </section>
 
 <section class="sites" id="sites" aria-labelledby="sites-h">
   <div class="top">
-    <h2 id="sites-h" class="rv">Modelos de site.</h2>
+    <h2 id="sites-h" class="rv">Sites que fazem o cliente chamar.</h2>
     <p class="rv d1">Três negócios, três jeitos. Abra e role: todo site tem animação, carrega rápido no celular e leva o cliente direto pro seu WhatsApp. O seu leva o seu nome, as suas fotos e as cores que você quiser.</p>
   </div>
   <div class="models">
@@ -312,22 +402,22 @@ footer .legal p{max-width:80ch}
 <section class="apps" id="apps" aria-labelledby="apps-h">
   <div class="top">
     <h2 id="apps-h" class="rv">Apps para o que dá trabalho.</h2>
-    <p class="rv d1">Cada empresa tem um problema diferente, então cada app é criado em cima do seu: do jeito que você trabalha, no computador e no celular. Abaixo, um sistema de gestão completo, e mais quatro exemplos.</p>
+    <p class="rv d1">Cada empresa tem um problema diferente, então cada app é criado em cima do seu, de qualquer tipo: do jeito que você trabalha, no computador e no celular. Abaixo, um sistema de gestão completo e mais quatro exemplos.</p>
   </div>
-  <div class="desk rv"><picture><source media="(max-width:700px)" srcset="img/work/app-gestao-phone.webp" width="720" height="1558"><img src="img/work/app-gestao.webp" alt="Painel do app de gestão de uma academia: membros ativos, receita do mês, check-ins e gráficos" width="1600" height="1000" loading="lazy"></picture></div>
+  <div class="desk"><picture><source media="(max-width:700px)" srcset="img/work/app-gestao-phone.webp" width="720" height="1558"><img src="img/work/app-gestao.webp" alt="Painel do app de gestão de uma academia: membros ativos, receita do mês, check-ins e gráficos" width="1600" height="1000" loading="lazy"></picture></div>
   <p class="cap">Gestão completa de uma academia: membros, planos, check-in, financeiro e relatórios. <a class="link" href="modelos/app/">Testar o modelo</a></p>
 
   <div class="kinds">
     <h3 class="rv">Ou o app que a sua empresa precisa.</h3>
     <ul class="list" id="kinds">
-      <li><button type="button" aria-pressed="true" data-img="img/work/app-agenda.webp" data-href="apps/agenda/" data-alt="App de agenda de uma barbearia"><b>Agenda online</b><span>Barbearia, salão, clínica, estética</span><em>Ver</em><img class="thumb" src="img/work/app-agenda.webp" alt="" width="720" height="1558" loading="lazy"></button><a class="m-go" href="apps/agenda/">Testar este app →</a></li>
-      <li><button type="button" aria-pressed="false" data-img="img/work/app-pedidos.webp" data-href="apps/pedidos/" data-alt="App de pedidos de uma lanchonete"><b>Pedidos sem taxa</b><span>Lanchonete, delivery, padaria</span><em>Ver</em><img class="thumb" src="img/work/app-pedidos.webp" alt="" width="720" height="1558" loading="lazy"></button><a class="m-go" href="apps/pedidos/">Testar este app →</a></li>
+      <li><button type="button" aria-pressed="true" data-img="img/work/app-agenda.webp" data-href="apps/agenda/" data-alt="App de agenda da barbearia Navalha Club"><b>Agenda online</b><span>Barbearia, salão, clínica, estética</span><em>Ver</em><img class="thumb" src="img/work/app-agenda.webp" alt="" width="720" height="1558" loading="lazy"></button><a class="m-go" href="apps/agenda/">Testar este app →</a></li>
+      <li><button type="button" aria-pressed="false" data-img="img/work/app-pedidos.webp" data-href="apps/pedidos/" data-alt="App de pedidos da pizzaria Forno da Vila"><b>Pedidos sem taxa</b><span>Pizzaria, lanchonete, delivery</span><em>Ver</em><img class="thumb" src="img/work/app-pedidos.webp" alt="" width="720" height="1558" loading="lazy"></button><a class="m-go" href="apps/pedidos/">Testar este app →</a></li>
       <li><button type="button" aria-pressed="false" data-img="img/work/app-fidelidade.webp" data-href="apps/fidelidade/" data-alt="App de cartão fidelidade de um açaí"><b>Cartão fidelidade</b><span>Açaí, café, loja, sorveteria</span><em>Ver</em><img class="thumb" src="img/work/app-fidelidade.webp" alt="" width="720" height="1558" loading="lazy"></button><a class="m-go" href="apps/fidelidade/">Testar este app →</a></li>
       <li><button type="button" aria-pressed="false" data-img="img/work/app-estoque.webp" data-href="apps/estoque/" data-alt="App de controle de estoque de um pet shop"><b>Controle de estoque</b><span>Pet shop, loja, mercado</span><em>Ver</em><img class="thumb" src="img/work/app-estoque.webp" alt="" width="720" height="1558" loading="lazy"></button><a class="m-go" href="apps/estoque/">Testar este app →</a></li>
-      <li><a class="row" href="https://wa.me/5535920059158?text=Oi!%20Quero%20um%20app%20pra%20minha%20empresa."><b>O da sua empresa</b><span>Conta o que dá trabalho e a gente desenha o app</span><em>Conversar</em></a></li>
+      <li><a class="row" href="https://wa.me/5511927013668?text=Oi!%20Quero%20um%20app%20pra%20minha%20empresa."><b>O da sua empresa</b><span>Conta o que dá trabalho e a gente desenha o app</span><em>Conversar</em></a></li>
     </ul>
     <div class="preview" aria-live="polite">
-      <div class="phone"><img id="pv" src="img/work/app-agenda.webp" alt="App de agenda de uma barbearia" width="720" height="1558"></div>
+      <div class="phone"><img id="pv" src="img/work/app-agenda.webp" alt="App de agenda da barbearia Navalha Club" width="720" height="1558"></div>
       <div class="open"><a class="btn" id="pv-go" href="apps/agenda/">Testar este app</a></div>
     </div>
   </div>
@@ -360,13 +450,14 @@ footer .legal p{max-width:80ch}
     <details class="rv"><summary>Tem mensalidade?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não. Site e app são pagamento único, com hospedagem inclusa.</p></details>
     <details class="rv"><summary>Preciso pagar alguma coisa antes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não. A gente cria, você vê pronto no seu celular e só paga depois de aprovar.</p></details>
     <details class="rv"><summary>Quanto custa?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Depende do que a sua empresa precisa. Conta pra gente no WhatsApp e você recebe o valor fechado antes de começarmos, sem surpresa no final.</p></details>
+    <details class="rv"><summary>Isso vai me trazer clientes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Ninguém sério promete número de vendas. O que o site faz é tirar os obstáculos do caminho: quem procura te acha no Google, entende o que você faz e chama no WhatsApp em um toque, a qualquer hora.</p></details>
     <details class="rv"><summary>Pode ser do meu jeito?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Pode. Cores, textos, fotos e o que o app faz: tudo do jeito que você pedir. Se preferir, a gente monta no nosso padrão profissional e você só aprova.</p></details>
     <details class="rv"><summary>Preciso mandar fotos e textos?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não precisa. A gente usa o que já está no seu Google e no seu Instagram. Se quiser mandar outras fotos, melhor ainda.</p></details>
     <details class="rv"><summary>O app fica na Play Store?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não. Ele instala direto pelo link, sem loja: um toque e o ícone da sua empresa aparece na tela do celular. Sem custo de loja e sem precisar atualizar.</p></details>
   </div>
 </section>
 
-<a class="cta" href="https://wa.me/5535920059158?text=Oi!%20Quero%20come%C3%A7ar%20o%20site%20ou%20app%20da%20minha%20empresa.">
+<a class="cta" href="https://wa.me/5511927013668?text=Oi!%20Quero%20come%C3%A7ar%20o%20site%20ou%20app%20da%20minha%20empresa.">
   <p>Conta o que a sua empresa precisa. A equipe responde no WhatsApp, de segunda a sexta, das 9h às 18h.</p>
   <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M12 36L36 12M16 12h20v20"/></svg>
   <b>Começar</b>
@@ -376,7 +467,7 @@ footer .legal p{max-width:80ch}
 <footer>
   <div class="cols">
     <ul class="reach">
-      <li><a href="https://wa.me/5535920059158">WhatsApp (35) 92005-9158</a></li>
+      <li><a href="https://wa.me/5511927013668">WhatsApp (11) 92701-3668</a></li>
       <li>Seg a sex, 9h às 18h</li>
     </ul>
     <nav aria-label="Rodapé"><a href="#sites">Modelos de site</a><a href="#apps">Modelos de app</a><a href="#como">Como funciona</a><a href="#duvidas">Dúvidas</a></nav>
@@ -409,16 +500,47 @@ document.querySelectorAll('#kinds button').forEach(b => b.addEventListener('clic
   }
   go.href = b.dataset.href;
 }));
-/* hero phones drift with the pointer and the scroll */
-if (!reduce && matchMedia('(min-width:1001px)').matches) {
-  const ph = [...document.querySelectorAll('.stage .phone')];
-  let mx = 0, my = 0, cx = 0, cy = 0;
-  addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
-  const tick = () => { cx += (mx - cx) * .06; cy += (my - cy) * .06; const s = scrollY;
-    ph.forEach(p => { const d = +p.dataset.depth; p.style.transform = `translate(${cx * 24 * d}px, ${cy * 18 * d - s * .12 * d}px) rotate(var(--r))`; });
-    requestAnimationFrame(tick); };
+/* scroll engine: hero phones fly in 3D, the story is scrubbed, model screens and the app panel straighten up */
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), ease = t => 1 - Math.pow(1 - t, 3);
+const stage = document.getElementById('stage'), ph = [...stage.querySelectorAll('.phone')], wide = matchMedia('(min-width:1001px)');
+const story = document.getElementById('story'), beats = [...story.querySelectorAll('.beats li')], scr = [...story.querySelectorAll('.scr')];
+const big = story.querySelector('.phone.big'), typed = document.getElementById('typed'), hit = story.querySelector('.res.hit');
+const siteimg = document.getElementById('siteimg'), msgs = [...story.querySelectorAll('.msgs p')], meter = document.getElementById('meter'), num = story.querySelector('.num');
+const screens = [...document.querySelectorAll('.model .screen')], desk = document.querySelector('.desk');
+const Q = 'barbearia perto de mim';
+let mx = 0, my = 0, cx = 0, cy = 0, dirty = true;
+addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; dirty = true; });
+addEventListener('scroll', () => dirty = true, { passive: true }); addEventListener('resize', () => dirty = true);
+function hero() {
+  const p = clamp(scrollY / stage.parentElement.offsetHeight), w = wide.matches;
+  ph.forEach(el => { const d = +el.dataset.depth, sd = +el.dataset.side;
+    el.style.transform = `translate3d(${sd * p * (w ? 110 : 40) + cx * 26 * d}px, ${-p * 260 * d + cy * 18 * d}px, ${p * 220 * d}px) rotateX(${p * 32}deg) rotateY(${-sd * p * 26}deg) rotate(${sd * 6.5 * (1 - p)}deg)`; });
+}
+function storyFrame() {
+  const total = story.offsetHeight - innerHeight, p = clamp(-story.getBoundingClientRect().top / total);
+  const st = p < .34 ? 0 : p < .67 ? 1 : 2, sub = st === 0 ? p / .34 : st === 1 ? (p - .34) / .33 : (p - .67) / .33;
+  beats.forEach((b, i) => { b.classList.toggle('on', i === st); b.classList.toggle('past', i < st); });
+  scr.forEach((x, i) => x.classList.toggle('on', i === st));
+  typed.textContent = st ? Q : Q.slice(0, Math.round(clamp(sub * 1.7) * Q.length));
+  hit.classList.toggle('lit', st > 0 || sub > .72);
+  num.textContent = Math.round(76 * (st ? 1 : ease(clamp(sub * 1.4)))) + '%';
+  if (siteimg.complete && siteimg.naturalHeight) siteimg.style.transform = `translateY(${-(st === 1 ? ease(sub) : st > 1 ? 1 : 0) * Math.max(0, siteimg.offsetHeight - big.clientHeight)}px)`;
+  msgs.forEach((m, i) => m.classList.toggle('on', st === 2 && sub > .08 + i * .22));
+  story.classList.toggle('call', st === 2);
+  meter.style.transform = `scaleX(${p})`;
+  big.style.transform = `rotateY(${(.5 - p) * 34}deg) rotateX(${6 - p * 6}deg)`;
+}
+function straighten(el, tilt, lift) {
+  const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+  const e = ease(clamp((innerHeight - r.top) / (innerHeight * .85)));
+  el.style.transform = `translateY(${(1 - e) * lift}px) rotateX(${(1 - e) * tilt}deg) scale(${.9 + .1 * e})`;
+}
+function tick() {
+  if (Math.abs(mx - cx) > .001 || Math.abs(my - cy) > .001) { cx += (mx - cx) * .07; cy += (my - cy) * .07; dirty = true; }
+  if (dirty) { dirty = false; hero(); storyFrame(); screens.forEach(el => straighten(el, 24, 90)); if (desk) straighten(desk, 32, 60); }
   requestAnimationFrame(tick);
 }
+if (!reduce) requestAnimationFrame(tick); else { beats.forEach(b => b.classList.add('on')); }
 </script>
 </body>
 </html>

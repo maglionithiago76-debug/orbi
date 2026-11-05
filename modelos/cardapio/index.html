@@ -223,5 +223,6 @@ let spyIO; function spy(){ if (spyIO) spyIO.disconnect(); spyIO = new Intersecti
 render(); bar();
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
+<script src="../../motion.js" defer></script>
 </body>
 </html>
