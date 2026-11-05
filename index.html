@@ -162,9 +162,9 @@ p{max-width:60ch}
 .sites .top{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
 .sites h2{grid-column:1/8}
 .sites .top p{grid-column:8/13}
-.models{perspective:1300px;margin-top:clamp(64px,9vh,110px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,48px);align-items:start}
+.models{perspective:1300px;margin-top:clamp(64px,9vh,110px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,48px);align-items:start}
 .model{text-decoration:none;display:block}
-.model:nth-child(2){margin-top:clamp(40px,8vh,110px)}
+.model:nth-child(even){margin-top:clamp(40px,8vh,110px)}
 .model .screen{position:relative;aspect-ratio:390/700;border-radius:36px;overflow:hidden;background:var(--surface)}
 .model .screen video,.model .screen img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .7s var(--ease)}
 .model:hover .screen video,.model:focus-visible .screen video{transform:scale(1.04)}
@@ -259,6 +259,7 @@ footer .legal p{max-width:80ch}
 .rv.in{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 
+@media(min-width:1001px) and (max-width:1300px){.models{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1000px){
   .hero{grid-template-columns:1fr;min-height:0}
   .stage{order:-1;height:auto;min-height:0;display:flex;justify-content:center;align-items:flex-start;overflow:visible;margin-top:8px;padding-top:10px}
@@ -293,7 +294,7 @@ footer .legal p{max-width:80ch}
   .duo{grid-template-columns:1fr;gap:24px}
   .duo .go{display:none}
   .models{grid-template-columns:1fr;gap:72px}
-  .model:nth-child(2){margin-top:0}
+  .model:nth-child(even){margin-top:0}
   .model .screen{aspect-ratio:390/600;max-width:460px}
   .incl ul{grid-template-columns:1fr}
   .preview{display:none}
@@ -428,18 +429,22 @@ footer .legal p{max-width:80ch}
 <section class="sites" id="sites" aria-labelledby="sites-h">
   <div class="top">
     <h2 id="sites-h" class="rv">Sites que fazem o cliente chamar.</h2>
-    <p class="rv d1">Três negócios, três jeitos. Abra e role: todo site tem animação, carrega rápido no celular e leva o cliente direto pro seu WhatsApp. O seu leva o seu nome, as suas fotos e as cores que você quiser.</p>
+    <p class="rv d1">Quatro negócios, quatro jeitos. Abra e role: todo site tem animação, carrega rápido no celular e leva o cliente direto pro seu WhatsApp. O seu leva o seu nome, as suas fotos e as cores que você quiser.</p>
   </div>
   <div class="models">
-    <a class="model rv" href="modelos/barbearia/">
+    <a class="model rv" href="modelos/hamburgueria/">
+      <div class="screen"><video data-src="img/work/site-hamburgueria.mp4" poster="img/work/site-hamburgueria.webp" muted loop playsinline preload="none" aria-label="Site da hamburgueria Brasa Burger rolando"></video></div>
+      <h3>Brasa Burger</h3><p>Hamburgueria · o lanche se mexe enquanto você rola</p><span class="go">Abrir o modelo →</span>
+    </a>
+    <a class="model rv d1" href="modelos/barbearia/">
       <div class="screen"><video data-src="img/work/site-barbearia.mp4" poster="img/work/site-barbearia.webp" muted loop playsinline preload="none" aria-label="Site da barbearia Navalha Club rolando"></video></div>
       <h3>Navalha Club</h3><p>Barbearia · agendamento em três toques</p><span class="go">Abrir o modelo →</span>
     </a>
-    <a class="model rv d1" href="modelos/cardapio/">
+    <a class="model rv d2" href="modelos/cardapio/">
       <div class="screen"><video data-src="img/work/site-restaurante.mp4" poster="img/work/site-restaurante.webp" muted loop playsinline preload="none" aria-label="Site do restaurante Cantina Rossi rolando"></video></div>
       <h3>Cantina Rossi</h3><p>Restaurante · cardápio com pedido no WhatsApp</p><span class="go">Abrir o modelo →</span>
     </a>
-    <a class="model rv d2" href="modelos/petshop/">
+    <a class="model rv d3" href="modelos/petshop/">
       <div class="screen"><video data-src="img/work/site-petshop.mp4" poster="img/work/site-petshop.webp" muted loop playsinline preload="none" aria-label="Site do pet shop Pelúcia Pet rolando"></video></div>
       <h3>Pelúcia Pet</h3><p>Pet shop · banho e tosa com preço por porte</p><span class="go">Abrir o modelo →</span>
     </a>
