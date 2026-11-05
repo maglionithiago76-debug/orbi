@@ -29,23 +29,29 @@ body.dark .top a.go{background:var(--y);color:var(--ink)}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--y);font:700 17px var(--s);text-decoration:none;border:0;cursor:pointer}
 .btn:active{transform:scale(.97)}
 
-/* 1. hero: giant word, burger in front */
-.hero{height:230vh;position:relative}
+/* 1. hero: ingredients fall and stack on load, then the scroll takes the burger apart */
+.hero{height:340vh;position:relative}
 .hero .word{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:center;padding-top:clamp(70px,12vh,120px);font:400 clamp(110px,31vw,520px)/.8 var(--d);color:var(--r);letter-spacing:-.04em;user-select:none}
-.hero .word span{display:inline-block;will-change:transform,opacity;animation:drop 1.1s var(--ease) both}
+.hero .word span{display:inline-block;will-change:transform,opacity;animation:drop 1s var(--ease) both}
 .hero .word span:nth-child(2){animation-delay:.06s}.hero .word span:nth-child(3){animation-delay:.12s}.hero .word span:nth-child(4){animation-delay:.18s}.hero .word span:nth-child(5){animation-delay:.24s}
 @keyframes drop{from{transform:translateY(-120%) rotate(-12deg);opacity:0}}
-.hero .burger{position:absolute;left:50%;top:52%;width:min(78vw,620px);translate:-50% -50%;will-change:transform;filter:drop-shadow(0 30px 40px rgba(80,30,0,.35))}
-.hero .burger img{animation:land 1.3s var(--ease) .35s both}
-@keyframes land{from{transform:translateY(-70vh) rotate(-30deg) scale(.6)}}
-.hero .say{position:absolute;left:var(--m);bottom:clamp(20px,5vh,48px);max-width:min(30ch,80vw)}
+.stack{position:absolute;left:50%;top:56%;width:min(44vw,400px);height:0;translate:-50% 0}
+.lay{position:absolute;left:50%;top:0;will-change:transform}
+.lay img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 22px rgba(70,25,0,.28));animation:fall .9s cubic-bezier(.3,1.35,.5,1) both}
+@keyframes fall{from{transform:translateY(-110vh) rotate(-20deg)}}
+.lay .tag{position:absolute;top:50%;white-space:nowrap;font:600 15px/1.2 var(--s);opacity:0;transition:opacity .4s;translate:0 -50%}
+.lay .tag b{display:block;font:400 clamp(17px,1.6vw,24px)/1 var(--d);color:var(--r)}
+.lay.r .tag{left:calc(100% + 18px)}.lay.l .tag{right:calc(100% + 18px);text-align:right}
+.hero.open .lay .tag{opacity:1}
+.hero .say{position:absolute;left:var(--m);bottom:clamp(20px,5vh,48px);max-width:min(30ch,80vw);transition:opacity .4s}
 .hero h1{font:400 clamp(26px,3vw,40px)/1 var(--d);letter-spacing:-.01em}
 .hero .say p{margin-top:10px;font-weight:600}
 .hero .say .btn{margin-top:18px}
-.hero .hint{position:absolute;right:var(--m);bottom:clamp(20px,5vh,48px);font-weight:700;font-size:14px;writing-mode:vertical-rl}
+.hero .layers{position:absolute;right:var(--m);top:clamp(80px,14vh,140px);max-width:16ch;font:400 clamp(30px,3.4vw,54px)/.92 var(--d);color:var(--r);opacity:0;transition:opacity .5s;text-align:right}
+.hero.open .layers{opacity:1}.hero.open .say{opacity:0;pointer-events:none}
 
 /* 2. menu: pinned carousel */
-.menu{height:360vh;position:relative}
+.menu{height:440vh;position:relative}
 .menu .name{position:absolute;left:0;right:0;top:clamp(70px,13vh,130px);text-align:center;font:400 clamp(54px,12.5vw,210px)/.85 var(--d);color:var(--r);letter-spacing:-.03em;white-space:nowrap}
 .menu .name i{display:inline-block;font-style:normal;transition:transform .5s var(--ease),opacity .4s}
 .menu .name i.out{transform:translateY(-60%) rotate(-14deg);opacity:0}
@@ -77,7 +83,7 @@ body.dark .top a.go{background:var(--y);color:var(--ink)}
 /* 4. macro zoom */
 .zoom{height:220vh;position:relative;background:var(--coal);color:var(--y)}
 .zoom .pic{position:absolute;inset:0;display:grid;place-items:center}
-.zoom .pic img{width:min(86vw,760px);will-change:transform}
+.zoom .pic{overflow:hidden}.zoom .pic img{width:100%;height:100%;object-fit:cover;will-change:transform}
 .zoom .gram{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(110px,24vw,380px)/.8 var(--d);color:var(--y);opacity:0;will-change:opacity,transform}
 .zoom .cap{position:absolute;left:var(--m);right:var(--m);bottom:clamp(24px,6vh,60px);display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--cream);opacity:0;transition:opacity .4s}
 .zoom .cap.on{opacity:1}
@@ -121,7 +127,10 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 
 @media(max-width:760px){
   .hero .word{font-size:28vw;padding-top:15vh}
-  .hero .burger{top:50%;width:84vw}
+  .stack{width:42vw;top:60%}
+  .lay .tag{font-size:11px;white-space:normal;width:24vw}.lay .tag b{font-size:14px}
+  .lay.r .tag{left:calc(100% + 6px)}.lay.l .tag{right:calc(100% + 6px)}
+  .hero .layers{left:var(--m);right:auto;text-align:left;top:84px;font-size:30px}
   .menu .plate{top:50%;width:min(92vw,460px)}
   .menu .info{max-width:56vw}
   .menu .dots{display:none}
@@ -143,12 +152,12 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 <header class="top"><b>Brasa</b><a class="go" href="#pedir">Pedir agora</a></header>
 
 <main>
-<section class="hero" aria-labelledby="h1">
+<section class="hero" id="hero" aria-labelledby="h1">
   <div class="pin">
     <div class="word" aria-hidden="true" id="word"><span>B</span><span>R</span><span>A</span><span>S</span><span>A</span></div>
-    <div class="burger" id="hb"><img src="../img/bb-classico.webp" alt="Cheeseburger com pão de gergelim, cheddar, carne e alface" width="1000" height="764" fetchpriority="high"></div>
-    <div class="say"><h1 id="h1">Smash na chapa, entregue quente.</h1><p>Carne esmagada a 230 °C, cheddar derretido e pão macio. Delivery e retirada.</p><a class="btn" href="#pedir">Pedir agora</a></div>
-    <span class="hint" aria-hidden="true">role pra baixo ↓</span>
+    <p class="layers" aria-hidden="true">Sete camadas, na ordem certa.</p>
+    <div class="stack" id="stack" role="img" aria-label="Hambúrguer montado camada por camada: pão, cheddar, carne, tomate, cebola, alface e pão"><div class="lay l" data-f="1.0" style="width:100.0%;z-index:10"><img src="../img/bx-pao.webp" alt="" style="animation-delay:1.13s"><span class="tag"><b>Pão brioche</b>selado na manteiga</span></div><div class="lay r" data-f="1.12" style="width:112.00000000000001%;z-index:9"><img src="../img/bx-queijo.webp" alt="" style="animation-delay:1.00s"><span class="tag"><b>Cheddar</b>derretido na chapa</span></div><div class="lay l" data-f="1.06" style="width:106.0%;z-index:8"><img src="../img/bx-carne.webp" alt="" style="animation-delay:0.87s"><span class="tag"><b>Blend de 160 g</b>esmagado na hora</span></div><div class="lay r" data-f="1.0" style="width:100.0%;z-index:7"><img src="../img/bx-tomate.webp" alt="" style="animation-delay:0.74s"><span class="tag"><b>Tomate</b>fatiado no dia</span></div><div class="lay l" data-f="0.82" style="width:82.0%;z-index:6"><img src="../img/bx-cebola.webp" alt="" style="animation-delay:0.61s"><span class="tag"><b>Cebola</b>em rodelas finas</span></div><div class="lay r" data-f="1.22" style="width:122.0%;z-index:5"><img src="../img/bx-alface.webp" alt="" style="animation-delay:0.48s"><span class="tag"><b>Alface</b>crocante, lavada</span></div><div class="lay l" data-f="1.0" style="width:100.0%;z-index:4"><img src="../img/bx-base.webp" alt="" style="animation-delay:0.35s"><span class="tag"><b>Pão</b>a base de tudo</span></div></div>
+    <div class="say"><h1 id="h1">Smash na chapa, entregue quente.</h1><p>Carne esmagada a 230 °C, cheddar derretido e pão brioche. Delivery e retirada.</p><a class="btn" href="#pedir">Pedir agora</a></div>
   </div>
 </section>
 
@@ -156,16 +165,16 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
   <h2 id="menu-h" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Cardápio</h2>
   <div class="pin">
     <div class="name" id="mname" aria-live="polite"></div>
-    <div class="plate"><img src="../img/bb-classico.webp" alt="" width="1000" height="764"><img src="../img/bb-queijo.webp" alt="" width="645" height="563" loading="lazy"><img src="../img/bb-duplo.webp" alt="" width="1000" height="821" loading="lazy"></div>
+    <div class="plate"><img src="../img/bp-classico.webp" alt="" width="1000" height="817"><img src="../img/bp-cheddar.webp" alt="" width="1000" height="715" loading="lazy"><img src="../img/bp-bacon.webp" alt="" width="1000" height="668" loading="lazy"><img src="../img/bp-salada.webp" alt="" width="1000" height="653" loading="lazy"></div>
     <div class="info fade" id="minfo"><small id="mtag"></small><p id="mdesc"></p></div>
     <div class="price fade" id="mprice"><b id="mval"></b><a class="btn" id="mgo" href="#pedir">Pedir este</a></div>
-    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
 <section class="grill" id="grill" aria-labelledby="grill-h">
   <div class="pin">
-    <div class="disc" id="disc"><img src="../img/bb-chapa.webp" alt="Hambúrgueres na chapa" width="900" height="900" loading="lazy"></div>
+    <div class="disc" id="disc"><img src="../img/bp-chapa.webp" alt="Carne sendo esmagada na chapa, com fumaça" width="1000" height="1000" loading="lazy"></div>
     <div class="txt"><h2 id="grill-h">Esmagado na hora.</h2><p>A carne vai em bola pra chapa e é esmagada na hora. A 230 °C ela sela e ganha a crosta que dá o sabor.</p></div>
     <div class="deg" aria-hidden="true"><span id="deg">90</span>°C</div>
   </div>
@@ -173,7 +182,7 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 
 <section class="zoom" id="zoom" aria-label="Detalhe do Duplo Brasa">
   <div class="pin">
-    <div class="pic"><img id="zimg" src="../img/bb-duplo.webp" alt="Duplo Brasa de perto: duas carnes, cheddar e picles" width="1000" height="821" loading="lazy"></div>
+    <div class="pic"><img id="zimg" src="../img/bp-macro.webp" alt="Duplo de perto: duas carnes, cheddar derretido e tomate" width="1600" height="1329" loading="lazy"></div>
     <div class="gram" id="gram" aria-hidden="true">160 g</div>
     <div class="cap" id="zcap"><span>Blend da casa, 160 g por carne</span><span>Moído todo dia</span></div>
   </div>
@@ -182,19 +191,19 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 <section class="bag" id="bag" aria-labelledby="bag-h">
   <div class="pin">
     <div class="txt"><h2 id="bag-h">Da chapa pro saco.</h2><p>Embalado na hora pra chegar quente. Saco de papel, sem isopor.</p></div>
-    <img class="fall" id="fall" src="../img/bb-classico.webp" alt="" width="1000" height="764" loading="lazy">
+    <img class="fall" id="fall" src="../img/bp-classico.webp" alt="" width="1000" height="817" loading="lazy">
     <div class="b" aria-hidden="true"><div class="back"></div><div class="front"><b>Brasa</b><small>smash burger</small></div></div>
   </div>
 </section>
 
-<div class="tape" aria-hidden="true"><div id="tape">Smash na chapa ✦ Pão de gergelim ✦ Cheddar escorrendo ✦ Blend de 160 g ✦ Smash na chapa ✦ Pão de gergelim ✦ Cheddar escorrendo ✦ Blend de 160 g ✦ Smash na chapa ✦ Pão de gergelim ✦ Cheddar escorrendo ✦ Blend de 160 g ✦</div></div>
+<div class="tape" aria-hidden="true"><div id="tape">Smash na chapa ✦ Pão brioche ✦ Cheddar escorrendo ✦ Blend de 160 g ✦ Smash na chapa ✦ Pão brioche ✦ Cheddar escorrendo ✦ Blend de 160 g ✦ Smash na chapa ✦ Pão brioche ✦ Cheddar escorrendo ✦ Blend de 160 g ✦</div></div>
 
 <section class="order" id="pedir" aria-labelledby="order-h">
   <div class="head"><h2 id="order-h">Como vai ser hoje?</h2><p>Escolha e o pedido abre no WhatsApp com tudo escrito. É só mandar.</p></div>
   <ul class="ways">
     <li><a href="https://wa.me/5511927013668?text=Oi!%20Quero%20pedir%20delivery%20(modelo%20Brasa)."><b>Delivery</b><span>Até 5 km · chega em 35 a 45 min</span><em>→</em></a></li>
     <li><a href="https://wa.me/5511927013668?text=Oi!%20Quero%20pedir%20pra%20retirar%20(modelo%20Brasa)."><b>Retirada</b><span>Pronto em 15 min, sem fila</span><em>→</em></a></li>
-    <li><a href="#menu"><b>Ver o cardápio</b><span>Três lanches, feitos do mesmo jeito todo dia</span><em>↑</em></a></li>
+    <li><a href="#menu"><b>Ver o cardápio</b><span>Quatro lanches, feitos do mesmo jeito todo dia</span><em>↑</em></a></li>
   </ul>
   <div class="info2">
     <div><b>Horário</b>Ter a dom, das 18h às 23h30</div>
@@ -206,7 +215,7 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 
 <footer>
   <div class="big" id="fbig" aria-hidden="true">Brasa ✦ Brasa</div>
-  <div class="legal"><span>Modelo de site feito pela <a href="https://maglionithiago76-debug.github.io/orbi/">Orbi</a>. Nome, preços e endereço fictícios.</span><span>Fotos: Renee Comet/NCI (domínio público), Evan-Amos (CC0), pointnshoot e El Gran Dee (Flickr, CC BY 2.0).</span></div>
+  <div class="legal"><span>Modelo de site feito pela <a href="https://maglionithiago76-debug.github.io/orbi/">Orbi</a>. Nome, preços e endereço fictícios.</span><span>Fotos: Pexels (licença livre).</span></div>
 </footer>
 <a class="fab" id="fab" href="https://wa.me/5511927013668?text=Oi!%20Quero%20pedir%20(modelo%20Brasa).">Pedir no WhatsApp</a>
 
@@ -216,11 +225,27 @@ const $ = s => document.querySelector(s), clamp = (v, a = 0, b = 1) => Math.min(
 const prog = el => { const r = el.getBoundingClientRect(); return clamp(-r.top / (el.offsetHeight - innerHeight)); };
 const seen = el => { const r = el.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight; };
 const M = [
-  ['Clássico', 'R$ 29', 'O mais pedido', 'Carne de 160 g, cheddar, alface e pão de gergelim. O que você imagina quando pensa em hambúrguer.'],
-  ['Muçarela', 'R$ 32', 'Queijo derretido', 'Carne selada na chapa, muçarela derretendo pelos lados e alface fresca.'],
-  ['Duplo Brasa', 'R$ 38', 'Pra quem tem fome', 'Duas carnes de 160 g, cheddar, picles e o molho da casa. Dois andares de pão.'],
+  ['Clássico', 'R$ 29', 'O mais pedido', 'Carne de 160 g, cheddar e pão de gergelim selado. O que você imagina quando pensa em hambúrguer.'],
+  ['Duplo', 'R$ 36', 'Pra quem tem fome', 'Duas carnes esmagadas, cheddar escorrendo, tomate, cebola roxa e maionese da casa.'],
+  ['Bacon', 'R$ 38', 'Da casa', 'Bacon crocante, creme de queijo, carne de 160 g e alface no pão australiano.'],
+  ['Salada', 'R$ 32', 'Leve e completo', 'Carne de 160 g, cheddar, alface americana e tomate no brioche com gergelim.'],
 ];
-const hero = $('.hero'), letters = [...document.querySelectorAll('#word span')], hb = $('#hb');
+const hero = $('#hero'), letters = [...document.querySelectorAll('#word span')], stack = $('#stack'), lays = [...document.querySelectorAll('.lay')];
+const ASM = [-.6, -.42, -.33, -.22, -.17, -.12, 0]; // stacked centres, in bun widths, top bun first
+function heroFrame() {
+  const p = prog(hero), B = stack.offsetWidth, mob = innerWidth < 760;
+  const k = ease(clamp((p - .08) / .32)) * (1 - ease(clamp((p - .78) / .2)));
+  const span = Math.min(innerHeight * (mob ? .6 : .64), B * 2.6), gap = span / 6;
+  hero.classList.toggle('open', k > .6);
+  lays.forEach((l, i) => {
+    const asm = ASM[i] * B, exp = (i - 3) * gap - ASM[3] * 0, y = asm + (exp - asm + ASM[3] * B * 0) * k;
+    const yy = (1 - k) * asm + k * ((i - 6) * gap + span * .5 - B * .1);
+    l.style.transform = `translate(-50%, calc(-50% + ${yy}px)) rotate(${(i % 2 ? 1 : -1) * k * 4}deg)`;
+  });
+  const e = ease(clamp(p / .5));
+  letters.forEach((l, i) => { const d = i - 2; l.style.transform = `translate(${d * e * 34}vw, ${-e * 8}vh) rotate(${d * e * 10}deg)`; l.style.opacity = 1 - e * .85; });
+  stack.style.scale = 1 - ease(clamp((p - .82) / .18)) * .25;
+}
 const menu = $('#menu'), plates = [...document.querySelectorAll('.plate img')], dots = [...document.querySelectorAll('.dots i')];
 const grill = $('#grill'), disc = $('#disc'), deg = $('#deg'), zoom = $('#zoom'), zimg = $('#zimg'), gram = $('#gram'), zcap = $('#zcap');
 const bag = $('#bag'), fall = $('#fall'), tape = $('#tape'), fbig = $('#fbig'), fab = $('#fab');
@@ -242,15 +267,13 @@ function showItem(i) {
 }
 showItem(0);
 function frame() {
-  if (seen(hero)) { const p = prog(hero), e = ease(clamp(p / .8));
-    letters.forEach((l, i) => { const d = i - 2; l.style.transform = `translate(${d * e * 34}vw, ${-e * 10 + Math.abs(d) * e * 6}vh) rotate(${d * e * 12}deg)`; l.style.opacity = 1 - e * .85; });
-    hb.style.transform = `scale(${1 + e * .45}) rotate(${-4 + e * 14}deg) translateY(${-e * 4}vh)`; }
-  if (seen(menu)) showItem(Math.min(2, Math.floor(prog(menu) * 3)));
+  if (seen(hero)) heroFrame();
+  if (seen(menu)) showItem(Math.min(3, Math.floor(prog(menu) * 4)));
   if (seen(grill)) { const p = prog(grill), e = ease(clamp(p / .85));
     disc.style.clipPath = `circle(${18 + e * 32}% at 50% 50%)`; disc.style.transform = `rotate(${p * 70}deg)`;
     deg.textContent = Math.round(90 + e * 140); }
   if (seen(zoom)) { const p = prog(zoom), e = ease(clamp(p / .9));
-    zimg.style.transform = `scale(${1 + e * 2.1}) translateY(${e * 6}%)`;
+    zimg.style.transform = `scale(${1 + e * 1.4}) translateY(${e * 4}%)`;
     gram.style.opacity = clamp((p - .35) / .3); gram.style.transform = `scale(${1.25 - clamp((p - .35) / .4) * .25})`;
     zcap.classList.toggle('on', p > .5); }
   if (seen(bag)) { const p = prog(bag), e = ease(clamp(p / .8));
