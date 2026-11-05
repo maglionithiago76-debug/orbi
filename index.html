@@ -58,6 +58,7 @@ p{max-width:60ch}
 .hero h1 .ln:nth-child(2) span{animation-delay:.11s}
 @keyframes rise{to{transform:none}}
 .hero .sub{margin-top:36px;font-size:var(--s-lead);line-height:1.35;max-width:30ch;opacity:0;animation:up .8s var(--ease) .45s forwards}
+.hero .note{margin-top:14px;font-size:15px;color:#a3a3a8;opacity:0;animation:up .8s var(--ease) .65s forwards}
 .hero .act{margin-top:38px;display:flex;flex-wrap:wrap;gap:12px;opacity:0;animation:up .8s var(--ease) .55s forwards}
 @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .facts{margin-top:56px;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 40px;list-style:none;font-size:var(--s-small);color:var(--soft);opacity:0;animation:up .8s var(--ease) .7s forwards}
@@ -262,8 +263,9 @@ footer .legal p{max-width:80ch}
 @media(min-width:1001px) and (max-width:1300px){.models{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1000px){
   .hero{grid-template-columns:1fr;min-height:0}
-  .stage{order:-1;height:auto;min-height:0;display:flex;justify-content:center;align-items:flex-start;overflow:visible;margin-top:8px;padding-top:10px}
-  .hero > div{order:2}
+  .stage{order:2;height:auto;min-height:0;display:flex;justify-content:center;align-items:flex-start;overflow:visible;margin-top:8px;padding-top:10px}
+  .hero > div{order:1}
+  .hero .act .btn{width:100%}
   .stage .phone,.stage .phone:nth-child(2){position:relative;left:auto;right:auto;top:auto;width:38%;flex:none;border-width:6px;border-radius:26px}
   .stage .phone:nth-child(1){transform:rotate(-6deg);margin-right:-9%;margin-top:36px}
   .stage .phone:nth-child(3){transform:rotate(6deg);margin-left:-9%;margin-top:36px}
@@ -338,6 +340,9 @@ footer .legal p{max-width:80ch}
 <section class="hero" aria-labelledby="h1">
   <div>
     <h1 id="h1"><span class="ln"><span>Mais clientes.</span></span><span class="ln"><span>Menos trabalho.</span></span></h1>
+    <p class="sub">Site ou app feito para o seu negócio, no ar em 5 dias. Você só paga depois de ver pronto e aprovar.</p>
+    <div class="act"><a class="btn" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">Conversar no WhatsApp</a></div>
+    <p class="note">Sem entrada. Sem mensalidade.</p>
 
   </div>
   <figure class="stage" id="stage" aria-label="Um app de pedidos, um site de barbearia e um app de gestão feitos pela Orbi">
@@ -503,6 +508,7 @@ footer .legal p{max-width:80ch}
 <section class="faq" id="duvidas" aria-labelledby="faq-h">
   <h2 id="faq-h" class="rv">Perguntas de quem vai começar.</h2>
   <div class="qs">
+    <details class="rv"><summary>Já uso um app de agenda grátis. Preciso de site?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Continua com ele. O app agenda quem já te conhece; o site faz quem ainda não te conhece te achar no Google, e o botão leva direto pro seu app. Sem mensalidade.</p></details>
     <details class="rv"><summary>Tem mensalidade?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não. Site e app são pagamento único, com hospedagem inclusa.</p></details>
     <details class="rv"><summary>Preciso pagar alguma coisa antes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não. A gente cria, você vê pronto no seu celular e só paga depois de aprovar.</p></details>
     <details class="rv"><summary>Quanto custa?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Depende do que a sua empresa precisa. Conta pra gente no WhatsApp e você recebe o valor fechado antes de começarmos, sem surpresa no final.</p></details>
@@ -579,7 +585,6 @@ function storyFrame() {
   scr.forEach((x, i) => x.classList.toggle('on', i === st));
   typed.textContent = st ? Q : Q.slice(0, Math.round(clamp(sub * 1.7) * Q.length));
   hit.classList.toggle('lit', st > 0 || sub > .72);
-  num.textContent = Math.round(76 * (st ? 1 : ease(clamp(sub * 1.4)))) + '%';
   if (siteimg.complete && siteimg.naturalHeight) siteimg.style.transform = `translateY(${-(st === 1 ? ease(sub) : st > 1 ? 1 : 0) * Math.min(big.clientHeight * 1.6, Math.max(0, siteimg.offsetHeight - big.clientHeight))}px)`;
   msgs.forEach((m, i) => m.classList.toggle('on', st === 2 && sub > .08 + i * .22));
   story.classList.toggle('call', st === 2);
