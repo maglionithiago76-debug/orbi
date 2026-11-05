@@ -69,10 +69,34 @@ p{max-width:60ch}
 .stage .phone:nth-child(1){left:2%;top:14%}
 .stage .phone:nth-child(2){left:31%;top:0;z-index:2;width:clamp(200px,17.5vw,300px)}
 .stage .phone:nth-child(3){right:0;top:20%}
-.stage .phone{opacity:0;animation:boot 1.3s var(--ease) forwards}
+.stage .phone{opacity:0;animation:boot 1.6s var(--ease) forwards}
 .stage .phone:nth-child(1){animation-delay:.35s}.stage .phone:nth-child(2){animation-delay:.15s}.stage .phone:nth-child(3){animation-delay:.5s}
-@keyframes boot{from{opacity:0;translate:0 120px;scale:.86}to{opacity:1;translate:0 0;scale:1}}
+@keyframes boot{from{opacity:0;translate:0 180px;scale:.7;rotate:x 70deg}60%{opacity:1}to{opacity:1;translate:0 0;scale:1;rotate:x 0deg}}
 .stage figcaption{position:absolute;inset:auto 0 -6px 0;display:flex;justify-content:space-around;font-size:var(--s-small);color:var(--soft)}
+
+
+/* boom: the site opens into its parts, scrubbed by the scroll */
+.boom{height:330vh;position:relative}
+.boom .pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;padding:clamp(70px,10vh,96px) var(--m) clamp(24px,4vh,40px);overflow:hidden}
+.boom h2{font-size:clamp(40px,4.6vw,78px);max-width:13ch}
+.parts{list-style:none;margin-top:clamp(24px,5vh,56px);display:grid;gap:clamp(10px,2vh,20px)}
+.parts li{color:var(--soft);opacity:.35;transform:translateX(0);transition:opacity .45s var(--ease),transform .5s var(--ease),color .3s}
+.parts li.on{opacity:1;color:var(--ink);transform:translateX(14px)}
+.parts b{display:block;font-size:clamp(22px,2vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.parts li.on b{color:var(--accent)}
+.parts p{margin-top:4px;font-size:var(--s-body);max-width:40ch}
+.lab{height:100%;display:grid;place-items:center;perspective:1800px}
+.rig{position:relative;width:min(370px,40vh);aspect-ratio:390/844;transform-style:preserve-3d;will-change:transform}
+.rig .phone.base{position:absolute;inset:0;width:100%}
+.ly{position:absolute;left:5%;width:90%;border-radius:18px;overflow:hidden;opacity:0;will-change:transform,opacity;transition:outline-color .3s}
+.ly img{width:100%;height:auto;border-radius:0}
+.ly.hot{outline:3px solid var(--accent);outline-offset:4px}
+.l0{top:3%}.l1{top:12%}.l2{top:47%}.l3{top:60%}.l4{top:84%}
+.gcard{background:#fff;color:#111214;padding:12px 14px;font-size:12px;line-height:1.3}
+.gcard span{color:#5C5D58;font-size:10px}.gcard b{display:block;margin:2px 0;font-size:14px}.gcard em{font-style:normal;color:#3D3E3A}
+.wcard{display:flex;gap:10px;align-items:center;background:var(--accent);color:#111214;padding:12px;font-size:12px;line-height:1.3}
+.wcard i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#111214;color:var(--accent);font-style:normal;font-weight:800}
+.wcard b{display:block;font-size:13px}
 
 /* story: pinned, scrubbed by the scroll */
 .story{height:340vh;position:relative;background:var(--bg);transition:background-color .6s var(--ease)}
@@ -246,6 +270,14 @@ footer .legal p{max-width:80ch}
   .desk{padding:8px;max-width:420px}
   .phone video,.phone img{border-radius:20px}
   .stage figcaption{position:static;display:none}
+  .boom{height:300vh}
+  .boom .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-items:start;gap:8px;padding-top:84px}
+  .boom h2{font-size:clamp(30px,8.4vw,44px);max-width:none}
+  .parts{margin-top:12px;position:relative;min-height:4.6em}
+  .parts li{position:absolute;inset:0 auto auto 0;visibility:hidden;opacity:0}
+  .parts li.on{visibility:visible;opacity:1;transform:none}
+  .parts b{font-size:24px}.parts p{font-size:16px}
+  .rig{width:min(240px,31svh)}
   .story{height:300vh}
   .story .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-items:start;gap:16px;padding-top:84px}
   .story h2{font-size:clamp(30px,8.4vw,44px)}
@@ -287,6 +319,7 @@ footer .legal p{max-width:80ch}
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}
   .story{height:auto}.story .pin{position:relative;height:auto}
   .beats{min-height:0}.beats li{position:static;opacity:1;visibility:visible;transform:none;margin-bottom:24px}
+  .boom{height:auto}.boom .pin{position:relative;height:auto}.parts li{position:static;opacity:1;visibility:visible}.ly{opacity:1}
   .rv{opacity:1;transform:none}
   .bar.pre > div{transform:none}
   html{scroll-behavior:auto}
@@ -320,6 +353,31 @@ footer .legal p{max-width:80ch}
     <div class="phone" data-depth="1" data-side="0"><video src="img/work/site-barbearia.mp4" poster="img/work/site-barbearia.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de barbearia rolando"></video></div>
     <div class="phone" data-depth=".85" data-side="1"><video src="img/work/app-gestao-phone.mp4" poster="img/work/app-gestao-phone.webp" muted loop playsinline autoplay preload="metadata" aria-label="App de gestão de uma academia"></video></div>
   </figure>
+</section>
+
+<section class="boom" id="boom" aria-labelledby="boom-h">
+  <div class="pin">
+    <div class="copy">
+      <h2 id="boom-h">Cada parte do site vende.</h2>
+      <ol class="parts">
+        <li class="on"><b>Aparece no Google</b><p>Quem procura o que você faz, perto de você, te encontra.</p></li>
+        <li><b>Segura o cliente</b><p>Foto e frase certas: em 3 segundos ele entende por que escolher você.</p></li>
+        <li><b>Preço à vista</b><p>Ninguém precisa perguntar quanto custa. Chega decidido.</p></li>
+        <li><b>Agenda em 3 toques</b><p>Sem ligação e sem esperar resposta, a qualquer hora.</p></li>
+        <li><b>Cai no seu WhatsApp</b><p>O pedido chega pronto. Você só confirma.</p></li>
+      </ol>
+    </div>
+    <div class="lab" aria-hidden="true">
+      <div class="rig" id="rig">
+        <div class="phone base"><img src="img/work/site-barbearia.webp" alt="" width="720" height="1558" loading="lazy"></div>
+        <div class="ly l0" data-ui><div class="gcard"><span>navalhaclub.com.br</span><b>Navalha Club · Barbearia no Centro</b><em>Aberto hoje até 20h · Agendar online</em></div></div>
+        <div class="ly l1"><img src="img/work/ly-hero.webp" alt="" width="720" height="995" loading="lazy"></div>
+        <div class="ly l2"><img src="img/work/ly-price.webp" alt="" width="648" height="240" loading="lazy"></div>
+        <div class="ly l3"><img src="img/work/ly-chips.webp" alt="" width="648" height="435" loading="lazy"></div>
+        <div class="ly l4" data-ui><div class="wcard"><i>L</i><div><b>Lucas · via site</b><span>Oi! Quero agendar corte sábado às 10h.</span></div></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="story" id="story" aria-labelledby="story-h">
@@ -530,6 +588,18 @@ function storyFrame() {
   meter.style.transform = `scaleX(${p})`;
   big.style.transform = `rotateY(${(.5 - p) * 34}deg) rotateX(${6 - p * 6}deg)`;
 }
+
+const boom = document.getElementById('boom'), rig = document.getElementById('rig'), lys = [...boom.querySelectorAll('.ly')], parts = [...boom.querySelectorAll('.parts li')];
+function boomFrame() {
+  const r = boom.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+  const p = clamp(-r.top / (boom.offsetHeight - innerHeight)), k = ease(clamp(p / .28));
+  const act = Math.min(4, Math.floor(clamp((p - .16) / .74) * 5)), f = rig.offsetWidth / 370, w = wide.matches;
+  rig.style.transform = `translate(${w ? 0 : -11 * k}%, ${(w ? 12 : -4) * k}%) rotateX(${56 * k}deg) rotateZ(${-34 * k}deg) scale(${1 - .14 * k})`;
+  lys.forEach((l, i) => { const hot = i === act && k > .9; l.classList.toggle('hot', hot);
+    l.style.opacity = clamp(k * 1.6 - i * .12);
+    l.style.transform = `translateZ(${(k * (90 + i * 92) + (hot ? 40 : 0)) * f}px)`; });
+  parts.forEach((x, i) => x.classList.toggle('on', i === act));
+}
 function straighten(el, tilt, lift) {
   const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
   const e = ease(clamp((innerHeight - r.top) / (innerHeight * .85)));
@@ -537,7 +607,7 @@ function straighten(el, tilt, lift) {
 }
 function tick() {
   if (Math.abs(mx - cx) > .001 || Math.abs(my - cy) > .001) { cx += (mx - cx) * .07; cy += (my - cy) * .07; dirty = true; }
-  if (dirty) { dirty = false; hero(); storyFrame(); screens.forEach(el => straighten(el, 24, 90)); if (desk) straighten(desk, 32, 60); }
+  if (dirty) { dirty = false; hero(); boomFrame(); storyFrame(); screens.forEach(el => straighten(el, 24, 90)); if (desk) straighten(desk, 32, 60); }
   requestAnimationFrame(tick);
 }
 if (!reduce) requestAnimationFrame(tick); else { beats.forEach(b => b.classList.add('on')); }
