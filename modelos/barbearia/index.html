@@ -30,6 +30,26 @@ nav ul a{text-decoration:none;color:var(--muted)}nav ul a:hover{color:var(--ink)
 nav .btn{min-height:44px;padding:0 20px;font-size:15px}
 @media(max-width:800px){nav ul{display:none}}
 
+
+/* kit: the tools fly in and lay out on load, then orbit with the scroll (owner 2026-11-04: cinematic like the reference reel) */
+.kit{position:relative;height:300svh;background:#1B1612}
+.kit .pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.kit .word{position:absolute;left:0;right:0;top:calc(50% - 50px);translate:0 -50%;text-align:center;font:italic 800 clamp(84px,19vw,330px)/.8 var(--serif);color:var(--brass);letter-spacing:-.03em;white-space:nowrap;will-change:transform,opacity}
+.kit .word span{display:inline-block;animation:kdrop 1s cubic-bezier(.2,.75,.15,1) both}
+.kit .word span:nth-child(2){animation-delay:.05s}.kit .word span:nth-child(3){animation-delay:.1s}.kit .word span:nth-child(4){animation-delay:.15s}.kit .word span:nth-child(5){animation-delay:.2s}.kit .word span:nth-child(6){animation-delay:.25s}.kit .word span:nth-child(7){animation-delay:.3s}
+@keyframes kdrop{from{transform:translateY(-110%) rotate(-10deg);opacity:0}}
+.tool{position:absolute;left:50%;top:calc(50% - 50px);will-change:transform}
+.tool img{display:block;height:100%;width:auto;filter:drop-shadow(0 22px 26px rgba(0,0,0,.55));animation:kin 1.1s cubic-bezier(.3,1.3,.5,1) both}
+@keyframes kin{from{transform:translateY(80vh) rotate(40deg)}}
+.kit .cap{position:absolute;left:var(--m);right:var(--m);bottom:clamp(22px,5vh,48px);display:flex;justify-content:space-between;align-items:end;gap:20px}
+.kit h2{font:800 clamp(26px,3vw,44px)/1 var(--serif);max-width:16ch}
+.kit .now{text-align:right;min-height:2.6em}
+.kit .now b{display:block;font:italic 800 clamp(24px,2.6vw,40px)/1 var(--serif);color:var(--brass)}
+.kit .now span{color:var(--muted)}
+.kit .hint{position:absolute;left:50%;top:clamp(70px,11vh,110px);translate:-50% 0;color:var(--muted);font-size:14px;letter-spacing:.02em;transition:opacity .4s}
+@media(max-width:700px){.kit .cap{flex-direction:column;align-items:start}.kit .now{text-align:left}}
+@media(prefers-reduced-motion:reduce){.kit{height:auto}.kit .pin{position:relative}}
+
 /* hero: the photo opens up as you scroll */
 .hero{position:relative;height:200svh}
 .hero .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;align-items:end}
@@ -142,6 +162,14 @@ dialog .btn.ghost{color:#1A1208;background:#E2D6C2}
   <a class="btn" href="#agendar">Agendar</a>
 </nav>
 
+<section class="kit" id="kit" aria-labelledby="kit-h">
+  <div class="pin">
+    <div class="word" aria-hidden="true"><span>N</span><span>a</span><span>v</span><span>a</span><span>l</span><span>h</span><span>a</span></div>
+    <div class="tool" data-i="0"><img src="../img/bt-maquina.webp" alt="" style="animation-delay:0.25s"></div><div class="tool" data-i="1"><img src="../img/bt-pente.webp" alt="" style="animation-delay:0.34s"></div><div class="tool" data-i="2"><img src="../img/bt-tesoura.webp" alt="" style="animation-delay:0.43s"></div><div class="tool" data-i="3"><img src="../img/bt-navalha.webp" alt="" style="animation-delay:0.52s"></div><div class="tool" data-i="4"><img src="../img/bt-aparador.webp" alt="" style="animation-delay:0.61s"></div><div class="tool" data-i="5"><img src="../img/bt-tesoura2.webp" alt="" style="animation-delay:0.70s"></div>
+    <span class="hint" aria-hidden="true">role pra baixo</span>
+    <div class="cap"><h2 id="kit-h">Seis ferramentas. Um corte de respeito.</h2><p class="now" aria-live="polite"><b id="kname">Máquina</b><span id="kdesc">degradê na régua, do zero ao topo</span></p></div>
+  </div>
+</section>
 <header class="hero" id="top">
   <div class="pin">
     <div class="ph"><img src="../img/barber-hero.webp" alt="Barbeiro cortando o cabelo de um cliente com pente e tesoura" width="1800" height="1201"></div>
@@ -282,6 +310,37 @@ if (!reduce) {
   };
   requestAnimationFrame(tick);
 }
+</script>
+<script>
+(() => {
+  const T = [["Máquina", "degradê na régua, do zero ao topo"], ["Pente", "risca no lugar certo"], ["Tesoura", "corte na tesoura, sem pressa"], ["Navalha", "barba com toalha quente"], ["Aparador", "contorno e pezinho"], ["Tesoura fina", "acabamento que dura"]];
+  const kit = document.getElementById('kit'), tools = [...kit.querySelectorAll('.tool')], word = kit.querySelector('.word'), hint = kit.querySelector('.hint');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), ease = t => 1 - Math.pow(1 - t, 3);
+  const RATIO = [216/700, 137/700, 269/700, 700/201, 194/700, 255/700];
+  let last = -1, dirty = true;
+  function frame() {
+    const r = kit.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    const p = clamp(-r.top / (kit.offsetHeight - innerHeight)), k = ease(clamp(p / .35)), w = innerWidth, h = innerHeight;
+    const H = Math.min(h * .42, w * .55, 380), gap = Math.min(w / 6.4, H * .55);
+    const R = Math.min(w * .36, h * .3), turn = p * 200;
+    let best = 0, bestD = 1e9;
+    tools.forEach((t, i) => {
+      const flat = i === 3, th = flat ? H * .3 : H, x0 = (i - 2.5) * gap, a = (i * 60 + turn - 90) * Math.PI / 180;
+      const x1 = Math.cos(a) * R * 1.25, y1 = Math.sin(a) * R, rot1 = i * 60 + turn + (flat ? 0 : 0);
+      const x = x0 + (x1 - x0) * k, y = y1 * k, rot = (flat ? -90 : 0) * (1 - k) + rot1 * k;
+      t.style.height = th + 'px';
+      t.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px) rotate(${rot}deg) scale(${1 - k * .28})`;
+      const d = Math.abs(((i * 60 + turn) % 360 + 360) % 360);
+      const dd = Math.min(d, 360 - d); if (dd < bestD) { bestD = dd; best = i; }
+    });
+    word.style.transform = `scale(${1 + k * .15})`; word.style.opacity = 1 - k * .55;
+    hint.style.opacity = 1 - clamp(p * 8);
+    const act = k > .5 ? best : 0;
+    if (act !== last) { last = act; document.getElementById('kname').textContent = T[act][0]; document.getElementById('kdesc').textContent = T[act][1]; }
+  }
+  addEventListener('scroll', () => dirty = true, { passive: true }); addEventListener('resize', () => dirty = true);
+  (function tick() { if (dirty) { dirty = false; frame(); } requestAnimationFrame(tick); })();
+})();
 </script>
 <script src="../../motion.js" defer></script>
 </body>

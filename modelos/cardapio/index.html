@@ -97,11 +97,41 @@ footer{max-width:1100px;margin:70px auto 0;padding:30px var(--m);font-size:13px;
 .empty{padding:30px 0;color:var(--muted)}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero img{animation:none}}
+
+/* forno: the pizza spins in on load, then the slices open with the scroll (cinematic, owner 2026-11-04) */
+.forno{position:relative;height:300svh;background:var(--dark);color:#FBF5EA}
+.forno .pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.forno .word{position:absolute;left:0;right:0;top:50%;translate:0 -50%;text-align:center;font:400 clamp(110px,26vw,440px)/.8 var(--serif);color:var(--red);letter-spacing:-.02em;white-space:nowrap;will-change:transform,opacity}
+.forno .word span{display:inline-block;animation:fdrop 1s cubic-bezier(.2,.75,.15,1) both}
+.forno .word span:nth-child(2){animation-delay:.06s}.forno .word span:nth-child(3){animation-delay:.12s}.forno .word span:nth-child(4){animation-delay:.18s}.forno .word span:nth-child(5){animation-delay:.24s}
+@keyframes fdrop{from{transform:translateY(-110%) rotate(-10deg);opacity:0}}
+.pz{position:absolute;left:50%;top:50%;width:min(78vw,62vh,600px);aspect-ratio:1;translate:-50% -50%;animation:spin-in 1.5s cubic-bezier(.2,.75,.15,1) .3s both}
+@keyframes spin-in{from{transform:translateY(-90vh) rotate(-260deg) scale(.6)}}
+.pz .rot{position:absolute;inset:0;will-change:transform}
+.pz img{position:absolute;inset:0;width:100%;height:100%;will-change:transform;filter:drop-shadow(0 26px 30px rgba(0,0,0,.5))}
+.pz .lbl{position:absolute;left:50%;top:50%;width:max-content;max-width:38vw;font:600 14px/1.25 var(--sans);opacity:0;transition:opacity .4s;translate:-50% -50%;text-align:center}
+.pz .lbl b{display:block;font:400 clamp(18px,1.8vw,26px)/1 var(--serif);color:var(--gold)}
+.forno.open .pz .lbl{opacity:1}
+.forno .cap{position:absolute;left:var(--m);right:var(--m);bottom:clamp(22px,5vh,48px);display:flex;justify-content:space-between;align-items:end;gap:20px;transition:opacity .4s}
+.forno h2{font:400 clamp(30px,3.4vw,52px)/1 var(--serif);max-width:15ch}
+.forno .cap p{max-width:30ch;color:#E3D6C3}
+.forno .deg{position:absolute;right:var(--m);top:clamp(70px,11vh,110px);font:400 clamp(40px,6vw,90px)/1 var(--serif);color:var(--gold);font-variant-numeric:tabular-nums;opacity:0;transition:opacity .4s}
+.forno.open .deg{opacity:1}
+@media(max-width:700px){.forno .cap{flex-direction:column;align-items:start}.pz{width:56vw;top:46%}.pz .lbl{font-size:10px;max-width:27vw}.pz .lbl b{font-size:13px}.forno .word{top:20%;font-size:30vw}}
+@media(prefers-reduced-motion:reduce){.forno{height:auto}.forno .pin{position:relative}}
 </style>
 </head>
 <body>
 <div class="demo">Modelo de cardápio feito pela Orbi · nome e preços fictícios <a href="https://maglionithiago76-debug.github.io/orbi/">Quero um assim</a></div>
 
+<section class="forno" id="forno" aria-labelledby="forno-h">
+  <div class="pin">
+    <div class="word" aria-hidden="true"><span>R</span><span>o</span><span>s</span><span>s</span><span>i</span></div>
+    <div class="deg" aria-hidden="true"><span id="fdeg">300</span>°C</div>
+    <div class="pz" role="img" aria-label="Pizza margherita se abrindo em seis fatias: massa, molho de tomate, muçarela de búfala e manjericão"><div class="rot" id="pzrot"><img src="../img/pz-w0.webp" alt="" width="900" height="900" data-i="0"><img src="../img/pz-w1.webp" alt="" width="900" height="900" data-i="1"><img src="../img/pz-w2.webp" alt="" width="900" height="900" data-i="2"><img src="../img/pz-w3.webp" alt="" width="900" height="900" data-i="3"><img src="../img/pz-w4.webp" alt="" width="900" height="900" data-i="4"><img src="../img/pz-w5.webp" alt="" width="900" height="900" data-i="5"></div><span class="lbl" data-i="0"><b>Massa de 48 h</b>leve e aerada</span><span class="lbl" data-i="1"><b>Molho San Marzano</b>tomate italiano</span><span class="lbl" data-i="2"><b>Muçarela de búfala</b>em lascas</span><span class="lbl" data-i="3"><b>Manjericão</b>colhido no dia</span><span class="lbl" data-i="4"><b>Borda queimadinha</b>no forno a lenha</span><span class="lbl" data-i="5"><b>Azeite</b>extravirgem no fim</span></div>
+    <div class="cap"><h2 id="forno-h">Seis fatias, nenhum atalho.</h2><p>Role pra abrir a pizza. Massa descansada 48 horas e forno a lenha a 450 °C, como em Nápoles.</p></div>
+  </div>
+</section>
 <header class="hero">
   <img src="../img/pizza-hero.webp" alt="Pizzas napolitanas saindo do forno" width="1800" height="1080">
   <div class="in">
@@ -222,6 +252,26 @@ let spyIO; function spy(){ if (spyIO) spyIO.disconnect(); spyIO = new Intersecti
   document.querySelectorAll('.cat').forEach(c => spyIO.observe(c)); }
 render(); bar();
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+<script>
+(() => {
+  const f = document.getElementById('forno'), rot = document.getElementById('pzrot'), w = [...f.querySelectorAll('.rot img')], lb = [...f.querySelectorAll('.lbl')], word = f.querySelector('.word'), deg = document.getElementById('fdeg');
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), ease = t => 1 - Math.pow(1 - t, 3);
+  let dirty = true;
+  function frame() {
+    const r = f.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    const p = clamp(-r.top / (f.offsetHeight - innerHeight)), k = ease(clamp((p - .05) / .35)) * (1 - ease(clamp((p - .85) / .15)));
+    const size = rot.offsetWidth, spin = p * 160;
+    f.classList.toggle('open', k > .6);
+    rot.style.transform = `rotate(${spin}deg)`;
+    w.forEach((img, i) => { const a = (i * 60 + 30 - 10) * Math.PI / 180; img.style.transform = `translate(${Math.cos(a) * k * size * .2}px, ${Math.sin(a) * k * size * .2}px) rotate(${(i % 2 ? 1 : -1) * k * 6}deg)`; });
+    lb.forEach((l, i) => { const a = (i * 60 + 30 - 10 + spin) * Math.PI / 180, R = size * (innerWidth < 700 ? .5 + .12 * k : .5 + .22 * k); l.style.transform = `translate(${Math.cos(a) * R}px, ${Math.sin(a) * R}px)`; });
+    word.style.transform = `scale(${1 + k * .12})`; word.style.opacity = 1 - k * .7;
+    deg.textContent = Math.round(300 + 150 * ease(clamp((p - .1) / .5)));
+  }
+  addEventListener('scroll', () => dirty = true, { passive: true }); addEventListener('resize', () => dirty = true);
+  (function tick() { if (dirty) { dirty = false; frame(); } requestAnimationFrame(tick); })();
+})();
 </script>
 <script src="../../motion.js" defer></script>
 </body>
