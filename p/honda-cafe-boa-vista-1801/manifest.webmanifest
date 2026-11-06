@@ -1,0 +1,23 @@
+{
+ "name": "Honda Cafe",
+ "short_name": "Honda Cafe",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#D6452B",
+ "theme_color": "#D6452B",
+ "lang": "pt-BR",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}

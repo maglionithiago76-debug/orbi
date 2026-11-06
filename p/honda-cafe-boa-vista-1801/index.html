@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honda Cafe – Boa Vista, RR</title>
+<meta name="description" content="Lanche caprichado, rápido e do jeito que você gosta. Rua Inacio Magalhaes, 309, Boa Vista, RR">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800;900&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --ink:#231A0E; --paper:#FBF1DC; --sign:#D6452B; --signText:#FFF4D6; --accent:#D6452B;
+  --display:"Rubik", Georgia, serif; --body:"Rubik", system-ui, sans-serif; }
+* { box-sizing:border-box; margin:0; }
+body { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--body); }
+a { color:inherit; }
+:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.wrap { max-width:68rem; margin:0 auto; padding:0 1.25rem; }
+.preview { background:var(--ink); color:var(--paper); font-size:.9rem; }
+.preview { display:flex; gap:1rem; align-items:center; justify-content:center; flex-wrap:wrap; padding:.6rem 1rem; text-align:center; }
+.preview a { background:var(--paper); color:var(--ink); padding:.35rem .9rem; border-radius:99px; font-weight:600; text-decoration:none; white-space:nowrap; }
+header.hero { padding:3.5rem 0 3rem; }
+.sign { background:var(--sign); color:var(--signText); padding:clamp(1.5rem,5vw,3.25rem) clamp(1.25rem,4vw,3rem);
+  border-radius:6px; box-shadow:inset 0 0 0 6px var(--sign), inset 0 0 0 8px color-mix(in srgb, var(--signText) 45%, transparent); }
+.sign h1 { font:900 clamp(2.6rem,9vw,6.5rem)/.92 var(--display); letter-spacing:-.01em; text-wrap:balance; }
+.sign p { margin-top:1rem; font-size:clamp(1rem,2.2vw,1.25rem); opacity:.9; }
+.where { margin-top:1rem; font-weight:600; }
+.actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.75rem; }
+.btn { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.4rem; border-radius:6px; font-weight:600; text-decoration:none;
+  background:var(--accent); color:var(--paper); border:2px solid var(--accent); }
+.btn.ghost { background:transparent; color:var(--ink); border-color:var(--ink); }
+.btn:hover { filter:brightness(1.08); }
+section { padding:3rem 0; border-top:1px solid color-mix(in srgb, var(--ink) 15%, transparent); }
+h2 { font:700 clamp(1.6rem,4vw,2.3rem)/1.1 var(--display); margin-bottom:1.5rem; }
+.about p { max-width:38rem; font-size:1.2rem; }
+.services ul { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.75rem 2rem; }
+.services h3 { font:700 1.15rem/1.3 var(--body); margin-bottom:.25rem; }
+.services li { border-left:4px solid var(--accent); padding-left:1rem; }
+.info { display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:2rem; }
+dl { display:grid; grid-template-columns:auto 1fr; gap:.4rem 1.5rem; }
+dt { font-weight:600; }
+.photo { margin:0 0 3rem; position:relative; }
+.photo img { width:100%; height:clamp(14rem,38vw,26rem); object-fit:cover; border-radius:6px; display:block; }
+.photo figcaption { position:absolute; right:.6rem; bottom:.5rem; font-size:.75rem; background:rgba(0,0,0,.55); color:#fff; padding:.15rem .5rem; border-radius:4px; }
+.gallery .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:.75rem; }
+.gallery img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; display:block; }
+footer { padding:2rem 0 3rem; font-size:.9rem; opacity:.75; }
+.float { position:fixed; right:1rem; bottom:1rem; background:#1FAF5A; color:#fff; padding:.8rem 1.1rem; border-radius:99px;
+  font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,.25); }
+@media (prefers-reduced-motion:no-preference) {
+  .sign { animation:light 1.1s ease-out both; }
+  @keyframes light { from { filter:brightness(.55) saturate(.6); } to { filter:none; } }
+}
+</style>
+<!-- pwa -->
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#D6452B">
+<link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Honda Cafe">
+<!-- /pwa -->
+</head>
+<body>
+<aside class="preview" role="note">
+  <p>Versão para aprovação do site da Honda Cafe, feita pela Achei. Quer mudar algo? É só pedir.</p>
+  <a href="https://wa.me/5535920059158?text=Oi%21%20Vi%20o%20site%20da%20Honda%20Cafe%20e%20quero%20conversar.">Falar com o Achei</a>
+</aside>
+<header class="hero"><div class="wrap">
+  <div class="sign"><h1>Honda Cafe</h1><p>Lanche caprichado, rápido e do jeito que você gosta.</p></div>
+  <p class="where">Boa Vista, RR</p>
+  <div class="actions">
+    
+    <a class="btn" href="https://wa.me/5595981001801?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Honda%20Cafe%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">Chamar no WhatsApp</a>
+    <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Honda%20Cafe%20Rua%20Inacio%20Magalhaes%2C%20309%2C%20Boa%20Vista%2C%20RR">Como chegar</a>
+    
+  </div>
+</div></header>
+<div class="wrap"><figure class="photo"><img src="../../stock/lanchonete.jpg" alt="" width="1400" height="800"><figcaption>Imagem ilustrativa</figcaption></figure></div>
+<main>
+<section class="about"><div class="wrap"><h2>Sobre nós</h2><p>Lanches, porções e bebidas geladas para matar a fome a qualquer hora.</p></div></section>
+<section class="services"><div class="wrap"><h2>Serviços</h2><ul><li><h3>Lanches</h3><p>Hambúrgueres, sanduíches e cachorro-quente.</p></li>
+<li><h3>Porções</h3><p>Para dividir com a turma.</p></li>
+<li><h3>Bebidas</h3><p>Sucos, refrigerantes e mais.</p></li>
+<li><h3>Delivery</h3><p>Peça pelo WhatsApp e receba em casa.</p></li></ul></div></section>
+
+<section><div class="wrap info">
+  <div><h2>Horário</h2><p>Consulte nossos horários pelo WhatsApp.</p></div>
+  <div><h2>Onde estamos</h2><p>Rua Inacio Magalhaes, 309, Boa Vista, RR</p><p style="margin-top:.5rem">WhatsApp: <a href="https://wa.me/5595981001801?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Honda%20Cafe%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">(95) 98100-1801</a></p>
+  <p style="margin-top:1rem"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Honda%20Cafe%20Rua%20Inacio%20Magalhaes%2C%20309%2C%20Boa%20Vista%2C%20RR">Abrir no mapa</a></p></div>
+</div></section>
+</main>
+<footer><div class="wrap">© Honda Cafe. Site feito pela Achei. Foto ilustrativa: Horacio Cambeiro, CC BY-SA 3.0 (Wikimedia Commons).</div></footer>
+<a class="float" href="https://wa.me/5595981001801?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Honda%20Cafe%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." aria-label="Conversar no WhatsApp">WhatsApp</a>
+<!-- pwa -->
+<button id="pwa-install" hidden style="position:fixed;left:1rem;bottom:1rem;z-index:50;border:0;border-radius:99px;
+padding:.7rem 1.1rem;font:600 .95rem system-ui,sans-serif;background:#D6452B;color:#FFF4D6;box-shadow:0 4px 14px rgba(0,0,0,.25)">
+📲 Instalar app</button>
+<script>
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+(() => {
+  const b = document.getElementById("pwa-install"); let ev = null;
+  const standalone = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if (standalone) return;
+  addEventListener("beforeinstallprompt", e => { e.preventDefault(); ev = e; b.hidden = false; });
+  if (/iphone|ipad/i.test(navigator.userAgent)) b.hidden = false;
+  b.onclick = () => ev ? (ev.prompt(), ev.userChoice.then(() => b.hidden = true))
+    : alert("Para instalar: toque em Compartilhar e depois em \"Adicionar à Tela de Início\".");
+})();
+</script>
+<!-- /pwa -->
+</body>
+</html>
