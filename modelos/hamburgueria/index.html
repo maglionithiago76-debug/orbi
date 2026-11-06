@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--y:#F0B323;--r:#C3261A;--ink:#1A0F0A;--coal:#120D0A;--kraft:#C69C6D;--cream:#FFF4DC;--m:clamp(18px,4vw,48px);--d:"Archivo Black",Impact,sans-serif;--s:"Figtree",system-ui,sans-serif;--ease:cubic-bezier(.2,.75,.15,1)}
+:root{--y:#F0B323;--r:#C3261A;--ink:#1A0F0A;--coal:#120D0A;--kraft:#C69C6D;--cream:#FFF4DC;--m:clamp(18px,4vw,48px);--d:"Archivo Black",Impact,sans-serif;--s:"Figtree",system-ui,sans-serif;--ease:cubic-bezier(.2,.75,.15,1);--cx-font:"Archivo Black",Impact,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--y)}
 body{background:var(--y);color:var(--ink);font:400 17px/1.5 var(--s);-webkit-font-smoothing:antialiased;overflow-x:clip}
@@ -35,17 +35,20 @@ body.dark .top a.go{background:var(--y);color:var(--ink)}
 .hero .word span{display:inline-block;will-change:transform,opacity;animation:drop 1s var(--ease) both}
 .hero .word span:nth-child(2){animation-delay:.06s}.hero .word span:nth-child(3){animation-delay:.12s}.hero .word span:nth-child(4){animation-delay:.18s}.hero .word span:nth-child(5){animation-delay:.24s}
 @keyframes drop{from{transform:translateY(-120%) rotate(-12deg);opacity:0}}
-.stack{position:absolute;left:50%;top:56%;width:min(44vw,400px);height:0;translate:-50% 0}
-.lay{position:absolute;left:50%;top:0;will-change:transform}
-.L{position:absolute;inset:0;transition:opacity .45s}
-.whole{position:absolute;left:50%;top:0;width:150%;translate:-50% -64%;opacity:0;transition:opacity .6s;z-index:20;pointer-events:none}
-.whole img{width:100%;height:auto;filter:drop-shadow(0 26px 30px rgba(70,25,0,.35))}
-.lay img{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 22px rgba(70,25,0,.28));animation:fall .9s cubic-bezier(.3,1.35,.5,1) both}
-@keyframes fall{from{transform:translateY(-110vh) rotate(-20deg)}}
-.lay .tag{position:absolute;top:50%;white-space:nowrap;font:600 15px/1.2 var(--s);opacity:0;transition:opacity .4s;translate:0 -50%}
-.lay .tag b{display:block;font:400 clamp(17px,1.6vw,24px)/1 var(--d);color:var(--r)}
-.lay.r .tag{left:calc(100% + 18px)}.lay.l .tag{right:calc(100% + 18px);text-align:right}
-.hero.open .lay .tag{opacity:1}
+.glow{position:absolute;left:50%;top:56%;width:min(120vw,1100px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,106,26,.55),rgba(195,38,26,.18) 55%,transparent);opacity:.35;will-change:transform,opacity;pointer-events:none}
+.sparks{position:absolute;inset:0;pointer-events:none;opacity:.4}
+.sparks i{position:absolute;bottom:-4vh;left:var(--x);width:var(--s,6px);aspect-ratio:1;border-radius:50%;background:#FF6A1A;box-shadow:0 0 10px 2px rgba(255,120,30,.8);animation:rise var(--t,5s) linear var(--d,0s) infinite}
+@keyframes rise{0%{transform:translate(0,0) scale(1);opacity:0}10%{opacity:1}100%{transform:translate(var(--w,30px),-105vh) scale(.3);opacity:0}}
+.stack{position:absolute;left:50%;top:56%;width:min(46vw,540px);aspect-ratio:1000/819;translate:-50% -50%;will-change:transform}
+.lay{position:absolute;inset:0;will-change:transform}
+.lay img{display:block;width:100%;height:100%;filter:drop-shadow(0 22px 26px rgba(70,25,0,.32));animation:fall 1s cubic-bezier(.3,1.3,.5,1) both}
+.lay:nth-child(1) img{animation-delay:.85s}.lay:nth-child(2) img{animation-delay:.6s}.lay:nth-child(3) img{animation-delay:.35s}
+@keyframes fall{from{transform:translateY(-120vh) rotate(-16deg)}}
+.tag{position:absolute;display:grid;gap:3px;padding:12px 16px;border-radius:14px;background:var(--ink);color:var(--cream);font:600 14px/1.25 var(--s);white-space:nowrap;opacity:0;transform:translateY(12px) scale(.92);transition:opacity .4s,transform .5s var(--ease);translate:0 -50%;box-shadow:0 14px 30px rgba(40,10,0,.3)}
+.tag b{font:400 clamp(17px,1.5vw,22px)/1 var(--d);color:var(--y)}
+.tag.r{left:calc(100% + 10px)}.tag.l{right:calc(100% + 10px);text-align:right}
+.hero.open .tag{opacity:1;transform:none}
+.hero.open .lay:nth-child(2) .tag{transition-delay:.08s}.hero.open .lay:nth-child(3) .tag{transition-delay:.16s}
 .hero .say{position:absolute;left:var(--m);bottom:clamp(20px,5vh,48px);max-width:min(30ch,80vw);transition:opacity .4s}
 .hero h1{font:400 clamp(26px,3vw,40px)/1 var(--d);letter-spacing:-.01em}
 .hero .say p{margin-top:10px;font-weight:600}
@@ -130,10 +133,9 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 
 @media(max-width:760px){
   .hero .word{font-size:28vw;padding-top:15vh}
-  .stack{width:42vw;top:60%}
-  .whole{width:200%}
-  .lay .tag{font-size:11px;white-space:normal;width:24vw}.lay .tag b{font-size:14px}
-  .lay.r .tag{left:calc(100% + 6px)}.lay.l .tag{right:calc(100% + 6px)}
+  .stack{width:78vw;top:58%}.glow{top:58%}
+  .tag{font-size:11.5px;padding:8px 11px;border-radius:11px;white-space:normal;width:max-content;max-width:40vw}.tag b{font-size:14px}
+  .tag.r{left:auto;right:-5vw}.tag.l{right:auto;left:-5vw;text-align:left}
   .hero .layers{left:var(--m);right:auto;text-align:left;top:84px;font-size:30px}
   .menu .plate{top:50%;width:min(92vw,460px)}
   .menu .info{max-width:56vw}
@@ -159,9 +161,25 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 <section class="hero" id="hero" aria-labelledby="h1">
   <div class="pin">
     <div class="word" aria-hidden="true" id="word"><span>B</span><span>R</span><span>A</span><span>S</span><span>A</span></div>
-    <p class="layers" aria-hidden="true">Sete camadas, na ordem certa.</p>
-    <div class="stack" id="stack" role="img" aria-label="Hambúrguer montado camada por camada: pão, cheddar, carne, tomate, cebola, alface e pão"><div class="whole" id="whole"><img src="../img/bp-cheddar.webp" alt="" width="1000" height="715"></div><div class="L" id="L"><div class="lay l" data-f="1.0" style="width:100.0%;z-index:10"><img src="../img/bx-pao.webp" alt="" style="animation-delay:1.13s"><span class="tag"><b>Pão brioche</b>selado na manteiga</span></div><div class="lay r" data-f="1.12" style="width:112.00000000000001%;z-index:9"><img src="../img/bx-queijo.webp" alt="" style="animation-delay:1.00s"><span class="tag"><b>Cheddar</b>derretido na chapa</span></div><div class="lay l" data-f="1.06" style="width:106.0%;z-index:8"><img src="../img/bx-carne.webp" alt="" style="animation-delay:0.87s"><span class="tag"><b>Blend de 160 g</b>esmagado na hora</span></div><div class="lay r" data-f="1.0" style="width:100.0%;z-index:7"><img src="../img/bx-tomate.webp" alt="" style="animation-delay:0.74s"><span class="tag"><b>Tomate</b>fatiado no dia</span></div><div class="lay l" data-f="0.82" style="width:82.0%;z-index:6"><img src="../img/bx-cebola.webp" alt="" style="animation-delay:0.61s"><span class="tag"><b>Cebola</b>em rodelas finas</span></div><div class="lay r" data-f="1.22" style="width:122.0%;z-index:5"><img src="../img/bx-alface.webp" alt="" style="animation-delay:0.48s"><span class="tag"><b>Alface</b>crocante, lavada</span></div><div class="lay l" data-f="1.0" style="width:100.0%;z-index:4"><img src="../img/bx-base.webp" alt="" style="animation-delay:0.35s"><span class="tag"><b>Pão</b>a base de tudo</span></div></div></div>
+    <div class="glow" id="glow" aria-hidden="true"></div>
+    <div class="sparks" id="sparks" aria-hidden="true"></div>
+    <p class="layers" aria-hidden="true">Cada camada no seu lugar.</p>
+    <div class="stack" id="stack" role="img" aria-label="Cheeseburger abrindo em camadas: pão brioche com gergelim, carne com cheddar e pão com molho da casa">
+      <div class="lay" style="z-index:3"><img src="../img/bh-top.webp" alt="" width="1000" height="819"><span class="tag r" style="top:24%"><b>Pão brioche</b>gergelim, selado na manteiga</span></div>
+      <div class="lay" style="z-index:2"><img src="../img/bh-mid.webp" alt="" width="1000" height="819"><span class="tag l" style="top:68%"><b>Blend de 160 g</b>cheddar derretendo por cima</span></div>
+      <div class="lay" style="z-index:1"><img src="../img/bh-bot.webp" alt="" width="1000" height="819"><span class="tag r" style="top:90%"><b>Molho da casa</b>no pão de baixo</span></div>
+    </div>
     <div class="say"><h1 id="h1">Smash na chapa, entregue quente.</h1><p>Carne esmagada a 230 °C, cheddar derretido e pão brioche. Delivery e retirada.</p><a class="btn" href="#pedir">Pedir agora</a></div>
+  </div>
+</section>
+
+<section class="cx cx-mask" data-cine="mask" data-o=".46 .55" data-m="off" style="--cx-bg:var(--coal);--cx-fg:var(--y);--cx-ac:var(--y)" aria-labelledby="fogo-h">
+  <div class="cx-pin">
+    <img class="cx-full" src="../img/cx-h-fire.webp" alt="Carnes na grelha com fogo alto" loading="lazy">
+    <div class="cx-shade"></div>
+    <p class="cx-kick">Rola devagar</p>
+    <div class="cx-word" aria-hidden="true" style="background-image:url(../img/cx-h-fire.webp)">SMASH</div>
+    <div class="cx-cap"><h2 id="fogo-h">Fogo alto, sem pressa.</h2><p>A carne só sai da chapa quando tem crosta. Não tem atalho pra esse sabor.</p></div>
   </div>
 </section>
 
@@ -189,6 +207,19 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
     <div class="pic"><img id="zimg" src="../img/bp-macro.webp" alt="Duplo de perto: duas carnes, cheddar derretido e tomate" width="1600" height="1329" loading="lazy"></div>
     <div class="gram" id="gram" aria-hidden="true">160 g</div>
     <div class="cap" id="zcap"><span>Blend da casa, 160 g por carne</span><span>Moído todo dia</span></div>
+  </div>
+</section>
+
+<section class="cx cx-track" data-cine="track" data-m="off" style="--cx-bg:var(--coal);--cx-fg:var(--cream);--cx-ac:var(--y)" aria-labelledby="chapa-h">
+  <div class="cx-pin">
+    <h2 class="cx-ttl" id="chapa-h">Da chapa pra mesa</h2>
+    <div class="cx-row">
+      <figure><div><img src="../img/cx-h-flame.webp" alt="Carne selando na grelha com chamas" loading="lazy"></div><figcaption><span>Selando a carne</span><b>230 °C</b></figcaption></figure>
+      <figure><div><img src="../img/cx-h-melt.webp" alt="Cheddar derretendo sobre a carne" loading="lazy"></div><figcaption><span>Cheddar na hora</span><b>derretido</b></figcaption></figure>
+      <figure><div><img src="../img/cx-h-grillb.webp" alt="Hambúrguer duplo pronto em frente ao fogo" loading="lazy"></div><figcaption><span>Duplo na brasa</span><b>R$ 36</b></figcaption></figure>
+      <figure><div><img src="../img/cx-h-chef.webp" alt="Chapeiro colocando molho no lanche" loading="lazy"></div><figcaption><span>Molho da casa</span><b>feito aqui</b></figcaption></figure>
+      <figure><div><img src="../img/cx-h-fries.webp" alt="Batata frita sequinha na caixa" loading="lazy"></div><figcaption><span>Fritas sequinhas</span><b>R$ 14</b></figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -223,6 +254,7 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
 </footer>
 <a class="fab" id="fab" href="https://wa.me/5511927013668?text=Oi!%20Quero%20pedir%20(modelo%20Brasa).">Pedir no WhatsApp</a>
 
+<script src="../../cine.js" defer></script>
 <script>
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = s => document.querySelector(s), clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), ease = t => 1 - Math.pow(1 - t, 3);
@@ -235,22 +267,21 @@ const M = [
   ['Salada', 'R$ 32', 'Leve e completo', 'Carne de 160 g, cheddar, alface americana e tomate no brioche com gergelim.'],
 ];
 const hero = $('#hero'), letters = [...document.querySelectorAll('#word span')], stack = $('#stack'), lays = [...document.querySelectorAll('.lay')];
-const ASM = [-.6, -.42, -.33, -.22, -.17, -.12, 0]; // stacked centres, in bun widths, top bun first
-const L = $('#L'), whole = $('#whole'); let ready = false; setTimeout(() => { ready = true; dirty = true; }, 1750);
+const glow = $('#glow'), sparks = $('#sparks');
+sparks.innerHTML = Array.from({ length: 16 }, (_, i) => `<i style="--x:${(i * 61) % 100}%;--s:${3 + (i * 7) % 6}px;--t:${4 + (i * 13) % 5}s;--d:${-((i * 37) % 50) / 10}s;--w:${((i * 29) % 80) - 40}px"></i>`).join('');
 function heroFrame() {
-  const p = prog(hero), B = stack.offsetWidth, mob = innerWidth < 760;
-  const k = ease(clamp((p - .08) / .32)) * (1 - ease(clamp((p - .78) / .2)));
-  const show = ready ? clamp(k * 6) : 1; L.style.opacity = show; whole.style.opacity = ready ? 1 - show : 0;
-  const span = Math.min(innerHeight * (mob ? .6 : .64), B * 2.6), gap = span / 6;
-  hero.classList.toggle('open', k > .6);
-  lays.forEach((l, i) => {
-    const asm = ASM[i] * B, exp = (i - 3) * gap - ASM[3] * 0, y = asm + (exp - asm + ASM[3] * B * 0) * k;
-    const yy = (1 - k) * asm + k * ((i - 6) * gap + span * .5 - B * .1);
-    l.style.transform = `translate(-50%, calc(-50% + ${yy}px)) rotate(${(i % 2 ? 1 : -1) * k * 4}deg)`;
-  });
-  const e = ease(clamp(p / .5));
+  const p = prog(hero), H = stack.offsetHeight;
+  const k = ease(clamp((p - .05) / .3)) * (1 - ease(clamp((p - .74) / .16))); // how open the burger is
+  const gap = Math.max(H * .22, Math.min(H * .46, (innerHeight * .8 - H) / 2));
+  const bob = Math.sin(p * 22) * 6 * k;
+  hero.classList.toggle('open', k > .55);
+  const Y = [-gap * k + bob, bob * .4, gap * .9 * k - bob * .5], R = [-7, 3, -2];
+  lays.forEach((l, i) => { l.style.transform = `translateY(${Y[i]}px) rotate(${R[i] * k}deg)`; });
+  const e = ease(clamp(p / .5)), shut = ease(clamp((p - .86) / .14));
   letters.forEach((l, i) => { const d = i - 2; l.style.transform = `translate(${d * e * 34}vw, ${-e * 8}vh) rotate(${d * e * 10}deg)`; l.style.opacity = 1 - e * .85; });
-  stack.style.scale = 1 - ease(clamp((p - .82) / .18)) * .25;
+  stack.style.transform = `scale(${(1 + k * .06) * (1 - shut * .28)}) rotate(${(k - shut) * -2}deg)`;
+  glow.style.opacity = .35 + k * .65; glow.style.transform = `scale(${.7 + k * .5})`;
+  sparks.style.opacity = .4 + k * .6;
 }
 const menu = $('#menu'), plates = [...document.querySelectorAll('.plate img')], dots = [...document.querySelectorAll('.dots i')];
 const grill = $('#grill'), disc = $('#disc'), deg = $('#deg'), zoom = $('#zoom'), zimg = $('#zimg'), gram = $('#gram'), zcap = $('#zcap');

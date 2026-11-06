@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0E0C0A;--bg2:#17130F;--ink:#F3EADB;--muted:#BFB2A0;--brass:#D9A441;--line:#2A231C;--m:clamp(20px,3vw,40px);--serif:"Fraunces",Georgia,serif;--sans:"Figtree",system-ui,sans-serif}
+:root{--bg:#0E0C0A;--bg2:#17130F;--ink:#F3EADB;--muted:#BFB2A0;--brass:#D9A441;--line:#2A231C;--m:clamp(20px,3vw,40px);--serif:"Fraunces",Georgia,serif;--sans:"Figtree",system-ui,sans-serif;--cx-font:"Fraunces",Georgia,serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg)}
 body{background:var(--bg);color:var(--ink);font:400 18px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -182,6 +182,34 @@ dialog .btn.ghost{color:#1A1208;background:#E2D6C2}
   </div>
 </header>
 
+<section class="cx cx-mask" data-cine="mask" data-o=".5 .55" data-m="off" style="--cx-bg:var(--bg);--cx-fg:var(--ink);--cx-ac:var(--brass)" aria-labelledby="barba-h">
+  <div class="cx-pin">
+    <img class="cx-full" src="../img/cx-b-beard.webp" alt="Barbeiro aparando a barba de um cliente com tesoura" loading="lazy" style="object-position:40% 40%">
+    <div class="cx-shade"></div>
+    <p class="cx-kick">Rola devagar</p>
+    <div class="cx-word" aria-hidden="true" style="background-image:url(../img/cx-b-beard.webp)">BARBA</div>
+    <div class="cx-cap"><h2 id="barba-h">Toalha quente, navalha afiada.</h2><p>A barba é feita com calma, do jeito que o seu rosto pede.</p></div>
+  </div>
+</section>
+
+<section class="cx cx-list" data-cine="list" data-m="off" style="--cx-bg:var(--bg);--cx-fg:var(--ink);--cx-ac:var(--brass)" aria-labelledby="menu-h">
+  <div class="cx-pin">
+    <p class="cx-kick" id="menu-h">O que a gente faz</p>
+    <div class="cx-pics">
+      <img src="../img/cx-b-fade.webp" alt="Degradê sendo feito na máquina" loading="lazy">
+      <img src="../img/cx-b-shave.webp" alt="Barbeiro preparando a navalha para fazer a barba" loading="lazy">
+      <img src="../img/cx-b-combo.webp" alt="Cliente de barba cortando o cabelo" loading="lazy">
+      <img src="../img/cx-b-clip.webp" alt="Acabamento com pente e máquina" loading="lazy">
+    </div>
+    <ol class="cx-words">
+      <li><b>Corte</b><span>Tesoura ou máquina, lavagem inclusa · R$ 45</span></li>
+      <li><b>Barba</b><span>Toalha quente e navalha · R$ 35</span></li>
+      <li><b>Combo</b><span>Corte + barba, o mais pedido · R$ 75</span></li>
+      <li><b>Pigmento</b><span>Barba ou cabelo, 30 min · R$ 40</span></li>
+    </ol>
+  </div>
+</section>
+
 <section id="agendar" aria-labelledby="ag-h">
   <h2 id="ag-h" class="rv">Escolha. <em>Pronto.</em></h2>
   <p class="lead rv">Três toques e o seu horário está reservado. A confirmação chega no WhatsApp da barbearia.</p>
@@ -207,12 +235,24 @@ dialog .btn.ghost{color:#1A1208;background:#E2D6C2}
   <ul class="svc" id="svc-list"></ul>
 </section>
 
-<section id="casa" aria-labelledby="casa-h">
-  <div class="head"><h2 id="casa-h" class="rv">A <em>casa.</em></h2><p class="lead rv">Cadeiras de época, café passado na hora e música boa. Fotos ilustrativas.</p></div>
-  <div class="strip" id="strip">
-    <figure><img src="../img/barber-chairs.webp" alt="Cadeiras de barbeiro vermelhas antigas" width="1800" height="1200" loading="lazy"><figcaption>As cadeiras</figcaption></figure>
-    <figure><img src="../img/barber-beard.webp" alt="Barbeiro aparando a barba de um cliente" width="1800" height="1350" loading="lazy" style="object-position:40% 50%"><figcaption>Barba na navalha</figcaption></figure>
-    <figure><img src="../img/barber-hero.webp" alt="Corte na tesoura" width="1800" height="1201" loading="lazy" style="object-position:30% 40%"><figcaption>Tesoura e pente</figcaption></figure>
+<section class="cx cx-track" data-cine="track" id="casa" data-m="off" style="--cx-bg:var(--bg);--cx-fg:var(--ink);--cx-ac:var(--brass)" aria-labelledby="casa-h">
+  <div class="cx-pin">
+    <h2 class="cx-ttl" id="casa-h">A casa · desde 2014</h2>
+    <div class="cx-row">
+      <figure><div><img src="../img/cx-b-chair.webp" alt="Cadeira de barbeiro clássica perto da janela" loading="lazy"></div><figcaption><span>A cadeira</span><b>de época</b></figcaption></figure>
+      <figure><div><img src="../img/cx-b-moody.webp" alt="Barbeiro atendendo um cliente" loading="lazy"></div><figcaption><span>Atendimento</span><b>sem pressa</b></figcaption></figure>
+      <figure><div><img src="../img/cx-b-shop.webp" alt="Interior da barbearia com cadeiras e espelhos" loading="lazy"></div><figcaption><span>O salão</span><b>3 cadeiras</b></figcaption></figure>
+      <figure><div><img src="../img/cx-b-brick.webp" alt="Parede de tijolo e plantas na barbearia" loading="lazy"></div><figcaption><span>O canto do café</span><b>passado na hora</b></figcaption></figure>
+      <figure><div><img src="../img/cx-b-vint.webp" alt="Bancada com produtos e cadeira vermelha" loading="lazy"></div><figcaption><span>A bancada</span><b>tudo esterilizado</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cx cx-reveal" data-cine="reveal" data-m="off" style="--cx-bg:var(--bg);--cx-fg:var(--ink);--cx-ac:var(--brass)" aria-labelledby="rev-h">
+  <div class="cx-pin">
+    <div class="cx-win"><img src="../img/cx-b-fade.webp" alt="" loading="lazy"></div>
+    <div class="cx-big" aria-hidden="true"><span>Sem</span><span><em>espera.</em></span></div>
+    <div class="cx-txt"><h3 id="rev-h">Hora marcada é hora marcada.</h3><p>Você agenda pelo celular, chega e senta. Fotos ilustrativas.</p></div>
   </div>
 </section>
 
@@ -230,7 +270,7 @@ dialog .btn.ghost{color:#1A1208;background:#E2D6C2}
 <footer>
   <div><b>Navalha Club</b> · modelo fictício para demonstração</div>
   <div>Site feito pela <a href="https://maglionithiago76-debug.github.io/orbi/"><b>Orbi</b></a>. Este modelo não coleta dados.</div>
-  <div id="cred">Fotos: Wikimedia Commons: Nenad Stojkovic (CC BY 2.0), PattayaPatrol (CC BY-SA 4.0), Gkbediako (CC BY-SA 4.0).</div>
+  <div id="cred">Fotos: Wikimedia Commons: Nenad Stojkovic (CC BY 2.0); demais fotos: Pexels (licença livre).</div>
 </footer>
 
 <a class="fab" href="#agendar" aria-label="Agendar pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
@@ -305,7 +345,7 @@ if (!reduce) {
     ph.style.clipPath = small ? `inset(${lerp(10,0)}% ${lerp(6,0)}% ${lerp(46,0)}% ${lerp(6,0)}% round ${lerp(22,0)}px)` : `inset(${lerp(14,0)}% ${lerp(8,0)}% ${lerp(14,0)}% ${lerp(46,0)}% round ${lerp(28,0)}px)`;
     img.style.transform = `scale(${1.15 - .15 * e})`;
     const c = casa.getBoundingClientRect(), q = Math.min(1, Math.max(0, (innerHeight - c.top) / (innerHeight + c.height)));
-    strip.style.transform = `translateX(${-q * (strip.scrollWidth - innerWidth) * .9}px)`;
+    if (strip) strip.style.transform = `translateX(${-q * (strip.scrollWidth - innerWidth) * .9}px)`;
     requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
@@ -343,5 +383,6 @@ if (!reduce) {
 })();
 </script>
 <script src="../../motion.js" defer></script>
+<script src="../../cine.js" defer></script>
 </body>
 </html>

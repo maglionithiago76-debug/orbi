@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F2F4F7;--bg2:#E4E9F1;--ink:#0F1B2D;--muted:#45536A;--blue:#1F4FE0;--sun:#FFD23F;--m:clamp(20px,3vw,40px);--disp:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif}
+:root{--bg:#F2F4F7;--bg2:#E4E9F1;--ink:#0F1B2D;--muted:#45536A;--blue:#1F4FE0;--sun:#FFD23F;--m:clamp(20px,3vw,40px);--disp:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif;--cx-font:"Bricolage Grotesque",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg)}
 body{background:var(--bg);color:var(--ink);font:400 18px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -200,6 +200,34 @@ dialog .btn{min-height:48px;font-size:15px}
   </div>
 </header>
 
+<section class="cx cx-mask" data-cine="mask" data-o=".5 .55" data-m="off" style="--cx-bg:var(--blue);--cx-fg:#fff;--cx-ac:var(--sun)" aria-labelledby="esp-h">
+  <div class="cx-pin">
+    <img class="cx-full" src="../img/cx-d-bubbles.webp" alt="Dois poodles no meio da espuma do banho" loading="lazy">
+    <div class="cx-shade"></div>
+    <p class="cx-kick">Rola devagar</p>
+    <div class="cx-word" aria-hidden="true" style="background-image:url(../img/cx-d-bubbles.webp)">BANHO</div>
+    <div class="cx-cap"><h2 id="esp-h">Água morna e muita espuma.</h2><p>Shampoo neutro, secador silencioso e ninguém com pressa. Seu pet sai calmo e cheiroso.</p></div>
+  </div>
+</section>
+
+<section class="cx cx-list" data-cine="list" data-m="off" style="--cx-bg:var(--ink);--cx-fg:#fff;--cx-ac:var(--sun)" aria-labelledby="faz-h">
+  <div class="cx-pin">
+    <p class="cx-kick" id="faz-h">O que a gente faz</p>
+    <div class="cx-pics">
+      <img src="../img/cx-d-bath.webp" alt="Yorkshire tomando banho de chuveirinho" loading="lazy">
+      <img src="../img/cx-d-tosa.webp" alt="Yorkshire sendo tosado na máquina" loading="lazy">
+      <img src="../img/cx-d-dry.webp" alt="Tosadora secando um yorkshire com secador" loading="lazy">
+      <img src="../img/cx-d-golden.webp" alt="Golden retriever sorrindo" loading="lazy" style="object-position:50% 30%">
+    </div>
+    <ol class="cx-words">
+      <li><b>Banho</b><span>Porte P a partir de R$ 50</span></li>
+      <li><b>Tosa</b><span>Na máquina ou na tesoura · a partir de R$ 70</span></li>
+      <li><b>Secagem</b><span>Sem barulho, no tempo do seu pet</span></li>
+      <li><b>Leva e traz</b><span>Buscamos e devolvemos até 5 km · R$ 15</span></li>
+    </ol>
+  </div>
+</section>
+
 <section id="portes" aria-labelledby="pt-h">
   <h2 id="pt-h" class="rv">Preço pelo tamanho.</h2>
   <p class="lead rv">Do yorkshire ao golden: o valor do banho muda só pelo porte, e você vê na hora, sem surpresa no balcão.</p>
@@ -237,12 +265,24 @@ dialog .btn{min-height:48px;font-size:15px}
   <ul class="svc" id="svc-list"></ul>
 </section>
 
-<section id="casa" aria-labelledby="casa-h">
-  <div class="head"><h2 id="casa-h" class="rv">O espaço.</h2><p class="lead rv">Banho com água morna, secador silencioso e tosa sem pressa. Fotos ilustrativas.</p></div>
-  <div class="strip" id="strip">
-    <figure><img src="../img/pet-salon.webp" alt="Tosadora secando um cachorro pequeno na mesa de banho" width="1800" height="1197" loading="lazy"><figcaption>Banho e secagem</figcaption></figure>
-    <figure><img src="../img/pet-poodle.webp" alt="Poodle sendo tosado na mesa" width="1800" height="1200" loading="lazy" style="object-position:25% 50%"><figcaption>Tosa na tesoura</figcaption></figure>
-    <figure><img src="../img/pet-hero.webp" alt="Filhote feliz depois do banho" width="1800" height="1350" loading="lazy" style="object-position:70% 40%"><figcaption>Pronto pra voltar pra casa</figcaption></figure>
+<section class="cx cx-track" data-cine="track" id="casa" data-m="off" style="--cx-bg:var(--blue);--cx-fg:#fff;--cx-ac:var(--sun)" aria-labelledby="casa-h">
+  <div class="cx-pin">
+    <h2 class="cx-ttl" id="casa-h">O espaço · Pelúcia</h2>
+    <div class="cx-row">
+      <figure><div><img src="../img/cx-d-spa.webp" alt="Cachorro pequeno no banho do pet shop" loading="lazy"></div><figcaption><span>Banho</span><b>água morna</b></figcaption></figure>
+      <figure><div><img src="../img/cx-d-table.webp" alt="Tosadora trabalhando em um poodle preto" loading="lazy"></div><figcaption><span>Tosa</span><b>na tesoura</b></figcaption></figure>
+      <figure><div><img src="../img/cx-d-tub.webp" alt="Border collie esperando na banheira" loading="lazy"></div><figcaption><span>Banheira</span><b>só dele</b></figcaption></figure>
+      <figure><div><img src="../img/cx-d-collie.webp" alt="Border collie feliz ao ar livre" loading="lazy"></div><figcaption><span>Volta pra casa</span><b>mesmo dia</b></figcaption></figure>
+      <figure><div><img src="../img/cx-d-black.webp" alt="Cachorro preto sorrindo" loading="lazy"></div><figcaption><span>Todo porte</span><b>P, M e G</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cx cx-reveal" data-cine="reveal" data-m="off" style="--cx-bg:var(--ink);--cx-fg:#fff;--cx-ac:var(--sun)" aria-labelledby="rev-h">
+  <div class="cx-pin">
+    <div class="cx-win"><img src="../img/cx-d-golden.webp" alt="" loading="lazy" style="object-position:50% 30%"></div>
+    <div class="cx-big" aria-hidden="true"><span>Volta</span><span>cheiroso.</span></div>
+    <div class="cx-txt"><h3 id="rev-h">A gente busca. A gente devolve.</h3><p>Leva e traz no mesmo dia, e você acompanha tudo pelo WhatsApp. Fotos ilustrativas.</p></div>
   </div>
 </section>
 
@@ -260,7 +300,7 @@ dialog .btn{min-height:48px;font-size:15px}
 <footer>
   <div><b>Pelúcia Pet</b> · modelo fictício para demonstração</div>
   <div>Site feito pela <a href="https://maglionithiago76-debug.github.io/orbi/"><b>Orbi</b></a>. Este modelo não coleta dados.</div>
-  <div>Fotos: Wikimedia Commons: Marilyn Peddle (CC BY 2.0), japanese_craft_construction (CC BY 2.0), daveynin (CC BY 2.0).</div>
+  <div>Fotos: Wikimedia Commons: Marilyn Peddle (CC BY 2.0); demais fotos: Pexels (licença livre).</div>
 </footer>
 
 <a class="fab" href="#agendar" aria-label="Agendar pelo WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
@@ -337,7 +377,7 @@ if (!reduce) {
     hero.classList.toggle('over', e > .55);
     img.style.transform = small ? `scale(${1.12 - .12 * e})` : `translate(${9 * (1 - e)}%, ${6 * (1 - e)}%) scale(${1.35 - .35 * e})`;
     const c = casa.getBoundingClientRect(), q = Math.min(1, Math.max(0, (innerHeight - c.top) / (innerHeight + c.height)));
-    strip.style.transform = `translateX(${-q * Math.max(0, strip.scrollWidth - innerWidth) * .9}px)`;
+    if (strip) strip.style.transform = `translateX(${-q * Math.max(0, strip.scrollWidth - innerWidth) * .9}px)`;
     requestAnimationFrame(tick);
   };
   requestAnimationFrame(tick);
@@ -365,5 +405,6 @@ if (!reduce) {
 })();
 </script>
 <script src="../../motion.js" defer></script>
+<script src="../../cine.js" defer></script>
 </body>
 </html>

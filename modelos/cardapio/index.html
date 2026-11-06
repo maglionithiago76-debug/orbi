@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#FBF5EA;--ink:#2A1A12;--muted:#7A6555;--red:#B8321F;--dark:#1D1410;--card:#fff;--line:#EADFCB;--gold:#F2C14E;--m:clamp(16px,3vw,40px);--serif:"DM Serif Display",Georgia,serif;--sans:"Figtree",system-ui,sans-serif}
+:root{--bg:#FBF5EA;--ink:#2A1A12;--muted:#7A6555;--red:#B8321F;--dark:#1D1410;--card:#fff;--line:#EADFCB;--gold:#F2C14E;--m:clamp(16px,3vw,40px);--serif:"DM Serif Display",Georgia,serif;--sans:"Figtree",system-ui,sans-serif;--cx-font:"DM Serif Display",Georgia,serif}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:110px}
 img{display:block;max-width:100%}
@@ -132,6 +132,44 @@ footer{max-width:1100px;margin:70px auto 0;padding:30px var(--m);font-size:13px;
     <div class="cap"><h2 id="forno-h">Seis fatias, nenhum atalho.</h2><p>Role pra abrir a pizza. Massa descansada 48 horas e forno a lenha a 450 °C, como em Nápoles.</p></div>
   </div>
 </section>
+<section class="cx cx-mask" data-cine="mask" data-o=".5 .55" data-m="off" style="--cx-bg:var(--dark);--cx-fg:#FBF5EA;--cx-ac:var(--gold)" aria-labelledby="fogo-h">
+  <div class="cx-pin">
+    <img class="cx-full" src="../img/cx-p-fire.webp" alt="Pizzas assando no forno a lenha com fogo alto" loading="lazy">
+    <div class="cx-shade"></div>
+    <p class="cx-kick">Rola devagar</p>
+    <div class="cx-word" aria-hidden="true" style="background-image:url(../img/cx-p-fire.webp)">FORNO</div>
+    <div class="cx-cap"><h2 id="fogo-h">90 segundos a 450 °C.</h2><p>É o tempo que a pizza napolitana fica no forno a lenha. Sai com a borda pintadinha e o meio macio.</p></div>
+  </div>
+</section>
+
+<section class="cx cx-list" data-cine="list" data-m="off" style="--cx-bg:var(--dark);--cx-fg:#FBF5EA;--cx-ac:var(--gold)" aria-labelledby="passo-h">
+  <div class="cx-pin">
+    <p class="cx-kick" id="passo-h">Como a pizza nasce</p>
+    <div class="cx-pics">
+      <img src="../img/cx-p-knead.webp" alt="Mãos sovando a massa na farinha" loading="lazy">
+      <img src="../img/cx-p-dough.webp" alt="Mãos abrindo o disco de massa" loading="lazy">
+      <img src="../img/cx-p-cheese.webp" alt="Queijo sendo espalhado sobre a pizza" loading="lazy">
+      <img src="../img/cx-p-oven.webp" alt="Forno a lenha aceso" loading="lazy">
+      <img src="../img/cx-p-pull.webp" alt="Fatia de pizza puxando o queijo" loading="lazy">
+    </div>
+    <ol class="cx-words">
+      <li><b>Massa</b><span>Farinha italiana, descansa 48 horas</span></li>
+      <li><b>Disco</b><span>Aberto na mão, nunca no rolo</span></li>
+      <li><b>Queijo</b><span>Muçarela de búfala em lascas</span></li>
+      <li><b>Forno</b><span>Lenha, 450 °C, 90 segundos</span></li>
+      <li><b>Mesa</b><span>Chega quente, puxando o queijo</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="cx cx-reveal" data-cine="reveal" data-m="off" style="--cx-bg:var(--dark);--cx-fg:#FBF5EA;--cx-ac:var(--gold)" aria-labelledby="rev-h">
+  <div class="cx-pin">
+    <div class="cx-win"><img src="../img/cx-p-pep.webp" alt="" loading="lazy"></div>
+    <div class="cx-big" aria-hidden="true"><span>Puxa</span><span><em>o queijo.</em></span></div>
+    <div class="cx-txt"><h3 id="rev-h">Peça e acompanhe pelo celular.</h3><p>Escolha abaixo, monte o pedido e ele chega no WhatsApp da pizzaria. Fotos ilustrativas.</p></div>
+  </div>
+</section>
+
 <header class="hero">
   <img src="../img/pizza-hero.webp" alt="Pizzas napolitanas saindo do forno" width="1800" height="1080">
   <div class="in">
@@ -150,7 +188,7 @@ footer{max-width:1100px;margin:70px auto 0;padding:30px var(--m);font-size:13px;
 
 <footer>
   <div><b>Cantina Rossi</b> · modelo fictício para demonstração. Cardápio feito pela <a href="https://maglionithiago76-debug.github.io/orbi/"><b>Orbi</b></a>.</div>
-  <div>Fotos: Wikimedia Commons: Tony Webster (CC BY 2.0), Robot8A (CC BY-SA 4.0), Aaron Landry (CC BY 2.0), HutheMeow (CC BY-SA 4.0), Syced (CC0). Imagens ilustrativas.</div>
+  <div>Fotos: Wikimedia Commons: Tony Webster (CC BY 2.0), Robot8A (CC BY-SA 4.0), Aaron Landry (CC BY 2.0), HutheMeow (CC BY-SA 4.0), Syced (CC0); Pexels (licença livre). Imagens ilustrativas.</div>
 </footer>
 
 <div class="bar" id="bar" role="region" aria-label="Seu pedido"><div><b id="b-tot">R$ 0,00</b><small id="b-n">0 itens</small></div><button id="open">Ver pedido</button></div>
@@ -274,5 +312,6 @@ if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catc
 })();
 </script>
 <script src="../../motion.js" defer></script>
+<script src="../../cine.js" defer></script>
 </body>
 </html>
