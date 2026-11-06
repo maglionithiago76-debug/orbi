@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Orbi · Sites e apps sob medida</title>
 <meta name="description" content="A Orbi é uma equipe especializada em sites e apps. Feito do jeito que você pedir, pronto em até 5 dias, e você só paga depois de aprovar.">
-<meta name="theme-color" content="#111214">
+<meta name="theme-color" content="#C8FF3D">
 <meta property="og:title" content="Orbi · Sites e apps sob medida">
 <meta property="og:description" content="Equipe especializada em sites e apps. Você só paga depois de ver pronto.">
 <meta property="og:image" content="img/work/site-barbearia.webp">
@@ -16,7 +16,7 @@
 <style>
 :root{
   --bg:#111214;--surface:#1B1C1F;--ink:#F2F2EE;--soft:#B4B5AF;--accent:#C8FF3D;--accent-ink:#111214;
-  --field:#E6E6DF;--field-ink:#111214;--field-soft:#4A4B47;--sage:#8FA68E;
+  --field:#C8FF3D;--field-ink:#111214;--field-soft:#2F3A12;--sage:#F2F2EE;
   --m:clamp(20px,3vw,40px);--gap:clamp(120px,16vh,200px);
   --f:"Cabinet Grotesk",system-ui,sans-serif;
   --s-small:15px;--s-body:clamp(17px,1rem + .25vw,19px);--s-lead:clamp(21px,1.1rem + .7vw,27px);--s-head:clamp(44px,1.2rem + 5vw,96px);--s-giant:clamp(72px,10vw,168px);
@@ -327,17 +327,32 @@ footer .legal p{max-width:80ch}
   .bar.pre > div{transform:none}
   html{scroll-behavior:auto}
 }
+
+/* Orbi palette (owner 2026-11-05, 3-colour rule): lime base, black neutral, white. Lime blocks alternate with black ones. */
+.lime{--bg:#C8FF3D;--ink:#111214;--soft:#2F3A12;--surface:#111214;background:#C8FF3D!important;color:#111214}
+.lime .btn{background:#111214;color:#C8FF3D}.lime .btn:hover{background:#000}
+.lime .btn.alt{background:#fff;color:#111214}.lime .btn.alt:hover{background:#F2F2EE}
+.lime .word i{background:#111214}
+.lime ::selection{background:#111214;color:#C8FF3D}
+.lime :focus-visible{outline-color:#111214}
+.hero.lime .note{color:#2F3A12}
+.spec.lime{padding-bottom:var(--gap)}
+.spec.lime .duo a{--ink:#F2F2EE;--soft:#B4B5AF;color:#F2F2EE}
+.spec.lime .duo a:hover,.spec.lime .duo a:focus-visible{background:#fff;color:#111214}.spec.lime .duo a:hover p{color:#4A4B47}
+footer.lime .reach{color:#111214}
+.list button[aria-pressed=true]{background:rgba(17,18,20,.1)}
+.bar > div:nth-child(4){background:#fff}
 </style>
 </head>
 <body>
-<header class="nav">
+<header class="nav lime">
   <a class="word" href="#top" aria-label="Orbi, início"><i></i>orbi</a>
   <ul><li><a href="#sites">Sites</a></li><li><a href="#apps">Apps</a></li><li><a href="#como">Como funciona</a></li><li><a href="#duvidas">Dúvidas</a></li></ul>
   <a class="btn" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">Falar no WhatsApp</a>
 </header>
 
 <main id="top">
-<section class="hero" aria-labelledby="h1">
+<section class="hero lime" aria-labelledby="h1">
   <div>
     <h1 id="h1"><span class="ln"><span>Mais clientes.</span></span><span class="ln"><span>Menos trabalho.</span></span></h1>
     <p class="sub">Site ou app feito para o seu negócio, no ar em 5 dias. Você só paga depois de ver pronto e aprovar.</p>
@@ -411,7 +426,7 @@ footer .legal p{max-width:80ch}
   </div>
 </section>
 
-<section class="spec" aria-labelledby="spec-h">
+<section class="spec lime" aria-labelledby="spec-h">
   <div class="top">
     <h2 id="spec-h" class="rv">Duas coisas, feitas a fundo.</h2>
     <p class="rv d1">A gente não faz de tudo: só site e app. Com o foco todo nisso, sai rápido, bonito e funcionando de verdade.</p>
@@ -526,7 +541,7 @@ footer .legal p{max-width:80ch}
 </a>
 </main>
 
-<footer>
+<footer class="lime">
   <div class="cols">
     <ul class="reach">
       <li><a href="https://wa.me/5511927013668">WhatsApp (11) 92701-3668</a></li>
@@ -536,7 +551,7 @@ footer .legal p{max-width:80ch}
   </div>
   <div class="name" aria-hidden="true">orbi</div>
   <div class="legal">
-    <p>Este site não coleta dados nem usa rastreamento. Os modelos usam nomes e preços fictícios. Fotos dos modelos: Wikimedia Commons, licenças Creative Commons, autores listados em cada modelo.</p>
+    <p>Este site não coleta dados nem usa rastreamento. Os modelos usam nomes e preços fictícios. Fotos dos modelos: Pexels (licença livre) e Wikimedia Commons (Creative Commons), créditos em cada modelo.</p>
     <a class="link" href="#top">Voltar ao topo</a>
   </div>
 </footer>
