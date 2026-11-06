@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pelúcia Pet · Banho e tosa (modelo Orbi)</title>
 <meta name="description" content="Modelo de site de pet shop feito pela Orbi: banho e tosa com agendamento, leva e traz, preços por porte e WhatsApp.">
-<meta name="theme-color" content="#F2F4F7">
+<meta name="theme-color" content="#0047F7">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#F2F4F7;--bg2:#E4E9F1;--ink:#0F1B2D;--muted:#45536A;--blue:#1F4FE0;--sun:#FFD23F;--m:clamp(20px,3vw,40px);--disp:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif;--cx-font:"Bricolage Grotesque",system-ui,sans-serif}
+:root{--bg:#FFFFFF;--bg2:#F1F4FF;--ink:#0B1530;--muted:#45536A;--blue:#0047F7;--sun:#FA4B02;--m:clamp(20px,3vw,40px);--disp:"Bricolage Grotesque",system-ui,sans-serif;--sans:"Figtree",system-ui,sans-serif;--cx-font:"Bricolage Grotesque",system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg)}
 body{background:var(--bg);color:var(--ink);font:400 18px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}img{display:block;max-width:100%}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border-radius:999px;background:var(--blue);color:#fff;font:700 17px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;transition:transform .25s,background-color .25s}
-.btn:hover{background:#1840B8;transform:translateY(-2px)}
+.btn:hover{background:#0039C6;transform:translateY(-2px)}
 .btn.ghost{background:var(--bg2);color:var(--ink)}
 .demo{position:relative;z-index:60;display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:9px var(--m);background:#C8FF3D;color:#0A1200;font:600 14px/1.3 var(--sans);text-align:center}
 .demo a{font-weight:700}
@@ -55,7 +55,7 @@ h2{font:800 clamp(42px,5.6vw,88px)/.95 var(--disp);letter-spacing:-.04em}
 #portes .lead{color:#DCE5FF}
 .sizes{margin-top:60px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:end}
 .size{display:grid;gap:8px}
-.size b{font:800 clamp(90px,13vw,210px)/.8 var(--disp);letter-spacing:-.05em;color:var(--sun)}
+.size b{font:800 clamp(90px,13vw,210px)/.8 var(--disp);letter-spacing:-.05em;color:#fff}
 .size:nth-child(1) b{font-size:clamp(60px,8vw,130px)}
 .size:nth-child(3) b{font-size:clamp(120px,18vw,290px)}
 .size span{font-size:17px;color:#DCE5FF}
@@ -75,12 +75,12 @@ h2{font:800 clamp(42px,5.6vw,88px)/.95 var(--disp);letter-spacing:-.04em}
 .ticket{position:sticky;top:96px;padding:30px;border-radius:28px;background:var(--sun);color:var(--ink)}
 .ticket h3{font:800 32px/1 var(--disp);letter-spacing:-.03em}
 .ticket dl{margin-top:22px;display:grid;grid-template-columns:auto 1fr;gap:12px 18px;font-size:16px}
-.ticket dt{color:#4A4330}
+.ticket dt{color:var(--ink)}
 .ticket dd{font-weight:700;text-align:right}
 .ticket .tot{margin-top:22px;padding-top:18px;border-top:3px solid var(--ink);display:flex;justify-content:space-between;font:800 30px/1 var(--disp)}
 .ticket .btn{width:100%;margin-top:22px;background:var(--ink)}
 .ticket .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
-.ticket p{margin-top:12px;font-size:14px;color:#4A4330}
+.ticket p{margin-top:12px;font-size:14px;color:var(--ink)}
 
 /* services */
 #servicos{background:var(--bg2)}
@@ -103,7 +103,7 @@ h2{font:800 clamp(42px,5.6vw,88px)/.95 var(--disp);letter-spacing:-.04em}
 /* info */
 #info{background:var(--ink);color:#fff}
 .info{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.card{padding:28px;border-radius:26px;background:#1B2A40}
+.card{padding:28px;border-radius:26px;background:#0B1530}
 .card h3{font:700 16px/1 var(--sans);color:var(--sun);margin-bottom:16px}
 .hours{list-style:none;display:grid;gap:8px;font-size:16px}
 .hours li{display:flex;justify-content:space-between}
@@ -149,7 +149,7 @@ dialog .btn{min-height:48px;font-size:15px}
 /* banho: dogs bounce in on load; soap bubbles rise and the services change with the scroll (cinematic, owner 2026-11-04) */
 .banho{position:relative;height:320svh;background:var(--blue);color:#fff}
 .banho .pin{position:sticky;top:0;height:100svh;overflow:hidden}
-.banho .word{position:absolute;left:0;right:0;top:clamp(80px,14vh,140px);text-align:center;font:800 clamp(90px,21vw,360px)/.8 var(--disp);color:var(--sun);letter-spacing:-.05em;white-space:nowrap;will-change:transform,opacity}
+.banho .word{position:absolute;left:0;right:0;top:clamp(80px,14vh,140px);text-align:center;font:800 clamp(90px,21vw,360px)/.8 var(--disp);color:#fff;letter-spacing:-.05em;white-space:nowrap;will-change:transform,opacity}
 .banho .word span{display:inline-block;animation:bdrop 1s cubic-bezier(.2,.75,.15,1) both}
 .banho .word span:nth-child(2){animation-delay:.05s}.banho .word span:nth-child(3){animation-delay:.1s}.banho .word span:nth-child(4){animation-delay:.15s}.banho .word span:nth-child(5){animation-delay:.2s}.banho .word span:nth-child(6){animation-delay:.25s}.banho .word span:nth-child(7){animation-delay:.3s}
 @keyframes bdrop{from{transform:translateY(-110%) rotate(-10deg);opacity:0}}
@@ -162,7 +162,7 @@ dialog .btn{min-height:48px;font-size:15px}
 .banho .bsvc{position:absolute;right:var(--m);top:50%;translate:0 -50%;width:min(30ch,40vw);text-align:right;opacity:0;transition:opacity .4s}
 .banho.open .bsvc{opacity:1}
 .banho .bsvc b{display:block;font:800 clamp(30px,3.6vw,58px)/.95 var(--disp);letter-spacing:-.03em}
-.banho .bsvc em{display:block;margin-top:8px;font:800 clamp(22px,2.2vw,34px)/1 var(--disp);font-style:normal;color:var(--sun)}
+.banho .bsvc em{display:block;margin-top:8px;font:800 clamp(22px,2.2vw,34px)/1 var(--disp);font-style:normal;color:#fff;background:var(--sun);display:inline-block;padding:4px 12px;border-radius:999px;color:var(--ink)}
 .banho .bsvc p{margin-top:8px;color:#DCE5FF}
 .banho h2{position:absolute;left:var(--m);top:clamp(80px,13vh,130px);max-width:14ch;font:800 clamp(30px,3.6vw,58px)/.95 var(--disp);letter-spacing:-.03em;opacity:0;transition:opacity .4s}
 .banho.open h2{opacity:1}
@@ -200,7 +200,7 @@ dialog .btn{min-height:48px;font-size:15px}
   </div>
 </header>
 
-<section class="cx cx-mask" data-cine="mask" data-o=".5 .55" data-m="off" style="--cx-bg:var(--blue);--cx-fg:#fff;--cx-ac:var(--sun)" aria-labelledby="esp-h">
+<section class="cx cx-mask" data-cine="mask" data-o=".5 .55" data-m="off" style="--cx-bg:var(--blue);--cx-fg:#fff;--cx-ac:#fff" aria-labelledby="esp-h">
   <div class="cx-pin">
     <img class="cx-full" src="../img/cx-d-bubbles.webp" alt="Dois poodles no meio da espuma do banho" loading="lazy">
     <div class="cx-shade"></div>
@@ -265,7 +265,7 @@ dialog .btn{min-height:48px;font-size:15px}
   <ul class="svc" id="svc-list"></ul>
 </section>
 
-<section class="cx cx-track" data-cine="track" id="casa" data-m="off" style="--cx-bg:var(--blue);--cx-fg:#fff;--cx-ac:var(--sun)" aria-labelledby="casa-h">
+<section class="cx cx-track" data-cine="track" id="casa" data-m="off" style="--cx-bg:var(--blue);--cx-fg:#fff;--cx-ac:#fff" aria-labelledby="casa-h">
   <div class="cx-pin">
     <h2 class="cx-ttl" id="casa-h">O espaço · Pelúcia</h2>
     <div class="cx-row">

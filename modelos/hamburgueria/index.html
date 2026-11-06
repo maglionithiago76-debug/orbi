@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brasa Burger · Smash na chapa, entregue quente</title>
 <meta name="description" content="Hamburgueria smash: carne esmagada na chapa a 230 °C, pão brioche e cheddar. Delivery e retirada. Peça pelo WhatsApp.">
-<meta name="theme-color" content="#F0B323">
+<meta name="theme-color" content="#FA4100">
 <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--y:#F0B323;--r:#C3261A;--ink:#1A0F0A;--coal:#120D0A;--kraft:#C69C6D;--cream:#FFF4DC;--m:clamp(18px,4vw,48px);--d:"Archivo Black",Impact,sans-serif;--s:"Figtree",system-ui,sans-serif;--ease:cubic-bezier(.2,.75,.15,1);--cx-font:"Archivo Black",Impact,sans-serif}
+:root{--y:#FA4100;--r:#FFFFFF;--o:#FA4100;--l:#7CF000;--ink:#111111;--coal:#111111;--kraft:#FFFFFF;--cream:#FFFFFF;--m:clamp(18px,4vw,48px);--d:"Archivo Black",Impact,sans-serif;--s:"Figtree",system-ui,sans-serif;--ease:cubic-bezier(.2,.75,.15,1);--cx-font:"Archivo Black",Impact,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--y)}
 body{background:var(--y);color:var(--ink);font:400 17px/1.5 var(--s);-webkit-font-smoothing:antialiased;overflow-x:clip}
@@ -22,11 +22,11 @@ a{color:inherit}
 .top{position:fixed;left:0;right:0;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px var(--m);pointer-events:none;transition:color .4s}
 .top>*{pointer-events:auto}
 .top b{font:400 22px/1 var(--d);letter-spacing:-.01em;color:var(--r)}
-.top a.go{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:var(--y);font-weight:700;font-size:15px;text-decoration:none}
+.top a.go{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:var(--l);font-weight:700;font-size:15px;text-decoration:none}
 body.dark .top b{color:var(--y)}
 body.dark .top a.go{background:var(--y);color:var(--ink)}
 .pin{position:sticky;top:0;height:100svh;overflow:hidden}
-.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--y);font:700 17px var(--s);text-decoration:none;border:0;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;background:var(--ink);color:var(--l);font:700 17px var(--s);text-decoration:none;border:0;cursor:pointer}
 .btn:active{transform:scale(.97)}
 
 /* 1. hero: ingredients fall and stack on load, then the scroll takes the burger apart */
@@ -45,7 +45,7 @@ body.dark .top a.go{background:var(--y);color:var(--ink)}
 .lay:nth-child(1) img{animation-delay:.85s}.lay:nth-child(2) img{animation-delay:.6s}.lay:nth-child(3) img{animation-delay:.35s}
 @keyframes fall{from{transform:translateY(-120vh) rotate(-16deg)}}
 .tag{position:absolute;display:grid;gap:3px;padding:12px 16px;border-radius:14px;background:var(--ink);color:var(--cream);font:600 14px/1.25 var(--s);white-space:nowrap;opacity:0;transform:translateY(12px) scale(.92);transition:opacity .4s,transform .5s var(--ease);translate:0 -50%;box-shadow:0 14px 30px rgba(40,10,0,.3)}
-.tag b{font:400 clamp(17px,1.5vw,22px)/1 var(--d);color:var(--y)}
+.tag b{font:400 clamp(17px,1.5vw,22px)/1 var(--d);color:var(--l)}
 .tag.r{left:calc(100% + 10px)}.tag.l{right:calc(100% + 10px);text-align:right}
 .hero.open .tag{opacity:1;transform:none}
 .hero.open .lay:nth-child(2) .tag{transition-delay:.08s}.hero.open .lay:nth-child(3) .tag{transition-delay:.16s}
@@ -82,15 +82,15 @@ body.dark .top a.go{background:var(--y);color:var(--ink)}
 .grill .disc{position:absolute;right:-8vw;top:50%;width:min(110vw,980px);aspect-ratio:1;translate:0 -50%;border-radius:50%;overflow:hidden;will-change:clip-path,transform}
 .grill .disc img{width:100%;height:100%;object-fit:cover}
 .grill .txt{position:absolute;left:var(--m);top:clamp(80px,16vh,150px);max-width:min(24ch,70vw);z-index:2}
-.grill h2{font:400 clamp(40px,5.4vw,88px)/.92 var(--d);color:var(--y)}
-.grill .txt p{margin-top:16px;font-size:18px;color:#E9DCC4;max-width:30ch}
-.grill .deg{position:absolute;left:var(--m);bottom:clamp(24px,6vh,60px);z-index:2;font:400 clamp(80px,15vw,250px)/.8 var(--d);color:#FF6A1A;font-variant-numeric:tabular-nums}
+.grill h2{font:400 clamp(40px,5.4vw,88px)/.92 var(--d);color:var(--l)}
+.grill .txt p{margin-top:16px;font-size:18px;color:#E6E6E6;max-width:30ch}
+.grill .deg{position:absolute;left:var(--m);bottom:clamp(24px,6vh,60px);z-index:2;font:400 clamp(80px,15vw,250px)/.8 var(--d);color:var(--o);font-variant-numeric:tabular-nums}
 
 /* 4. macro zoom */
 .zoom{height:220vh;position:relative;background:var(--coal);color:var(--y)}
 .zoom .pic{position:absolute;inset:0;display:grid;place-items:center}
 .zoom .pic{overflow:hidden}.zoom .pic img{width:100%;height:100%;object-fit:cover;will-change:transform}
-.zoom .gram{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(110px,24vw,380px)/.8 var(--d);color:var(--y);opacity:0;will-change:opacity,transform}
+.zoom .gram{position:absolute;inset:0;display:grid;place-items:center;font:400 clamp(110px,24vw,380px)/.8 var(--d);color:var(--l);opacity:0;will-change:opacity,transform}
 .zoom .cap{position:absolute;left:var(--m);right:var(--m);bottom:clamp(24px,6vh,60px);display:flex;justify-content:space-between;gap:20px;font-weight:600;color:var(--cream);opacity:0;transition:opacity .4s}
 .zoom .cap.on{opacity:1}
 
@@ -101,29 +101,29 @@ body.dark .top a.go{background:var(--y);color:var(--ink)}
 .bag .txt p{margin-top:14px;font-weight:600;max-width:26ch}
 .bag .b{position:absolute;left:50%;bottom:-2vh;width:min(70vw,440px);aspect-ratio:4/5;translate:-50% 0;z-index:2}
 .bag .b .front{position:absolute;inset:18% 0 0 0;background:var(--kraft);border-radius:8px 8px 0 0;display:grid;place-items:center;align-content:center;gap:4px;box-shadow:inset 0 14px 0 rgba(0,0,0,.08)}
-.bag .b .front b{font:400 clamp(36px,6vw,60px)/1 var(--d);color:var(--r)}
-.bag .b .front small{font-weight:700;letter-spacing:.02em;color:#5C3D1E}
-.bag .b .back{position:absolute;inset:14% 6% 70% 6%;background:#A97F52;border-radius:6px}
+.bag .b .front b{font:400 clamp(36px,6vw,60px)/1 var(--d);color:var(--o)}
+.bag .b .front small{font-weight:700;letter-spacing:.02em;color:var(--ink)}
+.bag .b .back{position:absolute;inset:14% 6% 70% 6%;background:#E8E8E8;border-radius:6px}
 .bag .fall{position:absolute;left:50%;top:0;width:min(56vw,360px);translate:-50% 0;z-index:1;will-change:transform}
 
 /* 6. order: kraft */
 .order{background:var(--kraft);color:var(--ink);padding:clamp(80px,14vh,140px) var(--m)}
 .order .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.order h2{font:400 clamp(44px,7vw,110px)/.9 var(--d);color:var(--r);max-width:12ch}
+.order h2{font:400 clamp(44px,7vw,110px)/.9 var(--d);color:var(--o);max-width:12ch}
 .order .head p{max-width:30ch;font-weight:600}
 .ways{list-style:none;margin-top:clamp(40px,8vh,80px)}
 .ways a{display:grid;grid-template-columns:1fr auto;gap:4px 20px;align-items:center;padding:22px 0;text-decoration:none;border-top:2px solid rgba(26,15,10,.18)}
 .ways li:last-child a{border-bottom:2px solid rgba(26,15,10,.18)}
 .ways b{font:400 clamp(30px,4.4vw,64px)/1 var(--d);transition:transform .3s var(--ease),color .3s}
 .ways span{grid-column:1;font-weight:600}
-.ways em{grid-row:1/3;grid-column:2;width:54px;height:54px;border-radius:50%;background:var(--ink);color:var(--kraft);display:grid;place-items:center;font-style:normal;font-size:24px;transition:transform .3s var(--ease)}
-.ways a:hover b{transform:translateX(10px);color:var(--r)}
+.ways em{grid-row:1/3;grid-column:2;width:54px;height:54px;border-radius:50%;background:var(--ink);color:var(--l);display:grid;place-items:center;font-style:normal;font-size:24px;transition:transform .3s var(--ease)}
+.ways a:hover b{transform:translateX(10px);color:var(--o)}
 .ways a:hover em{transform:rotate(-45deg)}
 .info2{margin-top:clamp(50px,8vh,90px);display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-weight:600}
 .info2 b{display:block;font:400 22px/1.1 var(--d);margin-bottom:6px}
 
 /* marquee + footer */
-.tape{background:var(--r);color:var(--y);overflow:hidden;white-space:nowrap;padding:14px 0;font:400 clamp(20px,2.6vw,34px)/1 var(--d)}
+.tape{background:var(--l);color:var(--ink);overflow:hidden;white-space:nowrap;padding:14px 0;font:400 clamp(20px,2.6vw,34px)/1 var(--d)}
 .tape div{display:inline-block;will-change:transform}
 footer{background:var(--y);padding:clamp(60px,10vh,110px) var(--m) 28px;overflow:hidden}
 footer .big{font:400 clamp(110px,30vw,520px)/.78 var(--d);color:var(--r);letter-spacing:-.04em;white-space:nowrap;will-change:transform}
@@ -173,7 +173,7 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
   </div>
 </section>
 
-<section class="cx cx-mask" data-cine="mask" data-o=".46 .55" data-m="off" style="--cx-bg:var(--coal);--cx-fg:var(--y);--cx-ac:var(--y)" aria-labelledby="fogo-h">
+<section class="cx cx-mask" data-cine="mask" data-o=".46 .55" data-m="off" style="--cx-bg:var(--coal);--cx-fg:#fff;--cx-ac:var(--l)" aria-labelledby="fogo-h">
   <div class="cx-pin">
     <img class="cx-full" src="../img/cx-h-fire.webp" alt="Carnes na grelha com fogo alto" loading="lazy">
     <div class="cx-shade"></div>
@@ -210,7 +210,7 @@ footer .legal{margin-top:30px;display:flex;justify-content:space-between;gap:16p
   </div>
 </section>
 
-<section class="cx cx-track" data-cine="track" data-m="off" style="--cx-bg:var(--coal);--cx-fg:var(--cream);--cx-ac:var(--y)" aria-labelledby="chapa-h">
+<section class="cx cx-track" data-cine="track" data-m="off" style="--cx-bg:var(--coal);--cx-fg:#fff;--cx-ac:var(--l)" aria-labelledby="chapa-h">
   <div class="cx-pin">
     <h2 class="cx-ttl" id="chapa-h">Da chapa pra mesa</h2>
     <div class="cx-row">
