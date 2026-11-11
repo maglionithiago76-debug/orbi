@@ -1,317 +1,142 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="--base:#0F3B2A;--on-base:#FBF5EA;--neu:#FBF5EA;--on-neu:#2A1A12;--acc:#E0401C;--on-acc:#FFFFFF;--dot:#E0401C;--giant:#0F3B2A;--disp:'DM Serif Display',Georgia,serif;--disp-w:400;--disp-s:normal;--sans:'Figtree',system-ui,sans-serif">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cantina Rossi · Cardápio (modelo Orbi)</title>
-<meta name="description" content="Modelo de cardápio digital feito pela Orbi: fotos, carrinho e pedido direto no WhatsApp, sem taxa.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cantina Rossi · Pizza napolitana no forno a lenha</title>
+<meta name="description" content="Pizza napolitana no forno a lenha e massa fresca feita todo dia. Peça pelo WhatsApp: entrega, retirada ou na mesa.">
 <meta name="theme-color" content="#0F3B2A">
-<link rel="manifest" href="manifest.webmanifest">
+<meta name="robots" content="noindex">
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#FBF5EA;--ink:#2A1A12;--muted:#7A6555;--red:#E0401C;--dark:#0F3B2A;--card:#fff;--line:#EADFCB;--gold:#FF6A45;--m:clamp(16px,3vw,40px);--serif:"DM Serif Display",Georgia,serif;--sans:"Figtree",system-ui,sans-serif;--cx-font:"DM Serif Display",Georgia,serif}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:110px}
-img{display:block;max-width:100%}
-button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
-:focus-visible{outline:3px solid var(--red);outline-offset:2px}
-.demo{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:8px var(--m);background:#C8FF3D;color:#0A1200;font:600 13px/1.3 var(--sans);text-align:center}
-.demo a{color:inherit;font-weight:800}
-
-.hero{position:relative;height:min(62svh,560px);overflow:hidden;background:var(--dark);color:#FBF5EA}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.62;transform-origin:center;animation:zoom 14s ease-out both}
-@keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-.hero .in{position:absolute;left:0;right:0;bottom:0;padding:28px var(--m);max-width:1100px;margin:0 auto}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:99px;background:rgba(29,20,16,.8);font:700 13px/1 var(--sans)}
-.badge i{width:8px;height:8px;border-radius:50%;background:#4CC37A}.badge.off i{background:#E0624C}
-.hero h1{margin-top:14px;font:400 clamp(54px,9vw,120px)/.9 var(--serif);letter-spacing:-.01em}
-.hero h1 em{color:var(--gold)}
-.hero p{margin-top:12px;max-width:44ch;font-size:17px;color:#F1E6D3}
-.mode{margin-top:18px;display:inline-flex;padding:5px;border-radius:99px;background:rgba(251,245,234,.14);backdrop-filter:blur(6px)}
-.mode button{min-height:42px;padding:0 18px;border-radius:99px;font-weight:700;font-size:15px;color:#FBF5EA}
-.mode button[aria-pressed=true]{background:#FBF5EA;color:var(--ink)}
-
-.tabs{position:sticky;top:0;z-index:20;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:14px var(--m);scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tabs a{flex:none;min-height:42px;display:inline-flex;align-items:center;padding:0 18px;border-radius:99px;background:#F0E4CF;color:var(--ink);text-decoration:none;font-weight:700;font-size:15px;transition:background-color .2s}
-.tabs a.on{background:var(--ink);color:#FBF5EA}
-.search{max-width:1100px;margin:6px auto 0;padding:0 var(--m)}
-.search input{width:100%;min-height:50px;padding:0 18px;border-radius:14px;border:0;background:#F0E4CF;font:500 16px var(--sans);color:var(--ink)}
-
-main{max-width:1100px;margin:0 auto;padding:0 var(--m)}
-.cat{padding-top:42px;scroll-margin-top:70px}
-.cat h2{font:400 clamp(34px,4.4vw,52px)/1 var(--serif)}
-.cat>p{margin-top:6px;color:var(--muted)}
-.grid{margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.it{display:grid;grid-template-columns:1fr 112px;gap:14px;padding:14px;border-radius:20px;background:var(--card);align-items:start;transition:transform .25s}
-.it:hover{transform:translateY(-3px)}
-.it.np{grid-template-columns:1fr}
-.it img{width:112px;height:112px;object-fit:cover;border-radius:14px;grid-row:1;grid-column:2}
-.it h3{font:800 17px/1.25 var(--sans)}
-.it .tag{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:99px;background:#FFE1D8;color:#A3260B;font-size:11px;font-weight:800;vertical-align:2px}
-.it p{margin-top:4px;font-size:14px;color:var(--muted)}
-.it .bot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:10px;align-self:end}
-.it .pr{font:800 18px/1 var(--sans);white-space:nowrap}
-.fld[hidden]{display:none}
-.qty{display:inline-flex;align-items:center;gap:4px;border-radius:99px;background:var(--ink);color:#FBF5EA}
-.qty button{width:38px;height:38px;border-radius:50%;font-size:20px;font-weight:700;color:#FBF5EA}
-.qty span{min-width:18px;text-align:center;font-weight:800}
-.add{min-height:38px;padding:0 16px;border-radius:99px;background:var(--red);color:#fff;font-weight:800;font-size:14px}
-
-.bar{position:fixed;left:50%;bottom:16px;z-index:30;transform:translate(-50%,140%);width:min(560px,calc(100% - 24px));display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 12px 12px 22px;border-radius:20px;background:#0F3B2A;color:#fff;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
-.bar.show{transform:translate(-50%,0)}
-.bar b{font-size:17px}
-.bar small{display:block;opacity:.85;font-size:13px}
-.bar button{min-height:48px;padding:0 20px;border-radius:14px;background:#fff;color:#0F3B2A;font-weight:800}
-.bump{animation:bump .35s}
-@keyframes bump{50%{transform:translate(-50%,0) scale(1.04)}}
-
-.sheet{position:fixed;inset:0;z-index:40;display:none}
-.sheet.open{display:block}
-.sheet .bg{position:absolute;inset:0;background:rgba(29,20,16,.55)}
-.sheet .pn{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(620px,100%);max-height:88svh;overflow:auto;padding:24px var(--m) 28px;border-radius:26px 26px 0 0;background:var(--bg);animation:up .4s cubic-bezier(.2,.8,.2,1)}
-@keyframes up{from{transform:translate(-50%,100%)}}
-.pn h2{font:400 36px/1 var(--serif)}
-.line{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;margin-top:8px;border-radius:14px;background:#F0E4CF}
-.line small{display:block;color:var(--muted)}
-.fld{margin-top:16px;display:grid;gap:6px;font-weight:700;font-size:14px}
-.fld input,.fld textarea{min-height:48px;padding:12px 14px;border-radius:12px;border:0;background:#F0E4CF;font:500 16px var(--sans);color:var(--ink)}
-.sum{margin-top:18px;display:grid;gap:6px}
-.sum div{display:flex;justify-content:space-between}
-.sum .t{font:800 22px/1.2 var(--sans);margin-top:6px}
-.send{margin-top:20px;width:100%;min-height:56px;border-radius:16px;background:#0F3B2A;color:#fff;font-weight:800;font-size:17px}
-.close{position:absolute;right:18px;top:18px;width:42px;height:42px;border-radius:50%;background:#F0E4CF;font-size:20px;font-weight:700}
-
-dialog{margin:auto;border:0;border-radius:24px;padding:26px;max-width:440px;width:calc(100% - 32px);background:var(--bg);color:var(--ink)}
-dialog::backdrop{background:rgba(0,0,0,.6)}
-dialog h3{font:400 30px/1.05 var(--serif)}
-dialog .bubble{margin-top:16px;padding:14px 16px;border-radius:14px 14px 14px 4px;background:#DCF8C6;color:#111;font-size:14px;white-space:pre-line}
-dialog p{margin-top:12px;font-size:14px;color:var(--muted)}
-dialog .row{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
-dialog a,dialog button.b{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:99px;background:var(--ink);color:#FBF5EA;text-decoration:none;font-weight:800;font-size:15px}
-dialog button.b.g{background:#F0E4CF;color:var(--ink)}
-
-footer{max-width:1100px;margin:70px auto 0;padding:30px var(--m);font-size:13px;color:var(--muted);display:grid;gap:8px}
-.empty{padding:30px 0;color:var(--muted)}
-.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hero img{animation:none}}
-
-/* forno: the pizza spins in on load, then the slices open with the scroll (cinematic, owner 2026-11-04) */
-.forno{position:relative;height:300svh;background:var(--dark);color:#FBF5EA}
-.forno .pin{position:sticky;top:0;height:100svh;overflow:hidden}
-.forno .word{position:absolute;left:0;right:0;top:50%;translate:0 -50%;text-align:center;font:400 clamp(110px,26vw,440px)/.8 var(--serif);color:var(--red);letter-spacing:-.02em;white-space:nowrap;will-change:transform,opacity}
-.forno .word span{display:inline-block;animation:fdrop 1s cubic-bezier(.2,.75,.15,1) both}
-.forno .word span:nth-child(2){animation-delay:.06s}.forno .word span:nth-child(3){animation-delay:.12s}.forno .word span:nth-child(4){animation-delay:.18s}.forno .word span:nth-child(5){animation-delay:.24s}
-@keyframes fdrop{from{transform:translateY(-110%) rotate(-10deg);opacity:0}}
-.pz{position:absolute;left:50%;top:50%;width:min(78vw,62vh,600px);aspect-ratio:1;translate:-50% -50%;animation:spin-in 1.5s cubic-bezier(.2,.75,.15,1) .3s both}
-@keyframes spin-in{from{transform:translateY(-90vh) rotate(-260deg) scale(.6)}}
-.pz .rot{position:absolute;inset:0;will-change:transform}
-.pz img{position:absolute;inset:0;width:100%;height:100%;will-change:transform;filter:drop-shadow(0 26px 30px rgba(0,0,0,.5))}
-.pz .lbl{position:absolute;left:50%;top:50%;width:max-content;max-width:38vw;font:600 14px/1.25 var(--sans);opacity:0;transition:opacity .4s;translate:-50% -50%;text-align:center}
-.pz .lbl b{display:block;font:400 clamp(18px,1.8vw,26px)/1 var(--serif);color:var(--gold)}
-.forno.open .pz .lbl{opacity:1}
-.forno .cap{position:absolute;left:var(--m);right:var(--m);bottom:clamp(22px,5vh,48px);display:flex;justify-content:space-between;align-items:end;gap:20px;transition:opacity .4s}
-.forno h2{font:400 clamp(30px,3.4vw,52px)/1 var(--serif);max-width:15ch}
-.forno .cap p{max-width:30ch;color:#E3D6C3}
-.forno .deg{position:absolute;right:var(--m);top:clamp(70px,11vh,110px);font:400 clamp(40px,6vw,90px)/1 var(--serif);color:var(--gold);font-variant-numeric:tabular-nums;opacity:0;transition:opacity .4s}
-.forno.open .deg{opacity:1}
-@media(max-width:700px){.forno .cap{flex-direction:column;align-items:start}.pz{width:56vw;top:46%}.pz .lbl{font-size:10px;max-width:27vw}.pz .lbl b{font-size:13px}.forno .word{top:20%;font-size:30vw}}
-@media(prefers-reduced-motion:reduce){.forno{height:auto}.forno .pin{position:relative}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../kit/kit.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "Cantina Rossi", "description": "Pizza napolitana no forno a lenha e massa fresca feita todo dia. Peça pelo WhatsApp: entrega, retirada ou na mesa."}</script>
 </head>
 <body>
-<div class="demo">Modelo de cardápio feito pela Orbi · nome e preços fictícios <a href="https://maglionithiago76-debug.github.io/orbi/">Quero um assim</a></div>
-
-<section class="forno" id="forno" aria-labelledby="forno-h">
-  <div class="pin">
-    <div class="word" aria-hidden="true"><span>R</span><span>o</span><span>s</span><span>s</span><span>i</span></div>
-    <div class="deg" aria-hidden="true"><span id="fdeg">300</span>°C</div>
-    <div class="pz" role="img" aria-label="Pizza margherita se abrindo em seis fatias: massa, molho de tomate, muçarela de búfala e manjericão"><div class="rot" id="pzrot"><img src="../img/pz-w0.webp" alt="" width="900" height="900" data-i="0"><img src="../img/pz-w1.webp" alt="" width="900" height="900" data-i="1"><img src="../img/pz-w2.webp" alt="" width="900" height="900" data-i="2"><img src="../img/pz-w3.webp" alt="" width="900" height="900" data-i="3"><img src="../img/pz-w4.webp" alt="" width="900" height="900" data-i="4"><img src="../img/pz-w5.webp" alt="" width="900" height="900" data-i="5"></div><span class="lbl" data-i="0"><b>Massa de 48 h</b>leve e aerada</span><span class="lbl" data-i="1"><b>Molho San Marzano</b>tomate italiano</span><span class="lbl" data-i="2"><b>Muçarela de búfala</b>em lascas</span><span class="lbl" data-i="3"><b>Manjericão</b>colhido no dia</span><span class="lbl" data-i="4"><b>Borda queimadinha</b>no forno a lenha</span><span class="lbl" data-i="5"><b>Azeite</b>extravirgem no fim</span></div>
-    <div class="cap"><h2 id="forno-h">Seis fatias, nenhum atalho.</h2><p>Role pra abrir a pizza. Massa descansada 48 horas e forno a lenha a 450 °C, como em Nápoles.</p></div>
+<p class="fita">Modelo de site feito pela Orbi · nome, preços e endereço fictícios <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Cantina Rossi e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
+<header class="nav"><a class="nav__marca disp" href="#">Rossi</a>
+  <nav class="nav__pilulas" aria-label="Principal"><a class="pilula" href="#menu">Cardápio</a><a class="pilula" href="#como">Como fazemos</a><a class="pilula" href="#onde">Onde</a><a class="pilula pilula--acao" href="#menu">Fazer pedido</a></nav></header>
+<main>
+<section class="tunel" aria-labelledby="t-frase">
+  <canvas class="tunel__canvas" aria-hidden="true"></canvas>
+  <div class="tunel__hero">
+    <h1 class="tunel__frase disp" id="t-frase">Pizza napolitana<br>no forno a lenha.</h1>
+    <p class="tunel__nome disp" data-encaixe="hero" aria-hidden="true">Rossi</p>
+    <p class="tunel__dica">Role para entrar</p><p class="tunel__local">Ter a dom · 18h às 23h30 · entrega em 35–50 min</p>
   </div>
-</section>
-<section class="cx cx-mask" data-cine="mask" data-o=".5 .55" data-m="off" style="--cx-bg:var(--dark);--cx-fg:#FBF5EA;--cx-ac:var(--gold)" aria-labelledby="fogo-h">
-  <div class="cx-pin">
-    <img class="cx-full" src="../img/cx-p-fire.webp" alt="Pizzas assando no forno a lenha com fogo alto" loading="lazy">
-    <div class="cx-shade"></div>
-    <p class="cx-kick">Rola devagar</p>
-    <div class="cx-word" aria-hidden="true" style="background-image:url(../img/cx-p-fire.webp)">FORNO</div>
-    <div class="cx-cap"><h2 id="fogo-h">90 segundos a 450 °C.</h2><p>É o tempo que a pizza napolitana fica no forno a lenha. Sai com a borda pintadinha e o meio macio.</p></div>
-  </div>
-</section>
-
-<section class="cx cx-list" data-cine="list" data-m="off" style="--cx-bg:var(--dark);--cx-fg:#FBF5EA;--cx-ac:var(--gold)" aria-labelledby="passo-h">
-  <div class="cx-pin">
-    <p class="cx-kick" id="passo-h">Como a pizza nasce</p>
-    <div class="cx-pics">
-      <img src="../img/cx-p-knead.webp" alt="Mãos sovando a massa na farinha" loading="lazy">
-      <img src="../img/cx-p-dough.webp" alt="Mãos abrindo o disco de massa" loading="lazy">
-      <img src="../img/cx-p-cheese.webp" alt="Queijo sendo espalhado sobre a pizza" loading="lazy">
-      <img src="../img/cx-p-oven.webp" alt="Forno a lenha aceso" loading="lazy">
-      <img src="../img/cx-p-pull.webp" alt="Fatia de pizza puxando o queijo" loading="lazy">
-    </div>
-    <ol class="cx-words">
-      <li><b>Massa</b><span>Farinha italiana, descansa 48 horas</span></li>
-      <li><b>Disco</b><span>Aberto na mão, nunca no rolo</span></li>
-      <li><b>Queijo</b><span>Muçarela de búfala em lascas</span></li>
-      <li><b>Forno</b><span>Lenha, 450 °C, 90 segundos</span></li>
-      <li><b>Mesa</b><span>Chega quente, puxando o queijo</span></li>
-    </ol>
-  </div>
+  <div class="casos"><div class="caso"><p class="caso__num" data-in>01 / 03</p>
+      <div class="caso__base"><div><p class="caso__meta" data-in>A mais pedida · 8 pedaços</p><h3 class="caso__nome disp" data-in>Margherita</h3>
+      <p class="caso__resumo" data-in>Tomate italiano, muçarela de búfala e manjericão colhido no dia.</p></div>
+      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 59,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="margherita">Pedir este</a></div></div></div><div class="caso"><p class="caso__num" data-in>02 / 03</p>
+      <div class="caso__base"><div><p class="caso__meta" data-in>Clássica de Nápoles · sem queijo</p><h3 class="caso__nome disp" data-in>Marinara</h3>
+      <p class="caso__resumo" data-in>Tomate, alho, orégano e azeite. Só isso, e é o que basta.</p></div>
+      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 49,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="marinara">Pedir este</a></div></div></div><div class="caso"><p class="caso__num" data-in>03 / 03</p>
+      <div class="caso__base"><div><p class="caso__meta" data-in>Massa fresca · serve 1 com fome</p><h3 class="caso__nome disp" data-in>Lasanha à bolonhesa</h3>
+      <p class="caso__resumo" data-in>Lasanha à bolonhesa com pão de alho, feita aqui todo dia.</p></div>
+      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 48,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="lasanha">Pedir este</a></div></div></div></div>
+  <div class="tunel__fim"><p class="tunel__fim-frase disp">Três de quatorze.<br>Tem mais no cardápio.</p><a class="pilula pilula--acao pilula--g" href="#menu">Ver o cardápio</a></div>
+  <div class="tunel__progresso" aria-hidden="true"><i></i></div>
 </section>
 
-<section class="cx cx-reveal" data-cine="reveal" data-m="off" style="--cx-bg:var(--dark);--cx-fg:#FBF5EA;--cx-ac:var(--gold)" aria-labelledby="rev-h">
-  <div class="cx-pin">
-    <div class="cx-win"><img src="../img/cx-p-pep.webp" alt="" loading="lazy"></div>
-    <div class="cx-big" aria-hidden="true"><span>Puxa</span><span><em>o queijo.</em></span></div>
-    <div class="cx-txt"><h3 id="rev-h">Peça e acompanhe pelo celular.</h3><p>Escolha abaixo, monte o pedido e ele chega no WhatsApp da pizzaria. Fotos ilustrativas.</p></div>
+<section class="manif" aria-labelledby="m-t">
+  <div class="manif__pagina">
+    <div class="manif__texto"><h2 class="rotulo" id="m-t">A cantina</h2><p class="manifesto disp">A massa descansa <span data-ancora="0">48 horas,</span> é aberta na mão e vai pro <span class="foto-linha" style="--img:url(../img/cx-p-fire.webp)" role="img" aria-label="forno"></span> a lenha a <span data-ancora="1">450 °C.</span> Noventa segundos depois sai com a borda pintadinha e a <span class="foto-linha" style="--img:url(../img/cx-p-cheese.webp)" role="img" aria-label="muçarela"></span> de búfala <span data-ancora="2">puxando.</span></p></div>
+    <aside class="manif__margem" aria-label="Em resumo"><p class="nota" data-nota="0">massa fresca feita todo dia</p><p class="nota" data-nota="1">90 segundos no forno a lenha</p><p class="nota" data-nota="2">entrega, retirada ou na mesa</p></aside>
   </div>
+  <svg class="manif__fios" aria-hidden="true"></svg>
 </section>
 
-<header class="hero">
-  <img src="../img/pizza-hero.webp" alt="Pizzas napolitanas saindo do forno" width="1800" height="1080">
-  <div class="in">
-    <span class="badge" id="status"><i></i><span>Aberto · entrega em 35–50 min</span></span>
-    <h1>Cantina <em>Rossi</em></h1>
-    <p>Pizza napolitana no forno a lenha e massa fresca feita aqui todo dia.</p>
-    <div class="mode" role="group" aria-label="Como você quer receber">
-      <button aria-pressed="true" data-m="Entrega">Entrega</button><button aria-pressed="false" data-m="Retirada">Retirada</button><button aria-pressed="false" data-m="Mesa">Na mesa</button>
-    </div>
-  </div>
-</header>
+<section class="metodo" id="como" aria-labelledby="c-t">
+  <div class="metodo__palco"><h2 class="metodo__titulo disp" id="c-t">Como a pizza nasce</h2>
+    <div class="tira"><figure class="quadro"><img src="../img/cx-p-knead.webp" alt="Massa" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-p-dough.webp" alt="Disco" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-p-oven.webp" alt="Forno" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-p-pull.webp" alt="Mesa" loading="lazy"></figure></div>
+    <div class="regua"><div class="regua__fio"><i></i></div><ol class="regua__etapas"><li><b>01 Massa</b><span>Farinha italiana, descansa 48 horas.</span></li><li><b>02 Disco</b><span>Aberto na mão, nunca no rolo.</span></li><li><b>03 Forno</b><span>Lenha, 450 °C, 90 segundos.</span></li><li><b>04 Mesa</b><span>Chega quente, puxando o queijo.</span></li></ol></div></div>
+</section>
 
-<nav class="tabs" id="tabs" aria-label="Categorias"></nav>
-<div class="search"><input id="q" type="search" placeholder="Buscar no cardápio" aria-label="Buscar no cardápio"></div>
-<main id="menu"></main>
+<section class="menu" id="menu" aria-labelledby="menu-t">
+  <div class="menu__topo"><div><h2 class="disp" id="menu-t">Cardápio</h2><p class="menu__sub">Monte o pedido e ele chega no WhatsApp da cantina, sem taxa de aplicativo.</p></div>
+    <div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="pizzas" aria-pressed="false">Pizzas</button><button class="chip" data-filtro="massas" aria-pressed="false">Massas</button><button class="chip" data-filtro="doces" aria-pressed="false">Sobremesas</button><button class="chip" data-filtro="bebidas" aria-pressed="false">Bebidas</button></div></div>
+  
+  <ul class="linhas"><li class="linha" data-cat="pizzas" data-img="../img/pizza-hero.webp">
+      <span class="l-num">01</span><span class="l-nome disp">Margherita<span class="l-tag">Mais pedida</span></span>
+      <span class="l-desc">Molho de tomate italiano, muçarela de búfala e manjericão</span><span class="l-preco">R$ 59,00</span><span class="l-acao"><span data-ctl="margherita"></span></span></li>
+<li class="linha" data-cat="pizzas" data-img="../img/pizza-marinara.webp">
+      <span class="l-num">02</span><span class="l-nome disp">Marinara</span>
+      <span class="l-desc">Tomate, alho, orégano e azeite. Sem queijo</span><span class="l-preco">R$ 49,00</span><span class="l-acao"><span data-ctl="marinara"></span></span></li>
+<li class="linha" data-cat="pizzas" data-img="../img/cx-p-pep.webp">
+      <span class="l-num">03</span><span class="l-nome disp">Calabresa da casa</span>
+      <span class="l-desc">Calabresa artesanal, cebola roxa e azeitona preta</span><span class="l-preco">R$ 62,00</span><span class="l-acao"><span data-ctl="calabresa"></span></span></li>
+<li class="linha" data-cat="pizzas" data-img="../img/cx-p-cheese.webp">
+      <span class="l-num">04</span><span class="l-nome disp">Quatro queijos</span>
+      <span class="l-desc">Muçarela, gorgonzola, parmesão e provolone</span><span class="l-preco">R$ 66,00</span><span class="l-acao"><span data-ctl="queijos"></span></span></li>
+<li class="linha" data-cat="pizzas" data-img="../img/cx-p-pull.webp">
+      <span class="l-num">05</span><span class="l-nome disp">Portuguesa</span>
+      <span class="l-desc">Presunto, ovo, cebola, ervilha e azeitona</span><span class="l-preco">R$ 64,00</span><span class="l-acao"><span data-ctl="portuguesa"></span></span></li>
+<li class="linha" data-cat="pizzas">
+      <span class="l-num">06</span><span class="l-nome disp">Nutella com morango<span class="l-tag">Novo</span></span>
+      <span class="l-desc">Doce, 4 pedaços</span><span class="l-preco">R$ 44,00</span><span class="l-acao"><span data-ctl="nutella"></span></span></li>
+<li class="linha" data-cat="massas" data-img="../img/lasagna.webp">
+      <span class="l-num">07</span><span class="l-nome disp">Lasanha à bolonhesa</span>
+      <span class="l-desc">Serve 1 com fome. Acompanha pão de alho</span><span class="l-preco">R$ 48,00</span><span class="l-acao"><span data-ctl="lasanha"></span></span></li>
+<li class="linha" data-cat="massas">
+      <span class="l-num">08</span><span class="l-nome disp">Talharim ao sugo</span>
+      <span class="l-desc">Tomate, manjericão e parmesão</span><span class="l-preco">R$ 39,00</span><span class="l-acao"><span data-ctl="talharim"></span></span></li>
+<li class="linha" data-cat="massas">
+      <span class="l-num">09</span><span class="l-nome disp">Nhoque ao funghi</span>
+      <span class="l-desc">Molho cremoso de cogumelos</span><span class="l-preco">R$ 46,00</span><span class="l-acao"><span data-ctl="nhoque"></span></span></li>
+<li class="linha" data-cat="doces" data-img="../img/tiramisu.webp">
+      <span class="l-num">10</span><span class="l-nome disp">Tiramisù<span class="l-tag">Feito hoje</span></span>
+      <span class="l-desc">Receita da nonna, no pote</span><span class="l-preco">R$ 22,00</span><span class="l-acao"><span data-ctl="tiramisu"></span></span></li>
+<li class="linha" data-cat="doces">
+      <span class="l-num">11</span><span class="l-nome disp">Panna cotta</span>
+      <span class="l-desc">Com calda de frutas vermelhas</span><span class="l-preco">R$ 19,00</span><span class="l-acao"><span data-ctl="panna"></span></span></li>
+<li class="linha" data-cat="bebidas">
+      <span class="l-num">12</span><span class="l-nome disp">Refrigerante lata</span>
+      <span class="l-desc">350 ml</span><span class="l-preco">R$ 7,00</span><span class="l-acao"><span data-ctl="refri"></span></span></li>
+<li class="linha" data-cat="bebidas">
+      <span class="l-num">13</span><span class="l-nome disp">Suco natural</span>
+      <span class="l-desc">Laranja, limão ou abacaxi com hortelã</span><span class="l-preco">R$ 12,00</span><span class="l-acao"><span data-ctl="suco"></span></span></li>
+<li class="linha" data-cat="bebidas">
+      <span class="l-num">14</span><span class="l-nome disp">Água com gás</span>
+      <span class="l-desc">500 ml</span><span class="l-preco">R$ 6,00</span><span class="l-acao"><span data-ctl="agua"></span></span></li></ul>
+  <img class="seguidor" alt="" aria-hidden="true">
+</section>
 
-<footer>
-  <div><b>Cantina Rossi</b> · modelo fictício para demonstração. Cardápio feito pela <a href="https://maglionithiago76-debug.github.io/orbi/"><b>Orbi</b></a>.</div>
-  <div>Fotos: Wikimedia Commons: Tony Webster (CC BY 2.0), Robot8A (CC BY-SA 4.0), Aaron Landry (CC BY 2.0), HutheMeow (CC BY-SA 4.0), Syced (CC0); Pexels (licença livre). Imagens ilustrativas.</div>
+<section class="ceu-sec" aria-labelledby="ceu-t">
+  <div class="ceu" aria-hidden="true"></div>
+  <div class="ceu__centro"><h2 class="ceu__frase disp" id="ceu-t">Puxa o queijo.<br>Peça pelo celular.</h2><p class="ceu__sub">O pedido chega no WhatsApp da cantina já com tudo escrito. Sem taxa de aplicativo.</p>
+    <a class="pilula pilula--acao pilula--g" href="#menu">Montar meu pedido</a></div>
+</section>
+</main>
+
+<footer class="rodape" id="onde">
+  <div class="rodape__cols"><div><h3>Horário</h3><p>Ter a dom, das 18h às 23h30</p></div><div><h3>Endereço</h3><p>Rua Itália, 85 (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div>
+  <p class="rodape__nota">Cantina Rossi é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Aaron Landry from Honolulu, HI, USA (CC BY 2.0); HutheMeow (CC BY-SA 4.0); Robot8A (CC BY-SA 4.0); Syced (CC0); Tony Webster from Portland, Oregon, United States (CC BY 2.0). Demais fotos: Pexels (licença livre).</p>
+  <p class="rodape__nome disp" data-encaixe="cheio" aria-hidden="true">Rossi</p>
 </footer>
 
-<div class="bar" id="bar" role="region" aria-label="Seu pedido"><div><b id="b-tot">R$ 0,00</b><small id="b-n">0 itens</small></div><button id="open">Ver pedido</button></div>
-
-<div class="sheet" id="sheet" aria-modal="true" role="dialog" aria-labelledby="sh-h">
-  <div class="bg" id="bg"></div>
-  <div class="pn">
-    <button class="close" id="x" aria-label="Fechar">×</button>
-    <h2 id="sh-h">Seu pedido</h2>
-    <div id="lines"></div>
-    <label class="fld">Seu nome<input id="f-name" autocomplete="name" placeholder="Como te chamamos?"></label>
-    <label class="fld" id="w-addr">Endereço de entrega<input id="f-addr" autocomplete="street-address" placeholder="Rua, número e bairro"></label>
-    <label class="fld" id="w-mesa" hidden>Número da mesa<input id="f-mesa" inputmode="numeric" placeholder="Ex.: 7"></label>
-    <label class="fld">Observação<textarea id="f-obs" rows="2" placeholder="Ex.: sem cebola, troco para 100"></textarea></label>
-    <div class="sum"><div><span>Itens</span><span id="s-it"></span></div><div id="w-fee"><span>Entrega</span><span>R$ 6,00</span></div><div class="t"><span>Total</span><span id="s-tot"></span></div></div>
-    <button class="send" id="send">Enviar pedido pelo WhatsApp</button>
-  </div>
-</div>
-
-<dialog id="dlg">
-  <h3>Assim o pedido chega no WhatsApp da cantina:</h3>
-  <div class="bubble" id="msg"></div>
-  <p>Este é um modelo. No cardápio de verdade, o pedido vai direto para o seu WhatsApp, sem taxa de aplicativo.</p>
-  <div class="row"><a href="https://wa.me/5511927013668?text=Oi!%20Vi%20o%20modelo%20de%20card%C3%A1pio%20e%20quero%20um%20assim.">Quero um cardápio assim</a><button class="b g" id="dclose">Fechar</button></div>
+<div class="sacola" role="region" aria-label="Seu pedido"><span data-n>0 itens</span><button class="pilula pilula--acao">Ver pedido</button></div>
+<a class="pilula pilula--acao pilula--g flutua" href="#menu">Fazer pedido</a>
+<dialog id="sacola-painel" aria-labelledby="sp-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <h2 class="disp" id="sp-t">Seu pedido</h2><ul class="itens"></ul>
+  <div class="chips" style="margin-top:16px" role="group" aria-label="Como receber"><button class="chip" data-opc="Entrega" aria-pressed="false">Entrega</button><button class="chip" data-opc="Retirada" aria-pressed="false">Retirada</button><button class="chip" data-opc="Na mesa" aria-pressed="false">Na mesa</button></div>
+  <label class="campo">Seu nome<input id="f-nome" autocomplete="name"></label>
+  <label class="campo" data-campo><span></span><input id="f-campo"></label>
+  <label class="campo">Observação<textarea id="f-obs" rows="2" placeholder="Ex.: sem cebola"></textarea></label>
+  <p class="aviso" data-taxa></p><p class="total"><span>Total</span><span data-total>R$ 0,00</span></p>
+  <button class="pilula pilula--acao pilula--g" style="width:100%;margin-top:16px" data-enviar>Enviar pedido pelo WhatsApp</button>
+</dialog>
+<dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2>
+  <p class="bolha-wa"></p>
+  <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
+  <div class="botoes"><a class="pilula pilula--acao pilula--g" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="pilula pilula--g" data-fechar>Fechar</button></div>
 </dialog>
 
-<script>
-const $ = s => document.querySelector(s);
-const brl = v => 'R$ ' + v.toFixed(2).replace('.', ',');
-const MENU = [
- ['Pizzas','Napolitanas, 8 pedaços, no forno a lenha',[
-  ['Margherita','Molho de tomate italiano, muçarela de búfala e manjericão',59,'pizza-hero','30% 50%','Mais pedida'],
-  ['Marinara','Tomate, alho, orégano e azeite. Sem queijo',49,'pizza-marinara','40% 70%'],
-  ['Calabresa da casa','Calabresa artesanal, cebola roxa e azeitona preta',62],
-  ['Quatro queijos','Muçarela, gorgonzola, parmesão e provolone',66],
-  ['Portuguesa','Presunto, ovo, cebola, ervilha e azeitona',64],
-  ['Nutella com morango','Doce, 4 pedaços',44,null,null,'Novo']]],
- ['Massas','Massa fresca feita aqui todo dia',[
-  ['Lasanha à bolonhesa','Serve 1 com fome. Acompanha pão de alho',48,'lasagna','50% 45%'],
-  ['Talharim ao sugo','Tomate, manjericão e parmesão',39],
-  ['Nhoque ao funghi','Molho cremoso de cogumelos',46]]],
- ['Sobremesas','',[
-  ['Tiramisù','Receita da nonna, no pote',22,'tiramisu','50% 50%','Feito hoje'],
-  ['Panna cotta','Com calda de frutas vermelhas',19]]],
- ['Bebidas','',[
-  ['Refrigerante lata','350 ml',7],['Suco natural','Laranja, limão ou abacaxi com hortelã',12],['Água com gás','500 ml',6]]]
-];
-const cart = {}; let mode = 'Entrega';
-const params = new URLSearchParams(location.search); if (params.get('mesa')) mode = 'Mesa';
-
-/* open status (18h–23h30, closed Monday) */
-(() => { const d = new Date(), h = d.getHours() + d.getMinutes() / 60, open = d.getDay() !== 1 && h >= 18 && h < 23.5, el = $('#status');
-  if (!open) { el.classList.add('off'); el.lastElementChild.textContent = 'Fechado agora · abre às 18h (ter a dom)'; } })();
-
-function render(filter=''){
-  const f = filter.trim().toLowerCase();
-  $('#tabs').innerHTML = MENU.map((c, i) => `<a href="#c${i}" class="${i ? '' : 'on'}">${c[0]}</a>`).join('');
-  let html = '';
-  MENU.forEach((c, ci) => {
-    const items = c[2].map((it, ii) => ({it, id: ci + '-' + ii})).filter(({it}) => !f || (it[0] + it[1]).toLowerCase().includes(f));
-    if (!items.length) return;
-    html += `<section class="cat" id="c${ci}"><h2 class="rv">${c[0]}</h2>${c[1] ? `<p class="rv">${c[1]}</p>` : ''}<div class="grid">` +
-      items.map(({it, id}) => `<article class="it rv ${it[3] ? '' : 'np'}"><div><h3>${it[0]}${it[5] ? `<span class="tag">${it[5]}</span>` : ''}</h3><p>${it[1]}</p></div>` +
-      (it[3] ? `<img src="../img/${it[3]}.webp" alt="${it[0]}" loading="lazy" width="112" height="112" style="object-position:${it[4]}">` : '') +
-      `<div class="bot"><span class="pr">${brl(it[2])}</span><span data-ctl="${id}"></span></div></article>`).join('') + '</div></section>';
-  });
-  $('#menu').innerHTML = html || '<p class="empty">Nada encontrado. Tente outra palavra.</p>';
-  ctl(); reveal(); spy();
-}
-function item(id){ const [c, i] = id.split('-').map(Number); return MENU[c][2][i]; }
-function ctl(){
-  document.querySelectorAll('[data-ctl]').forEach(el => { const id = el.dataset.ctl, n = cart[id] || 0;
-    el.innerHTML = n ? `<span class="qty"><button aria-label="Tirar um" data-d="-1">−</button><span>${n}</span><button aria-label="Pôr mais um" data-d="1">+</button></span>` : `<button class="add" data-d="1">Adicionar</button>`;
-    el.querySelectorAll('button').forEach(b => b.onclick = () => { cart[id] = Math.max(0, (cart[id] || 0) + +b.dataset.d); if (!cart[id]) delete cart[id]; ctl(); bar(+b.dataset.d > 0); }); });
-}
-function totals(){ let n = 0, s = 0; for (const id in cart) { n += cart[id]; s += cart[id] * item(id)[2]; } const fee = mode === 'Entrega' && n ? 6 : 0; return {n, s, fee, t: s + fee}; }
-function bar(bump){ const {n, t} = totals(), b = $('#bar'); b.classList.toggle('show', n > 0); $('#b-tot').textContent = brl(t); $('#b-n').textContent = n + (n === 1 ? ' item' : ' itens') + ' · ' + mode.toLowerCase();
-  if (bump) { b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump'); } }
-function sheet(){ const {s, fee, t} = totals();
-  $('#lines').innerHTML = Object.keys(cart).map(id => { const it = item(id); return `<div class="line"><span><b>${cart[id]}× ${it[0]}</b><small>${brl(it[2])} cada</small></span><b>${brl(cart[id] * it[2])}</b></div>`; }).join('');
-  $('#s-it').textContent = brl(s); $('#s-tot').textContent = brl(t);
-  $('#w-addr').hidden = mode !== 'Entrega'; $('#w-mesa').hidden = mode !== 'Mesa'; $('#w-fee').style.display = fee ? '' : 'none';
-  if (params.get('mesa')) $('#f-mesa').value = params.get('mesa'); }
-document.querySelectorAll('.mode button').forEach(b => { b.setAttribute('aria-pressed', b.dataset.m === mode); b.onclick = () => { mode = b.dataset.m; document.querySelectorAll('.mode button').forEach(x => x.setAttribute('aria-pressed', x === b)); bar(); }; });
-$('#open').onclick = () => { sheet(); $('#sheet').classList.add('open'); };
-$('#x').onclick = $('#bg').onclick = () => $('#sheet').classList.remove('open');
-$('#send').onclick = () => { const {s, fee, t} = totals();
-  const lines = Object.keys(cart).map(id => `• ${cart[id]}× ${item(id)[0]} · ${brl(cart[id] * item(id)[2])}`).join('\n');
-  const where = mode === 'Entrega' ? `🛵 Entrega: ${$('#f-addr').value || '(endereço)'}` : mode === 'Mesa' ? `🍽️ Mesa ${$('#f-mesa').value || '?'}` : '🏃 Retirada no balcão'; // taste-skill-ignore: WhatsApp message text
-  const obs = $('#f-obs').value ? `\n📝 ${$('#f-obs').value}` : ''; // taste-skill-ignore: WhatsApp message text
-  $('#msg').textContent = `Pedido de ${$('#f-name').value || '(nome)'}\n${lines}\n${where}${obs}\n${fee ? 'Entrega: ' + brl(fee) + '\n' : ''}Total: ${brl(t)}`;
-  $('#dlg').showModal(); };
-$('#dclose').onclick = () => $('#dlg').close();
-$('#q').oninput = e => render(e.target.value);
-
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }));
-function reveal(){ document.querySelectorAll('.rv:not(.in)').forEach(el => io.observe(el)); }
-let spyIO; function spy(){ if (spyIO) spyIO.disconnect(); spyIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { document.querySelectorAll('.tabs a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); } }), {rootMargin:'-30% 0px -60% 0px'});
-  document.querySelectorAll('.cat').forEach(c => spyIO.observe(c)); }
-render(); bar();
-if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
-</script>
-<script>
-(() => {
-  const f = document.getElementById('forno'), rot = document.getElementById('pzrot'), w = [...f.querySelectorAll('.rot img')], lb = [...f.querySelectorAll('.lbl')], word = f.querySelector('.word'), deg = document.getElementById('fdeg');
-  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), ease = t => 1 - Math.pow(1 - t, 3);
-  let dirty = true;
-  function frame() {
-    const r = f.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-    const p = clamp(-r.top / (f.offsetHeight - innerHeight)), k = ease(clamp((p - .05) / .35)) * (1 - ease(clamp((p - .85) / .15)));
-    const size = rot.offsetWidth, spin = p * 160;
-    f.classList.toggle('open', k > .6);
-    rot.style.transform = `rotate(${spin}deg)`;
-    w.forEach((img, i) => { const a = (i * 60 + 30 - 10) * Math.PI / 180; img.style.transform = `translate(${Math.cos(a) * k * size * .2}px, ${Math.sin(a) * k * size * .2}px) rotate(${(i % 2 ? 1 : -1) * k * 6}deg)`; });
-    lb.forEach((l, i) => { const a = (i * 60 + 30 - 10 + spin) * Math.PI / 180, R = size * (innerWidth < 700 ? .5 + .12 * k : .5 + .22 * k); l.style.transform = `translate(${Math.cos(a) * R}px, ${Math.sin(a) * R}px)`; });
-    word.style.transform = `scale(${1 + k * .12})`; word.style.opacity = 1 - k * .7;
-    deg.textContent = Math.round(300 + 150 * ease(clamp((p - .1) / .5)));
-  }
-  addEventListener('scroll', () => dirty = true, { passive: true }); addEventListener('resize', () => dirty = true);
-  (function tick() { if (dirty) { dirty = false; frame(); } requestAnimationFrame(tick); })();
-})();
-</script>
-<script src="../../motion.js" defer></script>
-<script src="../../cine.js" defer></script>
+<script type="application/json" id="site">{"nome": "Cantina Rossi", "modo": "pedido", "pecas": [{"src": "../img/cx-p-fire.webp", "w": 1009, "h": 1400}, {"src": "../img/pizza-hero.webp", "w": 1800, "h": 1080}, {"src": "../img/cx-p-knead.webp", "w": 1050, "h": 1400}, {"src": "../img/pz-inteira.webp", "w": 900, "h": 900}, {"src": "../img/cx-p-cheese.webp", "w": 933, "h": 1400}, {"src": "../img/pizza-oven.webp", "w": 1800, "h": 1197}, {"src": "../img/cx-p-dough.webp", "w": 933, "h": 1400}, {"src": "../img/pz-fatia.webp", "w": 441, "h": 800}, {"src": "../img/cx-p-pull.webp", "w": 933, "h": 1400}, {"src": "../img/pizza-marinara.webp", "w": 1800, "h": 1350}, {"src": "../img/cx-p-oven.webp", "w": 932, "h": 1400}, {"src": "../img/lasagna.webp", "w": 1800, "h": 1350}, {"src": "../img/cx-p-pep.webp", "w": 933, "h": 1400}, {"src": "../img/tiramisu.webp", "w": 1800, "h": 1355}], "destaques": [{"img": "../img/pizza-hero.webp", "fit": "cover"}, {"img": "../img/pizza-marinara.webp", "fit": "cover"}, {"img": "../img/lasagna.webp", "fit": "cover"}], "menu": [{"id": "margherita", "nome": "Margherita", "preco": 59}, {"id": "marinara", "nome": "Marinara", "preco": 49}, {"id": "calabresa", "nome": "Calabresa da casa", "preco": 62}, {"id": "queijos", "nome": "Quatro queijos", "preco": 66}, {"id": "portuguesa", "nome": "Portuguesa", "preco": 64}, {"id": "nutella", "nome": "Nutella com morango", "preco": 44}, {"id": "lasanha", "nome": "Lasanha à bolonhesa", "preco": 48}, {"id": "talharim", "nome": "Talharim ao sugo", "preco": 39}, {"id": "nhoque", "nome": "Nhoque ao funghi", "preco": 46}, {"id": "tiramisu", "nome": "Tiramisù", "preco": 22}, {"id": "panna", "nome": "Panna cotta", "preco": 19}, {"id": "refri", "nome": "Refrigerante lata", "preco": 7}, {"id": "suco", "nome": "Suco natural", "preco": 12}, {"id": "agua", "nome": "Água com gás", "preco": 6}], "opcoes": [{"k": "Entrega", "taxa": 6, "campo": "Endereço de entrega"}, {"k": "Retirada", "taxa": 0, "campo": ""}, {"k": "Na mesa", "taxa": 0, "campo": "Número da mesa"}], "portes": null, "extra": null, "dias": null, "horas": null}</script>
+<script src="../../vendor/gsap.min.js"></script>
+<script src="../../vendor/ScrollTrigger.min.js"></script>
+<script src="../../vendor/lenis.min.js"></script>
+<script type="module" src="../kit/kit.js"></script>
 </body>
 </html>

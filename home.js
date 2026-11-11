@@ -12,13 +12,13 @@ const WA = "https://wa.me/5511927013668?text=";
 /* ---------- data ---------- */
 const casos = [
   { nome: "Brasa Burger", nicho: "Hamburgueria", f: "comida", url: "modelos/hamburgueria/", img: "img/tunel/d-brasa.webp", mini: "img/tunel/i-brasa.webp",
-    meta: "Modelo · Hamburgueria · pedido no WhatsApp", resumo: "O lanche abre em camadas e o fogo entra na tela. O pedido chega pronto no WhatsApp." },
+    meta: "Modelo · Hamburgueria · pedido no WhatsApp", resumo: "Os lanches saem da parede e abrem em tela cheia. O pedido chega pronto no WhatsApp." },
   { nome: "Navalha Club", nicho: "Barbearia", f: "beleza", url: "modelos/barbearia/", img: "img/tunel/d-navalha.webp", mini: "img/tunel/i-navalha.webp",
-    meta: "Modelo · Barbearia · agenda em 3 toques", resumo: "A foto mora dentro da palavra e os serviços trocam enquanto você rola." },
+    meta: "Modelo · Barbearia · agenda em 3 toques", resumo: "Corte, barba e combo em cena, com agenda de horário que confirma no WhatsApp." },
   { nome: "Cantina Rossi", nicho: "Restaurante", f: "comida", url: "modelos/cardapio/", img: "img/tunel/d-rossi.webp", mini: "img/tunel/i-rossi.webp",
-    meta: "Modelo · Restaurante · cardápio com preços", resumo: "Do forno a lenha até a mesa, cena por cena, com o cardápio inteiro no celular." },
+    meta: "Modelo · Restaurante · cardápio com preços", resumo: "Do forno a lenha até a mesa, com o cardápio inteiro e o pedido pelo celular." },
   { nome: "Pelúcia Pet", nicho: "Pet shop", f: "pets", url: "modelos/petshop/", img: "img/tunel/d-pelucia.webp", mini: "img/tunel/i-pelucia.webp",
-    meta: "Modelo · Pet shop · leva e traz", resumo: "Espuma, galeria que anda de lado e o banho agendado sem ligação." },
+    meta: "Modelo · Pet shop · preço pelo porte", resumo: "Banho, tosa e leva e traz, com preço pelo porte e agendamento em um minuto." },
 ];
 
 /* ---------- smooth scroll ---------- */
