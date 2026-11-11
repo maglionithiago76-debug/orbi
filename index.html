@@ -10,587 +10,180 @@
 <meta property="og:description" content="Equipe especializada em sites para empresas. Você só paga depois de ver pronto.">
 <meta property="og:image" content="img/work/site-barbearia.webp">
 <link rel="icon" href="img/icon.png">
-<link rel="preconnect" href="https://api.fontshare.com">
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#111214;--surface:#1B1C1F;--ink:#F2F2EE;--soft:#B4B5AF;--accent:#C8FF3D;--accent-ink:#111214;
-  --field:#C8FF3D;--field-ink:#111214;--field-soft:#2F3A12;--sage:#F2F2EE;
-  --m:clamp(20px,3vw,40px);--gap:clamp(120px,16vh,200px);
-  --f:"Cabinet Grotesk",system-ui,sans-serif;
-  --s-small:15px;--s-body:clamp(17px,1rem + .25vw,19px);--s-lead:clamp(21px,1.1rem + .7vw,27px);--s-head:clamp(44px,1.2rem + 5vw,96px);--s-giant:clamp(72px,10vw,168px);
-  --ease:cubic-bezier(.2,.7,.2,1);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--bg);scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:400 var(--s-body)/1.5 var(--f);-webkit-font-smoothing:antialiased;overflow-x:clip}
-a{color:inherit}img,video{display:block;max-width:100%;height:auto}
-:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-::selection{background:var(--accent);color:var(--accent-ink)}
-h1,h2,h3{font-weight:800;letter-spacing:-.035em;line-height:.95}
-h2{font-size:var(--s-head)}
-p{max-width:60ch}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font:700 18px/1 var(--f);text-decoration:none;border:0;cursor:pointer;transition:transform .25s var(--ease),background-color .25s}
-.btn:hover{transform:translateY(-3px);background:#D8FF73}
-.btn:active{transform:translateY(0) scale(.98)}
-.btn.alt{background:var(--surface);color:var(--ink)}
-.btn.alt:hover{background:#26272B}
-.link{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;transition:text-underline-offset .25s var(--ease)}
-.link:hover{text-underline-offset:8px}
-
-/* nav */
-.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px var(--m);background:var(--bg)}
-.word{display:inline-flex;align-items:center;gap:8px;font:800 28px/1 var(--f);letter-spacing:-.04em;text-decoration:none}
-.word i{width:12px;height:12px;border-radius:50%;background:var(--accent)}
-.nav ul{display:flex;gap:30px;list-style:none;font-size:16px;font-weight:500}
-.nav ul a{text-decoration:none;color:var(--soft);transition:color .2s}
-.nav ul a:hover{color:var(--ink)}
-.nav .btn{min-height:46px;padding:0 22px;font-size:16px}
-@media(max-width:860px){.nav ul{display:none}}
-
-/* hero */
-.hero{overflow-x:clip;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;padding:clamp(40px,8vh,90px) var(--m) clamp(70px,10vh,120px);min-height:calc(100svh - 74px)}
-.hero h1{font-size:clamp(52px,6.4vw,116px);line-height:.9;letter-spacing:-.05em}
-.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
-.hero h1 .ln span{display:block;transform:translateY(105%);animation:rise 1s var(--ease) forwards}
-.hero h1 .ln:nth-child(2) span{animation-delay:.11s}
-@keyframes rise{to{transform:none}}
-.hero .sub{margin-top:36px;font-size:var(--s-lead);line-height:1.35;max-width:30ch;opacity:0;animation:up .8s var(--ease) .45s forwards}
-.hero .note{margin-top:14px;font-size:15px;color:#a3a3a8;opacity:0;animation:up .8s var(--ease) .65s forwards}
-.hero .act{margin-top:38px;display:flex;flex-wrap:wrap;gap:12px;opacity:0;animation:up .8s var(--ease) .55s forwards}
-@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.facts{margin-top:56px;display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 40px;list-style:none;font-size:var(--s-small);color:var(--soft);opacity:0;animation:up .8s var(--ease) .7s forwards}
-.facts b{display:block;font-size:var(--s-body);color:var(--ink);font-weight:700}
-
-.stage{position:relative;height:min(78svh,760px);min-height:520px;perspective:1400px;perspective-origin:50% 30%}
-.phone{position:absolute;width:clamp(180px,15.5vw,268px);aspect-ratio:390/844;border-radius:40px;border:9px solid #2A2B2F;background:#2A2B2F;overflow:hidden;will-change:transform;transform-style:preserve-3d}
-.phone video,.phone img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:31px}
-.stage .phone:nth-child(1){left:2%;top:14%}
-.stage .phone:nth-child(2){left:31%;top:0;z-index:2;width:clamp(200px,17.5vw,300px)}
-.stage .phone:nth-child(3){right:0;top:20%}
-.stage .phone{opacity:0;animation:boot 1.6s var(--ease) forwards}
-.stage .phone:nth-child(1){animation-delay:.35s}.stage .phone:nth-child(2){animation-delay:.15s}.stage .phone:nth-child(3){animation-delay:.5s}
-@keyframes boot{from{opacity:0;translate:0 180px;scale:.7;rotate:x 70deg}60%{opacity:1}to{opacity:1;translate:0 0;scale:1;rotate:x 0deg}}
-.stage figcaption{position:absolute;inset:auto 0 -6px 0;display:flex;justify-content:space-around;font-size:var(--s-small);color:var(--soft)}
-
-
-/* boom: the site opens into its parts, scrubbed by the scroll */
-.boom{height:330vh;position:relative}
-.boom .pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;padding:clamp(70px,10vh,96px) var(--m) clamp(24px,4vh,40px);overflow:hidden}
-.boom h2{font-size:clamp(40px,4.6vw,78px);max-width:13ch}
-.parts{list-style:none;margin-top:clamp(24px,5vh,56px);display:grid;gap:clamp(10px,2vh,20px)}
-.parts li{color:var(--soft);opacity:.35;transform:translateX(0);transition:opacity .45s var(--ease),transform .5s var(--ease),color .3s}
-.parts li.on{opacity:1;color:var(--ink);transform:translateX(14px)}
-.parts b{display:block;font-size:clamp(22px,2vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
-.parts li.on b{color:var(--accent)}
-.parts p{margin-top:4px;font-size:var(--s-body);max-width:40ch}
-.lab{height:100%;display:grid;place-items:center;perspective:1800px}
-.rig{position:relative;width:min(370px,40vh);aspect-ratio:390/844;transform-style:preserve-3d;will-change:transform}
-.rig .phone.base{position:absolute;inset:0;width:100%}
-.ly{position:absolute;left:5%;width:90%;border-radius:18px;overflow:hidden;opacity:0;will-change:transform,opacity;transition:outline-color .3s}
-.ly img{width:100%;height:auto;border-radius:0}
-.ly.hot{outline:3px solid var(--accent);outline-offset:4px}
-.l0{top:3%}.l1{top:12%}.l2{top:47%}.l3{top:60%}.l4{top:84%}
-.gcard{background:#fff;color:#111214;padding:12px 14px;font-size:12px;line-height:1.3}
-.gcard span{color:#5C5D58;font-size:10px}.gcard b{display:block;margin:2px 0;font-size:14px}.gcard em{font-style:normal;color:#3D3E3A}
-.wcard{display:flex;gap:10px;align-items:center;background:var(--accent);color:#111214;padding:12px;font-size:12px;line-height:1.3}
-.wcard i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#111214;color:var(--accent);font-style:normal;font-weight:800}
-.wcard b{display:block;font-size:13px}
-
-/* story: pinned, scrubbed by the scroll */
-.story{height:340vh;position:relative;background:var(--bg);transition:background-color .6s var(--ease)}
-.story .pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,80px);align-items:center;padding:clamp(70px,10vh,96px) var(--m) clamp(24px,5vh,48px);overflow:hidden}
-.story h2{font-size:clamp(40px,4.6vw,78px);max-width:16ch}
-.beats{list-style:none;margin-top:clamp(28px,6vh,64px);position:relative;min-height:12.5em}
-.beats li{position:absolute;inset:0 auto auto 0;max-width:34ch;opacity:0;visibility:hidden;transform:translateY(40px);transition:opacity .55s var(--ease),transform .7s var(--ease),visibility 0s linear .55s}
-.beats li.on{opacity:1;visibility:visible;transform:none;transition-delay:0s}
-.beats li.past{transform:translateY(-40px)}
-.beats b{display:block;font-size:clamp(30px,3vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1}
-.beats p{margin-top:16px;font-size:var(--s-lead);line-height:1.35;color:var(--soft)}
-.beats .num{color:var(--accent);font-weight:800}
-.story .meter{position:absolute;left:var(--m);right:var(--m);bottom:clamp(16px,3vh,28px);height:6px;border-radius:9px;background:var(--surface);overflow:hidden}
-.story .meter i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:var(--accent);border-radius:9px}
-.device{display:flex;justify-content:center;perspective:1400px}
-.phone.big{position:relative;width:min(330px,34vh);transform-style:preserve-3d;will-change:transform;background:#F4F4F0;border-color:#2A2B2F}
-.scr{position:absolute;inset:0;border-radius:31px;overflow:hidden;opacity:0;transform:translateY(8%) scale(.96);transition:opacity .5s var(--ease),transform .7s var(--ease)}
-.scr.on{opacity:1;transform:none}
-.s0{background:#F4F4F0;color:#111214;padding:22px 14px;font-size:13px;line-height:1.35}
-.s0 .q{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:999px;background:#fff;font-size:15px;font-weight:500;min-height:46px}
-.s0 .q svg{flex:none;width:18px;height:18px;color:#6B6C66}
-.caret{display:inline-block;width:2px;height:18px;background:#111214;animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.res{margin-top:12px;padding:14px;border-radius:18px;background:#fff;transition:transform .5s var(--ease),background-color .4s}
-.res small{display:block;color:#5C5D58;font-size:11px}
-.res b{display:block;margin-top:2px;font-size:15px;line-height:1.2}
-.res span{display:block;margin-top:4px;color:#4A4B47}
-.res em{display:inline-block;margin:10px 6px 0 0;padding:6px 10px;border-radius:999px;background:#ECECE6;font-style:normal;font-weight:700;font-size:12px}
-.res.hit.lit{background:var(--accent);transform:scale(1.03)}
-.res.hit.lit em{background:#111214;color:var(--accent)}
-.s1 img{width:100%;height:auto;object-fit:initial;border-radius:0;will-change:transform}
-.s2{background:var(--field);color:#111214;display:flex;flex-direction:column}
-.chat-h{display:flex;align-items:center;gap:10px;padding:20px 14px 12px;background:#1F2C26;color:#fff}
-.chat-h i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#111214;font-style:normal;font-weight:800}
-.chat-h small{margin-left:auto;font-size:11px;opacity:.75}
-.msgs{display:flex;flex-direction:column;gap:10px;padding:16px 12px;font-size:14px;line-height:1.35}
-.msgs p{max-width:82%;padding:10px 12px;border-radius:16px;opacity:0;transform:translateY(16px) scale(.94);transition:opacity .45s var(--ease),transform .5s var(--ease)}
-.msgs p.on{opacity:1;transform:none}
-.msgs .them{align-self:flex-start;background:#fff;border-top-left-radius:4px}
-.msgs .me{align-self:flex-end;background:#D3F5B0;border-top-right-radius:4px}
-.story.call{background:var(--accent)}
-.story.call h2,.story.call .beats b{color:var(--accent-ink)}
-.story.call .beats p{color:var(--field-soft)}
-.story.call .beats .num{color:var(--accent-ink)}
-.story.call .meter{background:#A9DB2C}.story.call .meter i{background:var(--accent-ink)}
-
-/* specialization */
-.spec{padding:var(--gap) var(--m) 0}
-.spec .top{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
-.spec h2{grid-column:1/7}
-.spec .top p{grid-column:8/13;font-size:var(--s-lead);line-height:1.35}
-.duo{margin-top:clamp(70px,10vh,120px);display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.duo a{display:block;text-decoration:none;padding:clamp(28px,3vw,48px);border-radius:40px;background:var(--surface);transition:background-color .35s var(--ease),color .35s var(--ease)}
-.duo a:hover,.duo a:focus-visible{background:var(--accent);color:var(--accent-ink)}
-.duo a:hover p,.duo a:focus-visible p{color:var(--field-soft)}
-.duo b{display:block;font-size:clamp(110px,17vw,290px);font-weight:800;line-height:.8;letter-spacing:-.06em}
-.duo strong{display:block;margin-top:40px;font-size:var(--s-lead);font-weight:700;line-height:1.2}
-.duo p{margin-top:10px;color:var(--soft);transition:color .35s}
-.duo .go{margin-top:28px;display:inline-block;font-weight:700}
-
-/* sites */
-.sites{padding:var(--gap) var(--m) 0}
-.sites .top{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
-.sites h2{grid-column:1/8}
-.sites .top p{grid-column:8/13}
-.models{perspective:1300px;margin-top:clamp(64px,9vh,110px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,48px);align-items:start}
-.model{text-decoration:none;display:block}
-.model:nth-child(even){margin-top:clamp(40px,8vh,110px)}
-.model .screen{position:relative;aspect-ratio:390/700;border-radius:36px;overflow:hidden;background:var(--surface)}
-.model .screen video,.model .screen img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .7s var(--ease)}
-.model:hover .screen video,.model:focus-visible .screen video{transform:scale(1.04)}
-.model h3{margin-top:24px;font-size:clamp(28px,2.6vw,40px)}
-.model p{margin-top:6px;color:var(--soft)}
-.model .go{margin-top:16px;display:inline-block;font-weight:700;color:var(--accent)}
-.incl{margin-top:clamp(70px,10vh,120px);display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-.incl h3{grid-column:1/5;font-size:clamp(30px,3vw,46px)}
-.incl ul{grid-column:6/13;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;font-size:var(--s-lead);font-weight:500;line-height:1.25}
-.incl li{display:flex;gap:14px;align-items:baseline}
-.incl li::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--accent);translate:0 -2px}
-
-/* apps: light field */
-.apps{perspective:1600px;margin-top:var(--gap);padding:var(--gap) var(--m);background:var(--field);color:var(--field-ink)}
-.apps .top{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
-.apps h2{grid-column:1/8}
-.apps .top p{grid-column:8/13;color:var(--field-ink)}
-.desk{transform-origin:50% 100%;margin-top:clamp(60px,9vh,100px);border-radius:28px;overflow:hidden;background:#111214;padding:14px}
-.desk img{border-radius:16px;width:100%}
-.desk + .cap{margin-top:14px;font-size:var(--s-small);color:var(--field-soft)}
-.kinds{margin-top:clamp(90px,12vh,150px);display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
-.kinds h3{grid-column:1/-1;font-size:clamp(34px,3.6vw,56px);margin-bottom:24px}
-.list{grid-column:1/8;list-style:none}
-.list button,.list a.row{width:100%;display:grid;grid-template-columns:1fr auto;gap:4px 24px;align-items:baseline;text-align:left;padding:22px 26px;border:0;border-radius:24px;background:none;color:inherit;font:inherit;cursor:pointer;text-decoration:none;transition:background-color .25s,opacity .25s}
-.list b{font-size:clamp(26px,2.4vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
-.list span{grid-column:1;color:var(--field-soft)}
-.list em{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font-weight:700;font-size:var(--s-small)}
-.list button[aria-pressed=true]{background:#D6D6CE}
-.list:hover button:not(:hover)[aria-pressed=false]{opacity:.6}
-.preview{grid-column:9/13;position:sticky;top:100px}
-.preview .phone{position:relative;width:100%;max-width:330px;margin-left:auto;border-color:#111214;background:#111214}
-.preview .phone img{transition:opacity .25s}
-.preview .phone img.swap{opacity:0}
-.preview .open{margin-top:18px;display:flex;justify-content:flex-end}
-.preview .open .btn{background:#111214;color:var(--ink)}
-.list .thumb,.list .m-go{display:none}
-
-/* how it works */
-.how{padding:var(--gap) var(--m)}
-.how h2{max-width:14ch}
-.bar{margin-top:64px;display:flex;gap:6px;height:24vh;min-height:190px}
-.bar > div{position:relative;padding:20px;border-radius:24px;color:var(--accent-ink);transform-origin:left;transition:transform 1s var(--ease)}
-.bar > div b{font-size:clamp(20px,2vw,30px);font-weight:800;letter-spacing:-.02em;line-height:1.05}
-.bar.pre > div{transform:scaleX(0)}
-.bar > div:nth-child(1){flex:12;background:var(--accent)}
-.bar > div:nth-child(2){flex:50;background:var(--ink);transition-delay:.12s}
-.bar > div:nth-child(3){flex:22;background:var(--sage);transition-delay:.24s}
-.bar > div:nth-child(4){flex:16;background:var(--field);transition-delay:.36s}
-.steps{margin-top:22px;display:flex;gap:6px;list-style:none}
-.steps li{padding-right:20px}
-.steps li:nth-child(1){flex:12}.steps li:nth-child(2){flex:50}.steps li:nth-child(3){flex:22}.steps li:nth-child(4){flex:16}
-.steps p{max-width:24ch}
-
-/* promise */
-.promise{padding:var(--gap) var(--m);background:var(--accent);color:var(--accent-ink);display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
-.promise h2{grid-column:1/9;font-size:clamp(56px,7.6vw,128px);line-height:.9}
-.promise p{grid-column:9/13;font-size:var(--s-lead);line-height:1.35}
-
-/* faq */
-.faq{padding:var(--gap) var(--m)}
-.faq h2{font-size:clamp(44px,5.5vw,92px)}
-.faq .qs{margin-top:80px;margin-left:calc((100% + 24px) / 3);display:grid;gap:12px}
-.faq details{border-radius:24px;transition:background-color .25s}
-.faq details[open]{background:var(--surface)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;padding:22px 24px;font-size:clamp(21px,1.6vw,25px);font-weight:500}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary svg{flex:none;width:22px;height:22px;transition:transform .3s var(--ease);translate:0 4px}
-.faq details[open] summary svg{transform:rotate(180deg)}
-.faq details p{padding:0 24px 26px;max-width:52ch}
-
-/* cta band */
-.cta{display:block;position:relative;min-height:60svh;padding:var(--m);background:var(--surface);color:var(--ink);text-decoration:none;overflow:hidden;transition:background-color .2s,color .2s}
-.cta:hover,.cta:focus-visible{background:var(--accent);color:var(--accent-ink)}
-.cta p{max-width:30ch;font-size:var(--s-lead);line-height:1.3}
-.cta svg{position:absolute;top:var(--m);right:var(--m);width:48px;height:48px}
-.cta b{position:absolute;left:var(--m);right:var(--m);bottom:24px;font-size:clamp(90px,21.5vw,370px);font-weight:800;line-height:.78;letter-spacing:-.06em}
-
-/* footer */
-footer{padding:clamp(80px,12vh,140px) var(--m) 40px;background:var(--bg)}
-footer .cols{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-footer .reach{grid-column:1/7;list-style:none;display:grid;gap:10px;font-size:clamp(24px,2.4vw,36px);font-weight:700;color:var(--accent)}
-footer .reach a{text-decoration:none}
-footer .reach a:hover{text-decoration:underline}
-footer nav{grid-column:8/13;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;align-content:start;font-size:var(--s-small)}
-footer nav a{color:var(--soft);text-decoration:none}footer nav a:hover{color:var(--ink)}
-footer .name{margin-top:clamp(70px,10vh,120px);font-size:clamp(120px,27vw,460px);font-weight:800;letter-spacing:-.07em;line-height:.75;overflow:hidden;padding-bottom:.02em}
-footer .legal{margin-top:40px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:var(--s-small);color:var(--soft)}
-footer .legal p{max-width:80ch}
-
-/* entrances */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.rv.in{opacity:1;transform:none}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
-
-@media(min-width:1001px) and (max-width:1300px){.models{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:1000px){
-  .hero{grid-template-columns:1fr;min-height:0}
-  .stage{order:2;height:auto;min-height:0;display:flex;justify-content:center;align-items:flex-start;overflow:visible;margin-top:8px;padding-top:10px}
-  .hero > div{order:1}
-  .hero .act .btn{width:100%}
-  .stage .phone,.stage .phone:nth-child(2){position:relative;left:auto;right:auto;top:auto;width:38%;flex:none;border-width:6px;border-radius:26px}
-  .stage .phone:nth-child(1){transform:rotate(-6deg);margin-right:-9%;margin-top:36px}
-  .stage .phone:nth-child(3){transform:rotate(6deg);margin-left:-9%;margin-top:36px}
-  .stage .phone:nth-child(2){width:44%;z-index:2}
-  .desk{padding:8px;max-width:420px}
-  .phone video,.phone img{border-radius:20px}
-  .stage figcaption{position:static;display:none}
-  .boom{height:300vh}
-  .boom .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-items:start;gap:8px;padding-top:84px}
-  .boom h2{font-size:clamp(30px,8.4vw,44px);max-width:none}
-  .parts{margin-top:12px;position:relative;min-height:4.6em}
-  .parts li{position:absolute;inset:0 auto auto 0;visibility:hidden;opacity:0}
-  .parts li.on{visibility:visible;opacity:1;transform:none}
-  .parts b{font-size:24px}.parts p{font-size:16px}
-  .rig{width:min(240px,31svh)}
-  .story{height:300vh}
-  .story .pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;align-items:start;gap:16px;padding-top:84px}
-  .story h2{font-size:clamp(30px,8.4vw,44px)}
-  .beats{margin-top:14px;min-height:7.6em}
-  .beats b{font-size:26px}
-  .beats p{margin-top:8px;font-size:16px}
-  .device{align-self:center}
-  .phone.big{width:min(240px,30svh);border-width:7px;border-radius:32px}
-  .scr{border-radius:25px}
-  .facts{grid-template-columns:1fr 1fr}
-  .spec .top,.sites .top,.apps .top,.incl,.kinds,.promise,footer .cols{grid-template-columns:1fr}
-  .spec h2,.spec .top p,.sites h2,.sites .top p,.apps h2,.apps .top p,.incl h3,.incl ul,.list,.preview,.promise h2,.promise p,footer .reach,footer nav{grid-column:1/-1}
-  .duo{grid-template-columns:1fr;gap:24px}
-  .duo .go{display:none}
-  .models{grid-template-columns:1fr;gap:72px}
-  .model:nth-child(even){margin-top:0}
-  .model .screen{aspect-ratio:390/600;max-width:460px}
-  .incl ul{grid-template-columns:1fr}
-  .preview{display:none}
-  .list .thumb{display:block;grid-column:1/-1;margin-top:16px;width:100%;max-width:280px;border-radius:22px;border:6px solid #111214}
-  .list button[aria-pressed=false] .thumb{display:none}
-  .list button[aria-pressed=true] + .m-go{display:inline-block;margin:0 26px 18px;font-weight:700;text-decoration:underline;text-underline-offset:5px}
-  .faq .qs{margin-left:0}
-  .bar{flex-direction:column;height:auto;min-height:0}
-  .bar > div{min-height:84px;transform-origin:top}
-  .bar > div:nth-child(1){min-height:84px}.bar > div:nth-child(2){min-height:200px}.bar > div:nth-child(3){min-height:110px}.bar > div:nth-child(4){min-height:90px}
-  .bar.pre > div{transform:scaleY(0)}
-  .bar > div p{margin-top:8px;font-size:16px;font-weight:500;max-width:30ch}
-  .steps{display:none}
-}
-@media(min-width:1001px){.bar > div p{display:none}}
-@media(max-width:560px){
-  .hero h1{font-size:clamp(46px,13.4vw,80px)}
-  .facts{grid-template-columns:1fr}
-  .duo b{font-size:clamp(96px,30vw,150px)}
-  .promise h2{font-size:10.5vw}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}
-  .story{height:auto}.story .pin{position:relative;height:auto}
-  .beats{min-height:0}.beats li{position:static;opacity:1;visibility:visible;transform:none;margin-bottom:24px}
-  .boom{height:auto}.boom .pin{position:relative;height:auto}.parts li{position:static;opacity:1;visibility:visible}.ly{opacity:1}
-  .rv{opacity:1;transform:none}
-  .bar.pre > div{transform:none}
-  html{scroll-behavior:auto}
-}
-
-/* Orbi palette (owner 2026-11-05, 3-colour rule): lime base, black neutral, white. Lime blocks alternate with black ones. */
-.lime{--bg:#C8FF3D;--ink:#111214;--soft:#2F3A12;--surface:#111214;background:#C8FF3D!important;color:#111214}
-.lime .btn{background:#111214;color:#C8FF3D}.lime .btn:hover{background:#000}
-.lime .btn.alt{background:#fff;color:#111214}.lime .btn.alt:hover{background:#F2F2EE}
-.lime .word i{background:#111214}
-.lime ::selection{background:#111214;color:#C8FF3D}
-.lime :focus-visible{outline-color:#111214}
-.hero.lime .note{color:#2F3A12}
-.spec.lime{padding-bottom:var(--gap)}
-.spec.lime .duo a{--ink:#F2F2EE;--soft:#B4B5AF;color:#F2F2EE}
-.spec.lime .duo a:hover,.spec.lime .duo a:focus-visible{background:#fff;color:#111214}.spec.lime .duo a:hover p{color:#4A4B47}
-footer.lime .reach{color:#111214}
-.list button[aria-pressed=true]{background:rgba(17,18,20,.1)}
-.bar > div:nth-child(4){background:#fff}
-</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Orbi","description":"Sites sob medida para empresas. Pronto em até 5 dias, pagamento só depois de aprovar.","url":"https://maglionithiago76-debug.github.io/orbi/","telephone":"+55 11 92701-3668","areaServed":"BR","priceRange":"R$ 500","openingHours":"Mo-Fr 09:00-18:00"}</script>
 </head>
 <body>
-<header class="nav lime">
-  <a class="word" href="#top" aria-label="Orbi, início"><i></i>orbi</a>
-  <ul><li><a href="#sites">Sites</a></li><li><a href="#como">Como funciona</a></li><li><a href="#duvidas">Dúvidas</a></li></ul>
-  <a class="btn" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">Falar no WhatsApp</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wm" viewBox="0 0 378 150"><path d="M13 100A37 37 0 1 0 87 100A37 37 0 1 0 13 100ZM140 150V50M140 108A45 45 0 0 1 185 63H202M240 0V150M240 100A37 37 0 1 0 314 100A37 37 0 1 0 240 100ZM365 150V50M365 0V24" fill="none" stroke="currentColor" stroke-width="26"/></symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="nav__marca" href="#topo" aria-label="Orbi, início"><svg><use href="#wm"/></svg></a>
+  <nav class="nav__pilulas" aria-label="Principal">
+    <a class="pilula" href="#modelos">Modelos</a>
+    <a class="pilula" href="#como">Como funciona</a>
+    <a class="pilula" href="#preco">Preço</a>
+    <a class="pilula pilula--tinta" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi." target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
 </header>
 
-<main id="top">
-<section class="hero lime" aria-labelledby="h1">
-  <div>
-    <h1 id="h1"><span class="ln"><span>Mais clientes.</span></span><span class="ln"><span>Direto no WhatsApp.</span></span></h1>
-    <p class="sub">Site feito para a sua empresa, no ar em 5 dias. Você só paga depois de ver pronto e aprovar.</p>
-    <div class="act"><a class="btn" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">Conversar no WhatsApp</a></div>
-    <p class="note">Sem entrada. Sem mensalidade.</p>
+<main id="topo">
 
+<!-- 1 · Túnel de modelos -->
+<section class="tunel" id="tunel" aria-labelledby="tunel-titulo">
+  <canvas class="tunel__canvas" aria-hidden="true"></canvas>
+  <div class="tunel__hero">
+    <h1 class="tunel__frase" id="tunel-titulo">Sites que fazem o cliente<br>chamar no seu WhatsApp.</h1>
+    <svg class="tunel__marca" aria-hidden="true"><use href="#wm"/></svg>
+    <p class="tunel__dica rotulo">Role para entrar</p>
+    <p class="tunel__local rotulo">Sob medida · R$ 500 · no ar em 5 dias</p>
   </div>
-  <figure class="stage" id="stage" aria-label="Sites de barbearia, hamburgueria e pet shop feitos pela Orbi">
-    <div class="phone" data-depth=".7" data-side="-1"><video src="img/work/site-barbearia.mp4" poster="img/work/site-barbearia.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de barbearia rolando"></video></div>
-    <div class="phone" data-depth="1" data-side="0"><video src="img/work/site-hamburgueria.mp4" poster="img/work/site-hamburgueria.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de hamburgueria rolando: o lanche abre em camadas"></video></div>
-    <div class="phone" data-depth=".85" data-side="1"><video src="img/work/site-petshop.mp4" poster="img/work/site-petshop.webp" muted loop playsinline autoplay preload="metadata" aria-label="Site de pet shop rolando"></video></div>
-  </figure>
+  <div class="casos" aria-live="off"></div>
+  <div class="tunel__fim">
+    <p class="tunel__fim-frase">Quatro modelos.<br>O próximo é o seu.</p>
+    <a class="pilula pilula--tinta pilula--g" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa." target="_blank" rel="noopener">Quero o meu site</a>
+  </div>
+  <div class="tunel__progresso" aria-hidden="true"><i></i></div>
 </section>
 
-<section class="boom" id="boom" aria-labelledby="boom-h">
-  <div class="pin">
-    <div class="copy">
-      <h2 id="boom-h">Cada parte do site vende.</h2>
-      <ol class="parts">
-        <li class="on"><b>Aparece no Google</b><p>Quem procura o que você faz, perto de você, te encontra.</p></li>
-        <li><b>Segura o cliente</b><p>Foto e frase certas: em 3 segundos ele entende por que escolher você.</p></li>
-        <li><b>Preço à vista</b><p>Ninguém precisa perguntar quanto custa. Chega decidido.</p></li>
-        <li><b>Agenda em 3 toques</b><p>Sem ligação e sem esperar resposta, a qualquer hora.</p></li>
-        <li><b>Cai no seu WhatsApp</b><p>O pedido chega pronto. Você só confirma.</p></li>
+<!-- 2 · Quem somos: manifesto com margem -->
+<section class="estudio" id="estudio" aria-labelledby="estudio-titulo">
+  <div class="estudio__pagina">
+    <div class="estudio__texto">
+      <h2 class="rotulo" id="estudio-titulo">A Orbi</h2>
+      <p class="manifesto">A gente faz <span data-ancora="0">uma coisa só:</span> site para empresa. Do jeito que você <span data-ancora="1">pedir,</span> com as suas <span class="foto-linha" style="--img:url(img/tunel/i-brasa.webp)" role="img" aria-label="fotos"></span> e o seu nome, pronto para quem te acha no <span data-ancora="2">Google</span> chamar no seu <span class="chip-wa">WhatsApp</span> em um toque.</p>
+    </div>
+    <aside class="estudio__margem" aria-label="Em resumo">
+      <p class="nota" data-nota="0">R$ 500, pagamento único</p>
+      <p class="nota" data-nota="1">pronto em até 5 dias</p>
+      <p class="nota" data-nota="2">você só paga depois de aprovar</p>
+    </aside>
+  </div>
+  <svg class="estudio__fios" aria-hidden="true"></svg>
+</section>
+
+<!-- 3 · Como funciona: tira de filme -->
+<section class="metodo" id="como" aria-labelledby="metodo-titulo">
+  <div class="metodo__palco">
+    <h2 class="metodo__titulo" id="metodo-titulo">Como o seu site nasce</h2>
+    <div class="tira">
+      <figure class="quadro q-chat" aria-label="Conversa no WhatsApp">
+        <div class="chat">
+          <p class="bolha bolha--eu">Oi! Quero um site pra minha clínica.</p>
+          <p class="bolha">Fechado! Me conta o que vocês fazem e o que não pode faltar.</p>
+          <p class="bolha bolha--eu">Implante, clareamento e agenda pelo WhatsApp.</p>
+          <p class="bolha">Anotado. Em até 5 dias está pronto pra você ver.</p>
+        </div>
+      </figure>
+      <figure class="quadro q-grade" aria-label="O site sendo desenhado">
+        <svg viewBox="0 0 300 400" aria-hidden="true">
+          <g stroke="#a9a49a" stroke-width=".6" fill="none">
+            <path d="M24 0V400M276 0V400M0 24H300M0 376H300M150 0V400M0 120H300M0 250H300"/>
+            <circle cx="150" cy="185" r="62"/><circle cx="150" cy="185" r="100"/>
+          </g>
+          <rect x="24" y="40" width="64" height="10" fill="#111214"/>
+          <rect x="196" y="38" width="80" height="14" rx="7" fill="#111214"/>
+          <rect x="24" y="80" width="200" height="22" fill="#111214"/>
+          <rect x="24" y="108" width="150" height="22" fill="#111214"/>
+          <circle cx="150" cy="185" r="38" fill="#C8FF3D" stroke="#111214" stroke-width="2"/>
+          <rect x="24" y="262" width="120" height="70" fill="none" stroke="#111214" stroke-width="2"/>
+          <rect x="156" y="262" width="120" height="70" fill="none" stroke="#111214" stroke-width="2"/>
+          <rect x="24" y="344" width="252" height="20" rx="10" fill="#111214"/>
+        </svg>
+      </figure>
+      <figure class="quadro q-fone" aria-label="O site aberto no celular">
+        <div class="fone"><img src="img/tunel/i-fone.webp" alt="" loading="lazy" width="480" height="600"></div>
+      </figure>
+      <figure class="quadro q-pago" aria-label="Pagamento aprovado">
+        <div class="recibo">
+          <p class="recibo__ok">Aprovado</p>
+          <p class="recibo__valor">R$ 500</p>
+          <p>Pix ou até 12x no cartão</p>
+          <p class="recibo__fio">Sem entrada · sem mensalidade</p>
+        </div>
+      </figure>
+    </div>
+    <div class="regua" aria-hidden="true">
+      <div class="regua__fio"><i></i></div>
+      <ol class="regua__etapas">
+        <li><b>01 Conversa</b><span>Você conta no WhatsApp o que precisa. Sem formulário.</span></li>
+        <li><b>02 Criação</b><span>A equipe faz tudo com as suas fotos e as suas cores, em até 5 dias.</span></li>
+        <li><b>03 Teste</b><span>Você abre no seu celular e pede os ajustes que quiser.</span></li>
+        <li><b>04 Pagamento</b><span>Aprovou, paga no Pix ou em até 12x no cartão.</span></li>
       </ol>
     </div>
-    <div class="lab" aria-hidden="true">
-      <div class="rig" id="rig">
-        <div class="phone base"><img src="img/work/ly-base.webp" alt="" width="720" height="1558" loading="lazy"></div>
-        <div class="ly l0" data-ui><div class="gcard"><span>navalhaclub.com.br</span><b>Navalha Club · Barbearia no Centro</b><em>Aberto hoje até 20h · Agendar online</em></div></div>
-        <div class="ly l1"><img src="img/work/ly-hero.webp" alt="" width="720" height="995" loading="lazy"></div>
-        <div class="ly l2"><img src="img/work/ly-price.webp" alt="" width="648" height="240" loading="lazy"></div>
-        <div class="ly l3"><img src="img/work/ly-chips.webp" alt="" width="648" height="435" loading="lazy"></div>
-        <div class="ly l4" data-ui><div class="wcard"><i>L</i><div><b>Lucas · via site</b><span>Oi! Quero agendar corte sábado às 10h.</span></div></div></div>
-      </div>
+  </div>
+</section>
+
+<!-- 4 · Índice de modelos -->
+<section class="indice" id="modelos" aria-labelledby="indice-titulo">
+  <div class="indice__topo">
+    <h2 id="indice-titulo">Todos os modelos</h2>
+    <div class="filtros" role="group" aria-label="Filtrar modelos">
+      <button class="pilula pilula--tinta" aria-pressed="true" data-f="todos">Todos</button>
+      <button class="pilula" aria-pressed="false" data-f="comida">Comida</button>
+      <button class="pilula" aria-pressed="false" data-f="beleza">Beleza</button>
+      <button class="pilula" aria-pressed="false" data-f="pets">Pets</button>
     </div>
   </div>
+  <ul class="linhas"></ul>
+  <p class="indice__conta"><span>4</span> de 4 modelos · o seu leva o seu nome, os seus produtos e as suas cores</p>
+  <img class="seguidor" alt="" aria-hidden="true">
 </section>
 
-<section class="story" id="story" aria-labelledby="story-h">
-  <div class="pin">
-    <div class="copy">
-      <h2 id="story-h">76% vão no mesmo dia. 28% compram.</h2>
-      <ol class="beats">
-        <li class="on"><b>Alguém procura</b><p><span class="num" data-n="76">76%</span> de quem pesquisa um negócio perto pelo celular vai até um em até 1 dia, e 28% dessas buscas terminam em compra (Google, 2016).</p></li>
-        <li><b>Acha você</b><p>Seu site abre rápido, mostra serviços, fotos e preços, e não deixa dúvida.</p></li>
-        <li><b>E chama no seu WhatsApp</b><p>Um toque e a conversa começa, com a mensagem já escrita. É aí que a venda acontece.</p></li>
-      </ol>
-    </div>
-    <div class="meter" aria-hidden="true"><i id="meter"></i></div>
-    <div class="device" aria-hidden="true">
-      <div class="phone big" data-ui>
-        <div class="scr s0 on">
-          <div class="q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span id="typed"></span><i class="caret"></i></div>
-          <div class="res hit"><small>navalhaclub.com.br</small><b>Navalha Club · Barbearia no Centro</b><span>Corte, barba e agendamento online. Aberto hoje até 20h.</span><em>Site</em><em>Rotas</em><em>WhatsApp</em></div>
-          <div class="res"><small>outra-barbearia.com</small><b>Barbearia do bairro</b><span>Sem site. Só telefone.</span></div>
-          <div class="res"><small>guia-local.com</small><b>10 barbearias perto de você</b><span>Lista com endereços e telefones.</span></div>
-        </div>
-        <div class="scr s1"><img id="siteimg" src="img/work/site-barbearia-full.webp" alt="" width="720" height="4200" loading="lazy"></div>
-        <div class="scr s2">
-          <div class="chat-h"><i>L</i><b>Lucas</b><small>chegou pelo site</small></div>
-          <div class="msgs">
-            <p class="them">Oi! Vi o site de vocês. Tem horário sábado às 10h?</p>
-            <p class="me">Tem sim! Já reservei pra você: sábado, 10h, corte.</p>
-            <p class="them">Perfeito, obrigado!</p>
-          </div>
-        </div>
-        </div>
-      </div>
-    </div>
+<!-- 5 · Preço, dúvidas e contato -->
+<section class="preco" id="preco" aria-labelledby="preco-titulo">
+  <div class="ceu" aria-hidden="true"></div>
+  <div class="preco__centro">
+    <h2 id="preco-titulo" class="preco__frase">R$ 500. Uma vez só.<br>Você paga depois de ver pronto.</h2>
+    <p class="preco__sub">Sem entrada, sem mensalidade, hospedagem inclusa. Pix ou até 12x no cartão.</p>
+    <a class="pilula pilula--tinta pilula--g" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa." target="_blank" rel="noopener">Começar no WhatsApp</a>
   </div>
 </section>
 
-<section class="spec lime" aria-labelledby="spec-h">
-  <div class="top">
-    <h2 id="spec-h" class="rv">Uma coisa só, feita a fundo.</h2>
-    <p class="rv d1">A gente não faz de tudo: só site. Com o foco todo nisso, sai rápido, bonito e funcionando de verdade.</p>
+<section class="duvidas" aria-labelledby="duvidas-titulo">
+  <h2 id="duvidas-titulo">Perguntas de quem vai começar</h2>
+  <div class="duvidas__lista">
+    <details><summary>Todo site vem com o quê?</summary><p>Abertura animada feita pro seu negócio, botão do WhatsApp em todo lugar, mapa, horário e preços, preparado para aparecer no Google, rápido no celular e hospedagem inclusa.</p></details>
+    <details><summary>Tem mensalidade?</summary><p>Não. O site é pagamento único, com hospedagem inclusa.</p></details>
+    <details><summary>Preciso pagar alguma coisa antes?</summary><p>Não. A gente cria, você vê pronto no seu celular e só paga depois de aprovar.</p></details>
+    <details><summary>Dá pra parcelar?</summary><p>Sim. Depois de aprovar, você paga no Pix ou parcela em até 12x no cartão, pelo Mercado Pago.</p></details>
+    <details><summary>Já uso um app de agenda grátis. Preciso de site?</summary><p>Continua com ele. O app agenda quem já te conhece; o site faz quem ainda não te conhece te achar no Google, e o botão leva direto pra sua agenda.</p></details>
+    <details><summary>Isso vai me trazer clientes?</summary><p>Ninguém sério promete número de vendas. O que o site faz é tirar os obstáculos do caminho: quem procura te acha no Google, entende o que você faz e chama no WhatsApp em um toque, a qualquer hora.</p></details>
+    <details><summary>Pode ser do meu jeito?</summary><p>Pode. Cores, textos, fotos e o que o site mostra: tudo do jeito que você pedir. Se preferir, a gente monta no nosso padrão e você só aprova.</p></details>
+    <details><summary>Preciso mandar fotos e textos?</summary><p>Não precisa. A gente usa o que já está no seu Google e no seu Instagram. Se quiser mandar outras fotos, melhor ainda.</p></details>
   </div>
 </section>
 
-<section class="sites" id="sites" aria-labelledby="sites-h">
-  <div class="top">
-    <h2 id="sites-h" class="rv">Sites que fazem o cliente chamar.</h2>
-    <p class="rv d1">Abra no celular e role a página: cada site tem uma abertura animada feita pro negócio, prende o cliente desde o primeiro segundo e termina no seu WhatsApp. O seu leva o seu nome, os seus produtos e as suas cores.</p>
-  </div>
-  <div class="models">
-    <a class="model rv" href="modelos/hamburgueria/">
-      <div class="screen"><video data-src="img/work/site-hamburgueria.mp4" poster="img/work/site-hamburgueria.webp" muted loop playsinline preload="none" aria-label="Site da hamburgueria Brasa Burger rolando"></video></div>
-      <h3>Brasa Burger</h3><p>Hamburgueria · o lanche abre em camadas e o fogo entra na tela</p><span class="go">Abrir o modelo →</span>
-    </a>
-    <a class="model rv d1" href="modelos/barbearia/">
-      <div class="screen"><video data-src="img/work/site-barbearia.mp4" poster="img/work/site-barbearia.webp" muted loop playsinline preload="none" aria-label="Site da barbearia Navalha Club rolando"></video></div>
-      <h3>Navalha Club</h3><p>Barbearia · a foto mora dentro da palavra e os serviços trocam rolando</p><span class="go">Abrir o modelo →</span>
-    </a>
-    <a class="model rv d2" href="modelos/cardapio/">
-      <div class="screen"><video data-src="img/work/site-restaurante.mp4" poster="img/work/site-restaurante.webp" muted loop playsinline preload="none" aria-label="Site do restaurante Cantina Rossi rolando"></video></div>
-      <h3>Cantina Rossi</h3><p>Restaurante · do forno a lenha até a mesa, cena por cena</p><span class="go">Abrir o modelo →</span>
-    </a>
-    <a class="model rv d3" href="modelos/petshop/">
-      <div class="screen"><video data-src="img/work/site-petshop.mp4" poster="img/work/site-petshop.webp" muted loop playsinline preload="none" aria-label="Site do pet shop Pelúcia Pet rolando"></video></div>
-      <h3>Pelúcia Pet</h3><p>Pet shop · espuma, galeria que anda de lado e leva e traz</p><span class="go">Abrir o modelo →</span>
-    </a>
-  </div>
-  <div class="incl">
-    <h3 class="rv">Todo site já vem com</h3>
-    <ul>
-      <li class="rv">Abertura animada que prende o cliente</li>
-      <li class="rv d1">Feito para aparecer no Google</li>
-      <li class="rv">Botão do WhatsApp em todo lugar</li>
-      <li class="rv d1">Agendamento ou pedidos</li>
-      <li class="rv">Mapa, horário e preços</li>
-      <li class="rv d1">Instala no celular, sem loja</li>
-      <li class="rv">Hospedagem inclusa, sem mensalidade</li>
-      <li class="rv d1">Carrega rápido no celular</li>
-    </ul>
-  </div>
-</section>
-
-<section class="how" id="como" aria-labelledby="how-h">
-  <h2 id="how-h" class="rv">Da conversa ao ar em 5 dias.</h2>
-  <div class="bar pre" id="bar" aria-hidden="true">
-    <div><b>1 dia</b><p>Você conta no WhatsApp o que precisa.</p></div>
-    <div style="color:var(--bg)"><b>Até 5 dias</b><p>A equipe cria tudo, com as suas fotos e o seu jeito.</p></div>
-    <div><b>Você testa</b><p>No seu celular, e pede os ajustes que quiser.</p></div>
-    <div><b>Paga</b><p>Aprovou, paga no Pix ou em até 12x no cartão.</p></div>
-  </div>
-  <ol class="steps">
-    <li class="rv"><p>Primeiro, você conta no WhatsApp o que precisa.</p></li>
-    <li class="rv d1"><p>Depois a equipe cria tudo, com as suas fotos, as suas cores e o seu jeito de trabalhar. Você não precisa montar nada.</p></li>
-    <li class="rv d2"><p>Então você testa no seu celular e pede os ajustes.</p></li>
-    <li class="rv d3"><p>Aprovou, paga no Pix ou parcela em até 12x no cartão.</p></li>
-  </ol>
-</section>
-
-<section class="promise" aria-labelledby="pr-h">
-  <h2 id="pr-h" class="rv">Primeiro pronto, depois o pagamento.</h2>
-  <p class="rv d1">Você só paga depois de ver pronto. Sem sinal, sem contrato, sem mensalidade. A gente cria, você testa no seu celular, pede os ajustes, e só então paga, no Pix ou em até 12x no cartão.</p>
-</section>
-
-<section class="faq" id="duvidas" aria-labelledby="faq-h">
-  <h2 id="faq-h" class="rv">Perguntas de quem vai começar.</h2>
-  <div class="qs">
-    <details class="rv"><summary>Já uso um app de agenda grátis. Preciso de site?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Continua com ele. O app agenda quem já te conhece; o site faz quem ainda não te conhece te achar no Google, e o botão leva direto pro seu app. Sem mensalidade.</p></details>
-    <details class="rv"><summary>Tem mensalidade?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não. O site é pagamento único, com hospedagem inclusa.</p></details>
-    <details class="rv"><summary>Preciso pagar alguma coisa antes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não. A gente cria, você vê pronto no seu celular e só paga depois de aprovar.</p></details>
-    <details class="rv"><summary>Dá pra parcelar?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Sim. Depois de aprovar, você paga no Pix ou parcela em até 12x no cartão, pelo Mercado Pago.</p></details>
-    <details class="rv"><summary>Quanto custa?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Site: R$ 500, pagamento único, sem mensalidade. Você só paga depois de ver pronto e aprovar, no Pix ou em até 12x no cartão.</p></details>
-    <details class="rv"><summary>Isso vai me trazer clientes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Ninguém sério promete número de vendas. O que o site faz é tirar os obstáculos do caminho: quem procura te acha no Google, entende o que você faz e chama no WhatsApp em um toque, a qualquer hora.</p></details>
-    <details class="rv"><summary>Pode ser do meu jeito?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Pode. Cores, textos, fotos e o que o site mostra: tudo do jeito que você pedir. Se preferir, a gente monta no nosso padrão profissional e você só aprova.</p></details>
-    <details class="rv"><summary>Preciso mandar fotos e textos?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></summary><p>Não precisa. A gente usa o que já está no seu Google e no seu Instagram. Se quiser mandar outras fotos, melhor ainda.</p></details>
-  </div>
-</section>
-
-<a class="cta" href="https://wa.me/5511927013668?text=Oi!%20Quero%20come%C3%A7ar%20o%20site%20ou%20app%20da%20minha%20empresa.">
-  <p>Conta o que a sua empresa precisa. A equipe responde no WhatsApp, de segunda a sexta, das 9h às 18h.</p>
-  <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M12 36L36 12M16 12h20v20"/></svg>
-  <b>Começar</b>
-</a>
 </main>
 
-<footer class="lime">
-  <div class="cols">
-    <ul class="reach">
-      <li><a href="https://wa.me/5511927013668">WhatsApp (11) 92701-3668</a></li>
-      <li>Seg a sex, 9h às 18h</li>
-    </ul>
-    <nav aria-label="Rodapé"><a href="#sites">Modelos de site</a><a href="#como">Como funciona</a><a href="#duvidas">Dúvidas</a></nav>
+<footer class="rodape">
+  <div class="rodape__cols">
+    <div>
+      <p class="rodape__chamada">Tem uma empresa pra colocar no ar?</p>
+      <a class="pilula pilula--lima pilula--g" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+    </div>
+    <div>
+      <p><a class="sublinha" href="https://wa.me/5511927013668" target="_blank" rel="noopener">WhatsApp (11) 92701-3668</a></p>
+      <p class="cinza">Seg a sex, 9h às 18h</p>
+    </div>
+    <div>
+      <p><a class="sublinha" href="#modelos">Modelos de site</a></p>
+      <p><a class="sublinha" href="#como">Como funciona</a></p>
+      <p><a class="sublinha" href="#preco">Preço</a></p>
+    </div>
   </div>
-  <div class="name" aria-hidden="true">orbi</div>
-  <div class="legal">
-    <p>Este site não coleta dados nem usa rastreamento. Os modelos usam nomes e preços fictícios. Fotos dos modelos: Pexels (licença livre) e Wikimedia Commons (Creative Commons), créditos em cada modelo.</p>
-    <a class="link" href="#top">Voltar ao topo</a>
-  </div>
+  <p class="rodape__nota">Este site não coleta dados nem usa rastreamento. Os modelos usam nomes e preços fictícios. Fotos dos modelos: Pexels (licença livre) e Wikimedia Commons (Creative Commons), créditos em cada modelo.</p>
+  <svg class="rodape__marca" role="img" aria-label="Orbi"><use href="#wm"/></svg>
 </footer>
 
-<script>
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-/* entrances */
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -10% 0px'});
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
-const bar = document.getElementById('bar');
-new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { bar.classList.remove('pre'); o.disconnect(); } }), {threshold:.35}).observe(bar);
-/* model videos play only while visible */
-const vio = new IntersectionObserver(es => es.forEach(e => { const v = e.target;
-  if (e.isIntersecting) { if (!v.src && v.dataset.src) v.src = v.dataset.src; if (!reduce) v.play().catch(() => {}); } else v.pause(); }), {threshold:.25});
-document.querySelectorAll('video').forEach(v => { if (reduce) { v.removeAttribute('autoplay'); v.pause(); } vio.observe(v); });
-/* scroll engine: hero phones fly in 3D, the story is scrubbed, model screens straighten up */
-const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), ease = t => 1 - Math.pow(1 - t, 3);
-const stage = document.getElementById('stage'), ph = [...stage.querySelectorAll('.phone')], wide = matchMedia('(min-width:1001px)');
-const story = document.getElementById('story'), beats = [...story.querySelectorAll('.beats li')], scr = [...story.querySelectorAll('.scr')];
-const big = story.querySelector('.phone.big'), typed = document.getElementById('typed'), hit = story.querySelector('.res.hit');
-const siteimg = document.getElementById('siteimg'), msgs = [...story.querySelectorAll('.msgs p')], meter = document.getElementById('meter'), num = story.querySelector('.num');
-const screens = [...document.querySelectorAll('.model .screen')], desk = document.querySelector('.desk');
-const Q = 'barbearia perto de mim';
-let mx = 0, my = 0, cx = 0, cy = 0, dirty = true;
-addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; dirty = true; });
-addEventListener('scroll', () => dirty = true, { passive: true }); addEventListener('resize', () => dirty = true);
-function hero() {
-  const p = clamp(scrollY / stage.parentElement.offsetHeight), w = wide.matches;
-  ph.forEach(el => { const d = +el.dataset.depth, sd = +el.dataset.side;
-    el.style.transform = `translate3d(${sd * p * (w ? 110 : 40) + cx * 26 * d}px, ${-p * 260 * d + cy * 18 * d}px, ${p * 220 * d}px) rotateX(${p * 32}deg) rotateY(${-sd * p * 26}deg) rotate(${sd * 6.5 * (1 - p)}deg)`; });
-}
-function storyFrame() {
-  const total = story.offsetHeight - innerHeight, p = clamp(-story.getBoundingClientRect().top / total);
-  const st = p < .34 ? 0 : p < .67 ? 1 : 2, sub = st === 0 ? p / .34 : st === 1 ? (p - .34) / .33 : (p - .67) / .33;
-  beats.forEach((b, i) => { b.classList.toggle('on', i === st); b.classList.toggle('past', i < st); });
-  scr.forEach((x, i) => x.classList.toggle('on', i === st));
-  typed.textContent = st ? Q : Q.slice(0, Math.round(clamp(sub * 1.7) * Q.length));
-  hit.classList.toggle('lit', st > 0 || sub > .72);
-  if (siteimg.complete && siteimg.naturalHeight) siteimg.style.transform = `translateY(${-(st === 1 ? ease(sub) : st > 1 ? 1 : 0) * Math.min(big.clientHeight * 1.6, Math.max(0, siteimg.offsetHeight - big.clientHeight))}px)`;
-  msgs.forEach((m, i) => m.classList.toggle('on', st === 2 && sub > .08 + i * .22));
-  story.classList.toggle('call', st === 2);
-  meter.style.transform = `scaleX(${p})`;
-  big.style.transform = `rotateY(${(.5 - p) * 34}deg) rotateX(${6 - p * 6}deg)`;
-}
-
-const boom = document.getElementById('boom'), rig = document.getElementById('rig'), lys = [...boom.querySelectorAll('.ly')], parts = [...boom.querySelectorAll('.parts li')];
-function boomFrame() {
-  const r = boom.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-  const p = clamp(-r.top / (boom.offsetHeight - innerHeight)), k = ease(clamp(p / .28));
-  const act = Math.min(4, Math.floor(clamp((p - .16) / .74) * 5)), f = rig.offsetWidth / 370, w = wide.matches;
-  rig.style.transform = `translate(${w ? 0 : -11 * k}%, ${(w ? 12 : -4) * k}%) rotateX(${56 * k}deg) rotateZ(${-34 * k}deg) scale(${1 - .14 * k})`;
-  lys.forEach((l, i) => { const hot = i === act && k > .9; l.classList.toggle('hot', hot);
-    l.style.opacity = clamp(k * 1.6 - i * .12);
-    l.style.transform = `translateZ(${(k * (90 + i * 92) + (hot ? 40 : 0)) * f}px)`; });
-  parts.forEach((x, i) => x.classList.toggle('on', i === act));
-}
-function straighten(el, tilt, lift) {
-  const r = el.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-  const e = ease(clamp((innerHeight - r.top) / (innerHeight * .85)));
-  el.style.transform = `translateY(${(1 - e) * lift}px) rotateX(${(1 - e) * tilt}deg) scale(${.9 + .1 * e})`;
-}
-function tick() {
-  if (Math.abs(mx - cx) > .001 || Math.abs(my - cy) > .001) { cx += (mx - cx) * .07; cy += (my - cy) * .07; dirty = true; }
-  if (dirty) { dirty = false; hero(); boomFrame(); storyFrame(); screens.forEach(el => straighten(el, 24, 90)); if (desk) straighten(desk, 32, 60); }
-  requestAnimationFrame(tick);
-}
-if (!reduce) requestAnimationFrame(tick); else { beats.forEach(b => b.classList.add('on')); }
-</script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script type="module" src="home.js"></script>
 </body>
 </html>
