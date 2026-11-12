@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" style="--base:#FA4100;--on-base:#111111;--neu:#FFFFFF;--on-neu:#111111;--acc:#7CF000;--on-acc:#111111;--dot:#FA4100;--giant:#FA4100;--disp:'Archivo Black',Impact,sans-serif;--disp-w:400;--disp-s:normal;--sans:'Figtree',system-ui,sans-serif">
+<html lang="pt-BR" style="--base:#FA4100;--on-base:#111111;--neu:#FFFFFF;--on-neu:#111111;--acc:#7CF000;--on-acc:#111111;--disp:'Archivo Black',Impact,sans-serif;--disp-w:400;--disp-s:normal;--sans:'Figtree',system-ui,sans-serif">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,95 +10,46 @@
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../kit/kit.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "Brasa Burger", "description": "Hamburgueria smash: carne esmagada na chapa a 230 °C, pão brioche e cheddar. Delivery e retirada. Peça pelo WhatsApp."}</script>
+<link rel="stylesheet" href="../kit/core.css">
+<link rel="stylesheet" href="cena.css">
 </head>
 <body>
 <p class="fita">Modelo de site feito pela Orbi · nome, preços e endereço fictícios <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Brasa Burger e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
-<header class="nav"><a class="nav__marca disp" href="#">Brasa</a>
-  <nav class="nav__pilulas" aria-label="Principal"><a class="pilula" href="#menu">Cardápio</a><a class="pilula" href="#como">Como fazemos</a><a class="pilula" href="#onde">Onde</a><a class="pilula pilula--acao" href="#menu">Pedir agora</a></nav></header>
+<header class="nav"><a class="nav__marca disp" href="#">Brasa</a><nav class="nav__links" aria-label="Principal"><a href="#chapa">Cardápio</a><a href="#onde">Onde</a><a class="btn btn--p" href="#chapa">Pedir agora</a></nav></header>
 <main>
-<section class="tunel" aria-labelledby="t-frase">
-  <canvas class="tunel__canvas" aria-hidden="true"></canvas>
-  <div class="tunel__hero">
-    <h1 class="tunel__frase disp" id="t-frase">Smash na chapa,<br>entregue quente.</h1>
-    <p class="tunel__nome disp" data-encaixe="hero" aria-hidden="true">Brasa</p>
-    <p class="tunel__dica">Role para entrar</p><p class="tunel__local">Ter a dom · 18h às 23h30 · delivery e retirada</p>
+<section class="montagem" aria-labelledby="mt-t">
+  <p class="mt__fita disp" aria-hidden="true"><span>BRASA ✦ SMASH ✦ BRASA ✦ SMASH ✦ BRASA ✦ SMASH ✦ BRASA ✦ SMASH ✦ </span></p>
+  <div class="mt__abre"><h1 class="disp" id="mt-t">Smash na chapa,<br>entregue quente.</h1><p class="mt__dica">Role pra montar o seu ↓</p></div>
+  <ol class="mt__nomes"><li><b class="disp">Pão de baixo</b><span>selado na manteiga</span></li><li><b class="disp">Carne 160 g</b><span>esmagada a 230 °C</span></li><li><b class="disp">Cheddar</b><span>derretendo na hora</span></li><li><b class="disp">Tomate</b><span>fatiado no dia</span></li><li><b class="disp">Alface</b><span>americana, crocante</span></li><li><b class="disp">Cebola roxa</b><span>em rodelas finas</span></li><li><b class="disp">Brioche</b><span>com gergelim</span></li></ol>
+  <p class="mt__conta disp"><span>01</span> / 07</p>
+  <div class="mt__pilha"><img class="cam" src="../img/bx-base.webp" alt="" style="width:calc(var(--W)*0.71);bottom:calc(var(--W)*0);z-index:0"><img class="cam" src="../img/bx-carne.webp" alt="" style="width:calc(var(--W)*0.77);bottom:calc(var(--W)*0.12);z-index:1"><img class="cam" src="../img/bx-queijo.webp" alt="" style="width:calc(var(--W)*0.88);bottom:calc(var(--W)*0.22);z-index:2"><img class="cam" src="../img/bx-tomate.webp" alt="" style="width:calc(var(--W)*0.87);bottom:calc(var(--W)*0.27);z-index:3"><img class="cam" src="../img/bx-alface.webp" alt="" style="width:calc(var(--W)*1);bottom:calc(var(--W)*0.31);z-index:4"><img class="cam" src="../img/bx-cebola.webp" alt="" style="width:calc(var(--W)*0.59);bottom:calc(var(--W)*0.39);z-index:5"><img class="cam" src="../img/bx-pao.webp" alt="" style="width:calc(var(--W)*0.69);bottom:calc(var(--W)*0.43);z-index:6"></div>
+  <div class="mt__fim"><p class="disp">Pronto.<br>Agora é só pedir.</p><a class="btn" href="#chapa">Ver o cardápio</a></div>
+</section>
+<section class="chapa" id="chapa" aria-labelledby="ch-t">
+  <div class="ch__trilho">
+    <div class="ch__intro"><p class="ch__kicker">Cardápio</p><h2 class="disp" id="ch-t">Quatro lanches.<br>Mesmo cuidado.</h2><p>Escolha, monte o pedido e ele abre no WhatsApp com tudo escrito. É só mandar.</p></div>
+    <article class="card"><img src="../img/bp-classico.webp" alt="Clássico" loading="lazy">
+      <p class="card__tag">Mais pedido</p><h3 class="disp">Clássico</h3><p class="card__desc">Carne de 160 g, cheddar e pão de gergelim selado</p>
+      <div class="card__pe"><span class="card__preco disp">R$ 29,00</span><span data-ctl="classico"></span></div></article><article class="card"><img src="../img/bp-cheddar.webp" alt="Duplo" loading="lazy">
+      <p class="card__tag">Pra quem tem fome</p><h3 class="disp">Duplo</h3><p class="card__desc">Duas carnes, cheddar, tomate, cebola roxa e maionese da casa</p>
+      <div class="card__pe"><span class="card__preco disp">R$ 36,00</span><span data-ctl="duplo"></span></div></article><article class="card"><img src="../img/bp-bacon.webp" alt="Bacon" loading="lazy">
+      <p class="card__tag">Da casa</p><h3 class="disp">Bacon</h3><p class="card__desc">Bacon crocante, creme de queijo e alface no pão australiano</p>
+      <div class="card__pe"><span class="card__preco disp">R$ 38,00</span><span data-ctl="bacon"></span></div></article><article class="card"><img src="../img/bp-salada.webp" alt="Salada" loading="lazy">
+      <p class="card__tag">Leve e completo</p><h3 class="disp">Salada</h3><p class="card__desc">Carne de 160 g, cheddar, alface americana e tomate</p>
+      <div class="card__pe"><span class="card__preco disp">R$ 32,00</span><span data-ctl="salada"></span></div></article>
   </div>
-  <div class="casos"><div class="caso"><p class="caso__num" data-in>01 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>O mais pedido · carne de 160 g</p><h3 class="caso__nome disp" data-in>Clássico</h3>
-      <p class="caso__resumo" data-in>Cheddar escorrendo e pão de gergelim selado na manteiga. O que você imagina quando pensa em hambúrguer.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 29,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="classico">Pedir este</a></div></div></div><div class="caso"><p class="caso__num" data-in>02 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>Pra quem tem fome · duas carnes</p><h3 class="caso__nome disp" data-in>Duplo</h3>
-      <p class="caso__resumo" data-in>Duas carnes esmagadas na hora, cheddar, tomate, cebola roxa e maionese da casa.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 36,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="duplo">Pedir este</a></div></div></div><div class="caso"><p class="caso__num" data-in>03 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>Da casa · bacon crocante</p><h3 class="caso__nome disp" data-in>Bacon</h3>
-      <p class="caso__resumo" data-in>Bacon crocante, creme de queijo e alface no pão australiano.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 38,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="bacon">Pedir este</a></div></div></div></div>
-  <div class="tunel__fim"><p class="tunel__fim-frase disp">Três de seis.<br>O resto tá no cardápio.</p><a class="pilula pilula--acao pilula--g" href="#menu">Ver o cardápio</a></div>
-  <div class="tunel__progresso" aria-hidden="true"><i></i></div>
+  <div class="ch__barra" aria-hidden="true"><i></i></div>
 </section>
-
-<section class="manif" aria-labelledby="m-t">
-  <div class="manif__pagina">
-    <div class="manif__texto"><h2 class="rotulo" id="m-t">A Brasa</h2><p class="manifesto disp">A carne vai em bola pra <span data-ancora="0">chapa</span> e é esmagada na hora, a 230 °C. Sai com crosta, cheddar <span class="foto-linha" style="--img:url(../img/cx-h-melt.webp)" role="img" aria-label="escorrendo"></span> e pão <span data-ancora="1">selado.</span> Tudo embalado em <span data-ancora="2">papel,</span> sem isopor, pra chegar quente.</p></div>
-    <aside class="manif__margem" aria-label="Em resumo"><p class="nota" data-nota="0">blend de 160 g, moído todo dia</p><p class="nota" data-nota="1">retirada pronta em 15 min</p><p class="nota" data-nota="2">delivery até 5 km, de 35 a 45 min</p></aside>
-  </div>
-  <svg class="manif__fios" aria-hidden="true"></svg>
-</section>
-
-<section class="metodo" id="como" aria-labelledby="c-t">
-  <div class="metodo__palco"><h2 class="metodo__titulo disp" id="c-t">Da chapa pro saco</h2>
-    <div class="tira"><figure class="quadro"><img src="../img/cx-h-fire.webp" alt="Chapa" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-h-melt.webp" alt="Cheddar" loading="lazy"></figure><figure class="quadro"><img src="../img/bp-chapa.webp" alt="Montagem" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-h-fries.webp" alt="Saco" loading="lazy"></figure></div>
-    <div class="regua"><div class="regua__fio"><i></i></div><ol class="regua__etapas"><li><b>01 Chapa</b><span>Bola de carne na chapa a 230 °C.</span></li><li><b>02 Cheddar</b><span>Cheddar na hora, derretendo por cima.</span></li><li><b>03 Montagem</b><span>Pão brioche selado e molho da casa.</span></li><li><b>04 Saco</b><span>Fritas sequinhas e tudo no papel, quente.</span></li></ol></div></div>
-</section>
-
-<section class="menu" id="menu" aria-labelledby="menu-t">
-  <div class="menu__topo"><div><h2 class="disp" id="menu-t">Cardápio</h2><p class="menu__sub">Escolha, monte o pedido e ele abre no WhatsApp com tudo escrito. É só mandar.</p></div>
-    <div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="lanches" aria-pressed="false">Lanches</button><button class="chip" data-filtro="acomp" aria-pressed="false">Acompanhamentos</button><button class="chip" data-filtro="bebidas" aria-pressed="false">Bebidas</button></div></div>
-  
-  <ul class="linhas"><li class="linha" data-cat="lanches" data-img="../img/bp-classico.webp">
-      <span class="l-num">01</span><span class="l-nome disp">Clássico<span class="l-tag">Mais pedido</span></span>
-      <span class="l-desc">Carne de 160 g, cheddar e pão de gergelim selado</span><span class="l-preco">R$ 29,00</span><span class="l-acao"><span data-ctl="classico"></span></span></li>
-<li class="linha" data-cat="lanches" data-img="../img/bp-macro.webp">
-      <span class="l-num">02</span><span class="l-nome disp">Duplo</span>
-      <span class="l-desc">Duas carnes, cheddar, tomate, cebola roxa e maionese da casa</span><span class="l-preco">R$ 36,00</span><span class="l-acao"><span data-ctl="duplo"></span></span></li>
-<li class="linha" data-cat="lanches" data-img="../img/bp-bacon.webp">
-      <span class="l-num">03</span><span class="l-nome disp">Bacon</span>
-      <span class="l-desc">Bacon crocante, creme de queijo e alface no pão australiano</span><span class="l-preco">R$ 38,00</span><span class="l-acao"><span data-ctl="bacon"></span></span></li>
-<li class="linha" data-cat="lanches" data-img="../img/bp-salada.webp">
-      <span class="l-num">04</span><span class="l-nome disp">Salada</span>
-      <span class="l-desc">Carne de 160 g, cheddar, alface americana e tomate</span><span class="l-preco">R$ 32,00</span><span class="l-acao"><span data-ctl="salada"></span></span></li>
-<li class="linha" data-cat="acomp" data-img="../img/cx-h-fries.webp">
-      <span class="l-num">05</span><span class="l-nome disp">Fritas</span>
-      <span class="l-desc">Porção sequinha, com sal e alecrim</span><span class="l-preco">R$ 14,00</span><span class="l-acao"><span data-ctl="fritas"></span></span></li>
-<li class="linha" data-cat="acomp" data-img="../img/bp-cheddar.webp">
-      <span class="l-num">06</span><span class="l-nome disp">Cheddar extra</span>
-      <span class="l-desc">Pote de cheddar cremoso pra molhar</span><span class="l-preco">R$ 6,00</span><span class="l-acao"><span data-ctl="cheddar"></span></span></li>
-<li class="linha" data-cat="bebidas">
-      <span class="l-num">07</span><span class="l-nome disp">Refrigerante lata</span>
-      <span class="l-desc">350 ml</span><span class="l-preco">R$ 7,00</span><span class="l-acao"><span data-ctl="refri"></span></span></li>
-<li class="linha" data-cat="bebidas">
-      <span class="l-num">08</span><span class="l-nome disp">Suco natural</span>
-      <span class="l-desc">Laranja ou limão, 400 ml</span><span class="l-preco">R$ 12,00</span><span class="l-acao"><span data-ctl="suco"></span></span></li></ul>
-  <img class="seguidor" alt="" aria-hidden="true">
-</section>
-
-<section class="ceu-sec" aria-labelledby="ceu-t">
-  <div class="ceu" aria-hidden="true"></div>
-  <div class="ceu__centro"><h2 class="ceu__frase disp" id="ceu-t">Bateu a fome?<br>O pedido chega pronto.</h2><p class="ceu__sub">Escolha no cardápio e a mensagem abre no WhatsApp com tudo escrito. Pix, cartão ou dinheiro.</p>
-    <a class="pilula pilula--acao pilula--g" href="#menu">Montar meu pedido</a></div>
+<section class="junto" aria-labelledby="jt-t">
+  <h2 class="disp" id="jt-t">Pra ir junto</h2>
+  <ul class="lista"><li class="item" data-cat="acomp"><span class="item__nome disp">Fritas</span><span class="item__desc">Porção sequinha, com sal e alecrim</span><span class="item__preco">R$ 14,00</span><span class="item__acao"><span data-ctl="fritas"></span></span></li><li class="item" data-cat="acomp"><span class="item__nome disp">Cheddar extra</span><span class="item__desc">Pote de cheddar cremoso pra molhar</span><span class="item__preco">R$ 6,00</span><span class="item__acao"><span data-ctl="cheddar"></span></span></li><li class="item" data-cat="bebidas"><span class="item__nome disp">Refrigerante lata</span><span class="item__desc">350 ml</span><span class="item__preco">R$ 7,00</span><span class="item__acao"><span data-ctl="refri"></span></span></li><li class="item" data-cat="bebidas"><span class="item__nome disp">Suco natural</span><span class="item__desc">Laranja ou limão, 400 ml</span><span class="item__preco">R$ 12,00</span><span class="item__acao"><span data-ctl="suco"></span></span></li></ul>
 </section>
 </main>
-
 <footer class="rodape" id="onde">
-  <div class="rodape__cols"><div><h3>Horário</h3><p>Ter a dom, das 18h às 23h30</p></div><div><h3>Endereço</h3><p>Rua do Centro, 140 (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div>
-  <p class="rodape__nota">Brasa Burger é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p>
-  <p class="rodape__nome disp" data-encaixe="cheio" aria-hidden="true">Brasa</p>
+  <p class="rd__fita disp" aria-hidden="true"><span>Delivery até 5 km · 35 a 45 min ✦ Retirada em 15 min ✦ Saco de papel, sem isopor ✦ </span></p>
+  <div class="rodape__cols"><div><h3>Horário</h3><p>Ter a dom, das 18h às 23h30</p></div><div><h3>Endereço</h3><p>Rua do Centro, 140 (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div><p class="rodape__nota">Brasa Burger é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p>
 </footer>
-
-<div class="sacola" role="region" aria-label="Seu pedido"><span data-n>0 itens</span><button class="pilula pilula--acao">Ver pedido</button></div>
-<a class="pilula pilula--acao pilula--g flutua" href="#menu">Pedir agora</a>
+<div class="sacola" role="region" aria-label="Seu pedido"><span data-n>0 itens</span><button class="btn btn--p">Ver pedido</button></div>
 <dialog id="sacola-painel" aria-labelledby="sp-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
   <h2 class="disp" id="sp-t">Seu pedido</h2><ul class="itens"></ul>
   <div class="chips" style="margin-top:16px" role="group" aria-label="Como receber"><button class="chip" data-opc="Delivery" aria-pressed="false">Delivery</button><button class="chip" data-opc="Retirada" aria-pressed="false">Retirada</button></div>
@@ -106,19 +57,18 @@
   <label class="campo" data-campo><span></span><input id="f-campo"></label>
   <label class="campo">Observação<textarea id="f-obs" rows="2" placeholder="Ex.: sem cebola"></textarea></label>
   <p class="aviso" data-taxa></p><p class="total"><span>Total</span><span data-total>R$ 0,00</span></p>
-  <button class="pilula pilula--acao pilula--g" style="width:100%;margin-top:16px" data-enviar>Enviar pedido pelo WhatsApp</button>
+  <button class="btn" style="width:100%;margin-top:16px" data-enviar>Enviar pedido pelo WhatsApp</button>
 </dialog>
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
-  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2>
-  <p class="bolha-wa"></p>
+  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2><p class="bolha-wa"></p>
   <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
-  <div class="botoes"><a class="pilula pilula--acao pilula--g" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="pilula pilula--g" data-fechar>Fechar</button></div>
+  <div class="botoes"><a class="btn" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="btn btn--alt" data-fechar>Fechar</button></div>
 </dialog>
-
-<script type="application/json" id="site">{"nome": "Brasa Burger", "modo": "pedido", "pecas": [{"src": "../img/cx-h-fire.webp", "w": 933, "h": 1400}, {"src": "../img/bp-classico.webp", "w": 1000, "h": 817}, {"src": "../img/cx-h-melt.webp", "w": 1120, "h": 1400}, {"src": "../img/bh-top.webp", "w": 1000, "h": 819}, {"src": "../img/cx-h-chef.webp", "w": 1050, "h": 1400}, {"src": "../img/bp-bacon.webp", "w": 1000, "h": 668}, {"src": "../img/cx-h-fries.webp", "w": 933, "h": 1400}, {"src": "../img/bp-chapa.webp", "w": 1000, "h": 1000}, {"src": "../img/cx-h-flame.webp", "w": 1050, "h": 1400}, {"src": "../img/bp-salada.webp", "w": 1000, "h": 653}, {"src": "../img/cx-h-grillb.webp", "w": 1120, "h": 1400}, {"src": "../img/bp-cheddar.webp", "w": 1000, "h": 715}, {"src": "../img/bh-mid.webp", "w": 1000, "h": 819}, {"src": "../img/bp-macro.webp", "w": 1600, "h": 1329}, {"src": "../img/bh-bot.webp", "w": 1000, "h": 819}], "destaques": [{"img": "../img/bp-classico.webp", "fit": "contain"}, {"img": "../img/bp-macro.webp", "fit": "cover"}, {"img": "../img/bp-bacon.webp", "fit": "contain"}], "menu": [{"id": "classico", "nome": "Clássico", "preco": 29}, {"id": "duplo", "nome": "Duplo", "preco": 36}, {"id": "bacon", "nome": "Bacon", "preco": 38}, {"id": "salada", "nome": "Salada", "preco": 32}, {"id": "fritas", "nome": "Fritas", "preco": 14}, {"id": "cheddar", "nome": "Cheddar extra", "preco": 6}, {"id": "refri", "nome": "Refrigerante lata", "preco": 7}, {"id": "suco", "nome": "Suco natural", "preco": 12}], "opcoes": [{"k": "Delivery", "taxa": 6, "campo": "Endereço de entrega"}, {"k": "Retirada", "taxa": 0, "campo": ""}], "portes": null, "extra": null, "dias": null, "horas": null}</script>
+<script type="application/json" id="site">{"nome": "Brasa Burger", "modo": "pedido", "menu": [{"id": "classico", "nome": "Clássico", "preco": 29}, {"id": "duplo", "nome": "Duplo", "preco": 36}, {"id": "bacon", "nome": "Bacon", "preco": 38}, {"id": "salada", "nome": "Salada", "preco": 32}, {"id": "fritas", "nome": "Fritas", "preco": 14}, {"id": "cheddar", "nome": "Cheddar extra", "preco": 6}, {"id": "refri", "nome": "Refrigerante lata", "preco": 7}, {"id": "suco", "nome": "Suco natural", "preco": 12}], "opcoes": [{"k": "Delivery", "taxa": 6, "campo": "Endereço de entrega"}, {"k": "Retirada", "taxa": 0, "campo": ""}], "portes": null, "extra": null, "dias": null, "horas": null}</script>
 <script src="../../vendor/gsap.min.js"></script>
 <script src="../../vendor/ScrollTrigger.min.js"></script>
 <script src="../../vendor/lenis.min.js"></script>
-<script type="module" src="../kit/kit.js"></script>
+<script src="cena.js"></script>
+<script type="module" src="../kit/core.js"></script>
 </body>
 </html>

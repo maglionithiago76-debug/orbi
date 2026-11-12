@@ -12,13 +12,13 @@ const WA = "https://wa.me/5511927013668?text=";
 /* ---------- data ---------- */
 const casos = [
   { nome: "Brasa Burger", nicho: "Hamburgueria", f: "comida", url: "modelos/hamburgueria/", img: "img/tunel/d-brasa.webp", mini: "img/tunel/i-brasa.webp",
-    meta: "Modelo · Hamburgueria · pedido no WhatsApp", resumo: "Os lanches saem da parede e abrem em tela cheia. O pedido chega pronto no WhatsApp." },
+    meta: "Modelo · Hamburgueria · pedido no WhatsApp", resumo: "O hambúrguer se monta camada por camada enquanto você rola, e o cardápio passa de lado." },
   { nome: "Navalha Club", nicho: "Barbearia", f: "beleza", url: "modelos/barbearia/", img: "img/tunel/d-navalha.webp", mini: "img/tunel/i-navalha.webp",
-    meta: "Modelo · Barbearia · agenda em 3 toques", resumo: "Corte, barba e combo em cena, com agenda de horário que confirma no WhatsApp." },
+    meta: "Modelo · Barbearia · agenda em 3 toques", resumo: "A tela entra pela letra do nome até a foto, e um relógio marca o horário agendado." },
   { nome: "Cantina Rossi", nicho: "Restaurante", f: "comida", url: "modelos/cardapio/", img: "img/tunel/d-rossi.webp", mini: "img/tunel/i-rossi.webp",
-    meta: "Modelo · Restaurante · cardápio com preços", resumo: "Do forno a lenha até a mesa, com o cardápio inteiro e o pedido pelo celular." },
+    meta: "Modelo · Restaurante · cardápio com preços", resumo: "A pizza gira e cada fatia mostra um sabor. O forno conta até 90 segundos." },
   { nome: "Pelúcia Pet", nicho: "Pet shop", f: "pets", url: "modelos/petshop/", img: "img/tunel/d-pelucia.webp", mini: "img/tunel/i-pelucia.webp",
-    meta: "Modelo · Pet shop · preço pelo porte", resumo: "Banho, tosa e leva e traz, com preço pelo porte e agendamento em um minuto." },
+    meta: "Modelo · Pet shop · preço pelo porte", resumo: "Uma cortina de espuma mostra o antes e depois, e o pet cresce de P a G com o preço." },
 ];
 
 /* ---------- smooth scroll ---------- */

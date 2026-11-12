@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" style="--base:#0F3B2A;--on-base:#FBF5EA;--neu:#FBF5EA;--on-neu:#2A1A12;--acc:#E0401C;--on-acc:#FFFFFF;--dot:#E0401C;--giant:#0F3B2A;--disp:'DM Serif Display',Georgia,serif;--disp-w:400;--disp-s:normal;--sans:'Figtree',system-ui,sans-serif">
+<html lang="pt-BR" style="--base:#0F3B2A;--on-base:#FBF5EA;--neu:#FBF5EA;--on-neu:#2A1A12;--acc:#E0401C;--on-acc:#FFFFFF;--disp:'DM Serif Display',Georgia,serif;--disp-w:400;--disp-s:normal;--sans:'Figtree',system-ui,sans-serif">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,113 +10,37 @@
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../kit/kit.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "Cantina Rossi", "description": "Pizza napolitana no forno a lenha e massa fresca feita todo dia. Peça pelo WhatsApp: entrega, retirada ou na mesa."}</script>
+<link rel="stylesheet" href="../kit/core.css">
+<link rel="stylesheet" href="cena.css">
 </head>
 <body>
 <p class="fita">Modelo de site feito pela Orbi · nome, preços e endereço fictícios <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Cantina Rossi e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
-<header class="nav"><a class="nav__marca disp" href="#">Rossi</a>
-  <nav class="nav__pilulas" aria-label="Principal"><a class="pilula" href="#menu">Cardápio</a><a class="pilula" href="#como">Como fazemos</a><a class="pilula" href="#onde">Onde</a><a class="pilula pilula--acao" href="#menu">Fazer pedido</a></nav></header>
+<header class="nav"><a class="nav__marca disp" href="#">Rossi</a><nav class="nav__links" aria-label="Principal"><a href="#cardapio">Cardápio</a><a href="#onde">Onde</a><a class="btn btn--p" href="#cardapio">Fazer pedido</a></nav></header>
 <main>
-<section class="tunel" aria-labelledby="t-frase">
-  <canvas class="tunel__canvas" aria-hidden="true"></canvas>
-  <div class="tunel__hero">
-    <h1 class="tunel__frase disp" id="t-frase">Pizza napolitana<br>no forno a lenha.</h1>
-    <p class="tunel__nome disp" data-encaixe="hero" aria-hidden="true">Rossi</p>
-    <p class="tunel__dica">Role para entrar</p><p class="tunel__local">Ter a dom · 18h às 23h30 · entrega em 35–50 min</p>
-  </div>
-  <div class="casos"><div class="caso"><p class="caso__num" data-in>01 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>A mais pedida · 8 pedaços</p><h3 class="caso__nome disp" data-in>Margherita</h3>
-      <p class="caso__resumo" data-in>Tomate italiano, muçarela de búfala e manjericão colhido no dia.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 59,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="margherita">Pedir este</a></div></div></div><div class="caso"><p class="caso__num" data-in>02 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>Clássica de Nápoles · sem queijo</p><h3 class="caso__nome disp" data-in>Marinara</h3>
-      <p class="caso__resumo" data-in>Tomate, alho, orégano e azeite. Só isso, e é o que basta.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 49,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="marinara">Pedir este</a></div></div></div><div class="caso"><p class="caso__num" data-in>03 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>Massa fresca · serve 1 com fome</p><h3 class="caso__nome disp" data-in>Lasanha à bolonhesa</h3>
-      <p class="caso__resumo" data-in>Lasanha à bolonhesa com pão de alho, feita aqui todo dia.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 48,00</span><a class="pilula pilula--acao pilula--g" href="#menu" data-pedir="lasanha">Pedir este</a></div></div></div></div>
-  <div class="tunel__fim"><p class="tunel__fim-frase disp">Três de quatorze.<br>Tem mais no cardápio.</p><a class="pilula pilula--acao pilula--g" href="#menu">Ver o cardápio</a></div>
-  <div class="tunel__progresso" aria-hidden="true"><i></i></div>
+<section class="roda" aria-labelledby="rd-t">
+  <div class="rd__abre"><p class="rd__marca disp">Cantina Rossi</p><h1 class="disp" id="rd-t">Pizza napolitana<br>no forno a lenha.</h1><p class="rd__dica">Role e gire a pizza ↓</p></div>
+  <div class="rd__falas"><article class="rd-p"><p class="rd-p__n">Fatia 1 de 6</p><h3 class="disp">Margherita</h3><p class="rd-p__desc">Molho de tomate italiano, muçarela de búfala e manjericão</p>
+      <p class="rd-p__pe"><span class="disp">R$ 59,00</span><span data-ctl="margherita"></span></p></article><article class="rd-p"><p class="rd-p__n">Fatia 2 de 6</p><h3 class="disp">Marinara</h3><p class="rd-p__desc">Tomate, alho, orégano e azeite. Sem queijo</p>
+      <p class="rd-p__pe"><span class="disp">R$ 49,00</span><span data-ctl="marinara"></span></p></article><article class="rd-p"><p class="rd-p__n">Fatia 3 de 6</p><h3 class="disp">Calabresa da casa</h3><p class="rd-p__desc">Calabresa artesanal, cebola roxa e azeitona preta</p>
+      <p class="rd-p__pe"><span class="disp">R$ 62,00</span><span data-ctl="calabresa"></span></p></article><article class="rd-p"><p class="rd-p__n">Fatia 4 de 6</p><h3 class="disp">Quatro queijos</h3><p class="rd-p__desc">Muçarela, gorgonzola, parmesão e provolone</p>
+      <p class="rd-p__pe"><span class="disp">R$ 66,00</span><span data-ctl="queijos"></span></p></article><article class="rd-p"><p class="rd-p__n">Fatia 5 de 6</p><h3 class="disp">Portuguesa</h3><p class="rd-p__desc">Presunto, ovo, cebola, ervilha e azeitona</p>
+      <p class="rd-p__pe"><span class="disp">R$ 64,00</span><span data-ctl="portuguesa"></span></p></article><article class="rd-p"><p class="rd-p__n">Fatia 6 de 6</p><h3 class="disp">Nutella com morango</h3><p class="rd-p__desc">Doce, 4 pedaços</p>
+      <p class="rd-p__pe"><span class="disp">R$ 44,00</span><span data-ctl="nutella"></span></p></article></div>
+  <img class="rd__pizza" src="../img/pz-inteira.webp" alt="Pizza napolitana inteira vista de cima">
 </section>
-
-<section class="manif" aria-labelledby="m-t">
-  <div class="manif__pagina">
-    <div class="manif__texto"><h2 class="rotulo" id="m-t">A cantina</h2><p class="manifesto disp">A massa descansa <span data-ancora="0">48 horas,</span> é aberta na mão e vai pro <span class="foto-linha" style="--img:url(../img/cx-p-fire.webp)" role="img" aria-label="forno"></span> a lenha a <span data-ancora="1">450 °C.</span> Noventa segundos depois sai com a borda pintadinha e a <span class="foto-linha" style="--img:url(../img/cx-p-cheese.webp)" role="img" aria-label="muçarela"></span> de búfala <span data-ancora="2">puxando.</span></p></div>
-    <aside class="manif__margem" aria-label="Em resumo"><p class="nota" data-nota="0">massa fresca feita todo dia</p><p class="nota" data-nota="1">90 segundos no forno a lenha</p><p class="nota" data-nota="2">entrega, retirada ou na mesa</p></aside>
-  </div>
-  <svg class="manif__fios" aria-hidden="true"></svg>
+<section class="forno" aria-labelledby="fn-t">
+  <img class="fn__foto" src="../img/pizza-oven.webp" alt="Forno a lenha aceso" loading="lazy">
+  <div class="fn__brasas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="fn__texto"><p class="fn__num disp"><span>0</span><small>s</small></p><h2 class="disp" id="fn-t">a 450 °C no forno a lenha</h2>
+    <p>A massa descansa 48 horas e é aberta na mão. Noventa segundos de forno e ela sai com a borda pintadinha e o meio macio.</p></div>
 </section>
-
-<section class="metodo" id="como" aria-labelledby="c-t">
-  <div class="metodo__palco"><h2 class="metodo__titulo disp" id="c-t">Como a pizza nasce</h2>
-    <div class="tira"><figure class="quadro"><img src="../img/cx-p-knead.webp" alt="Massa" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-p-dough.webp" alt="Disco" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-p-oven.webp" alt="Forno" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-p-pull.webp" alt="Mesa" loading="lazy"></figure></div>
-    <div class="regua"><div class="regua__fio"><i></i></div><ol class="regua__etapas"><li><b>01 Massa</b><span>Farinha italiana, descansa 48 horas.</span></li><li><b>02 Disco</b><span>Aberto na mão, nunca no rolo.</span></li><li><b>03 Forno</b><span>Lenha, 450 °C, 90 segundos.</span></li><li><b>04 Mesa</b><span>Chega quente, puxando o queijo.</span></li></ol></div></div>
-</section>
-
-<section class="menu" id="menu" aria-labelledby="menu-t">
-  <div class="menu__topo"><div><h2 class="disp" id="menu-t">Cardápio</h2><p class="menu__sub">Monte o pedido e ele chega no WhatsApp da cantina, sem taxa de aplicativo.</p></div>
-    <div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="pizzas" aria-pressed="false">Pizzas</button><button class="chip" data-filtro="massas" aria-pressed="false">Massas</button><button class="chip" data-filtro="doces" aria-pressed="false">Sobremesas</button><button class="chip" data-filtro="bebidas" aria-pressed="false">Bebidas</button></div></div>
-  
-  <ul class="linhas"><li class="linha" data-cat="pizzas" data-img="../img/pizza-hero.webp">
-      <span class="l-num">01</span><span class="l-nome disp">Margherita<span class="l-tag">Mais pedida</span></span>
-      <span class="l-desc">Molho de tomate italiano, muçarela de búfala e manjericão</span><span class="l-preco">R$ 59,00</span><span class="l-acao"><span data-ctl="margherita"></span></span></li>
-<li class="linha" data-cat="pizzas" data-img="../img/pizza-marinara.webp">
-      <span class="l-num">02</span><span class="l-nome disp">Marinara</span>
-      <span class="l-desc">Tomate, alho, orégano e azeite. Sem queijo</span><span class="l-preco">R$ 49,00</span><span class="l-acao"><span data-ctl="marinara"></span></span></li>
-<li class="linha" data-cat="pizzas" data-img="../img/cx-p-pep.webp">
-      <span class="l-num">03</span><span class="l-nome disp">Calabresa da casa</span>
-      <span class="l-desc">Calabresa artesanal, cebola roxa e azeitona preta</span><span class="l-preco">R$ 62,00</span><span class="l-acao"><span data-ctl="calabresa"></span></span></li>
-<li class="linha" data-cat="pizzas" data-img="../img/cx-p-cheese.webp">
-      <span class="l-num">04</span><span class="l-nome disp">Quatro queijos</span>
-      <span class="l-desc">Muçarela, gorgonzola, parmesão e provolone</span><span class="l-preco">R$ 66,00</span><span class="l-acao"><span data-ctl="queijos"></span></span></li>
-<li class="linha" data-cat="pizzas" data-img="../img/cx-p-pull.webp">
-      <span class="l-num">05</span><span class="l-nome disp">Portuguesa</span>
-      <span class="l-desc">Presunto, ovo, cebola, ervilha e azeitona</span><span class="l-preco">R$ 64,00</span><span class="l-acao"><span data-ctl="portuguesa"></span></span></li>
-<li class="linha" data-cat="pizzas">
-      <span class="l-num">06</span><span class="l-nome disp">Nutella com morango<span class="l-tag">Novo</span></span>
-      <span class="l-desc">Doce, 4 pedaços</span><span class="l-preco">R$ 44,00</span><span class="l-acao"><span data-ctl="nutella"></span></span></li>
-<li class="linha" data-cat="massas" data-img="../img/lasagna.webp">
-      <span class="l-num">07</span><span class="l-nome disp">Lasanha à bolonhesa</span>
-      <span class="l-desc">Serve 1 com fome. Acompanha pão de alho</span><span class="l-preco">R$ 48,00</span><span class="l-acao"><span data-ctl="lasanha"></span></span></li>
-<li class="linha" data-cat="massas">
-      <span class="l-num">08</span><span class="l-nome disp">Talharim ao sugo</span>
-      <span class="l-desc">Tomate, manjericão e parmesão</span><span class="l-preco">R$ 39,00</span><span class="l-acao"><span data-ctl="talharim"></span></span></li>
-<li class="linha" data-cat="massas">
-      <span class="l-num">09</span><span class="l-nome disp">Nhoque ao funghi</span>
-      <span class="l-desc">Molho cremoso de cogumelos</span><span class="l-preco">R$ 46,00</span><span class="l-acao"><span data-ctl="nhoque"></span></span></li>
-<li class="linha" data-cat="doces" data-img="../img/tiramisu.webp">
-      <span class="l-num">10</span><span class="l-nome disp">Tiramisù<span class="l-tag">Feito hoje</span></span>
-      <span class="l-desc">Receita da nonna, no pote</span><span class="l-preco">R$ 22,00</span><span class="l-acao"><span data-ctl="tiramisu"></span></span></li>
-<li class="linha" data-cat="doces">
-      <span class="l-num">11</span><span class="l-nome disp">Panna cotta</span>
-      <span class="l-desc">Com calda de frutas vermelhas</span><span class="l-preco">R$ 19,00</span><span class="l-acao"><span data-ctl="panna"></span></span></li>
-<li class="linha" data-cat="bebidas">
-      <span class="l-num">12</span><span class="l-nome disp">Refrigerante lata</span>
-      <span class="l-desc">350 ml</span><span class="l-preco">R$ 7,00</span><span class="l-acao"><span data-ctl="refri"></span></span></li>
-<li class="linha" data-cat="bebidas">
-      <span class="l-num">13</span><span class="l-nome disp">Suco natural</span>
-      <span class="l-desc">Laranja, limão ou abacaxi com hortelã</span><span class="l-preco">R$ 12,00</span><span class="l-acao"><span data-ctl="suco"></span></span></li>
-<li class="linha" data-cat="bebidas">
-      <span class="l-num">14</span><span class="l-nome disp">Água com gás</span>
-      <span class="l-desc">500 ml</span><span class="l-preco">R$ 6,00</span><span class="l-acao"><span data-ctl="agua"></span></span></li></ul>
-  <img class="seguidor" alt="" aria-hidden="true">
-</section>
-
-<section class="ceu-sec" aria-labelledby="ceu-t">
-  <div class="ceu" aria-hidden="true"></div>
-  <div class="ceu__centro"><h2 class="ceu__frase disp" id="ceu-t">Puxa o queijo.<br>Peça pelo celular.</h2><p class="ceu__sub">O pedido chega no WhatsApp da cantina já com tudo escrito. Sem taxa de aplicativo.</p>
-    <a class="pilula pilula--acao pilula--g" href="#menu">Montar meu pedido</a></div>
+<section class="carta" id="cardapio" aria-labelledby="ct-t">
+  <div class="carta__topo"><h2 class="disp" id="ct-t">Cardápio</h2><p>Monte o pedido: ele chega no WhatsApp da cantina, sem taxa de aplicativo.</p><div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="pizzas" aria-pressed="false">Pizzas</button><button class="chip" data-filtro="massas" aria-pressed="false">Massas</button><button class="chip" data-filtro="doces" aria-pressed="false">Sobremesas</button><button class="chip" data-filtro="bebidas" aria-pressed="false">Bebidas</button></div></div>
+  <div class="carta__folha"><div class="carta__cat" data-cat="pizzas"><h3 class="disp">Pizzas</h3><ul><li class="item"><span class="item__nome disp">Margherita<span class="item__tag">Mais pedida</span></span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 59,00</span><span class="item__desc">Molho de tomate italiano, muçarela de búfala e manjericão</span><span class="item__acao"><span data-ctl="margherita"></span></span></li><li class="item"><span class="item__nome disp">Marinara</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 49,00</span><span class="item__desc">Tomate, alho, orégano e azeite. Sem queijo</span><span class="item__acao"><span data-ctl="marinara"></span></span></li><li class="item"><span class="item__nome disp">Calabresa da casa</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 62,00</span><span class="item__desc">Calabresa artesanal, cebola roxa e azeitona preta</span><span class="item__acao"><span data-ctl="calabresa"></span></span></li><li class="item"><span class="item__nome disp">Quatro queijos</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 66,00</span><span class="item__desc">Muçarela, gorgonzola, parmesão e provolone</span><span class="item__acao"><span data-ctl="queijos"></span></span></li><li class="item"><span class="item__nome disp">Portuguesa</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 64,00</span><span class="item__desc">Presunto, ovo, cebola, ervilha e azeitona</span><span class="item__acao"><span data-ctl="portuguesa"></span></span></li><li class="item"><span class="item__nome disp">Nutella com morango<span class="item__tag">Novo</span></span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 44,00</span><span class="item__desc">Doce, 4 pedaços</span><span class="item__acao"><span data-ctl="nutella"></span></span></li></ul></div><div class="carta__cat" data-cat="massas"><h3 class="disp">Massas</h3><ul><li class="item"><span class="item__nome disp">Lasanha à bolonhesa</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 48,00</span><span class="item__desc">Serve 1 com fome. Acompanha pão de alho</span><span class="item__acao"><span data-ctl="lasanha"></span></span></li><li class="item"><span class="item__nome disp">Talharim ao sugo</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 39,00</span><span class="item__desc">Tomate, manjericão e parmesão</span><span class="item__acao"><span data-ctl="talharim"></span></span></li><li class="item"><span class="item__nome disp">Nhoque ao funghi</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 46,00</span><span class="item__desc">Molho cremoso de cogumelos</span><span class="item__acao"><span data-ctl="nhoque"></span></span></li></ul></div><div class="carta__cat" data-cat="doces"><h3 class="disp">Sobremesas</h3><ul><li class="item"><span class="item__nome disp">Tiramisù<span class="item__tag">Feito hoje</span></span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 22,00</span><span class="item__desc">Receita da nonna, no pote</span><span class="item__acao"><span data-ctl="tiramisu"></span></span></li><li class="item"><span class="item__nome disp">Panna cotta</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 19,00</span><span class="item__desc">Com calda de frutas vermelhas</span><span class="item__acao"><span data-ctl="panna"></span></span></li></ul></div><div class="carta__cat" data-cat="bebidas"><h3 class="disp">Bebidas</h3><ul><li class="item"><span class="item__nome disp">Refrigerante lata</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 7,00</span><span class="item__desc">350 ml</span><span class="item__acao"><span data-ctl="refri"></span></span></li><li class="item"><span class="item__nome disp">Suco natural</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 12,00</span><span class="item__desc">Laranja, limão ou abacaxi com hortelã</span><span class="item__acao"><span data-ctl="suco"></span></span></li><li class="item"><span class="item__nome disp">Água com gás</span><span class="item__pontos" aria-hidden="true"></span><span class="item__preco">R$ 6,00</span><span class="item__desc">500 ml</span><span class="item__acao"><span data-ctl="agua"></span></span></li></ul></div></div>
 </section>
 </main>
-
-<footer class="rodape" id="onde">
-  <div class="rodape__cols"><div><h3>Horário</h3><p>Ter a dom, das 18h às 23h30</p></div><div><h3>Endereço</h3><p>Rua Itália, 85 (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div>
-  <p class="rodape__nota">Cantina Rossi é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Aaron Landry from Honolulu, HI, USA (CC BY 2.0); HutheMeow (CC BY-SA 4.0); Robot8A (CC BY-SA 4.0); Syced (CC0); Tony Webster from Portland, Oregon, United States (CC BY 2.0). Demais fotos: Pexels (licença livre).</p>
-  <p class="rodape__nome disp" data-encaixe="cheio" aria-hidden="true">Rossi</p>
-</footer>
-
-<div class="sacola" role="region" aria-label="Seu pedido"><span data-n>0 itens</span><button class="pilula pilula--acao">Ver pedido</button></div>
-<a class="pilula pilula--acao pilula--g flutua" href="#menu">Fazer pedido</a>
+<footer class="rodape" id="onde"><div class="toalha" aria-hidden="true"></div><div class="rodape__cols"><div><h3>Horário</h3><p>Ter a dom, das 18h às 23h30</p></div><div><h3>Endereço</h3><p>Rua Itália, 85 (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div><p class="rodape__nota">Cantina Rossi é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Aaron Landry from Honolulu, HI, USA (CC BY 2.0). Demais fotos: Pexels (licença livre).</p></footer>
+<div class="sacola" role="region" aria-label="Seu pedido"><span data-n>0 itens</span><button class="btn btn--p">Ver pedido</button></div>
 <dialog id="sacola-painel" aria-labelledby="sp-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
   <h2 class="disp" id="sp-t">Seu pedido</h2><ul class="itens"></ul>
   <div class="chips" style="margin-top:16px" role="group" aria-label="Como receber"><button class="chip" data-opc="Entrega" aria-pressed="false">Entrega</button><button class="chip" data-opc="Retirada" aria-pressed="false">Retirada</button><button class="chip" data-opc="Na mesa" aria-pressed="false">Na mesa</button></div>
@@ -124,19 +48,18 @@
   <label class="campo" data-campo><span></span><input id="f-campo"></label>
   <label class="campo">Observação<textarea id="f-obs" rows="2" placeholder="Ex.: sem cebola"></textarea></label>
   <p class="aviso" data-taxa></p><p class="total"><span>Total</span><span data-total>R$ 0,00</span></p>
-  <button class="pilula pilula--acao pilula--g" style="width:100%;margin-top:16px" data-enviar>Enviar pedido pelo WhatsApp</button>
+  <button class="btn" style="width:100%;margin-top:16px" data-enviar>Enviar pedido pelo WhatsApp</button>
 </dialog>
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
-  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2>
-  <p class="bolha-wa"></p>
+  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2><p class="bolha-wa"></p>
   <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
-  <div class="botoes"><a class="pilula pilula--acao pilula--g" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="pilula pilula--g" data-fechar>Fechar</button></div>
+  <div class="botoes"><a class="btn" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="btn btn--alt" data-fechar>Fechar</button></div>
 </dialog>
-
-<script type="application/json" id="site">{"nome": "Cantina Rossi", "modo": "pedido", "pecas": [{"src": "../img/cx-p-fire.webp", "w": 1009, "h": 1400}, {"src": "../img/pizza-hero.webp", "w": 1800, "h": 1080}, {"src": "../img/cx-p-knead.webp", "w": 1050, "h": 1400}, {"src": "../img/pz-inteira.webp", "w": 900, "h": 900}, {"src": "../img/cx-p-cheese.webp", "w": 933, "h": 1400}, {"src": "../img/pizza-oven.webp", "w": 1800, "h": 1197}, {"src": "../img/cx-p-dough.webp", "w": 933, "h": 1400}, {"src": "../img/pz-fatia.webp", "w": 441, "h": 800}, {"src": "../img/cx-p-pull.webp", "w": 933, "h": 1400}, {"src": "../img/pizza-marinara.webp", "w": 1800, "h": 1350}, {"src": "../img/cx-p-oven.webp", "w": 932, "h": 1400}, {"src": "../img/lasagna.webp", "w": 1800, "h": 1350}, {"src": "../img/cx-p-pep.webp", "w": 933, "h": 1400}, {"src": "../img/tiramisu.webp", "w": 1800, "h": 1355}], "destaques": [{"img": "../img/pizza-hero.webp", "fit": "cover"}, {"img": "../img/pizza-marinara.webp", "fit": "cover"}, {"img": "../img/lasagna.webp", "fit": "cover"}], "menu": [{"id": "margherita", "nome": "Margherita", "preco": 59}, {"id": "marinara", "nome": "Marinara", "preco": 49}, {"id": "calabresa", "nome": "Calabresa da casa", "preco": 62}, {"id": "queijos", "nome": "Quatro queijos", "preco": 66}, {"id": "portuguesa", "nome": "Portuguesa", "preco": 64}, {"id": "nutella", "nome": "Nutella com morango", "preco": 44}, {"id": "lasanha", "nome": "Lasanha à bolonhesa", "preco": 48}, {"id": "talharim", "nome": "Talharim ao sugo", "preco": 39}, {"id": "nhoque", "nome": "Nhoque ao funghi", "preco": 46}, {"id": "tiramisu", "nome": "Tiramisù", "preco": 22}, {"id": "panna", "nome": "Panna cotta", "preco": 19}, {"id": "refri", "nome": "Refrigerante lata", "preco": 7}, {"id": "suco", "nome": "Suco natural", "preco": 12}, {"id": "agua", "nome": "Água com gás", "preco": 6}], "opcoes": [{"k": "Entrega", "taxa": 6, "campo": "Endereço de entrega"}, {"k": "Retirada", "taxa": 0, "campo": ""}, {"k": "Na mesa", "taxa": 0, "campo": "Número da mesa"}], "portes": null, "extra": null, "dias": null, "horas": null}</script>
+<script type="application/json" id="site">{"nome": "Cantina Rossi", "modo": "pedido", "menu": [{"id": "margherita", "nome": "Margherita", "preco": 59}, {"id": "marinara", "nome": "Marinara", "preco": 49}, {"id": "calabresa", "nome": "Calabresa da casa", "preco": 62}, {"id": "queijos", "nome": "Quatro queijos", "preco": 66}, {"id": "portuguesa", "nome": "Portuguesa", "preco": 64}, {"id": "nutella", "nome": "Nutella com morango", "preco": 44}, {"id": "lasanha", "nome": "Lasanha à bolonhesa", "preco": 48}, {"id": "talharim", "nome": "Talharim ao sugo", "preco": 39}, {"id": "nhoque", "nome": "Nhoque ao funghi", "preco": 46}, {"id": "tiramisu", "nome": "Tiramisù", "preco": 22}, {"id": "panna", "nome": "Panna cotta", "preco": 19}, {"id": "refri", "nome": "Refrigerante lata", "preco": 7}, {"id": "suco", "nome": "Suco natural", "preco": 12}, {"id": "agua", "nome": "Água com gás", "preco": 6}], "opcoes": [{"k": "Entrega", "taxa": 6, "campo": "Endereço de entrega"}, {"k": "Retirada", "taxa": 0, "campo": ""}, {"k": "Na mesa", "taxa": 0, "campo": "Número da mesa"}], "portes": null, "extra": null, "dias": null, "horas": null}</script>
 <script src="../../vendor/gsap.min.js"></script>
 <script src="../../vendor/ScrollTrigger.min.js"></script>
 <script src="../../vendor/lenis.min.js"></script>
-<script type="module" src="../kit/kit.js"></script>
+<script src="cena.js"></script>
+<script type="module" src="../kit/core.js"></script>
 </body>
 </html>

@@ -1,0 +1,59 @@
+/* Navalha Club: black base, beige, wine accent. Scenes: zoom through the letters; chair scrollytelling; clock booking. */
+.nav{color:var(--on-base)}
+.nav__marca{font-size:30px}
+
+/* 1 · letra */
+.letra{position:relative;height:100svh;overflow:hidden;background:var(--base);color:var(--on-base)}
+.lt__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.25);will-change:transform,filter}
+.lt__mascara{position:absolute;inset:0;width:100%;height:100%}
+.lt__mascara text{font:italic 800 330px/1 var(--disp);fill:#000;letter-spacing:-6px}
+.lt__preto{fill:var(--base)}
+.lt__dica{position:absolute;left:50%;bottom:6vh;translate:-50% 0;font-size:14px;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.lt__texto{position:absolute;left:var(--m);right:var(--m);bottom:9vh;max-width:760px;opacity:0;visibility:hidden}
+.letra::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(transparent,rgba(11,11,11,.92));opacity:var(--veu,0);pointer-events:none}
+.lt__texto{z-index:2}
+.lt__texto .lt__kicker{display:inline-block;padding:7px 13px;border-radius:999px;background:rgba(241,232,216,.14);font-weight:600;font-size:14px;margin-bottom:18px}
+.lt__texto h1{font-size:clamp(52px,8vw,140px);line-height:.92;letter-spacing:-.035em;margin-bottom:18px}
+.lt__texto p{font-size:19px;max-width:40ch;margin-bottom:26px}
+
+/* 2 · cadeira */
+.cadeira{background:var(--base);color:var(--on-base);padding:clamp(90px,13vh,150px) var(--m) 40px}
+.cd__topo{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:40px}
+.cd__topo h2{font-size:clamp(50px,7vw,124px);line-height:.92;letter-spacing:-.035em}
+.cd__grade{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px)}
+.cd__fotos{position:sticky;top:12vh;height:76vh;border-radius:6px;overflow:hidden}
+.cd__fotos img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .6s,transform 1.2s var(--ease)}
+.cd__fotos img.on{opacity:1;transform:none}
+.sv{min-height:62vh;display:flex;flex-direction:column;justify-content:center;border-top:1px solid rgba(241,232,216,.25);opacity:.32;transition:opacity .4s}
+.sv.on{opacity:1}
+.sv[hidden]{display:none}
+.sv__n{font-weight:700;color:#C9A9AF;letter-spacing:.1em}
+.sv h3{font-size:clamp(58px,7.4vw,128px);line-height:.95;letter-spacing:-.035em;margin:6px 0 14px}
+.sv__desc{font-size:19px;max-width:32ch}
+.sv__pe{display:flex;align-items:center;gap:18px;margin-top:22px}
+.sv__preco{font-size:30px;font-weight:700}
+.item__tag{display:inline-block;vertical-align:middle;padding:5px 10px;border-radius:999px;background:var(--acc);font:700 13px/1 var(--sans);font-style:normal;letter-spacing:0}
+
+/* 3 · relógio + agenda */
+.agenda{background:var(--base);color:var(--on-base);border-top:1px solid rgba(241,232,216,.25)}
+.relogio{width:clamp(110px,12vw,170px);height:auto;margin-bottom:22px;overflow:visible}
+.relogio circle:first-child{fill:none;stroke:var(--on-base);stroke-width:2}
+.relogio .marcas line{stroke:var(--on-base);stroke-width:3}
+.ponteiro-h{stroke:var(--on-base);stroke-width:7;stroke-linecap:round}
+.ponteiro-m{stroke:#B0213F;stroke-width:4;stroke-linecap:round}
+.eixo{fill:#B0213F}
+.agenda__titulo{font-size:clamp(50px,6.6vw,116px);line-height:.92;letter-spacing:-.035em;margin-bottom:14px}
+.agenda__sub{max-width:44ch;font-size:18px;opacity:.85}
+
+/* footer */
+.rodape{background:var(--base);color:var(--on-base);padding-top:0}
+.poste{height:30px;margin:0 calc(var(--m) * -1) 70px;background:repeating-linear-gradient(-45deg,#6E1023 0 22px,#F1E8D8 22px 44px,#0B0B0B 44px 52px,#F1E8D8 52px 74px);background-size:200% 100%}
+.rd__nome{margin-top:40px;font-size:15.5vw;line-height:.85;white-space:nowrap;letter-spacing:-.04em;margin-left:-.03em}
+
+@media (max-width:760px){
+  .lt__texto h1{font-size:13vw}
+  .cd__grade{grid-template-columns:1fr}
+  .cd__fotos{top:64px;height:36vh;z-index:1}
+  .sv{min-height:56vh;justify-content:flex-start;padding-top:24px}
+  .sv h3{font-size:15vw}
+}

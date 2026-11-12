@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" style="--base:#0B0B0B;--on-base:#F1E8D8;--neu:#F1E8D8;--on-neu:#0B0B0B;--acc:#6E1023;--on-acc:#F1E8D8;--dot:#6E1023;--giant:#0B0B0B;--disp:'Fraunces',Georgia,serif;--disp-w:600;--disp-s:italic;--sans:'Figtree',system-ui,sans-serif">
+<html lang="pt-BR" style="--base:#0B0B0B;--on-base:#F1E8D8;--neu:#0B0B0B;--on-neu:#F1E8D8;--acc:#6E1023;--on-acc:#F1E8D8;--disp:'Fraunces',Georgia,serif;--disp-w:600;--disp-s:italic;--sans:'Figtree',system-ui,sans-serif">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,113 +9,67 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../kit/kit.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Navalha Club", "description": "Barbearia no Centro desde 2014: corte, barba e combo com hora marcada. Agende pelo WhatsApp em três toques."}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600;1,9..144,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../kit/core.css">
+<link rel="stylesheet" href="cena.css">
 </head>
 <body>
 <p class="fita">Modelo de site feito pela Orbi · nome, preços e endereço fictícios <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Navalha Club e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
-<header class="nav"><a class="nav__marca disp" href="#">Navalha</a>
-  <nav class="nav__pilulas" aria-label="Principal"><a class="pilula" href="#menu">Serviços</a><a class="pilula" href="#como">A casa</a><a class="pilula" href="#onde">Onde</a><a class="pilula pilula--acao" href="#agenda">Agendar</a></nav></header>
+<header class="nav"><a class="nav__marca disp" href="#">Navalha</a><nav class="nav__links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a class="btn btn--p" href="#agenda">Agendar</a></nav></header>
 <main>
-<section class="tunel" aria-labelledby="t-frase">
-  <canvas class="tunel__canvas" aria-hidden="true"></canvas>
-  <div class="tunel__hero">
-    <h1 class="tunel__frase disp" id="t-frase">Corte de respeito,<br>na hora marcada.</h1>
-    <p class="tunel__nome disp" data-encaixe="hero" aria-hidden="true">Navalha</p>
-    <p class="tunel__dica">Role para entrar</p><p class="tunel__local">Centro · desde 2014 · seg a sáb</p>
-  </div>
-  <div class="casos"><div class="caso"><p class="caso__num" data-in>01 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>Tesoura ou máquina · lavagem inclusa</p><h3 class="caso__nome disp" data-in>Corte</h3>
-      <p class="caso__resumo" data-in>Degradê na régua, do zero ao topo, do jeito que você pediu.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 45,00</span><a class="pilula pilula--acao pilula--g" href="#agenda" data-agendar="corte">Agendar este</a></div></div></div><div class="caso"><p class="caso__num" data-in>02 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>Toalha quente · navalha afiada</p><h3 class="caso__nome disp" data-in>Barba</h3>
-      <p class="caso__resumo" data-in>A barba feita com calma, do jeito que o seu rosto pede.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 35,00</span><a class="pilula pilula--acao pilula--g" href="#agenda" data-agendar="barba">Agendar este</a></div></div></div><div class="caso"><p class="caso__num" data-in>03 / 03</p>
-      <div class="caso__base"><div><p class="caso__meta" data-in>Corte + barba · o mais pedido</p><h3 class="caso__nome disp" data-in>Combo</h3>
-      <p class="caso__resumo" data-in>Uma hora na cadeira de época, com café passado na hora.</p></div>
-      <div class="caso__acoes" data-in><span class="caso__preco disp">R$ 75,00</span><a class="pilula pilula--acao pilula--g" href="#agenda" data-agendar="combo">Agendar este</a></div></div></div></div>
-  <div class="tunel__fim"><p class="tunel__fim-frase disp">Hora marcada<br>é hora marcada.</p><a class="pilula pilula--acao pilula--g" href="#agenda">Escolher meu horário</a></div>
-  <div class="tunel__progresso" aria-hidden="true"><i></i></div>
+<section class="letra" aria-labelledby="lt-t">
+  <img class="lt__foto" src="../img/barber-hero.webp" alt="Barbeiro fazendo um degradê na máquina">
+  <svg class="lt__mascara" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><mask id="lt-m" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900"><rect width="1600" height="900" fill="#fff"/><g class="lt__g"><text x="800" y="560" text-anchor="middle">Navalha</text></g></mask></defs>
+    <rect class="lt__preto" width="1600" height="900" mask="url(#lt-m)"/></svg>
+  <p class="lt__dica">role devagar</p>
+  <div class="lt__texto"><p class="lt__kicker">Barbearia no Centro · desde 2014</p><h1 class="disp" id="lt-t">Corte de respeito,<br>na hora marcada.</h1>
+    <p>Você escolhe o horário pelo celular, chega e senta. Ninguém fica esperando.</p><a class="btn" href="#agenda">Agendar meu horário</a></div>
 </section>
-
-<section class="manif" aria-labelledby="m-t">
-  <div class="manif__pagina">
-    <div class="manif__texto"><h2 class="rotulo" id="m-t">A casa</h2><p class="manifesto disp">Três <span data-ancora="0">cadeiras,</span> café passado na hora e <span class="foto-linha" style="--img:url(../img/cx-b-shave.webp)" role="img" aria-label="toalha"></span> quente. Você escolhe o <span data-ancora="1">horário</span> pelo celular, chega e senta. Aqui ninguém fica <span class="foto-linha" style="--img:url(../img/cx-b-chair.webp)" role="img" aria-label="esperando"></span> na <span data-ancora="2">fila.</span></p></div>
-    <aside class="manif__margem" aria-label="Em resumo"><p class="nota" data-nota="0">desde 2014 no Centro</p><p class="nota" data-nota="1">agenda em três toques</p><p class="nota" data-nota="2">Pix, cartão ou dinheiro</p></aside>
-  </div>
-  <svg class="manif__fios" aria-hidden="true"></svg>
-</section>
-
-<section class="metodo" id="como" aria-labelledby="c-t">
-  <div class="metodo__palco"><h2 class="metodo__titulo disp" id="c-t">Como o corte acontece</h2>
-    <div class="tira"><figure class="quadro"><img src="../img/cx-b-moody.webp" alt="Conversa" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-b-fade.webp" alt="Máquina" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-b-shave.webp" alt="Navalha" loading="lazy"></figure><figure class="quadro"><img src="../img/cx-b-chair.webp" alt="Espelho" loading="lazy"></figure></div>
-    <div class="regua"><div class="regua__fio"><i></i></div><ol class="regua__etapas"><li><b>01 Conversa</b><span>Você diz o que quer. A gente escuta antes de cortar.</span></li><li><b>02 Máquina</b><span>Degradê na régua, do zero ao topo.</span></li><li><b>03 Navalha</b><span>Toalha quente e acabamento na navalha.</span></li><li><b>04 Espelho</b><span>Você confere tudo antes de levantar.</span></li></ol></div></div>
-</section>
-
-<section class="menu" id="menu" aria-labelledby="menu-t">
-  <div class="menu__topo"><div><h2 class="disp" id="menu-t">Serviços e preços</h2><p class="menu__sub">Toque em Agendar e escolha o dia e o horário. A confirmação chega no WhatsApp da barbearia.</p></div>
-    <div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="cabelo" aria-pressed="false">Cabelo</button><button class="chip" data-filtro="barba" aria-pressed="false">Barba</button></div></div>
-  
-  <ul class="linhas"><li class="linha" data-cat="cabelo" data-img="../img/cx-b-fade.webp">
-      <span class="l-num">01</span><span class="l-nome disp">Corte</span>
-      <span class="l-desc">Tesoura ou máquina, lavagem inclusa · 40 min</span><span class="l-preco">R$ 45,00</span><span class="l-acao"><a class="mais" href="#agenda" data-agendar="corte">Agendar</a></span></li>
-<li class="linha" data-cat="barba" data-img="../img/cx-b-beard.webp">
-      <span class="l-num">02</span><span class="l-nome disp">Barba</span>
-      <span class="l-desc">Toalha quente e navalha · 30 min</span><span class="l-preco">R$ 35,00</span><span class="l-acao"><a class="mais" href="#agenda" data-agendar="barba">Agendar</a></span></li>
-<li class="linha" data-cat="cabelo" data-img="../img/cx-b-combo.webp">
-      <span class="l-num">03</span><span class="l-nome disp">Combo<span class="l-tag">Mais pedido</span></span>
-      <span class="l-desc">Corte + barba · 1 h</span><span class="l-preco">R$ 75,00</span><span class="l-acao"><a class="mais" href="#agenda" data-agendar="combo">Agendar</a></span></li>
-<li class="linha" data-cat="barba" data-img="../img/cx-b-clip.webp">
-      <span class="l-num">04</span><span class="l-nome disp">Pigmentação</span>
-      <span class="l-desc">Barba ou cabelo · 30 min</span><span class="l-preco">R$ 40,00</span><span class="l-acao"><a class="mais" href="#agenda" data-agendar="pigmento">Agendar</a></span></li>
-<li class="linha" data-cat="cabelo" data-img="../img/cx-b-shop.webp">
-      <span class="l-num">05</span><span class="l-nome disp">Corte infantil</span>
-      <span class="l-desc">Até 12 anos · 30 min</span><span class="l-preco">R$ 35,00</span><span class="l-acao"><a class="mais" href="#agenda" data-agendar="infantil">Agendar</a></span></li>
-<li class="linha" data-cat="barba" data-img="../img/cx-b-vint.webp">
-      <span class="l-num">06</span><span class="l-nome disp">Sobrancelha</span>
-      <span class="l-desc">Na navalha · 10 min</span><span class="l-preco">R$ 15,00</span><span class="l-acao"><a class="mais" href="#agenda" data-agendar="sobrancelha">Agendar</a></span></li></ul>
-  <img class="seguidor" alt="" aria-hidden="true">
+<section class="cadeira" id="servicos" aria-labelledby="cd-t">
+  <div class="cd__topo"><h2 class="disp" id="cd-t">Serviços e preços</h2><div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="cabelo" aria-pressed="false">Cabelo</button><button class="chip" data-filtro="barba" aria-pressed="false">Barba</button></div></div>
+  <div class="cd__grade"><div class="cd__fotos" aria-hidden="true"><img src="../img/cx-b-fade.webp" alt="" data-i="0" class=on><img src="../img/cx-b-beard.webp" alt="" data-i="1"><img src="../img/cx-b-combo.webp" alt="" data-i="2"><img src="../img/cx-b-shave.webp" alt="" data-i="3"><img src="../img/cx-b-chair.webp" alt="" data-i="4"><img src="../img/cx-b-moody.webp" alt="" data-i="5"></div><div class="cd__lista"><article class="sv" data-cat="cabelo" data-foto="0"><p class="sv__n">01</p>
+      <h3 class="disp">Corte </h3><p class="sv__desc">Tesoura ou máquina, lavagem inclusa · 40 min</p>
+      <p class="sv__pe"><span class="sv__preco">R$ 45,00</span><a class="mais" href="#agenda" data-agendar="corte">Agendar</a></p></article><article class="sv" data-cat="barba" data-foto="1"><p class="sv__n">02</p>
+      <h3 class="disp">Barba </h3><p class="sv__desc">Toalha quente e navalha · 30 min</p>
+      <p class="sv__pe"><span class="sv__preco">R$ 35,00</span><a class="mais" href="#agenda" data-agendar="barba">Agendar</a></p></article><article class="sv" data-cat="cabelo" data-foto="2"><p class="sv__n">03</p>
+      <h3 class="disp">Combo <span class="item__tag">Mais pedido</span></h3><p class="sv__desc">Corte + barba · 1 h</p>
+      <p class="sv__pe"><span class="sv__preco">R$ 75,00</span><a class="mais" href="#agenda" data-agendar="combo">Agendar</a></p></article><article class="sv" data-cat="barba" data-foto="3"><p class="sv__n">04</p>
+      <h3 class="disp">Pigmentação </h3><p class="sv__desc">Barba ou cabelo · 30 min</p>
+      <p class="sv__pe"><span class="sv__preco">R$ 40,00</span><a class="mais" href="#agenda" data-agendar="pigmento">Agendar</a></p></article><article class="sv" data-cat="cabelo" data-foto="4"><p class="sv__n">05</p>
+      <h3 class="disp">Corte infantil </h3><p class="sv__desc">Até 12 anos · 30 min</p>
+      <p class="sv__pe"><span class="sv__preco">R$ 35,00</span><a class="mais" href="#agenda" data-agendar="infantil">Agendar</a></p></article><article class="sv" data-cat="barba" data-foto="5"><p class="sv__n">06</p>
+      <h3 class="disp">Sobrancelha </h3><p class="sv__desc">Na navalha · 10 min</p>
+      <p class="sv__pe"><span class="sv__preco">R$ 15,00</span><a class="mais" href="#agenda" data-agendar="sobrancelha">Agendar</a></p></article></div></div>
 </section>
 <section class="agenda" id="agenda" aria-labelledby="ag-t">
   <div class="agenda__grade">
-    <div><h2 class="disp" id="ag-t">Escolha. Pronto.</h2><p>Três toques e o seu horário fica reservado. A confirmação chega no WhatsApp.</p>
+    <div><svg class="relogio" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="96"/><g class="marcas"><line x1="100" y1="10" x2="100" y2="30" transform="rotate(0 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(30 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(60 100 100)"/><line x1="100" y1="10" x2="100" y2="30" transform="rotate(90 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(120 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(150 100 100)"/><line x1="100" y1="10" x2="100" y2="30" transform="rotate(180 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(210 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(240 100 100)"/><line x1="100" y1="10" x2="100" y2="30" transform="rotate(270 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(300 100 100)"/><line x1="100" y1="10" x2="100" y2="22" transform="rotate(330 100 100)"/></g>
+      <line class="ponteiro-h" x1="100" y1="100" x2="100" y2="52"/><line class="ponteiro-m" x1="100" y1="100" x2="100" y2="24"/><circle cx="100" cy="100" r="5" class="eixo"/></svg><h2 class="agenda__titulo disp" id="ag-t">Hora marcada<br>é hora marcada.</h2><p class="agenda__sub">Três toques e o seu horário fica reservado. A confirmação chega no WhatsApp da barbearia.</p>
       <div class="passo"><h3>1. Serviço</h3><div class="chips"><button class="chip" data-serv="corte" aria-pressed="false">Corte</button><button class="chip" data-serv="barba" aria-pressed="false">Barba</button><button class="chip" data-serv="combo" aria-pressed="false">Combo</button><button class="chip" data-serv="pigmento" aria-pressed="false">Pigmentação</button><button class="chip" data-serv="infantil" aria-pressed="false">Corte infantil</button><button class="chip" data-serv="sobrancelha" aria-pressed="false">Sobrancelha</button></div></div>
       <div class="passo"><h3>2. Dia</h3><div class="chips" data-dias></div></div>
       <div class="passo"><h3>3. Horário</h3><div class="chips" data-horas></div></div>
     </div>
     <aside class="resumo" aria-label="Seu horário"><p class="disp" style="font-size:28px">Seu horário</p>
       <dl><dt>Serviço</dt><dd data-r-serv>—</dd><dt>Dia</dt><dd data-r-dia>—</dd><dt>Horário</dt><dd data-r-hora>—</dd></dl>
-      <p class="resumo__total"><span style="font-size:15px">Total</span><b class="disp" data-r-total>R$ 0,00</b></p>
-      <button class="pilula pilula--acao pilula--g" data-confirmar>Confirmar pelo WhatsApp</button>
+      <p class="resumo__total"><span>Total</span><b class="disp" data-r-total>R$ 0,00</b></p>
+      <button class="btn" data-confirmar>Confirmar pelo WhatsApp</button>
       <small>Pagamento no local: Pix, cartão ou dinheiro.</small></aside>
   </div>
 </section>
-<section class="ceu-sec" aria-labelledby="ceu-t">
-  <div class="ceu" aria-hidden="true"></div>
-  <div class="ceu__centro"><h2 class="ceu__frase disp" id="ceu-t">Sem espera.<br>Chegou, sentou.</h2><p class="ceu__sub">Você agenda pelo celular e o seu horário fica guardado. Pagamento na barbearia.</p>
-    <a class="pilula pilula--acao pilula--g" href="#agenda">Agendar meu horário</a></div>
-</section>
 </main>
+<footer class="rodape" id="onde"><div class="poste" aria-hidden="true"></div><div class="rodape__cols"><div><h3>Horário</h3><p>Seg a sáb, das 9h às 20h</p></div><div><h3>Endereço</h3><p>Rua das Palmeiras, 210 · Centro (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div><p class="rodape__nota">Navalha Club é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Nenad Stojkovic (CC BY 2.0). Demais fotos: Pexels (licença livre).</p><p class="rd__nome disp" aria-hidden="true">Navalha Club</p></footer>
 
-<footer class="rodape" id="onde">
-  <div class="rodape__cols"><div><h3>Horário</h3><p>Seg a sáb, das 9h às 20h</p></div><div><h3>Endereço</h3><p>Rua das Palmeiras, 210 · Centro (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div>
-  <p class="rodape__nota">Navalha Club é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Gkbediako (CC BY-SA 4.0); Nenad Stojkovic (CC BY 2.0); PattayaPatrol (CC BY-SA 4.0). Demais fotos: Pexels (licença livre).</p>
-  <p class="rodape__nome disp" data-encaixe="cheio" aria-hidden="true">Navalha</p>
-</footer>
-
-<a class="pilula pilula--acao pilula--g flutua" href="#agenda">Agendar</a>
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
-  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2>
-  <p class="bolha-wa"></p>
+  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2><p class="bolha-wa"></p>
   <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
-  <div class="botoes"><a class="pilula pilula--acao pilula--g" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="pilula pilula--g" data-fechar>Fechar</button></div>
+  <div class="botoes"><a class="btn" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="btn btn--alt" data-fechar>Fechar</button></div>
 </dialog>
-
-<script type="application/json" id="site">{"nome": "Navalha Club", "modo": "agenda", "pecas": [{"src": "../img/cx-b-fade.webp", "w": 933, "h": 1400}, {"src": "../img/barber-hero.webp", "w": 1800, "h": 1201}, {"src": "../img/cx-b-moody.webp", "w": 940, "h": 1400}, {"src": "../img/bt-tesoura.webp", "w": 269, "h": 700}, {"src": "../img/cx-b-beard.webp", "w": 933, "h": 1400}, {"src": "../img/barber-chairs.webp", "w": 1800, "h": 1200}, {"src": "../img/cx-b-shave.webp", "w": 933, "h": 1400}, {"src": "../img/bt-navalha.webp", "w": 700, "h": 201}, {"src": "../img/cx-b-chair.webp", "w": 933, "h": 1400}, {"src": "../img/barber-beard.webp", "w": 1800, "h": 1350}, {"src": "../img/cx-b-brick.webp", "w": 1050, "h": 1400}, {"src": "../img/bt-maquina.webp", "w": 216, "h": 700}, {"src": "../img/cx-b-combo.webp", "w": 932, "h": 1400}, {"src": "../img/bt-bancada.webp", "w": 1400, "h": 933}, {"src": "../img/cx-b-vint.webp", "w": 933, "h": 1400}, {"src": "../img/bt-pente.webp", "w": 137, "h": 700}, {"src": "../img/cx-b-shop.webp", "w": 933, "h": 1400}, {"src": "../img/cx-b-clip.webp", "w": 933, "h": 1400}], "destaques": [{"img": "../img/barber-hero.webp", "fit": "cover"}, {"img": "../img/barber-beard.webp", "fit": "cover"}, {"img": "../img/barber-chairs.webp", "fit": "cover"}], "menu": [{"id": "corte", "nome": "Corte", "preco": 45}, {"id": "barba", "nome": "Barba", "preco": 35}, {"id": "combo", "nome": "Combo", "preco": 75}, {"id": "pigmento", "nome": "Pigmentação", "preco": 40}, {"id": "infantil", "nome": "Corte infantil", "preco": 35}, {"id": "sobrancelha", "nome": "Sobrancelha", "preco": 15}], "opcoes": null, "portes": null, "extra": null, "dias": [1, 2, 3, 4, 5, 6], "horas": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"]}</script>
+<script type="application/json" id="site">{"nome": "Navalha Club", "modo": "agenda", "menu": [{"id": "corte", "nome": "Corte", "preco": 45}, {"id": "barba", "nome": "Barba", "preco": 35}, {"id": "combo", "nome": "Combo", "preco": 75}, {"id": "pigmento", "nome": "Pigmentação", "preco": 40}, {"id": "infantil", "nome": "Corte infantil", "preco": 35}, {"id": "sobrancelha", "nome": "Sobrancelha", "preco": 15}], "opcoes": null, "portes": null, "extra": null, "dias": [1, 2, 3, 4, 5, 6], "horas": ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"]}</script>
 <script src="../../vendor/gsap.min.js"></script>
 <script src="../../vendor/ScrollTrigger.min.js"></script>
 <script src="../../vendor/lenis.min.js"></script>
-<script type="module" src="../kit/kit.js"></script>
+<script src="cena.js"></script>
+<script type="module" src="../kit/core.js"></script>
 </body>
 </html>

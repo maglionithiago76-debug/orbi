@@ -1,0 +1,88 @@
+/* Pelúcia Pet: blue base, white, orange accent. Scenes: foam wipe before/after; the pet grows P to G with the price; the pickup route draws itself. */
+.nav{color:#fff}
+.nav__marca{font-size:30px;letter-spacing:-.03em}
+
+/* 1 · cortina */
+.cortina{position:relative;height:100svh;overflow:hidden;background:var(--base);color:#fff;--p:0%}
+.co__depois,.co__antes{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.co__antes{filter:grayscale(1) sepia(.7) brightness(.42) contrast(.85) blur(2.5px);clip-path:inset(0 0 0 var(--p))}
+.cortina::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,30,110,.85));pointer-events:none}
+.co__linha{position:absolute;top:0;bottom:0;left:var(--p);width:4px;margin-left:-2px;background:#fff;box-shadow:0 0 24px rgba(255,255,255,.8);z-index:2}
+.co__bolhas{position:absolute;left:50%;top:0;bottom:0;width:180px;translate:-50% 0}
+.co__bolhas i{position:absolute;bottom:-40px;border-radius:50%;border:2px solid rgba(255,255,255,.9);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9) 0 12%,rgba(255,255,255,.15) 13%);animation:bolha linear infinite}
+@keyframes bolha{to{transform:translate(var(--dx,0),-110vh)}}
+.co__rot{position:absolute;top:96px;z-index:3;padding:7px 14px;border-radius:999px;font-weight:700;font-size:14px}
+.co__rot--a{right:var(--m);background:rgba(0,0,0,.45)}
+.co__rot--d{left:var(--m);background:var(--acc);color:var(--on-acc);opacity:0}
+.co__texto{position:absolute;left:var(--m);bottom:9vh;z-index:3;max-width:720px}
+.co__texto h1{font-size:clamp(56px,8vw,140px);line-height:.88;letter-spacing:-.045em;margin-bottom:16px}
+.co__texto p{font-size:19px;margin-bottom:24px}
+
+/* 2 · portes */
+.portes-sec{position:relative;height:100svh;overflow:hidden;background:var(--base);color:#fff;display:grid;grid-template-rows:auto 1fr auto;padding:110px var(--m) 40px}
+.portes-sec h2{font-size:clamp(44px,5.6vw,100px);line-height:.9;letter-spacing:-.04em;max-width:14ch}
+.pt__palco{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px}
+.pt__bola{position:relative;justify-self:center;width:min(56vh,40vw);aspect-ratio:1;border-radius:50%;background:var(--acc);overflow:hidden;transform:scale(.55);will-change:transform}
+.pt__bola img{position:absolute;inset:8% 8% 0;width:84%;height:92%;object-fit:contain;object-position:bottom;opacity:0}
+.pt__bola img[data-i="0"]{opacity:1}
+.pt__bola img[data-i="2"]{inset:0;width:100%;height:100%;object-fit:cover}
+.pt__falas{position:relative;height:16em}
+.pt__fala{position:absolute;inset:0;opacity:0}
+.pt__fala[data-i="0"]{opacity:1}
+.pt__letra{font-size:clamp(120px,14vw,240px);line-height:.8}
+.pt__kg{font-size:22px;font-weight:700;margin:8px 0}
+.pt__preco{font-size:20px}
+.pt__preco b{font-size:clamp(40px,4vw,64px);color:#fff;display:block;line-height:1}
+.pt__dica{font-weight:700;opacity:.85}
+
+/* 3 · rota */
+.rota{position:relative;height:100svh;overflow:hidden;background:var(--neu);color:var(--on-neu);padding:100px var(--m) 40px;display:grid;grid-template-rows:auto 1fr auto;gap:10px}
+.rota h2{font-size:clamp(44px,5.6vw,100px);line-height:.9;letter-spacing:-.04em}
+.ro__mapa{width:100%;height:100%;max-height:52vh;overflow:visible}
+.ro__rua{fill:none;stroke:#E4E9F1;stroke-width:30;stroke-linecap:round}
+.ro__linha{fill:none;stroke:var(--base);stroke-width:8;stroke-linecap:round}
+.ro__casa circle,.ro__loja circle{fill:var(--acc)}
+.ro__mapa text{font:700 24px var(--sans);fill:var(--on-neu)}
+.ro__van{fill:var(--base);stroke:#fff;stroke-width:5}
+.ro__passos{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:18px}
+.ro__passos li{opacity:.3;transition:opacity .3s;border-top:4px solid var(--base);padding-top:12px}
+.ro__passos li.on{opacity:1}
+.ro__passos b{display:block;font-size:24px}
+
+/* 4 · serviços */
+.servicos{background:var(--base);color:#fff;padding:clamp(90px,13vh,150px) var(--m)}
+.sv__topo{display:grid;gap:16px;justify-items:start;margin-bottom:36px}
+.sv__topo h2{font-size:clamp(50px,7vw,124px);line-height:.88;letter-spacing:-.045em}
+.servicos .chip[aria-pressed=true]{background:#fff;color:var(--base)}
+.lista{list-style:none;display:grid;gap:12px}
+.item{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:4px 20px;padding:22px 26px;border-radius:28px;background:rgba(255,255,255,.1)}
+.item[hidden]{display:none}
+.item__nome{font-size:clamp(26px,2.6vw,42px);letter-spacing:-.03em;grid-column:1}
+.item__desc{grid-column:1;font-size:16px;opacity:.9}
+.item__preco{grid-column:2;grid-row:1/3;font-size:22px;font-weight:800}
+.item__acao{grid-column:3;grid-row:1/3}
+.item__tag{display:inline-block;vertical-align:middle;margin-left:10px;padding:4px 9px;border-radius:999px;background:#fff;color:var(--base);font:700 12px/1 var(--sans);letter-spacing:0}
+
+/* agenda */
+.agenda__titulo{font-size:clamp(50px,6.6vw,116px);line-height:.88;letter-spacing:-.045em;margin-bottom:14px;color:var(--base)}
+.agenda__sub{font-size:18px;max-width:44ch}
+.agenda .chip[aria-pressed=true]{background:var(--base);color:#fff}
+
+/* footer */
+.rodape{position:relative;background:var(--base);color:#fff}
+.rd__bolhas{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rd__bolhas i{position:absolute;bottom:-40px;border-radius:50%;border:2px solid rgba(255,255,255,.5);animation:bolha linear infinite}
+.rodape__cols,.rodape__nota{position:relative}
+
+@media (max-width:760px){
+  .co__texto h1{font-size:15vw}
+  .pt__palco{grid-template-columns:1fr;gap:10px}
+  .pt__bola{width:62vw}
+  .pt__falas{height:9em;text-align:center}
+  .pt__letra{font-size:26vw}
+  .ro__passos{grid-template-columns:1fr;gap:8px;font-size:15px}
+  .ro__passos b{font-size:18px}
+  .item{grid-template-columns:1fr auto;padding:18px}
+  .item__preco{grid-column:1;grid-row:auto}
+  .item__acao{grid-column:2;grid-row:1/4}
+}
