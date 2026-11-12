@@ -10,7 +10,7 @@ const brl = (v) => "R$ " + v.toFixed(2).replace(".", ",");
 const ORBI_WA = "https://wa.me/5511927013668?text=" + encodeURIComponent("Oi! Vi o modelo " + S.nome + " e quero um site assim pra minha empresa.");
 const itens = Object.fromEntries(S.menu.map((m) => [m.id, m]));
 let porte = S.portes ? S.portes[0].k : null;
-const precoDe = (m) => (m.precos ? m.precos[porte] : m.preco);
+const precoDe = (m) => (m.precos ? m.precos[porte] : m.preco || 0);
 
 function mostrarMensagem(txt) {
   const d = $("#modelo");
@@ -79,7 +79,7 @@ function agenda() {
     $("[data-r-hora]", sec).textContent = esc.hora || "—";
     const rp = $("[data-r-porte]", sec); if (rp) rp.textContent = S.portes.find((p) => p.k === porte).label;
     const re = $("[data-r-extra]", sec); if (re) re.textContent = esc.extra ? "Sim" : "Não";
-    $("[data-r-total]", sec).textContent = brl(total());
+    const rt = $("[data-r-total]", sec); if (rt) rt.textContent = brl(total());
     document.dispatchEvent(new CustomEvent("agenda", { detail: esc }));
   };
   document.addEventListener("click", (e) => {
@@ -95,7 +95,7 @@ function agenda() {
   $("[data-confirmar]", sec).addEventListener("click", () => {
     if (!esc.serv || esc.dia === null || !esc.hora) { $(".resumo small", sec).textContent = "Escolha o serviço, o dia e o horário."; return; }
     const d = dias[esc.dia].toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "2-digit" });
-    mostrarMensagem(`Olá, ${S.nome}! Quero agendar:\n${itens[esc.serv].nome}${porte ? " · porte " + porte : ""}\n${d}, às ${esc.hora}${esc.extra && S.extra ? "\n" + S.extra.label + ": sim" : ""}\nTotal: ${brl(total())}`);
+    mostrarMensagem(`Olá, ${S.nome}! Quero agendar:\n${itens[esc.serv].nome}${porte ? " · porte " + porte : ""}\n${d}, às ${esc.hora}${esc.extra && S.extra ? "\n" + S.extra.label + ": sim" : ""}${S.semPreco ? "" : "\nTotal: " + brl(total())}`);
   });
   pintar();
 }

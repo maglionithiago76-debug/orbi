@@ -11,6 +11,8 @@ const WA = "https://wa.me/5511927013668?text=";
 
 /* ---------- data ---------- */
 const casos = [
+  { nome: "Lumi Odontologia", nicho: "Dentista", f: "saude", url: "modelos/dentista/", img: "img/tunel/d-lumi.webp", mini: "img/tunel/i-lumi.webp",
+    meta: "Modelo · Clínica odontológica · avaliação agendada", resumo: "Um leque de cores de dente abre e o sorriso clareia; o implante se monta peça por peça." },
   { nome: "Brasa Burger", nicho: "Hamburgueria", f: "comida", url: "modelos/hamburgueria/", img: "img/tunel/d-brasa.webp", mini: "img/tunel/i-brasa.webp",
     meta: "Modelo · Hamburgueria · pedido no WhatsApp", resumo: "O hambúrguer se monta camada por camada enquanto você rola, e o cardápio passa de lado." },
   { nome: "Navalha Club", nicho: "Barbearia", f: "beleza", url: "modelos/barbearia/", img: "img/tunel/d-navalha.webp", mini: "img/tunel/i-navalha.webp",
@@ -106,15 +108,15 @@ async function tunel() {
     }
   }
 
-  const PROF = [-14, -33, -52, -71], Z_FIM = -88;
+  const PROF = [-12, -28, -44, -60, -76], Z_FIM = -90;
   const destaques = casos.map((c, k) => {
     const mesh = new THREE.Mesh(geo, material(tex(c.img)));
-    const ang = [0.6, 2.5, 4.0, 5.4][k];
+    const ang = [0.6, 2.5, 4.0, 5.4, 1.6][k];
     mesh.userData = { ang, z: PROF[k] };
     scene.add(mesh);
     return mesh;
   });
-  const st = { z: 6, puxar: [0, 0, 0, 0], fade: [1, 1, 1, 1] };
+  const st = { z: 6, puxar: [0, 0, 0, 0, 0], fade: [1, 1, 1, 1, 1] };
 
   function poseDestaques() {
     destaques.forEach((m, k) => {
@@ -222,7 +224,7 @@ async function tunel() {
 
   const barra = sec.querySelector(".tunel__progresso i");
   ScrollTrigger.create({
-    trigger: sec, start: "top top", end: () => "+=" + innerHeight * 11, pin: true, scrub: true,
+    trigger: sec, start: "top top", end: () => "+=" + innerHeight * 12, pin: true, scrub: true,
     animation: tl, invalidateOnRefresh: true,
     onUpdate: (s) => { barra.style.transform = `scaleX(${s.progress})`; sujo = true; },
   });
