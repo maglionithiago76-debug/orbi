@@ -12,15 +12,13 @@ const WA = "https://wa.me/5511927013668?text=";
 /* ---------- data ---------- */
 const casos = [
   { nome: "Lumi Odontologia", nicho: "Dentista", f: "saude", url: "modelos/dentista/", img: "img/tunel/d-lumi.webp", mini: "img/tunel/i-lumi.webp",
-    meta: "Modelo · Clínica odontológica · avaliação agendada", resumo: "Um leque de cores de dente abre e o sorriso clareia; o implante se monta peça por peça." },
-  { nome: "Brasa Burger", nicho: "Hamburgueria", f: "comida", url: "modelos/hamburgueria/", img: "img/tunel/d-brasa.webp", mini: "img/tunel/i-brasa.webp",
-    meta: "Modelo · Hamburgueria · pedido no WhatsApp", resumo: "O hambúrguer se monta camada por camada enquanto você rola, e o cardápio passa de lado." },
-  { nome: "Navalha Club", nicho: "Barbearia", f: "beleza", url: "modelos/barbearia/", img: "img/tunel/d-navalha.webp", mini: "img/tunel/i-navalha.webp",
-    meta: "Modelo · Barbearia · agenda em 3 toques", resumo: "A tela entra pela letra do nome até a foto, e um relógio marca o horário agendado." },
-  { nome: "Cantina Rossi", nicho: "Restaurante", f: "comida", url: "modelos/cardapio/", img: "img/tunel/d-rossi.webp", mini: "img/tunel/i-rossi.webp",
-    meta: "Modelo · Restaurante · cardápio com preços", resumo: "A pizza gira e cada fatia mostra um sabor. O forno conta até 90 segundos." },
-  { nome: "Pelúcia Pet", nicho: "Pet shop", f: "pets", url: "modelos/petshop/", img: "img/tunel/d-pelucia.webp", mini: "img/tunel/i-pelucia.webp",
-    meta: "Modelo · Pet shop · preço pelo porte", resumo: "Uma cortina de espuma mostra o antes e depois, e o pet cresce de P a G com o preço." },
+    meta: "Modelo · Clínica odontológica · dentro das regras do CFO", resumo: "Um leque de cores de dente abre e o sorriso clareia; o implante se monta peça por peça." },
+  { nome: "Essenza Estética", nicho: "Estética", f: "beleza", url: "modelos/estetica/", img: "img/tunel/d-essenza.webp", mini: "img/tunel/i-essenza.webp",
+    meta: "Modelo · Clínica de estética · avaliação agendada", resumo: "Uma gota cai, faz ondas e abre a foto; o protocolo de cuidado avança num anel." },
+  { nome: "Amparo Vet", nicho: "Veterinário", f: "pets", url: "modelos/veterinario/", img: "img/tunel/d-amparo.webp", mini: "img/tunel/i-amparo.webp",
+    meta: "Modelo · Clínica veterinária · lembrete de vacina", resumo: "O batimento se desenha na tela e a carteirinha de vacinação ganha carimbo dose por dose." },
+  { nome: "Torque Auto Center", nicho: "Oficina", f: "carros", url: "modelos/oficina/", img: "img/tunel/d-torque.webp", mini: "img/tunel/i-torque.webp",
+    meta: "Modelo · Oficina mecânica · orçamento aprovado antes", resumo: "O ponteiro sobe, as luzes do painel apagam e a ordem de serviço é impressa item por item." },
 ];
 
 /* ---------- smooth scroll ---------- */
@@ -108,7 +106,7 @@ async function tunel() {
     }
   }
 
-  const PROF = [-12, -28, -44, -60, -76], Z_FIM = -90;
+  const PROF = [-14, -33, -52, -71], Z_FIM = -88;
   const destaques = casos.map((c, k) => {
     const mesh = new THREE.Mesh(geo, material(tex(c.img)));
     const ang = [0.6, 2.5, 4.0, 5.4, 1.6][k];
@@ -116,7 +114,7 @@ async function tunel() {
     scene.add(mesh);
     return mesh;
   });
-  const st = { z: 6, puxar: [0, 0, 0, 0, 0], fade: [1, 1, 1, 1, 1] };
+  const st = { z: 6, puxar: [0, 0, 0, 0], fade: [1, 1, 1, 1] };
 
   function poseDestaques() {
     destaques.forEach((m, k) => {

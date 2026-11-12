@@ -1,0 +1,87 @@
+/* Torque Auto Center: safety yellow base, off-white, black accent. Scenes: dashboard gauge + warning lights going off; service order prints and checks. */
+.nav{color:#fff}
+.nav__marca{font-size:32px;letter-spacing:.02em}
+.kicker{display:inline-block;padding:6px 12px;border-radius:4px;background:var(--base);color:#141414;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.disp{text-transform:uppercase;letter-spacing:.01em}
+
+/* 1 · painel */
+.painel{position:relative;height:100svh;overflow:hidden;background:#141414;color:#fff;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;padding:90px var(--m) 30px}
+.pn__fundo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:grayscale(1)}
+.pn__texto{position:relative;z-index:2}
+.pn__texto h1{font-size:clamp(58px,7.4vw,136px);line-height:.92;margin-bottom:18px}
+.pn__texto h1{color:#fff}
+.pn__texto p{font-size:19px;max-width:38ch;margin-bottom:26px;color:#ddd}
+.painel .btn{background:var(--base);color:#141414}
+.pn__painel{position:relative;z-index:2;justify-self:center;width:min(100%,560px);padding:26px 26px 22px;border-radius:28px;background:#0B0B0B;box-shadow:inset 0 0 0 2px #2a2a2a,0 40px 80px rgba(0,0,0,.5)}
+.pn__gauge{width:100%;height:auto;display:block}
+.pn__arco{fill:none;stroke:#2c2c2c;stroke-width:14}
+.pn__faixa{fill:none;stroke:#E2402B;stroke-width:14;stroke-dasharray:0 536 134}
+.pn__marcas line{stroke:#ddd;stroke-width:3}
+.pn__nums text{fill:#ddd;font:600 20px var(--sans);text-anchor:middle}
+.pn__rpm{fill:#888;font:600 13px var(--sans);text-anchor:middle;letter-spacing:.1em}
+.pn__agulha{stroke:var(--base);stroke-width:6;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(255,199,44,.8))}
+.pn__eixo{fill:#ddd}
+.pn__km{text-align:center;font:600 16px var(--sans);color:#aaa;margin:-6px 0 14px}
+.pn__km span{font:400 34px/1 var(--disp);color:#fff;letter-spacing:.12em;background:#1d1d1d;padding:4px 10px;border-radius:6px;margin-right:6px;font-variant-numeric:tabular-nums}
+.pn__luzes{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.luz{display:grid;justify-items:center;gap:6px;font-size:12px;color:#777;text-transform:uppercase;letter-spacing:.06em}
+.luz b{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#222;color:#555;font:400 18px/1 var(--disp);transition:all .3s}
+.luz.on b{background:#F5A524;color:#141414;box-shadow:0 0 18px rgba(245,165,36,.9)}
+.luz.on:nth-child(4) b{background:#E2402B;box-shadow:0 0 18px rgba(226,64,43,.9)}
+.pn__ok{text-align:center;margin-top:14px;font:400 26px/1 var(--disp);color:var(--base);opacity:0;text-transform:uppercase}
+
+/* 2 · ordem de serviço */
+.ordem{position:relative;height:100svh;overflow:hidden;background:var(--base);color:#141414;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:clamp(30px,5vw,80px);padding:90px var(--m) 30px}
+.os__texto h2{font-size:clamp(56px,6.6vw,120px);line-height:.92;margin-bottom:18px}
+.os__texto p{font-size:19px;max-width:34ch;font-weight:500}
+.os__papel{background:#fff;padding:24px 28px;border-radius:4px;box-shadow:0 30px 60px rgba(0,0,0,.25);font-family:ui-monospace,Menlo,monospace;clip-path:inset(0 0 100% 0);rotate:1.5deg;background-image:repeating-linear-gradient(transparent 0 46px,rgba(0,0,0,.04) 46px 47px)}
+.os__cab{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px dashed #999;padding-bottom:10px;margin-bottom:6px}
+.os__cab b{font-size:30px}
+.os__cab span{font-size:13px;color:#555}
+.os__papel ul{list-style:none}
+.os__item{display:grid;grid-template-columns:34px 1fr;gap:0 10px;padding:9px 0;border-bottom:1px dotted #bbb;font-size:16px;font-weight:600}
+.os__item small{grid-column:2;font-size:13px;font-weight:400;color:#555}
+.os__check{grid-row:1/3;width:30px;height:30px;border-radius:6px;border:2px solid #141414;display:grid;place-items:center;font-size:18px;color:#141414;background:#fff}
+.os__check.on{background:#141414;color:var(--base)}
+.os__pe{margin-top:14px;text-align:right;font-weight:700;opacity:0}
+
+/* 3 · serviços */
+.servicos{background:var(--neu);color:#141414;padding:clamp(90px,13vh,150px) var(--m)}
+.sv__topo{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.sv__topo h2{font-size:clamp(64px,9vw,160px);line-height:.88}
+.lista{list-style:none;border-top:4px solid #141414}
+.item{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 24px;padding:20px 0;border-bottom:2px solid #141414;transition:background-color .2s,padding .2s}
+.item:hover{background:var(--base);padding-left:14px;padding-right:14px}
+.item[hidden]{display:none}
+.item__nome{font-size:clamp(30px,3.4vw,58px);line-height:1;grid-column:1}
+.item__desc{grid-column:1;font-size:16px}
+.item__acao{grid-column:2;grid-row:1/3}
+.item__tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:4px 9px;border-radius:4px;background:var(--base);font:700 12px/1 var(--sans);text-transform:uppercase}
+.servicos .mais{border-radius:4px}
+.galpao{display:grid;grid-template-columns:1fr 1fr;height:60vh;overflow:hidden}
+.galpao img{width:100%;height:120%;object-fit:cover;filter:grayscale(.3)}
+
+/* agenda */
+.agenda{background:var(--neu)}
+.agenda__titulo{font-size:clamp(60px,8vw,140px);line-height:.9;margin-bottom:14px}
+.agenda__sub{font-size:18px;max-width:44ch}
+.agenda .chip[aria-pressed=true]{background:#141414;color:var(--base)}
+.resumo{border-radius:6px}
+
+/* footer */
+.rodape{background:#141414;color:#fff}
+.rd__nome{font-size:27vw;line-height:.85;color:var(--base);margin-top:24px}
+
+@media (max-width:760px){
+  .painel{grid-template-columns:1fr;align-content:start;gap:18px;padding-top:86px}
+  .pn__texto h1{font-size:13vw}
+  .pn__texto p{font-size:16px;margin-bottom:14px}
+  .pn__painel{padding:16px}
+  .pn__km span{font-size:24px}
+  .ordem{grid-template-columns:1fr;align-content:center;gap:16px}
+  .os__texto h2{font-size:13vw}
+  .os__texto p{font-size:16px}
+  .os__papel{padding:16px}
+  .os__item{font-size:14px;padding:6px 0}
+  .galpao{height:36vh}
+}
