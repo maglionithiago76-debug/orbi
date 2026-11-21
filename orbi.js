@@ -50,6 +50,15 @@
     });
     addEventListener("resize", fit);
     fit();
+    // A link sent in a chat opens the demo on that niche: ?m=oficina (dentista, estetica, veterinario or oficina).
+    // The WhatsApp buttons then say which model the person saw, so we know where the conversation came from.
+    const quer = new URLSearchParams(location.search).get("m");
+    const alvo = [...form.querySelectorAll('input[name="m"]')].find((i) => i.value === "modelos/" + quer + "/");
+    if (alvo) {
+      if (!alvo.checked) { alvo.checked = true; alvo.dispatchEvent(new Event("change", { bubbles: true })); }
+      const fala = encodeURIComponent("Oi! Vi o modelo " + alvo.dataset.nome + " no site da Orbi e quero um site pra minha empresa.");
+      document.querySelectorAll('a[href*="wa.me/"][href*="text="]').forEach((a) => { a.href = a.href.split("?")[0] + "?text=" + fala; });
+    }
   }
 
   /* ---------- FAQ: questions on the left, the answer large on the right ---------- */
