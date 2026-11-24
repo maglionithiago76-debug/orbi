@@ -108,3 +108,6 @@
   .bx__fotos{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
   .bx__fotos figure{flex:0 0 78vw;scroll-snap-align:center}
 }
+
+/* particle scene headings: room for Ç and accents in the all-caps face */
+.ptcl__fala h2{line-height:1.16}
