@@ -1,95 +1,79 @@
-// Orbi homepage: live model demo, FAQ index, opening hours, entrances and the hero shutter.
+// Orbi homepage: first-screen entrance, model clips that play only while visible, the live demo
+// (a real model inside a phone or a laptop screen), the opening-hours line and the fitted footer name.
 (() => {
-  const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const d = document, reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const get = (id) => d.getElementById(id);
+  requestAnimationFrame(() => d.body.classList.add("pronto"));
 
-  /* ---------- entrances: parts of each section rise in turn ---------- */
-  const rv = document.querySelectorAll(".rv");
-  if ("IntersectionObserver" in window && !reduz) {
-    const io = new IntersectionObserver((es) => {
-      es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -8% 0px" });
-    rv.forEach((el) => io.observe(el));
-  } else rv.forEach((el) => el.classList.add("in"));
+  /* ---------- model clips: load and play only while on screen, stay as a still for reduced motion ---------- */
+  const clips = [...d.querySelectorAll("video[data-src]")];
+  if (!reduz && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      const v = e.target;
+      if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; v.play().catch(() => {}); } else v.pause();
+    }), { threshold: 0.25 });
+    // after the page is interactive, so the clips never compete with the first paint
+    const ligar = () => clips.forEach((v) => io.observe(v));
+    if (d.readyState === "complete") setTimeout(ligar, 600); else addEventListener("load", () => setTimeout(ligar, 600));
+  }
 
-  /* ---------- the one clip: still for reduced motion ---------- */
-  if (reduz) document.querySelectorAll("video[autoplay]").forEach((v) => { v.removeAttribute("autoplay"); v.pause(); });
-
-  /* ---------- hero shutter ---------- */
-  const sh = document.getElementById("shutter");
-  if (sh) requestAnimationFrame(() => setTimeout(() => sh.classList.add("open"), 120));
-
-  /* ---------- live demo: real model inside a phone or a laptop screen ---------- */
-  const device = document.getElementById("device");
-  const tela = document.getElementById("tela");
-  const form = document.getElementById("controles");
-  const abrir = document.getElementById("abrir");
-  const stage = device && device.parentElement;
-  function fit() {
+  /* ---------- live demo ---------- */
+  const device = get("device"), tela = get("tela"), form = get("controles"), abrir = get("abrir");
+  const palco = device && device.parentElement;
+  function caber() {
     if (!device) return;
     const pc = form.v.value === "pc";
-    const vw = pc ? 1280 : 390, vh = pc ? 800 : 844;           // the page size the model is rendered at
-    const box = stage.getBoundingClientRect();
-    const pad = pc ? 16 : 20, frame = pc ? 16 : 20;
-    const s = Math.min((box.width - pad * 2 - frame) / vw, (box.height - pad * 2 - frame) / vh);
+    const vw = pc ? 1280 : 390, vh = pc ? 800 : 844;            // the page size the model is rendered at
+    const box = palco.getBoundingClientRect(), frame = pc ? 16 : 20;
+    const s = Math.min((box.width - frame) / vw, (box.height - frame) / vh);
     tela.style.width = vw + "px"; tela.style.height = vh + "px";
-    tela.style.transform = `scale(${s})`;
+    tela.style.transform = "scale(" + s + ")";
     device.style.width = vw * s + frame + "px";
     device.style.height = vh * s + frame + "px";
     device.classList.toggle("is-desk", pc);
   }
-  if (form) {
-    form.addEventListener("change", (e) => {
-      if (e.target.name === "m") {
-        tela.src = e.target.value;
-        tela.title = "Modelo " + e.target.dataset.nome + " funcionando";
-        abrir.href = e.target.value;
-      }
-      fit();
-      // the model lays itself out once for its width: reload it at the new size
-      if (e.target.name === "v") tela.src = form.m.value;
-    });
-    addEventListener("resize", fit);
-    fit();
-    // A link sent in a chat opens the demo on that niche: ?m=oficina (dentista, estetica, veterinario or oficina).
-    // The WhatsApp buttons then say which model the person saw, so we know where the conversation came from.
-    const quer = new URLSearchParams(location.search).get("m");
-    const alvo = [...form.querySelectorAll('input[name="m"]')].find((i) => i.value === "modelos/" + quer + "/");
-    if (alvo) {
-      if (!alvo.checked) { alvo.checked = true; alvo.dispatchEvent(new Event("change", { bubbles: true })); }
-      const fala = encodeURIComponent("Oi! Vi o modelo " + alvo.dataset.nome + " no site da Orbi e quero um site pra minha empresa.");
-      document.querySelectorAll('a[href*="wa.me/"][href*="text="]').forEach((a) => { a.href = a.href.split("?")[0] + "?text=" + fala; });
-    }
+  function trocar() {
+    const m = form.querySelector("input[name=m]:checked");
+    abrir.href = m.value;
+    tela.title = "Modelo " + m.dataset.nome + " funcionando";
+    if (tela.dataset.on) tela.src = m.value; else tela.dataset.src = m.value;
+  }
+  if (device) {
+    const pedido = new URLSearchParams(location.search).get("m");   // ?m=oficina opens the demo on that niche
+    const alvo = pedido && form.querySelector('input[name=m][value="modelos/' + pedido.replace(/[^a-z]/g, "") + '/"]');
+    if (alvo) alvo.checked = true;
+    form.addEventListener("change", (e) => { if (e.target.name === "m") trocar(); caber(); });
+    addEventListener("resize", caber);
+    trocar(); caber();
+    // the model itself loads only when the demo is about to show
+    const ligar = () => { if (tela.dataset.on) return; tela.dataset.on = "1"; tela.src = tela.dataset.src; };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { ligar(); io.disconnect(); } }, { rootMargin: "600px 0px" });
+      io.observe(palco);
+    } else ligar();
+    if (alvo) setTimeout(() => get("demo").scrollIntoView(), 300);
   }
 
-  /* ---------- FAQ: questions on the left, the answer large on the right ---------- */
-  const faq = document.getElementById("faq");
-  const pane = document.getElementById("faq-pane");
-  if (faq) {
-    const qs = [...faq.querySelectorAll(".faq-q")];
-    const pick = (q) => {
-      qs.forEach((x) => {
-        const on = x === q;
-        x.setAttribute("aria-expanded", on);
-        x.nextElementSibling.hidden = !on;
-      });
-      const txt = q.nextElementSibling.textContent;
-      if (pane.textContent === txt) return;
-      pane.classList.add("fade");
-      setTimeout(() => { pane.textContent = txt; pane.classList.remove("fade"); }, reduz ? 0 : 150);
-    };
-    qs.forEach((q) => {
-      q.addEventListener("click", () => pick(q));
-      q.addEventListener("focus", () => pick(q));
-      q.addEventListener("mouseenter", () => { if (matchMedia("(pointer: fine)").matches) pick(q); });
-    });
-  }
-
-  /* ---------- opening hours, live in Brasília time ---------- */
-  const agora = document.getElementById("agora");
+  /* ---------- "respondendo agora" on weekdays 9h to 18h, Brasília time ---------- */
+  const agora = get("agora");
   if (agora) {
-    const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", weekday: "short", hour: "numeric", hour12: false })
-      .formatToParts(new Date()).map((x) => [x.type, x.value]));
-    const h = +p.hour % 24, util = !["Sat", "Sun"].includes(p.weekday);
-    agora.textContent = util && h >= 9 && h < 18 ? "Aberto agora" : "Fechado agora. Pode mandar mensagem, a gente responde no próximo horário.";
+    try {
+      const p = new Intl.DateTimeFormat("en-US", { timeZone: "America/Sao_Paulo", weekday: "short", hour: "numeric", hour12: false }).formatToParts(new Date());
+      const dia = p.find((x) => x.type === "weekday").value, h = +p.find((x) => x.type === "hour").value;
+      const util = !["Sat", "Sun"].includes(dia);
+      agora.textContent = util && h >= 9 && h < 18 ? "Respondendo agora" : "Deixe a mensagem: a gente responde no próximo dia útil";
+    } catch (e) { /* keeps the plain line */ }
   }
+
+  /* ---------- footer name spans the page ---------- */
+  const nome = get("nome");
+  function ajustar() {
+    if (!nome) return;
+    const p = nome.parentElement;
+    p.style.fontSize = "100px";
+    const w = nome.getBoundingClientRect().width;
+    if (w) p.style.fontSize = Math.floor((100 * p.clientWidth) / w * 0.985) + "px";
+  }
+  ajustar(); addEventListener("resize", ajustar);
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(ajustar);
 })();

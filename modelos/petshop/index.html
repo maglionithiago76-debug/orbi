@@ -9,19 +9,20 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
 <link rel="stylesheet" href="../kit/core.css">
 <link rel="stylesheet" href="cena.css">
 </head>
 <body>
-<p class="fita">Modelo de site feito pela Orbi · nome, preços e endereço fictícios <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Pelúcia Pet e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
+<p class="fita"><span>Modelo de site feito pela Orbi<span class="fita__d"> · nome, preços e endereço fictícios</span></span> <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Pelúcia Pet e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
 <header class="nav"><a class="nav__marca disp" href="#">Pelúcia</a><nav class="nav__links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a class="btn btn--p" href="#agenda">Agendar banho</a></nav></header>
 <main>
 <section class="cortina" aria-labelledby="co-t">
   <img class="co__depois" src="../img/pet-hero.webp" alt="Filhote limpinho depois do banho">
   <img class="co__antes" src="../img/pet-hero.webp" alt="" aria-hidden="true">
   <div class="co__linha" aria-hidden="true"><div class="co__bolhas"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-  <p class="co__rot co__rot--a">antes</p><p class="co__rot co__rot--d">depois</p>
   <div class="co__texto"><h1 class="disp" id="co-t">Seu pet volta<br>outro bicho.</h1><p>Banho e tosa no Jardim América, com leva e traz.</p><a class="btn" href="#agenda">Agendar o banho</a></div>
 </section>
 <section class="portes-sec" aria-labelledby="pt-t">
@@ -41,7 +42,7 @@
 </section>
 <section class="servicos" id="servicos" aria-labelledby="sv-t">
   <div class="sv__topo"><h2 class="disp" id="sv-t">Serviços e preços</h2><div class="chips portes" role="group" aria-label="Porte do pet"><button class="chip" data-porte="P" aria-pressed="true">P · até 10 kg</button><button class="chip" data-porte="M" aria-pressed="false">M · 10 a 25 kg</button><button class="chip" data-porte="G" aria-pressed="false">G · acima de 25 kg</button></div><div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="banho" aria-pressed="false">Banho</button><button class="chip" data-filtro="tosa" aria-pressed="false">Tosa</button><button class="chip" data-filtro="extras" aria-pressed="false">Extras</button></div></div>
-  <ul class="lista"><li class="item" data-cat="banho"><span class="item__nome disp">Banho<span class="item__tag">Mais pedido</span></span><span class="item__desc">Shampoo neutro, secagem e perfume suave</span><span class="item__preco" data-preco="banho">R$ 50,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="banho">Agendar</a></span></li><li class="item" data-cat="tosa"><span class="item__nome disp">Banho + tosa higiênica</span><span class="item__desc">Patas, barriga e região íntima</span><span class="item__preco" data-preco="higienica">R$ 70,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="higienica">Agendar</a></span></li><li class="item" data-cat="tosa"><span class="item__nome disp">Tosa completa</span><span class="item__desc">Na máquina ou na tesoura, com banho</span><span class="item__preco" data-preco="tosa">R$ 95,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="tosa">Agendar</a></span></li><li class="item" data-cat="extras"><span class="item__nome disp">Hidratação</span><span class="item__desc">Pelo macio e brilhante, junto com o banho</span><span class="item__preco" data-preco="hidratacao">R$ 35,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="hidratacao">Agendar</a></span></li><li class="item" data-cat="extras"><span class="item__nome disp">Corte de unhas</span><span class="item__desc">Com lixa, sem estresse</span><span class="item__preco" data-preco="unhas">R$ 20,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="unhas">Agendar</a></span></li></ul>
+  <ul class="lista"><li class="item" data-cat="banho"><span class="item__nome disp">Banho<span class="item__tag">Mais pedido</span></span><span class="item__desc">Shampoo neutro, secagem e perfume suave</span><span class="item__preco" data-preco="banho">R$ 50,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="banho" aria-label="Agendar: Banho">Agendar</a></span></li><li class="item" data-cat="tosa"><span class="item__nome disp">Banho + tosa higiênica</span><span class="item__desc">Patas, barriga e região íntima</span><span class="item__preco" data-preco="higienica">R$ 70,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="higienica" aria-label="Agendar: Banho + tosa higiênica">Agendar</a></span></li><li class="item" data-cat="tosa"><span class="item__nome disp">Tosa completa</span><span class="item__desc">Na máquina ou na tesoura, com banho</span><span class="item__preco" data-preco="tosa">R$ 95,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="tosa" aria-label="Agendar: Tosa completa">Agendar</a></span></li><li class="item" data-cat="extras"><span class="item__nome disp">Hidratação</span><span class="item__desc">Pelo macio e brilhante, junto com o banho</span><span class="item__preco" data-preco="hidratacao">R$ 35,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="hidratacao" aria-label="Agendar: Hidratação">Agendar</a></span></li><li class="item" data-cat="extras"><span class="item__nome disp">Corte de unhas</span><span class="item__desc">Com lixa, sem estresse</span><span class="item__preco" data-preco="unhas">R$ 20,00</span><span class="item__acao"><a class="mais" href="#agenda" data-agendar="unhas" aria-label="Agendar: Corte de unhas">Agendar</a></span></li></ul>
 </section>
 <section class="agenda" id="agenda" aria-labelledby="ag-t">
   <div class="agenda__grade">
@@ -50,26 +51,31 @@
       <div class="passo"><h3>2. Dia</h3><div class="chips" data-dias></div></div>
       <div class="passo"><h3>3. Horário</h3><div class="chips" data-horas></div></div><div class="passo"><h3>4. Extra</h3><label class="troca"><input type="checkbox" id="f-extra"> Leva e traz · R$ 15,00</label></div>
     </div>
-    <aside class="resumo" aria-label="Seu horário"><p class="disp" style="font-size:28px">Seu horário</p>
-      <dl><dt>Serviço</dt><dd data-r-serv>—</dd><dt>Porte</dt><dd data-r-porte>—</dd><dt>Dia</dt><dd data-r-dia>—</dd><dt>Horário</dt><dd data-r-hora>—</dd><dt>Leva e traz</dt><dd data-r-extra>Não</dd></dl>
-      <p class="resumo__total"><span>Total</span><b class="disp" data-r-total>R$ 0,00</b></p>
+    <aside class="resumo" aria-label="Seu horário"><p class="resumo__t disp">Seu horário</p>
+      <dl><dt>Serviço</dt><dd data-r-serv>a escolher</dd><dt>Porte</dt><dd data-r-porte>—</dd><dt>Dia</dt><dd data-r-dia>a escolher</dd><dt>Horário</dt><dd data-r-hora>a escolher</dd><dt>Leva e traz</dt><dd data-r-extra>Não</dd></dl>
+      <p class="resumo__total"><span>Total</span><b class="disp" data-r-total>—</b></p>
       <button class="btn" data-confirmar>Confirmar pelo WhatsApp</button>
       <small>Pagamento no local: Pix, cartão ou dinheiro.</small></aside>
   </div>
 </section>
+<section class="onde" id="onde" aria-labelledby="on-t">
+  <div><h2 class="disp" id="on-t">Onde estamos</h2><p class="onde__end">Av. das Acácias, 480 · Jardim América (endereço fictício)</p>
+    <p class="onde__agora" data-aberto></p><div class="botoes"><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o mapa com a rota até a sua empresa.">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="btn btn--alt" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Chamar no WhatsApp</a></div></div>
+  <dl class="horas"><div data-d="1,2,3,4,5,6"><dt>Seg a sáb</dt><dd>8h às 18h</dd></div><div data-d="0"><dt>Dom</dt><dd>fechado</dd></div></dl>
+</section>
 </main>
-<footer class="rodape" id="onde"><div class="rd__bolhas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="rodape__cols"><div><h3>Horário</h3><p>Seg a sáb, das 8h às 18h</p></div><div><h3>Endereço</h3><p>Av. das Acácias, 480 · Jardim América (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro, na entrega</p></div></div><p class="rodape__nota">Pelúcia Pet é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Marilyn Peddle (CC BY 2.0). Demais fotos: Pexels (licença livre).</p></footer>
+<footer class="rodape"><div class="rd__bolhas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="rodape__nota">Pelúcia Pet é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Marilyn Peddle (CC BY 2.0). Demais fotos: Pexels (licença livre).</p></footer>
 
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
-  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2><p class="bolha-wa"></p>
+  <h2 class="disp" id="mo-t">Assim funciona no site de verdade</h2><p class="bolha-wa"></p>
   <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
   <div class="botoes"><a class="btn" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="btn btn--alt" data-fechar>Fechar</button></div>
 </dialog>
-<script type="application/json" id="site">{"nome": "Pelúcia Pet", "modo": "agenda", "menu": [{"id": "banho", "nome": "Banho", "precos": {"P": 50, "M": 65, "G": 85}}, {"id": "higienica", "nome": "Banho + tosa higiênica", "precos": {"P": 70, "M": 85, "G": 105}}, {"id": "tosa", "nome": "Tosa completa", "precos": {"P": 95, "M": 115, "G": 140}}, {"id": "hidratacao", "nome": "Hidratação", "precos": {"P": 35, "M": 45, "G": 55}}, {"id": "unhas", "nome": "Corte de unhas", "precos": {"P": 20, "M": 20, "G": 25}}], "opcoes": null, "portes": [{"k": "P", "label": "P · até 10 kg"}, {"k": "M", "label": "M · 10 a 25 kg"}, {"k": "G", "label": "G · acima de 25 kg"}], "extra": {"label": "Leva e traz", "preco": 15}, "dias": [1, 2, 3, 4, 5, 6], "horas": ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"], "semPreco": false}</script>
-<script src="../../vendor/gsap.min.js"></script>
-<script src="../../vendor/ScrollTrigger.min.js"></script>
-<script src="../../vendor/lenis.min.js"></script>
-<script src="cena.js"></script>
+<script type="application/json" id="site">{"nome": "Pelúcia Pet", "modo": "agenda", "menu": [{"id": "banho", "nome": "Banho", "precos": {"P": 50, "M": 65, "G": 85}}, {"id": "higienica", "nome": "Banho + tosa higiênica", "precos": {"P": 70, "M": 85, "G": 105}}, {"id": "tosa", "nome": "Tosa completa", "precos": {"P": 95, "M": 115, "G": 140}}, {"id": "hidratacao", "nome": "Hidratação", "precos": {"P": 35, "M": 45, "G": 55}}, {"id": "unhas", "nome": "Corte de unhas", "precos": {"P": 20, "M": 20, "G": 25}}], "opcoes": null, "portes": [{"k": "P", "label": "P · até 10 kg"}, {"k": "M", "label": "M · 10 a 25 kg"}, {"k": "G", "label": "G · acima de 25 kg"}], "extra": {"label": "Leva e traz", "preco": 15}, "dias": [1, 2, 3, 4, 5, 6], "horas": ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"], "semPreco": false, "desde": false, "horario": [{"d": [1, 2, 3, 4, 5, 6], "a": "08:00", "f": "18:00"}], "wa": "", "orbi": "5511927013668"}</script>
+<script src="../../vendor/gsap.min.js" defer></script>
+<script src="../../vendor/ScrollTrigger.min.js" defer></script>
+<script src="../../vendor/lenis.min.js" defer></script>
+<script src="cena.js" defer></script>
 <script type="module" src="../kit/core.js"></script>
 </body>
 </html>

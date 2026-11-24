@@ -9,12 +9,14 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
 <link rel="stylesheet" href="../kit/core.css">
 <link rel="stylesheet" href="cena.css">
 </head>
 <body>
-<p class="fita">Modelo de site feito pela Orbi · nome, preços e endereço fictícios <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Brasa Burger e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
+<p class="fita"><span>Modelo de site feito pela Orbi<span class="fita__d"> · nome, preços e endereço fictícios</span></span> <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Brasa Burger e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
 <header class="nav"><a class="nav__marca disp" href="#">Brasa</a><nav class="nav__links" aria-label="Principal"><a href="#chapa">Cardápio</a><a href="#onde">Onde</a><a class="btn btn--p" href="#chapa">Pedir agora</a></nav></header>
 <main>
 <section class="montagem" aria-labelledby="mt-t">
@@ -44,10 +46,15 @@
   <h2 class="disp" id="jt-t">Pra ir junto</h2>
   <ul class="lista"><li class="item" data-cat="acomp"><span class="item__nome disp">Fritas</span><span class="item__desc">Porção sequinha, com sal e alecrim</span><span class="item__preco">R$ 14,00</span><span class="item__acao"><span data-ctl="fritas"></span></span></li><li class="item" data-cat="acomp"><span class="item__nome disp">Cheddar extra</span><span class="item__desc">Pote de cheddar cremoso pra molhar</span><span class="item__preco">R$ 6,00</span><span class="item__acao"><span data-ctl="cheddar"></span></span></li><li class="item" data-cat="bebidas"><span class="item__nome disp">Refrigerante lata</span><span class="item__desc">350 ml</span><span class="item__preco">R$ 7,00</span><span class="item__acao"><span data-ctl="refri"></span></span></li><li class="item" data-cat="bebidas"><span class="item__nome disp">Suco natural</span><span class="item__desc">Laranja ou limão, 400 ml</span><span class="item__preco">R$ 12,00</span><span class="item__acao"><span data-ctl="suco"></span></span></li></ul>
 </section>
+<section class="onde" id="onde" aria-labelledby="on-t">
+  <div><h2 class="disp" id="on-t">Onde estamos</h2><p class="onde__end">Rua do Centro, 140 · Centro (endereço fictício)</p>
+    <p class="onde__agora" data-aberto></p><div class="botoes"><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o mapa com a rota até a sua empresa.">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="btn btn--alt" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Chamar no WhatsApp</a></div></div>
+  <dl class="horas"><div data-d="2,3,4,5,6,0"><dt>Ter a dom</dt><dd>18h às 23h30</dd></div><div data-d="1"><dt>Seg</dt><dd>fechado</dd></div></dl>
+</section>
 </main>
-<footer class="rodape" id="onde">
+<footer class="rodape">
   <p class="rd__fita disp" aria-hidden="true"><span>Delivery até 5 km · 35 a 45 min ✦ Retirada em 15 min ✦ Saco de papel, sem isopor ✦ </span></p>
-  <div class="rodape__cols"><div><h3>Horário</h3><p>Ter a dom, das 18h às 23h30</p></div><div><h3>Endereço</h3><p>Rua do Centro, 140 (fictício)</p></div><div><h3>Pagamento</h3><p>Pix, cartão ou dinheiro</p></div></div><p class="rodape__nota">Brasa Burger é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p>
+  <p class="rodape__nota">Brasa Burger é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p>
 </footer>
 <div class="sacola" role="region" aria-label="Seu pedido"><span data-n>0 itens</span><button class="btn btn--p">Ver pedido</button></div>
 <dialog id="sacola-painel" aria-labelledby="sp-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
@@ -60,15 +67,15 @@
   <button class="btn" style="width:100%;margin-top:16px" data-enviar>Enviar pedido pelo WhatsApp</button>
 </dialog>
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
-  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2><p class="bolha-wa"></p>
+  <h2 class="disp" id="mo-t">Assim funciona no site de verdade</h2><p class="bolha-wa"></p>
   <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
   <div class="botoes"><a class="btn" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="btn btn--alt" data-fechar>Fechar</button></div>
 </dialog>
-<script type="application/json" id="site">{"nome": "Brasa Burger", "modo": "pedido", "menu": [{"id": "classico", "nome": "Clássico", "preco": 29}, {"id": "duplo", "nome": "Duplo", "preco": 36}, {"id": "bacon", "nome": "Bacon", "preco": 38}, {"id": "salada", "nome": "Salada", "preco": 32}, {"id": "fritas", "nome": "Fritas", "preco": 14}, {"id": "cheddar", "nome": "Cheddar extra", "preco": 6}, {"id": "refri", "nome": "Refrigerante lata", "preco": 7}, {"id": "suco", "nome": "Suco natural", "preco": 12}], "opcoes": [{"k": "Delivery", "taxa": 6, "campo": "Endereço de entrega"}, {"k": "Retirada", "taxa": 0, "campo": ""}], "portes": null, "extra": null, "dias": null, "horas": null, "semPreco": false}</script>
-<script src="../../vendor/gsap.min.js"></script>
-<script src="../../vendor/ScrollTrigger.min.js"></script>
-<script src="../../vendor/lenis.min.js"></script>
-<script src="cena.js"></script>
+<script type="application/json" id="site">{"nome": "Brasa Burger", "modo": "pedido", "menu": [{"id": "classico", "nome": "Clássico", "preco": 29}, {"id": "duplo", "nome": "Duplo", "preco": 36}, {"id": "bacon", "nome": "Bacon", "preco": 38}, {"id": "salada", "nome": "Salada", "preco": 32}, {"id": "fritas", "nome": "Fritas", "preco": 14}, {"id": "cheddar", "nome": "Cheddar extra", "preco": 6}, {"id": "refri", "nome": "Refrigerante lata", "preco": 7}, {"id": "suco", "nome": "Suco natural", "preco": 12}], "opcoes": [{"k": "Delivery", "taxa": 6, "campo": "Endereço de entrega"}, {"k": "Retirada", "taxa": 0, "campo": ""}], "portes": null, "extra": null, "dias": null, "horas": null, "semPreco": false, "desde": false, "horario": [{"d": [2, 3, 4, 5, 6, 0], "a": "18:00", "f": "23:30"}], "wa": "", "orbi": "5511927013668"}</script>
+<script src="../../vendor/gsap.min.js" defer></script>
+<script src="../../vendor/ScrollTrigger.min.js" defer></script>
+<script src="../../vendor/lenis.min.js" defer></script>
+<script src="cena.js" defer></script>
 <script type="module" src="../kit/core.js"></script>
 </body>
 </html>

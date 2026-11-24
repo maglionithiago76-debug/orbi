@@ -1,70 +1,94 @@
-/* Amparo Vet: terracotta base, cream, navy accent. Scenes: heartbeat line draws itself with a bpm counter; vaccination card gets stamped. */
+/* Amparo Vet: terracotta base, cream neutral, navy accent.
+   Scenes: the heartbeat line draws itself behind the photo while the bpm counts; the vaccination card gets stamped and the reminder arrives. */
 .nav{color:var(--on-base)}
-.nav__marca{font-size:30px}
-.kicker{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.16);font-weight:600;font-size:13px;margin-bottom:18px}
+.nav__marca{font-size:32px}
 
-/* 1 · pulso */
-.pulso{position:relative;height:100svh;overflow:hidden;background:var(--base);color:var(--on-base)}
-.pu__ecg{position:absolute;left:0;right:0;top:80%;width:100%;height:30vh;translate:0 -50%;overflow:visible;z-index:1}
-.pu__base{fill:none;stroke:rgba(255,255,255,.14);stroke-width:3;vector-effect:non-scaling-stroke}
-.pu__linha{fill:none;stroke:#fff;stroke-width:4;stroke-linejoin:round;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 8px rgba(255,255,255,.7))}
-.pu__bpm{position:absolute;right:var(--m);top:96px;font-weight:700;font-size:16px;z-index:3}
-.pu__bpm b{font-size:clamp(48px,5vw,84px);font-weight:400;font-variant-numeric:tabular-nums;margin-right:6px}
-.pu__texto{position:absolute;left:var(--m);top:50%;translate:0 -50%;z-index:3;max-width:min(620px,48vw)}
-.pu__texto h1{font-size:clamp(46px,5.6vw,100px);line-height:.95;margin-bottom:18px}
-.pu__texto p{font-size:19px;max-width:38ch;margin-bottom:26px}
-.pu__foto{position:absolute;right:var(--m);bottom:0;width:min(40vw,620px);height:72vh;margin:0;border-radius:300px 300px 0 0;overflow:hidden;z-index:2}
-.pu__foto img{width:100%;height:100%;object-fit:cover}
+/* 1 · pulse */
+.pulso{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--base);color:var(--on-base);display:grid;grid-template-columns:minmax(0,1fr) min(38vw,600px);gap:clamp(20px,4vw,64px);padding:0 var(--m)}
+.pu__texto{position:relative;z-index:3;align-self:start;padding-top:clamp(120px,17vh,170px)}
+.pu__texto h1{font-size:clamp(44px,5.5vw,104px);line-height:1.03;letter-spacing:-.01em;margin-bottom:clamp(16px,2vw,26px)}
+.pu__texto .fatos{display:none}
+.pu__foto{position:relative;z-index:2;align-self:end;margin:0;height:min(80svh,840px);border-radius:44% 44% 0 0 / 30% 30% 0 0;overflow:hidden}
+.pu__foto img{width:100%;height:100%;object-fit:cover;object-position:28% 50%}
+.pu__ecg{position:absolute;left:0;top:84%;width:calc(100% - min(38vw,600px) - var(--m));height:24svh;translate:0 -50%;overflow:visible;z-index:1;pointer-events:none}
+.pu__base{fill:none;stroke:rgba(255,255,255,.2);stroke-width:3;vector-effect:non-scaling-stroke}
+.pu__linha{fill:none;stroke:#fff;stroke-width:5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pu__bpm{position:absolute;right:calc(var(--m) + min(38vw,600px) + 24px);bottom:calc(16% + 13svh);z-index:3;display:flex;align-items:baseline;gap:8px;padding:8px 20px;border-radius:999px;background:var(--neu);color:var(--on-neu);font-weight:700;font-size:var(--t-s)}
+.pu__bpm b{font-size:40px;line-height:1;font-weight:400;font-variant-numeric:tabular-nums;min-width:2ch;text-align:right}
 
-/* 2 · vacina */
-.vacina{position:relative;height:100svh;overflow:hidden;background:var(--neu);color:var(--on-neu);display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:clamp(30px,5vw,80px);padding:90px var(--m) 40px}
-.vc__texto h2{font-size:clamp(56px,7vw,124px);line-height:.92;margin-bottom:18px;color:var(--base)}
-.vc__texto p{font-size:19px;max-width:34ch}
-.vc__cartao{background:#fff;border-radius:22px;padding:28px 30px;box-shadow:0 30px 70px rgba(31,42,68,.14);rotate:-2deg;border-top:14px solid var(--base)}
-.vc__topo{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:2px dashed rgba(31,42,68,.2);padding-bottom:14px;margin-bottom:6px}
-.vc__topo b{font-size:28px}
-.vc__topo span{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;opacity:.7}
+/* 2 · vaccination card */
+.vacina{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--neu);color:var(--on-neu);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(30px,5vw,80px);padding:90px var(--m) 30px}
+.vc__texto h2{font-size:clamp(52px,7vw,128px);line-height:.98;margin-bottom:18px;color:var(--base)}
+.vc__chat{display:grid;gap:8px;max-width:440px;margin-top:clamp(18px,3vw,34px)}
+.vc__zap{justify-self:start;max-width:92%;padding:14px 18px;border-radius:18px 18px 18px 4px;background:#fff;color:#111;font-size:17px;line-height:1.4}
+.vc__zap--eu{justify-self:end;border-radius:18px 18px 4px 18px;background:#DCF8C6}
+.vc__zap b{display:block;font-size:15px;color:#0B6B3A;margin-bottom:2px}
+.vc__cartao{justify-self:center;width:100%;max-width:640px;background:#fff;border-radius:22px;padding:clamp(20px,2.4vw,36px);box-shadow:0 30px 70px rgba(31,42,68,.16);rotate:-2deg;border-top:16px solid var(--base)}
+.vc__topo{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:14px;margin-bottom:6px;border-bottom:3px dashed rgba(31,42,68,.28)}
+.vc__topo b{font-size:clamp(26px,2.4vw,36px)}
+.vc__topo span{font-size:15px;font-weight:600}
 .vc__cartao ol{list-style:none}
-.vc__linha{position:relative;display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:14px 0;border-bottom:1px solid rgba(31,42,68,.12)}
-.vc__nome{font-weight:700;font-size:20px}
-.vc__desc{grid-column:1;font-size:14px;opacity:.75}
-.vc__carimbo{grid-column:2;grid-row:1/3;align-self:center;width:62px;height:62px;border-radius:50%;border:3px solid var(--base);color:var(--base);display:grid;place-items:center;font:400 20px/1 var(--disp);rotate:-14deg;opacity:0}
+.vc__linha{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:clamp(9px,1.4vh,16px) 0}
+.vc__linha + .vc__linha{border-top:2px solid rgba(31,42,68,.1)}
+.vc__nome{font-weight:700;font-size:clamp(19px,1.7vw,24px)}
+.vc__desc{grid-column:1;font-size:var(--t-s)}
+.vc__carimbo{grid-column:2;grid-row:1/3;align-self:center;width:68px;height:68px;border-radius:50%;border:4px solid var(--base);color:var(--base);display:grid;place-items:center;font:400 22px/1 var(--disp);rotate:-14deg}
 
-/* 3 · serviços */
-.servicos{background:var(--base);color:var(--on-base);padding:clamp(90px,13vh,150px) var(--m)}
-.sv__topo{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:34px}
-.sv__topo h2{font-size:clamp(52px,7vw,124px);line-height:.92}
+/* 3 · services */
+.servicos{background:var(--base);color:var(--on-base);padding:var(--sec) var(--m)}
+.sv__topo{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,56px)}
+.sv__topo h2{font-size:clamp(48px,7.4vw,136px);line-height:.98}
 .servicos .chip[aria-pressed=true]{background:#fff;color:var(--base)}
-.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
-.ficha{display:flex;flex-direction:column;gap:10px;padding:14px 14px 22px;border-radius:26px;background:var(--neu);color:var(--on-neu)}
+.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.4vw,20px)}
+.ficha{display:flex;flex-direction:column;gap:10px;padding:14px 14px 24px;border-radius:var(--raio);background:var(--neu);color:var(--on-neu)}
 .ficha[hidden]{display:none}
-.ficha img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:18px}
-.ficha h3{font-size:28px;line-height:1.05;padding:0 8px}
-.ficha p{font-size:16px;flex:1;padding:0 8px}
+.ficha img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 28%;border-radius:18px}
+.ficha h3{font-size:clamp(26px,2.4vw,36px);line-height:1.08;padding:6px 8px 0}
+.ficha p{flex:1;padding:0 8px}
 .ficha .mais{align-self:flex-start;margin-left:8px}
 
-/* agenda */
-.agenda__titulo{font-size:clamp(56px,7vw,120px);line-height:.92;margin-bottom:14px;color:var(--base)}
-.agenda__sub{font-size:18px;max-width:44ch}
-.agenda .chip[aria-pressed=true]{background:var(--base);color:#fff}
+/* 4 · together + emergency */
+.junto{background:var(--acc);color:#fff;padding:var(--sec) var(--m);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,80px);align-items:center}
+.jn__texto h2{font-size:clamp(44px,5.6vw,104px);line-height:1.02;margin-bottom:16px}
+.jn__foto{position:relative;margin:0;border-radius:var(--raio);overflow:hidden;aspect-ratio:3/2}
+.jn__foto img{width:100%;height:100%;object-fit:cover}
+.jn__sos{margin-top:clamp(22px,3vw,40px);max-width:460px;padding:24px 28px;border-radius:var(--raio);background:var(--base);color:#fff}
+.jn__sos .disp{font-size:clamp(30px,3vw,48px);line-height:1;margin-bottom:8px}
+.jn__sos .btn{margin-top:16px;background:var(--neu);color:var(--on-neu)}
 
-/* footer */
+/* booking, questions, where, footer */
+.agenda{background:var(--neu)}
+.agenda__titulo{font-size:clamp(52px,7vw,128px);line-height:.98;color:var(--base);margin-bottom:16px}
+.agenda .chip[aria-pressed=true]{background:var(--base);color:#fff}
+.resumo{background:#fff;color:var(--on-neu);box-shadow:inset 0 16px 0 var(--base),0 30px 70px rgba(31,42,68,.14);padding-top:calc(16px + clamp(24px,2.4vw,36px));rotate:-1.2deg}
+.duvidas{background:#fff}
+.duvidas h2{color:var(--base)}
 .rodape{background:var(--acc);color:var(--neu)}
-.rd__rt{margin-top:36px;font-size:15px}
-.rd__nome{font-size:24vw;line-height:.85;color:var(--base);margin-top:20px}
+.rd__nome{line-height:.9;color:var(--neu);margin-top:28px}
 
 @media (max-width:760px){
-  .pu__texto{top:96px;translate:0 0;max-width:92vw}
-  .pu__texto h1{font-size:11.5vw}
-  .pu__texto p{font-size:16px;margin-bottom:16px}
-  .pu__texto p{display:none}
-  .pu__ecg{top:auto;bottom:40vh;height:14vh;translate:0 0}
-  .pu__bpm{top:auto;bottom:calc(34vh + 8px);right:16px;z-index:4}
-  .pu__foto{width:78vw;height:34vh;left:11vw;right:auto}
-  .vacina{grid-template-columns:1fr;align-content:center;gap:20px}
-  .vc__texto h2{font-size:15vw}
-  .vc__texto p{font-size:16px}
-  .vc__cartao{padding:20px}
-  .vc__nome{font-size:17px}
-  .vc__carimbo{width:48px;height:48px;font-size:16px}
+  .pulso{grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);gap:10px;padding-top:84px}
+  .pu__texto{grid-row:1}
+  .pu__foto{grid-row:3}
+  .pu__texto{padding-top:0}
+  .pu__texto h1{font-size:11.2vw}
+  .pu__foto{height:auto;align-self:stretch}
+  .pu__ecg{position:relative;top:auto;grid-row:2;grid-column:1;width:100%;height:9svh;translate:none}
+  .pu__bpm{position:relative;right:auto;bottom:auto;grid-row:3;grid-column:1;justify-self:end;align-self:start;margin:12px 12px 0 0;padding:6px 16px}
+  .pu__bpm b{font-size:30px}
+  .vacina{grid-template-columns:1fr;align-content:center;gap:18px;padding-top:104px}
+  .vc__nome{grid-row:1/3;align-self:center}
+  .vc__texto h2{font-size:13vw;margin-bottom:0}
+  .vc__chat{margin-top:12px}
+  .vc__zap{font-size:16px;padding:10px 14px}
+  .vc__desc{display:none}
+  .vc__cartao{padding:18px}
+  .vc__topo b{font-size:24px;white-space:nowrap}
+  .vc__topo span{font-size:14px;white-space:nowrap}
+  .vc__carimbo{width:52px;height:52px;font-size:17px}
+  .grade{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(-1*var(--m));padding:0 var(--m) 10px;scrollbar-width:none}
+  .ficha{flex:0 0 78vw;scroll-snap-align:center}
+  .junto{grid-template-columns:1fr}
+  .jn__foto{order:-1}
+  .jn__sos{max-width:none}
 }

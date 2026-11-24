@@ -9,64 +9,83 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="image" href="../img/vt-hero.webp" imagesrcset="../img/vt-hero-900.webp 900w, ../img/vt-hero.webp 1800w" imagesizes="(max-width:760px) 100vw, 50vw" fetchpriority="high">
 <link rel="stylesheet" href="../kit/core.css">
 <link rel="stylesheet" href="cena.css">
 </head>
 <body>
-<p class="fita">Modelo de site feito pela Orbi · nome, preços e endereço fictícios <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Amparo Vet e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
-<header class="nav"><a class="nav__marca disp" href="#">Amparo</a><nav class="nav__links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a class="btn btn--p" href="#agenda">Agendar</a></nav></header>
+<p class="fita"><span>Modelo de site feito pela Orbi<span class="fita__d"> · nome e endereço fictícios</span></span> <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Amparo Vet e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
+<header class="nav"><a class="nav__marca disp" href="#">Amparo</a><nav class="nav__links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a class="btn btn--p" href="#agenda">Agendar consulta</a></nav></header>
 <main>
 <section class="pulso" aria-labelledby="pu-t">
   <svg class="pu__ecg" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true"><path class="pu__base" d="M0 150 L260 150 L290 150 L305 120 L320 150 L345 150 L360 30 L378 260 L395 150 L430 150 L450 128 L475 150 L700 150 L730 150 L745 120 L760 150 L785 150 L800 30 L818 260 L835 150 L870 150 L890 128 L915 150 L1200 150"/><path class="pu__linha" d="M0 150 L260 150 L290 150 L305 120 L320 150 L345 150 L360 30 L378 260 L395 150 L430 150 L450 128 L475 150 L700 150 L730 150 L745 120 L760 150 L785 150 L800 30 L818 260 L835 150 L870 150 L890 128 L915 150 L1200 150"/></svg>
+  <div class="pu__texto"><h1 class="disp" id="pu-t">Cuidado de verdade pra quem é da família.</h1>
+    <p class="sub">Clínica veterinária no Jardim Botânico.<span class="so-d"> Consultas, vacinas, exames e cirurgias, com o seu pet atendido sem pressa e você sabendo de tudo.</span></p>
+    <div class="acoes"><a class="btn" href="#agenda">Agendar consulta <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="link so-d" href="#servicos">O que a gente faz</a></div><p class="fatos so-d"><span>Seg a sex, 8h às 20h · sáb, 8h às 14h</span><span>Av. das Palmeiras, 1200</span></p></div>
+  <figure class="pu__foto"><img src="../img/vt-hero.webp" srcset="../img/vt-hero-900.webp 900w, ../img/vt-hero.webp 1800w" sizes="(max-width:760px) 100vw, 50vw" width="1800" height="1200" alt="Veterinário ausculta um cachorro pequeno com o estetoscópio" fetchpriority="high"></figure>
   <p class="pu__bpm" aria-hidden="true"><b class="disp">0</b> bpm</p>
-  <div class="pu__texto"><p class="kicker">Clínica veterinária · Jardim Botânico</p><h1 class="disp" id="pu-t">Cuidado de verdade<br>pra quem é da família.</h1>
-    <p>Consultas, vacinas, exames e cirurgias, com o seu pet atendido sem pressa e você sabendo de tudo.</p><a class="btn" href="#agenda">Agendar consulta</a></div>
-  <figure class="pu__foto"><img src="../img/vt-exame.webp" alt="Veterinário examinando um cachorro"></figure>
 </section>
+<div class="faixa" aria-hidden="true"><div class="faixa__trilho"><span>Consultas</span><span>Vacinas</span><span>Exames</span><span>Castração</span><span>Cirurgias</span><span>Atendimento de gatos</span><span>Consultas</span><span>Vacinas</span><span>Exames</span><span>Castração</span><span>Cirurgias</span><span>Atendimento de gatos</span></div></div>
 <section class="vacina" aria-labelledby="vc-t">
-  <div class="vc__texto"><h2 class="disp" id="vc-t">Carteirinha<br>em dia.</h2><p>A gente avisa no seu WhatsApp quando chegar a hora da próxima dose. Você não precisa lembrar de nada.</p></div>
+  <div class="vc__texto"><h2 class="disp" id="vc-t">Carteirinha em dia.</h2><p class="sub so-d">A gente avisa no seu WhatsApp quando chegar a hora da próxima dose. Você não precisa lembrar de nada.</p>
+    <div class="vc__chat" role="img" aria-label="Exemplo de lembrete no WhatsApp: a clínica avisa da vacina e a tutora responde"><p class="vc__zap"><b>Amparo Vet</b>Oi! A V10 da Mel vence dia 12. Quer que eu já deixe um horário reservado?</p>
+      <p class="vc__zap vc__zap--eu">Quero! Pode ser quinta às 10h?</p></div></div>
   <div class="vc__cartao"><p class="vc__topo"><b class="disp">Amparo Vet</b><span>Carteira de vacinação</span></p><ol><li class="vc__linha" data-i="0"><span class="vc__nome">V10</span><span class="vc__desc">Protege de cinomose, parvovirose e mais</span><span class="vc__carimbo" aria-hidden="true">OK</span></li><li class="vc__linha" data-i="1"><span class="vc__nome">Antirrábica</span><span class="vc__desc">Obrigatória, uma vez por ano</span><span class="vc__carimbo" aria-hidden="true">OK</span></li><li class="vc__linha" data-i="2"><span class="vc__nome">Gripe canina</span><span class="vc__desc">Pra quem vai a creche e passeio</span><span class="vc__carimbo" aria-hidden="true">OK</span></li><li class="vc__linha" data-i="3"><span class="vc__nome">Giárdia</span><span class="vc__desc">Contra a giárdia, comum em filhotes</span><span class="vc__carimbo" aria-hidden="true">OK</span></li><li class="vc__linha" data-i="4"><span class="vc__nome">Vermífugo</span><span class="vc__desc">A cada 3 a 6 meses</span><span class="vc__carimbo" aria-hidden="true">OK</span></li></ol></div>
 </section>
 <section class="servicos" id="servicos" aria-labelledby="sv-t">
   <div class="sv__topo"><h2 class="disp" id="sv-t">O que a gente faz</h2><div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="rotina" aria-pressed="false">Rotina</button><button class="chip" data-filtro="exames" aria-pressed="false">Exames</button><button class="chip" data-filtro="cirurgia" aria-pressed="false">Cirurgia</button></div></div>
-  <div class="grade"><article class="ficha" data-cat="rotina"><img src="../img/vt-mesa.webp" alt="" loading="lazy"><h3 class="disp">Consulta</h3>
-      <p>Exame clínico completo, com tempo pra tirar dúvidas</p><a class="mais" href="#agenda" data-agendar="consulta">Agendar</a></article><article class="ficha" data-cat="rotina"><img src="../img/vt-vacina.webp" alt="" loading="lazy"><h3 class="disp">Vacinas</h3>
-      <p>V10, antirrábica, gripe e giárdia, com lembrete</p><a class="mais" href="#agenda" data-agendar="vacina">Agendar</a></article><article class="ficha" data-cat="rotina"><img src="../img/vt-filhote.webp" alt="" loading="lazy"><h3 class="disp">Primeira consulta do filhote</h3>
-      <p>Vermífugo, vacinas e orientação de alimentação</p><a class="mais" href="#agenda" data-agendar="filhote">Agendar</a></article><article class="ficha" data-cat="rotina"><img src="../img/vt-gato2.webp" alt="" loading="lazy"><h3 class="disp">Atendimento de gatos</h3>
-      <p>Horário separado e sala calma, sem cachorro latindo</p><a class="mais" href="#agenda" data-agendar="gatos">Agendar</a></article><article class="ficha" data-cat="exames"><img src="../img/vt-exame.webp" alt="" loading="lazy"><h3 class="disp">Exames</h3>
-      <p>Sangue, ultrassom e raio-X com resultado explicado</p><a class="mais" href="#agenda" data-agendar="exames">Agendar</a></article><article class="ficha" data-cat="cirurgia"><img src="../img/vt-equipe.webp" alt="" loading="lazy"><h3 class="disp">Castração</h3>
-      <p>Com avaliação pré-cirúrgica e acompanhamento</p><a class="mais" href="#agenda" data-agendar="castracao">Agendar</a></article></div>
+  <div class="grade"><article class="ficha" data-cat="rotina"><img src="../img/vt-pastor.webp" srcset="../img/vt-pastor-900.webp 900w, ../img/vt-pastor.webp 1800w" sizes="(max-width:760px) 78vw, 30vw" width="1800" height="1200" alt="Veterinária examina um pastor-alemão deitado na mesa" loading="lazy" decoding="async"><h3 class="disp">Consulta</h3>
+      <p>Exame clínico completo, com tempo pra tirar dúvidas</p><a class="mais" href="#agenda" data-agendar="consulta" aria-label="Agendar: Consulta">Agendar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></article><article class="ficha" data-cat="rotina"><img src="../img/vt-gatinho.webp" srcset="../img/vt-gatinho-900.webp 900w, ../img/vt-gatinho.webp 1800w" sizes="(max-width:760px) 78vw, 30vw" width="1800" height="2400" alt="Veterinária sorri com um filhote de gato no colo" loading="lazy" decoding="async"><h3 class="disp">Vacinas</h3>
+      <p>V10, antirrábica, gripe e giárdia, com lembrete</p><a class="mais" href="#agenda" data-agendar="vacina" aria-label="Agendar: Vacinas">Agendar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></article><article class="ficha" data-cat="rotina"><img src="../img/vt-filhote.webp" srcset="../img/vt-filhote-900.webp 900w, ../img/vt-filhote.webp 1800w" sizes="(max-width:760px) 78vw, 30vw" width="1800" height="1013" alt="Filhote de shih-tzu corre na grama" loading="lazy" decoding="async"><h3 class="disp">Primeira consulta do filhote</h3>
+      <p>Vermífugo, vacinas e orientação de alimentação</p><a class="mais" href="#agenda" data-agendar="filhote" aria-label="Agendar: Primeira consulta do filhote">Agendar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></article><article class="ficha" data-cat="rotina"><img src="../img/vt-gato2.webp" srcset="../img/vt-gato2-900.webp 900w, ../img/vt-gato2.webp 1800w" sizes="(max-width:760px) 78vw, 30vw" width="1800" height="1200" alt="Gato peludo de olhos azuis sentado numa poltrona branca" loading="lazy" decoding="async"><h3 class="disp">Atendimento de gatos</h3>
+      <p>Horário separado e sala calma, sem cachorro latindo</p><a class="mais" href="#agenda" data-agendar="gatos" aria-label="Agendar: Atendimento de gatos">Agendar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></article><article class="ficha" data-cat="exames"><img src="../img/vt-spaniel.webp" srcset="../img/vt-spaniel-900.webp 900w, ../img/vt-spaniel.webp 1800w" sizes="(max-width:760px) 78vw, 30vw" width="1800" height="2400" alt="Veterinária ausculta um cocker spaniel calmo" loading="lazy" decoding="async"><h3 class="disp">Exames</h3>
+      <p>Sangue, ultrassom e raio-X com resultado explicado</p><a class="mais" href="#agenda" data-agendar="exames" aria-label="Agendar: Exames">Agendar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></article><article class="ficha" data-cat="cirurgia"><img src="../img/vt-gato3.webp" srcset="../img/vt-gato3-900.webp 900w, ../img/vt-gato3.webp 1800w" sizes="(max-width:760px) 78vw, 30vw" width="1800" height="1200" alt="Mãos fazem carinho em um gato na mesa da clínica" loading="lazy" decoding="async"><h3 class="disp">Castração</h3>
+      <p>Com avaliação pré-cirúrgica e acompanhamento</p><a class="mais" href="#agenda" data-agendar="castracao" aria-label="Agendar: Castração">Agendar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></article></div>
+</section>
+<section class="junto" aria-labelledby="jn-t">
+  <div class="jn__texto"><h2 class="disp" id="jn-t">Você entra junto e sabe de tudo.</h2>
+    <p class="sub">Nada de entregar o pet no balcão e esperar notícia. A consulta é com você do lado, e cada exame é explicado antes e depois.</p>
+    <div class="jn__sos"><p class="disp">Emergência?</p><p>Chame antes de vir. A gente orienta no caminho e já deixa a sala pronta.</p>
+      <a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão liga ou abre o WhatsApp da clínica.">Chamar agora <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></div></div>
+  <figure class="jn__foto"><img src="../img/vt-tutora.webp" srcset="../img/vt-tutora-900.webp 900w, ../img/vt-tutora.webp 1800w" sizes="(max-width:760px) 100vw, 56vw" width="1800" height="1200" alt="Veterinário e tutora acalmam juntos um cachorro pequeno na mesa de atendimento" loading="lazy" decoding="async"><figcaption class="cred">Imagem ilustrativa</figcaption></figure>
 </section>
 <section class="agenda" id="agenda" aria-labelledby="ag-t">
   <div class="agenda__grade">
-    <div><h2 class="agenda__titulo disp" id="ag-t">Agende a<br>consulta.</h2><p class="agenda__sub">Escolha o atendimento, o dia e o horário. A clínica confirma pelo WhatsApp.</p>
-      <div class="passo"><h3>1. Serviço</h3><div class="chips"><button class="chip" data-serv="consulta" aria-pressed="false">Consulta</button><button class="chip" data-serv="vacina" aria-pressed="false">Vacinas</button><button class="chip" data-serv="filhote" aria-pressed="false">Primeira consulta do filhote</button><button class="chip" data-serv="gatos" aria-pressed="false">Atendimento de gatos</button><button class="chip" data-serv="exames" aria-pressed="false">Exames</button><button class="chip" data-serv="castracao" aria-pressed="false">Castração</button></div></div>
+    <div><h2 class="agenda__titulo disp" id="ag-t">Agende a consulta.</h2><p class="agenda__sub">Escolha o atendimento, o dia e o horário. A clínica confirma pelo WhatsApp.</p>
+      <div class="passo"><h3>1. Atendimento</h3><div class="chips"><button class="chip" data-serv="consulta" aria-pressed="false">Consulta</button><button class="chip" data-serv="vacina" aria-pressed="false">Vacinas</button><button class="chip" data-serv="filhote" aria-pressed="false">Primeira consulta do filhote</button><button class="chip" data-serv="gatos" aria-pressed="false">Atendimento de gatos</button><button class="chip" data-serv="exames" aria-pressed="false">Exames</button><button class="chip" data-serv="castracao" aria-pressed="false">Castração</button></div></div>
       <div class="passo"><h3>2. Dia</h3><div class="chips" data-dias></div></div>
       <div class="passo"><h3>3. Horário</h3><div class="chips" data-horas></div></div>
     </div>
-    <aside class="resumo" aria-label="Seu horário"><p class="disp" style="font-size:28px">Seu horário</p>
-      <dl><dt>Serviço</dt><dd data-r-serv>—</dd><dt>Dia</dt><dd data-r-dia>—</dd><dt>Horário</dt><dd data-r-hora>—</dd></dl>
+    <aside class="resumo" aria-label="Sua consulta"><p class="resumo__t disp">Sua consulta</p>
+      <dl><dt>Atendimento</dt><dd data-r-serv>a escolher</dd><dt>Dia</dt><dd data-r-dia>a escolher</dd><dt>Horário</dt><dd data-r-hora>a escolher</dd></dl>
       
       <button class="btn" data-confirmar>Confirmar pelo WhatsApp</button>
       <small>Os valores são passados na clínica. Pagamento no local.</small></aside>
   </div>
 </section>
+<section class="duvidas" aria-labelledby="dv-t"><div class="dv__lado"><h2 class="disp" id="dv-t">Dúvidas</h2><p class="sub">Não achou a sua? Pergunte pelo WhatsApp.</p><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Perguntar no WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></div><div><details open><summary>Posso ficar com o meu pet na consulta?</summary><p>Pode e deve. Você acompanha o exame, vê o que o veterinário vê e sai com tudo explicado.</p></details><details><summary>Como funciona o lembrete de vacina?</summary><p>A carteirinha fica registrada aqui. Uns dias antes de cada dose, você recebe uma mensagem no WhatsApp com a data e um horário sugerido.</p></details><details><summary>É emergência. O que eu faço?</summary><p>Chame antes de vir. A gente orienta o que fazer no caminho e já deixa a sala pronta para receber vocês.</p></details><details><summary>Vocês atendem gatos?</summary><p>Sim, em horário separado e numa sala calma, sem cachorro latindo do lado.</p></details></div></section>
+<section class="onde" id="onde" aria-labelledby="on-t">
+  <div><h2 class="disp" id="on-t">Onde estamos</h2><p class="onde__end">Av. das Palmeiras, 1200 · Jardim Botânico, Curitiba (endereço fictício)</p>
+    <p class="onde__agora" data-aberto></p><p class="onde__extra">Emergência: chame antes de vir, a gente orienta.</p><div class="botoes"><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o mapa com a rota até a sua empresa.">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="btn btn--alt" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Chamar no WhatsApp</a></div></div>
+  <dl class="horas"><div data-d="1,2,3,4,5"><dt>Seg a sex</dt><dd>8h às 20h</dd></div><div data-d="6"><dt>Sáb</dt><dd>8h às 14h</dd></div><div data-d="0"><dt>Dom</dt><dd>fechado</dd></div></dl>
+</section>
 </main>
-<footer class="rodape" id="onde"><div class="rodape__cols"><div><h3>Horário</h3><p>Seg a sex, das 8h às 20h · sáb, das 8h às 14h</p></div><div><h3>Endereço</h3><p>Av. das Palmeiras, 1200 · Jardim Botânico (fictício)</p></div><div><h3>Emergência</h3><p>Ligue antes de vir, a gente orienta</p></div></div>
-  <p class="rd__rt">Responsável técnico: Dr. Rafael Lima · CRMV-SP 00000 (fictício). Imagens ilustrativas.</p>
-  <p class="rodape__nota">Amparo Vet é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p><p class="rd__nome disp" aria-hidden="true">Amparo</p></footer>
+<footer class="rodape"><nav class="rodape__links" aria-label="Rodapé"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a href="#agenda">Agendar consulta</a></nav>
+  <p class="rd__rt">Responsável técnico: Dr. Rafael Lima · CRMV‑PR 00000 (fictício). Imagens ilustrativas.</p>
+  <p class="rodape__nota">Amparo Vet é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p><p class="rd__nome disp" data-fit aria-hidden="true">Amparo</p></footer>
 
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
-  <h2 class="disp" id="mo-t">Assim chega no WhatsApp</h2><p class="bolha-wa"></p>
+  <h2 class="disp" id="mo-t">Assim funciona no site de verdade</h2><p class="bolha-wa"></p>
   <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
   <div class="botoes"><a class="btn" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="btn btn--alt" data-fechar>Fechar</button></div>
 </dialog>
-<script type="application/json" id="site">{"nome": "Amparo Vet", "modo": "agenda", "menu": [{"id": "consulta", "nome": "Consulta"}, {"id": "vacina", "nome": "Vacinas"}, {"id": "filhote", "nome": "Primeira consulta do filhote"}, {"id": "gatos", "nome": "Atendimento de gatos"}, {"id": "exames", "nome": "Exames"}, {"id": "castracao", "nome": "Castração"}], "opcoes": null, "portes": null, "extra": null, "dias": [1, 2, 3, 4, 5, 6], "horas": ["08:00", "09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00", "18:00"], "semPreco": true}</script>
-<script src="../../vendor/gsap.min.js"></script>
-<script src="../../vendor/ScrollTrigger.min.js"></script>
-<script src="../../vendor/lenis.min.js"></script>
-<script src="cena.js"></script>
+<script type="application/json" id="site">{"nome": "Amparo Vet", "modo": "agenda", "menu": [{"id": "consulta", "nome": "Consulta"}, {"id": "vacina", "nome": "Vacinas"}, {"id": "filhote", "nome": "Primeira consulta do filhote"}, {"id": "gatos", "nome": "Atendimento de gatos"}, {"id": "exames", "nome": "Exames"}, {"id": "castracao", "nome": "Castração"}], "opcoes": null, "portes": null, "extra": null, "dias": [1, 2, 3, 4, 5, 6], "horas": ["08:00", "09:00", "10:00", "11:00", "14:00", "15:00", "16:00", "17:00", "18:00"], "semPreco": true, "desde": false, "horario": [{"d": [1, 2, 3, 4, 5], "a": "08:00", "f": "20:00"}, {"d": [6], "a": "08:00", "f": "14:00"}], "wa": "", "orbi": "5511927013668"}</script>
+<script src="../../vendor/gsap.min.js" defer></script>
+<script src="../../vendor/ScrollTrigger.min.js" defer></script>
+<script src="../../vendor/lenis.min.js" defer></script>
+<script src="cena.js" defer></script>
 <script type="module" src="../kit/core.js"></script>
 </body>
 </html>

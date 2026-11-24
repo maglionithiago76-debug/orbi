@@ -1,0 +1,57 @@
+/* Client base scenes (site/gen.py): what every client site starts with, on the shared kit.
+   1 the photo window opens to the whole screen behind the name; 2 services light up one by one with a progress bar;
+   3 the real Google rating counts up (only when the numbers are given); 4 the "about" sentence reads in word by word.
+   Colours and faces come from site/themes.py. Each delivered site still gets its own scene on top of this base. */
+.nav{color:var(--on-base)}
+.nav__marca{max-width:46vw;font-size:clamp(20px,1.8vw,28px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* 1 · opening */
+.abre{--t:16%;--r:4%;--b:9%;--l:54%;--raio-f:28px;position:relative;height:100svh;min-height:620px;overflow:hidden;background:var(--base);color:var(--on-base)}
+.ab__foto{position:absolute;inset:0;clip-path:inset(var(--t) var(--r) var(--b) var(--l) round var(--raio-f));will-change:clip-path}
+.ab__foto img{width:100%;height:100%;object-fit:cover}
+.abre::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,color-mix(in srgb,var(--base) 95%,transparent),color-mix(in srgb,var(--base) 74%,transparent) 46%,transparent 78%);opacity:var(--veu,0);pointer-events:none}
+.ab__texto{position:absolute;left:var(--m);top:50%;translate:0 -46%;z-index:3;width:min(46vw,820px)}
+.ab__texto h1{font-size:clamp(48px,7.2vw,136px);line-height:.94;letter-spacing:-.02em;margin-bottom:clamp(16px,2vw,28px);overflow-wrap:anywhere}
+.abre .cred{z-index:3;bottom:auto;top:84px;right:var(--m)}
+
+/* 2 · services */
+.servicos{position:relative;background:var(--neu);color:var(--on-neu);padding:var(--sec) var(--m);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,5vw,80px);align-items:start}
+.servicos h2{position:sticky;top:110px;font-size:clamp(44px,6.2vw,116px);line-height:.94}
+.sv__lista{list-style:none;display:grid;gap:8px}
+.sv__item{padding:clamp(18px,2.4vh,30px) clamp(18px,2.2vw,32px);border-radius:var(--raio);background:color-mix(in srgb,currentColor 6%,transparent);transition:background-color .3s,color .3s}
+.sv__item h3{font-size:clamp(28px,3.2vw,52px);line-height:1.05}
+.sv__item p{margin-top:8px;max-width:44ch}
+.sv__item.on{background:var(--base);color:var(--on-base)}
+.sv__barra{grid-column:1/-1;height:8px;border-radius:8px;background:color-mix(in srgb,currentColor 12%,transparent);overflow:hidden}
+.sv__barra i{display:block;height:100%;border-radius:8px;background:var(--acc);transform-origin:left;transform:scaleX(0)}
+
+/* 3 · the real Google rating */
+.nota-g{background:var(--base);color:var(--on-base);padding:var(--sec) var(--m);display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:center}
+.ng__num{font-size:clamp(120px,22vw,400px);line-height:.8;font-variant-numeric:tabular-nums}
+.nota-g h2{font-size:clamp(32px,4.4vw,80px);line-height:1;margin-bottom:24px}
+
+/* 4 · about */
+.sobre{background:var(--acc);color:var(--on-acc);padding:var(--sec) var(--m);display:grid;gap:clamp(24px,4vh,48px);justify-items:start}
+.sb__texto{max-width:22ch;font-size:clamp(34px,5.2vw,96px);line-height:1.04;letter-spacing:-.01em}
+.sb__texto span{transition:opacity .25s}
+.sb__texto.vivo span{opacity:.3}
+.sb__texto.vivo span.on{opacity:1}
+.sobre .btn{background:var(--on-acc);color:var(--acc)}
+
+.galeria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px;background:var(--neu)}
+.galeria figure{margin:0;border-radius:18px;overflow:hidden;aspect-ratio:4/3}
+.galeria img{width:100%;height:100%;object-fit:cover}
+
+.rodape{background:var(--base);color:var(--on-base);padding-top:0}
+.rd__nome{line-height:.9;margin-top:28px;color:var(--acc)}
+
+@media (max-width:760px){
+  .abre{--t:52%;--r:5%;--b:4%;--l:5%}
+  .abre::after{background:linear-gradient(180deg,color-mix(in srgb,var(--base) 96%,transparent),color-mix(in srgb,var(--base) 78%,transparent) 44%,transparent 74%)}
+  .ab__texto{top:86px;translate:0 0;width:auto;right:var(--m)}
+  .ab__texto h1{font-size:12.4vw}
+  .abre .cred{display:none}
+  .servicos,.nota-g{grid-template-columns:1fr}
+  .servicos h2{position:static}
+  .galeria{grid-template-columns:repeat(2,minmax(0,1fr))}
+}

@@ -1,85 +1,59 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="--base:#173A2C;--on-base:#D8F0E2;--neu:#ECF4EF;--on-neu:#173A2C;--acc:#297952;--on-acc:#ECF4EF;--disp:'Outfit',Georgia,serif;--disp-w:700;--disp-s:normal;--sans:'Outfit',system-ui,sans-serif">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clínica Vet Exemplo – São Paulo, SP</title>
-<meta name="description" content="Saúde e cuidado para quem é da família. Rua Augusta, 1200, São Paulo, SP">
-
+<title>Clínica Vet Exemplo · São Paulo, SP</title>
+<meta name="description" content="Saúde e cuidado para quem é da família. Rua Augusta, 1200 · São Paulo, SP">
+<meta name="theme-color" content="#173A2C">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23173A2C%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-size%3D%2236%22%20font-family%3D%22Georgia%2Cserif%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23D8F0E2%22%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Outfit:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root { --ink:#173A2C; --paper:#ECF4EF; --sign:#173A2C; --signText:#D8F0E2; --accent:#2F8A5E;
-  --display:"Outfit", Georgia, serif; --body:"Outfit", system-ui, sans-serif; }
-* { box-sizing:border-box; margin:0; }
-body { background:var(--paper); color:var(--ink); font:400 1.0625rem/1.6 var(--body); }
-a { color:inherit; }
-:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
-.wrap { max-width:68rem; margin:0 auto; padding:0 1.25rem; }
-.preview { background:var(--ink); color:var(--paper); font-size:.9rem; }
-.preview { display:flex; gap:1rem; align-items:center; justify-content:center; flex-wrap:wrap; padding:.6rem 1rem; text-align:center; }
-.preview a { background:var(--paper); color:var(--ink); padding:.35rem .9rem; border-radius:99px; font-weight:600; text-decoration:none; white-space:nowrap; }
-header.hero { padding:3.5rem 0 3rem; }
-.sign { background:var(--sign); color:var(--signText); padding:clamp(1.5rem,5vw,3.25rem) clamp(1.25rem,4vw,3rem);
-  border-radius:6px; box-shadow:inset 0 0 0 6px var(--sign), inset 0 0 0 8px color-mix(in srgb, var(--signText) 45%, transparent); }
-.sign h1 { font:900 clamp(2.6rem,9vw,6.5rem)/.92 var(--display); letter-spacing:-.01em; text-wrap:balance; }
-.sign p { margin-top:1rem; font-size:clamp(1rem,2.2vw,1.25rem); opacity:.9; }
-.where { margin-top:1rem; font-weight:600; }
-.actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.75rem; }
-.btn { display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.4rem; border-radius:6px; font-weight:600; text-decoration:none;
-  background:var(--accent); color:var(--paper); border:2px solid var(--accent); }
-.btn.ghost { background:transparent; color:var(--ink); border-color:var(--ink); }
-.btn:hover { filter:brightness(1.08); }
-section { padding:3rem 0; border-top:1px solid color-mix(in srgb, var(--ink) 15%, transparent); }
-h2 { font:700 clamp(1.6rem,4vw,2.3rem)/1.1 var(--display); margin-bottom:1.5rem; }
-.about p { max-width:38rem; font-size:1.2rem; }
-.services ul { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1.75rem 2rem; }
-.services h3 { font:700 1.15rem/1.3 var(--body); margin-bottom:.25rem; }
-.services li { border-left:4px solid var(--accent); padding-left:1rem; }
-.info { display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:2rem; }
-dl { display:grid; grid-template-columns:auto 1fr; gap:.4rem 1.5rem; }
-dt { font-weight:600; }
-.photo { margin:0 0 3rem; position:relative; }
-.photo img { width:100%; height:clamp(14rem,38vw,26rem); object-fit:cover; border-radius:6px; display:block; }
-.photo figcaption { position:absolute; right:.6rem; bottom:.5rem; font-size:.75rem; background:rgba(0,0,0,.55); color:#fff; padding:.15rem .5rem; border-radius:4px; }
-.gallery .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(15rem,1fr)); gap:.75rem; }
-.gallery img { width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; display:block; }
-footer { padding:2rem 0 3rem; font-size:.9rem; opacity:.75; }
-.float { position:fixed; right:1rem; bottom:1rem; background:#1FAF5A; color:#fff; padding:.8rem 1.1rem; border-radius:99px;
-  font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,.25); }
-@media (prefers-reduced-motion:no-preference) {
-  .sign { animation:light 1.1s ease-out both; }
-  @keyframes light { from { filter:brightness(.55) saturate(.6); } to { filter:none; } }
-}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Outfit:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Outfit:wght@400;500&display=swap" rel="stylesheet"></noscript>
+
+<link rel="stylesheet" href="../../modelos/kit/core.css">
+<link rel="stylesheet" href="../../modelos/padrao/cena.css">
 </head>
 <body>
-
-<header class="hero"><div class="wrap">
-  <div class="sign"><h1>Clínica Vet Exemplo</h1><p>Saúde e cuidado para quem é da família.</p></div>
-  <p class="where">São Paulo, SP</p>
-  <div class="actions">
-    
-    <a class="btn" href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Cl%C3%ADnica%20Vet%20Exemplo%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">Chamar no WhatsApp</a>
-    <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica%20Vet%20Exemplo%20Rua%20Augusta%2C%201200%2C%20S%C3%A3o%20Paulo%2C%20SP">Como chegar</a>
-    
-  </div>
-</div></header>
-<div class="wrap"><figure class="photo"><img src="../../stock/veterinario.jpg" alt="" width="1400" height="800"><figcaption>Imagem ilustrativa</figcaption></figure></div>
+<p class="fita"><span>Exemplo de site feito pela Orbi<span class="fita__d"> · nome e endereço fictícios</span></span> <a href="https://wa.me/5511927013668?text=Oi%21%20Vi%20o%20exemplo%20de%20site%20%28Cl%C3%ADnica%20Vet%20Exemplo%29%20e%20quero%20um%20assim%20pra%20minha%20empresa." target="_blank" rel="noopener">Quero um assim</a></p>
+<header class="nav"><a class="nav__marca disp" href="#">Clínica Vet Exemplo</a><nav class="nav__links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a class="btn btn--p" href="https://wa.me/5511927013668?text=Oi%21%20Vi%20o%20exemplo%20de%20site%20%28Cl%C3%ADnica%20Vet%20Exemplo%29%20e%20quero%20um%20assim%20pra%20minha%20empresa.">Chamar no WhatsApp</a></nav></header>
 <main>
-<section class="about"><div class="wrap"><h2>Sobre nós</h2><p>Consultas, vacinas e exames com atenção para cada animal.</p></div></section>
-<section class="services"><div class="wrap"><h2>Serviços</h2><ul><li><h3>Consultas</h3><p>Clínica geral para cães e gatos.</p></li>
-<li><h3>Vacinação</h3><p>Calendário completo e lembretes.</p></li>
-<li><h3>Exames</h3><p>Coleta e encaminhamento para laboratório.</p></li>
-<li><h3>Castração</h3><p>Avaliação e agendamento.</p></li></ul></div></section>
+<section class="abre" aria-labelledby="ab-t">
+  <div class="ab__foto"><img src="../../modelos/img/vt-hero.webp" srcset="../../modelos/img/vt-hero-900.webp 900w, ../../modelos/img/vt-hero.webp 1800w" sizes="100vw" width="1800" height="1200" alt="Veterinário ausculta um cachorro pequeno" fetchpriority="high"></div>
+  <div class="ab__texto"><h1 class="disp" id="ab-t">Clínica Vet Exemplo</h1>
+    <p class="sub">Saúde e cuidado para quem é da família.</p>
+    <div class="acoes"><a class="btn" href="https://wa.me/5511927013668?text=Oi%21%20Vi%20o%20exemplo%20de%20site%20%28Cl%C3%ADnica%20Vet%20Exemplo%29%20e%20quero%20um%20assim%20pra%20minha%20empresa." target="_blank" rel="noopener">Chamar no WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="link so-d" href="#servicos">Ver serviços</a></div><p class="fatos so-d"><span>Seg a sex, 09:00 às 19:00; Sáb, 08:00 às 14:00</span><span>Rua Augusta, 1200 · São Paulo, SP</span></p></div>
+  <p class="cred">Imagem ilustrativa</p>
+</section>
+<div class="faixa" aria-hidden="true"><div class="faixa__trilho"><span>Consultas</span><span>Vacinação</span><span>Exames</span><span>Castração</span><span>Consultas</span><span>Vacinação</span><span>Exames</span><span>Castração</span></div></div>
+<section class="servicos" id="servicos" aria-labelledby="sv-t">
+  <h2 class="disp" id="sv-t">O que a gente faz</h2>
+  <ol class="sv__lista"><li class="sv__item"><h3 class="disp">Consultas</h3><p>Clínica geral para cães e gatos.</p></li><li class="sv__item"><h3 class="disp">Vacinação</h3><p>Calendário completo e lembretes.</p></li><li class="sv__item"><h3 class="disp">Exames</h3><p>Coleta e encaminhamento para laboratório.</p></li><li class="sv__item"><h3 class="disp">Castração</h3><p>Avaliação e agendamento.</p></li></ol>
+  <div class="sv__barra" aria-hidden="true"><i></i></div>
+</section>
 
-<section><div class="wrap info">
-  <div><h2>Horário</h2><dl><dt>Seg a sex</dt><dd>09:00 às 19:00</dd><dt>Sáb</dt><dd>08:00 às 14:00</dd></dl></div>
-  <div><h2>Onde estamos</h2><p>Rua Augusta, 1200, São Paulo, SP</p><p style="margin-top:.5rem">WhatsApp: <a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Cl%C3%ADnica%20Vet%20Exemplo%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.">(11) 92701-3668</a></p>
-  <p style="margin-top:1rem"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica%20Vet%20Exemplo%20Rua%20Augusta%2C%201200%2C%20S%C3%A3o%20Paulo%2C%20SP">Abrir no mapa</a></p></div>
-</div></section>
+<section class="sobre" aria-labelledby="sb-t">
+  <h2 class="vh" id="sb-t">Sobre</h2>
+  <p class="sb__texto disp"><span>Consultas,</span> <span>vacinas</span> <span>e</span> <span>exames</span> <span>com</span> <span>atenção</span> <span>para</span> <span>cada</span> <span>animal.</span> </p>
+  <a class="btn" href="https://wa.me/5511927013668?text=Oi%21%20Vi%20o%20exemplo%20de%20site%20%28Cl%C3%ADnica%20Vet%20Exemplo%29%20e%20quero%20um%20assim%20pra%20minha%20empresa." target="_blank" rel="noopener">Chamar no WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a>
+</section>
+
+
+<section class="onde" id="onde" aria-labelledby="on-t">
+  <div><h2 class="disp" id="on-t">Onde estamos</h2><p class="onde__end">Rua Augusta, 1200 · São Paulo, SP</p>
+    <p class="onde__agora" data-aberto></p><div class="botoes"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Cl%C3%ADnica%20Vet%20Exemplo%20Rua%20Augusta%2C%201200%20S%C3%A3o%20Paulo%2C%20SP" target="_blank" rel="noopener">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="btn btn--alt" href="https://wa.me/5511927013668" target="_blank" rel="noopener">Chamar no WhatsApp</a></div></div>
+  <dl class="horas"><div data-d="1,2,3,4,5"><dt>Seg a sex</dt><dd>9h às 19h</dd></div><div data-d="6"><dt>Sáb</dt><dd>8h às 14h</dd></div><div data-d="0"><dt>Dom</dt><dd>fechado</dd></div></dl>
+</section>
 </main>
-<footer><div class="wrap">© Clínica Vet Exemplo. Site feito pela Orbi. Foto ilustrativa: Nenad Stojkovic, CC BY 2.0 (Wikimedia Commons).</div></footer>
-<a class="float" href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Cl%C3%ADnica%20Vet%20Exemplo%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." aria-label="Conversar no WhatsApp">WhatsApp</a>
+<footer class="rodape"><nav class="rodape__links" aria-label="Rodapé"><a href="#servicos">Serviços</a><a href="#onde">Onde estamos</a><a href="https://wa.me/5511927013668?text=Oi%21%20Vi%20o%20exemplo%20de%20site%20%28Cl%C3%ADnica%20Vet%20Exemplo%29%20e%20quero%20um%20assim%20pra%20minha%20empresa.">WhatsApp (11) 92701-3668</a></nav><p class="rodape__nota">Este site não coleta dados nem usa rastreamento: os botões só abrem uma conversa no WhatsApp. Foto ilustrativa: Pexels (licença livre). Site feito pela <a href="https://maglionithiago76-debug.github.io/orbi/">Orbi</a>.</p><p class="rd__nome disp" data-fit aria-hidden="true">Clínica Vet Exemplo</p></footer>
+
+
+<script type="application/json" id="site">{"nome": "Clínica Vet Exemplo", "modo": "agenda", "menu": [{"id": "s0", "nome": "Consultas"}, {"id": "s1", "nome": "Vacinação"}, {"id": "s2", "nome": "Exames"}, {"id": "s3", "nome": "Castração"}], "opcoes": null, "portes": null, "extra": null, "dias": null, "horas": null, "semPreco": false, "desde": false, "horario": [{"d": [1, 2, 3, 4, 5], "a": "09:00", "f": "19:00"}, {"d": [6], "a": "08:00", "f": "14:00"}], "wa": "5511927013668", "orbi": "5511927013668"}</script>
+<script src="../../vendor/gsap.min.js" defer></script>
+<script src="../../vendor/ScrollTrigger.min.js" defer></script>
+<script src="../../vendor/lenis.min.js" defer></script>
+<script src="../../modelos/padrao/cena.js" defer></script>
+<script type="module" src="../../modelos/kit/core.js"></script>
 </body>
 </html>

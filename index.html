@@ -7,289 +7,248 @@
 <meta name="description" content="A Orbi faz uma coisa só: site para empresa. Feito do jeito que você pedir, pronto em até 5 dias, e você só paga depois de aprovar.">
 <meta name="theme-color" content="#C8FF3D">
 <meta property="og:title" content="Orbi · Sites sob medida para empresas">
-<meta property="og:description" content="Sites que fazem o cliente chamar no seu WhatsApp. R$ 500, pronto em 5 dias, você paga depois de ver pronto.">
+<meta property="og:description" content="Site que faz o cliente chamar no seu WhatsApp. R$ 500, pronto em 5 dias, você paga depois de ver pronto.">
 <meta property="og:image" content="img/og.jpg">
 <link rel="icon" href="img/icon.png">
-<link rel="preconnect" href="https://api.fontshare.com">
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preload" href="vendor/fonts/switzer-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="orbi.css">
 <script>document.documentElement.classList.remove("no-js")</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Orbi","description":"Sites sob medida para empresas. Pronto em até 5 dias, pagamento só depois de aprovar.","url":"https://maglionithiago76-debug.github.io/orbi/","telephone":"+55 11 92701-3668","areaServed":"BR","priceRange":"R$ 500","openingHours":"Mo-Fr 09:00-18:00"}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="seta" viewBox="0 0 48 48"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square"/></symbol>
+  <symbol id="seta" viewBox="0 0 48 48"><path d="M12 36 36 12M16 12h20v20" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="square"/></symbol>
   <symbol id="marca" viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" fill="none" stroke="currentColor" stroke-width="5"/></symbol>
 </svg>
 
-<!-- ============ hero ============ -->
-<header class="board hero" id="topo">
-  <a class="t t--ink bar-logo on-dark" href="#topo" aria-label="Orbi, início"><svg style="color:var(--lime)"><use href="#marca"/></svg></a>
-  <div class="t t--paper bar-links">
-    <span class="wm">orbi</span>
-    <nav aria-label="Seções">
-      <a href="#modelos">Modelos</a>
-      <a href="#como">Como funciona</a>
-      <a href="#preco">Preço</a>
-      <a href="#duvidas">Dúvidas</a>
-    </nav>
-  </div>
-  <a class="t t--ink bar-cta on-dark" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">WhatsApp <svg width="18" height="18"><use href="#seta"/></svg></a>
-
-  <div class="t t--paper h-name">
-    <h1><span class="nome rv">orbi</span><span class="oque rv" style="--i:1">sites para empresas</span></h1>
-  </div>
-  <figure class="t t--pic gray h-pic1 shutter" id="shutter">
-    <img src="modelos/img/dt-atende.webp" width="1800" height="1200" alt="Dentista atende um paciente na cadeira do consultório">
-  </figure>
-  <figure class="t t--pic gray h-pic2 drift">
-    <img src="modelos/img/of-mao.webp" width="1800" height="1200" alt="Mãos de um mecânico trabalhando no motor de um carro" loading="lazy">
-  </figure>
-  <div class="t t--ink h-say">
-    <p class="rv" style="--i:2">Sites que fazem o cliente chamar no seu WhatsApp, em um toque.</p>
-    <p class="small soft rv" style="--i:3">Para clínicas, consultórios, veterinários e oficinas.</p>
-  </div>
-  <a class="t t--lime h-act" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa.">
-    <p class="rv" style="--i:3">R$ 500, pronto em 5 dias. Você só paga depois de aprovar.</p>
-    <span class="go">Quero o meu site <svg><use href="#seta"/></svg></span>
-  </a>
+<header class="topo" id="topo">
+  <a class="topo__marca" href="#topo" aria-label="Orbi, início"><svg width="30" height="30"><use href="#marca"/></svg><span>orbi</span></a>
+  <nav class="topo__links" aria-label="Seções">
+    <a href="#modelos">Modelos</a>
+    <a href="#como">Como funciona</a>
+    <a href="#preco">Preço</a>
+    <a href="#duvidas">Dúvidas</a>
+  </nav>
+  <a class="btn btn--tinta btn--p" href="https://wa.me/5511927013668?text=Oi!%20Vim%20pelo%20site%20da%20Orbi.">WhatsApp <svg><use href="#seta"/></svg></a>
 </header>
 
 <main>
-<!-- ============ live demo ============ -->
-<section class="board" id="modelos" aria-labelledby="demo-h">
-  <div class="t t--lime demo">
-    <div class="demo-in">
-      <div class="demo-intro">
-        <h2 id="demo-h" class="head rv">Mexa num modelo</h2>
-        <p class="rv" style="--i:1">Os quatro modelos estão no ar. Escolha um e role o site de verdade, aqui dentro do celular.</p>
-        <p class="soft rv" style="--i:2">O seu sai com o seu nome, as suas fotos e as suas cores.</p>
-      </div>
-      <div>
-        <div class="panel on-dark rv" style="--i:1">
-          <div class="stage">
-            <div class="device" id="device">
-              <div class="screen">
-                <iframe id="tela" title="Modelo Lumi Odontologia funcionando" src="modelos/dentista/" loading="lazy"></iframe>
-              </div>
-            </div>
-          </div>
-          <form class="controls" id="controles" onsubmit="return false">
-            <fieldset>
-              <legend>Modelo</legend>
-              <label class="row"><input type="radio" name="m" value="modelos/dentista/" data-nome="Lumi Odontologia" checked><span class="dot"></span><span class="nm">Lumi</span><span class="kind">Dentista</span></label>
-              <label class="row"><input type="radio" name="m" value="modelos/estetica/" data-nome="Essenza Estética"><span class="dot"></span><span class="nm">Essenza</span><span class="kind">Estética</span></label>
-              <label class="row"><input type="radio" name="m" value="modelos/veterinario/" data-nome="Amparo Vet"><span class="dot"></span><span class="nm">Amparo</span><span class="kind">Veterinário</span></label>
-              <label class="row"><input type="radio" name="m" value="modelos/oficina/" data-nome="Torque Auto Center"><span class="dot"></span><span class="nm">Torque</span><span class="kind">Oficina</span></label>
-            </fieldset>
-            <fieldset>
-              <legend style="padding-top:18px">Tela</legend>
-              <div class="seg">
-                <label><input type="radio" name="v" value="cel" checked>Celular</label>
-                <label><input type="radio" name="v" value="pc">Computador</label>
-              </div>
-            </fieldset>
-            <a class="open" id="abrir" href="modelos/dentista/" target="_blank" rel="noopener">Abrir em tela cheia <svg width="16" height="16"><use href="#seta"/></svg></a>
-          </form>
+<!-- ============ first screen: the promise, the terms, and the work itself running ============ -->
+<section class="hero" aria-labelledby="hero-h">
+  <h1 id="hero-h">Site que faz<br>o cliente chamar.</h1>
+  <div class="hero__txt">
+    <p class="lead">Site sob medida para clínicas, consultórios, veterinários e oficinas.<span class="so-d"> O&nbsp;cliente te acha no Google e chama no seu WhatsApp em um toque.</span></p>
+    <div class="acoes">
+      <a class="btn btn--tinta" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa.">Quero o meu site <svg><use href="#seta"/></svg></a>
+      <a class="link so-d" href="#modelos">Ver os modelos</a>
+    </div>
+  </div>
+  <ul class="termos" aria-label="Condições">
+    <li><b>R$ 500</b> uma vez só</li>
+    <li><b>5 dias</b> pra ficar pronto</li>
+    <li><b>Só paga</b> após aprovar</li>
+  </ul>
+  <div class="hero__fones" aria-label="Os quatro modelos funcionando">
+    <a class="fone" href="modelos/dentista/"><span class="fone__tela"><video poster="img/home/dentista-cel.webp" data-src="img/home/dentista-cel.mp4" width="360" height="780" muted loop playsinline preload="none" aria-label="Modelo Lumi Odontologia rolando no celular"></video></span><span class="fone__nome">Lumi <i>dentista</i></span></a>
+    <a class="fone" href="modelos/estetica/"><span class="fone__tela"><video poster="img/home/estetica-cel.webp" data-src="img/home/estetica-cel.mp4" width="360" height="780" muted loop playsinline preload="none" aria-label="Modelo Essenza Estética rolando no celular"></video></span><span class="fone__nome">Essenza <i>estética</i></span></a>
+    <a class="fone" href="modelos/veterinario/"><span class="fone__tela"><video poster="img/home/veterinario-cel.webp" data-src="img/home/veterinario-cel.mp4" width="360" height="780" muted loop playsinline preload="none" aria-label="Modelo Amparo Vet rolando no celular"></video></span><span class="fone__nome">Amparo <i>veterinário</i></span></a>
+    <a class="fone" href="modelos/oficina/"><span class="fone__tela"><video poster="img/home/oficina-cel.webp" data-src="img/home/oficina-cel.mp4" width="360" height="780" muted loop playsinline preload="none" aria-label="Modelo Torque Auto Center rolando no celular"></video></span><span class="fone__nome">Torque <i>oficina</i></span></a>
+  </div>
+</section>
+
+<div class="faixa" aria-hidden="true"><div class="faixa__trilho">
+  <span>Sob medida</span><span>Pronto em 5 dias</span><span>Você só paga depois de aprovar</span><span>Sem mensalidade</span><span>Hospedagem inclusa</span>
+  <span>Sob medida</span><span>Pronto em 5 dias</span><span>Você só paga depois de aprovar</span><span>Sem mensalidade</span><span>Hospedagem inclusa</span>
+</div></div>
+
+<!-- ============ the models, one big moment each ============ -->
+<section class="modelos" id="modelos" aria-labelledby="mod-h">
+  <div class="modelos__topo">
+    <h2 id="mod-h">Quatro modelos no ar</h2>
+    <p class="lead">Cada um abre com uma cena feita para o ramo. O seu ganha uma feita para a sua empresa, com o seu nome, as suas fotos e as suas cores.</p>
+  </div>
+  <article class="caso" aria-labelledby="c0">
+    <div class="caso__txt">
+      <h3 id="c0">Lumi Odontologia</h3>
+      <p class="caso__meta">Modelo para clínica odontológica, dentro das regras do CFO</p>
+      <p>A escala de cores abre em leque sobre a foto, o implante se desmonta peça por peça e o raio-X acende dente por dente.</p>
+      <a class="btn btn--tinta" href="modelos/dentista/">Abrir o modelo <svg><use href="#seta"/></svg></a>
+    </div>
+    <figure class="caso__tela"><picture><source media="(max-width:900px)" srcset="img/home/dentista-cel.webp" width="540" height="1170"><img src="img/home/dentista-pc.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Abertura do modelo Lumi Odontologia no computador: título grande, foto da dentista com o paciente e a escala de cores em leque"></picture></figure>
+  </article>
+  <article class="caso caso--tinta" aria-labelledby="c1">
+    <div class="caso__txt">
+      <h3 id="c1">Essenza Estética</h3>
+      <p class="caso__meta">Modelo para clínica de estética, com avaliação agendada</p>
+      <p>Uma gota cai sobre a foto, faz ondas e abre a imagem na tela inteira. O protocolo de cuidado avança num anel.</p>
+      <a class="btn" href="modelos/estetica/">Abrir o modelo <svg><use href="#seta"/></svg></a>
+    </div>
+    <figure class="caso__tela"><picture><source media="(max-width:900px)" srcset="img/home/estetica-cel.webp" width="540" height="1170"><img src="img/home/estetica-pc.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Abertura do modelo Essenza Estética no computador: título em letra serifada e a foto de um tratamento facial numa janela redonda"></picture></figure>
+  </article>
+  <article class="caso" aria-labelledby="c2">
+    <div class="caso__txt">
+      <h3 id="c2">Amparo Vet</h3>
+      <p class="caso__meta">Modelo para clínica veterinária, com lembrete de vacina</p>
+      <p>O batimento se desenha atrás da foto, a carteirinha ganha carimbo dose por dose e o lembrete chega no WhatsApp.</p>
+      <a class="btn btn--tinta" href="modelos/veterinario/">Abrir o modelo <svg><use href="#seta"/></svg></a>
+    </div>
+    <figure class="caso__tela"><picture><source media="(max-width:900px)" srcset="img/home/veterinario-cel.webp" width="540" height="1170"><img src="img/home/veterinario-pc.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Abertura do modelo Amparo Vet no computador: título, linha de batimento cardíaco e a foto do veterinário com um cachorro"></picture></figure>
+  </article>
+  <article class="caso caso--tinta" aria-labelledby="c3">
+    <div class="caso__txt">
+      <h3 id="c3">Torque Auto Center</h3>
+      <p class="caso__meta">Modelo para oficina mecânica, com orçamento aprovado antes</p>
+      <p>O ponteiro sobe, as luzes do painel apagam e a ordem de serviço é impressa e conferida item por item.</p>
+      <a class="btn" href="modelos/oficina/">Abrir o modelo <svg><use href="#seta"/></svg></a>
+    </div>
+    <figure class="caso__tela"><picture><source media="(max-width:900px)" srcset="img/home/oficina-cel.webp" width="540" height="1170"><img src="img/home/oficina-pc.webp" width="1440" height="900" loading="lazy" decoding="async" alt="Abertura do modelo Torque Auto Center no computador: título em letras grandes e o painel do carro com conta-giros"></picture></figure>
+  </article>
+</section>
+
+<!-- ============ live demo: the real models inside a phone ============ -->
+<section class="demo" id="demo" aria-labelledby="demo-h">
+  <div class="demo__txt">
+    <h2 id="demo-h">Mexa num modelo</h2>
+    <p class="lead">Os quatro estão no ar de verdade. Escolha um e role o site aqui dentro, como o seu cliente vai rolar.</p>
+    <form class="controles" id="controles" onsubmit="return false">
+      <fieldset>
+        <legend>Modelo</legend>
+        <label class="opc"><input type="radio" name="m" value="modelos/dentista/" data-nome="Lumi Odontologia" checked><span class="opc__n">Lumi</span><span class="opc__k">Dentista</span></label>
+        <label class="opc"><input type="radio" name="m" value="modelos/estetica/" data-nome="Essenza Estética"><span class="opc__n">Essenza</span><span class="opc__k">Estética</span></label>
+        <label class="opc"><input type="radio" name="m" value="modelos/veterinario/" data-nome="Amparo Vet"><span class="opc__n">Amparo</span><span class="opc__k">Veterinário</span></label>
+        <label class="opc"><input type="radio" name="m" value="modelos/oficina/" data-nome="Torque Auto Center"><span class="opc__n">Torque</span><span class="opc__k">Oficina</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Tela</legend>
+        <div class="seg">
+          <label><input type="radio" name="v" value="cel" checked><span>Celular</span></label>
+          <label><input type="radio" name="v" value="pc"><span>Computador</span></label>
         </div>
-        <p class="demo-note">Os nomes e preços dos modelos são fictícios.</p>
-      </div>
+      </fieldset>
+      <a class="link" id="abrir" href="modelos/dentista/" target="_blank" rel="noopener">Abrir em tela cheia</a>
+    </form>
+    <p class="nota">Os nomes, preços e endereços dos modelos são fictícios.</p>
+  </div>
+  <div class="palco">
+    <div class="aparelho" id="device">
+      <div class="aparelho__tela"><iframe id="tela" title="Modelo Lumi Odontologia funcionando" data-src="modelos/dentista/"></iframe></div>
     </div>
   </div>
 </section>
 
-<!-- ============ how it works ============ -->
-<section class="steps" id="como" aria-labelledby="como-h">
-  <div class="field">
+<!-- ============ how it works: the whole deal happens in one WhatsApp chat ============ -->
+<section class="como" id="como" aria-labelledby="como-h">
+  <div class="como__lado">
     <h2 id="como-h">Como o seu site nasce</h2>
-    <div class="card-wrap"><div class="chat rv" data-ui>
-      <div class="chat-top"><span>Orbi<small>online</small></span></div>
-      <div class="chat-body">
-        <p class="b me" data-h="9:02">Oi! Quero um site pra minha clínica.</p>
-      </div>
-    </div></div>
-    <p class="clause rv" style="--i:1">Primeiro, você chama no WhatsApp.</p>
+    <p class="lead">Tudo acontece numa conversa de WhatsApp. Sem reunião, sem formulário, sem entrada.</p>
+    <a class="btn btn--tinta" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa.">Começar a conversa <svg><use href="#seta"/></svg></a>
   </div>
-  <div class="field">
-    <span class="sr">Etapa 2</span>
-    <div class="card-wrap"><div class="chat rv" data-ui>
-      <div class="chat-top"><span>Orbi<small>online</small></span></div>
-      <div class="chat-body">
-        <p class="b me" data-h="9:02">Oi! Quero um site pra minha clínica.</p>
-        <p class="b" data-h="9:04">Fechado! Me conta o que vocês fazem e o que não pode faltar.</p>
-        <p class="b me" data-h="9:06">Implante, clareamento e agenda pelo WhatsApp.</p>
+  <ol class="passos">
+    <li class="passo">
+      <h3>Você chama no WhatsApp.</h3>
+      <div class="chat" role="img" aria-label="Conversa: o cliente pede um site para a clínica">
+        <p class="b eu">Oi! Quero um site pra minha clínica.</p>
+        <p class="b">Fechado! Me conta o que vocês fazem e o que não pode faltar.</p>
       </div>
-    </div></div>
-    <p class="clause rv" style="--i:1">Depois, conta o que não pode faltar.</p>
-  </div>
-  <div class="field">
-    <span class="sr">Etapa 3</span>
-    <div class="card-wrap"><div class="chat rv" data-ui>
-      <div class="chat-top"><span>Orbi<small>online</small></span></div>
-      <div class="chat-body">
-        <p class="b" data-h="qui 15:10">Pronto! Abre no seu celular:</p>
-        <p class="b link" data-h="15:10">orbi.site/sua-clinica</p>
-        <p class="b me" data-h="15:31">Dá pra trocar a foto do topo?</p>
-        <p class="b" data-h="15:40">Trocada. Dá uma olhada.</p>
+    </li>
+    <li class="passo">
+      <h3>Conta o que não pode faltar.</h3>
+      <div class="chat" role="img" aria-label="Conversa: o cliente diz o que o site precisa ter">
+        <p class="b eu">Implante, clareamento e agenda pelo WhatsApp.</p>
+        <p class="b">Anotado. As fotos eu pego do seu Google e do Instagram, pode ser?</p>
+        <p class="b eu">Pode!</p>
       </div>
-    </div></div>
-    <p class="clause rv" style="--i:1">Em até 5 dias, você testa e pede ajustes.</p>
-  </div>
-  <div class="field">
-    <span class="sr">Etapa 4</span>
-    <div class="card-wrap"><div class="chat rv" data-ui>
-      <div class="chat-top"><span>Orbi<small>online</small></span></div>
-      <div class="chat-body">
-        <p class="b me" data-h="15:52">Aprovado! Pode publicar.</p>
-        <div class="b pix" data-h="15:55"><span>Pix enviado</span><strong>R$ 500,00</strong><span>ou até 12x no cartão</span></div>
-        <p class="b" data-h="15:56">No ar. Bem-vindo à Orbi.</p>
+    </li>
+    <li class="passo">
+      <h3>Em até 5 dias, testa no seu celular.</h3>
+      <div class="chat" role="img" aria-label="Conversa: o site fica pronto e o cliente pede um ajuste">
+        <p class="b">Pronto! Abre no seu celular:</p>
+        <p class="b elo">Link do seu site</p>
+        <p class="b eu">Dá pra trocar a foto do topo?</p>
+        <p class="b">Trocada. Dá uma olhada.</p>
       </div>
-    </div></div>
-    <p class="clause rv" style="--i:1">Aprovou? Só aí você paga.</p>
-  </div>
+    </li>
+    <li class="passo">
+      <h3>Aprovou? Só aí você paga.</h3>
+      <div class="chat" role="img" aria-label="Conversa: o cliente aprova e paga">
+        <p class="b eu">Aprovado! Pode publicar.</p>
+        <div class="b pix"><span>Pix enviado</span><strong>R$ 500,00</strong></div>
+        <p class="b">No ar. Bem-vindo à Orbi.</p>
+      </div>
+    </li>
+  </ol>
 </section>
-
-<!-- ============ work ============ -->
-<section class="board" aria-labelledby="work-h">
-  <div class="t t--paper work-head">
-    <h2 id="work-h" class="rv">Quatro modelos no ar</h2>
-    <p class="rv" style="--i:1">Cada modelo tem a sua própria abertura animada, feita para o ramo. O seu ganha uma feita para o seu negócio.</p>
-  </div>
-</section>
-<div class="board" id="casos">
-  <article class="case" aria-labelledby="c0">
-    <figure class="t big"><img src="img/tunel/d-lumi.webp" width="1536" height="1024" alt="Tela de computador com a abertura do modelo"></figure>
-    <div class="side">
-      <div class="t t--paper info">
-        <h3 id="c0" class="rv">Lumi Odontologia</h3>
-        <p class="meta rv" style="--i:1">Modelo · Clínica odontológica · dentro das regras do CFO</p>
-        <p class="rv" style="--i:2">Um leque de cores de dente abre e o sorriso clareia; o implante se monta peça por peça.</p>
-      </div>
-      <div class="t phone">
-        <video src="img/home/lumi-cel.mp4" poster="img/home/lumi-cel.jpg" width="360" height="778" muted loop playsinline autoplay preload="metadata" aria-label="Gravação de tela: o modelo Lumi Odontologia rolando no celular"></video>
-        <a class="open-model" href="modelos/dentista/">Abrir o modelo <svg width="16" height="16"><use href="#seta"/></svg></a>
-      </div>
-    </div>
-  </article>
-  <article class="case flip" aria-labelledby="c1">
-    <figure class="t big"><img src="img/tunel/d-essenza.webp" width="1536" height="1024" alt="Tela de computador com a abertura do modelo"></figure>
-    <div class="side">
-      <div class="t t--paper info">
-        <h3 id="c1" class="rv">Essenza Estética</h3>
-        <p class="meta rv" style="--i:1">Modelo · Clínica de estética · avaliação agendada</p>
-        <p class="rv" style="--i:2">Uma gota cai, faz ondas e abre a foto; o protocolo de cuidado avança num anel.</p>
-      </div>
-      <div class="t phone">
-        <img src="img/tunel/i-essenza.webp" width="480" height="600" alt="Site do modelo Essenza Estética: cliente com máscara facial, na tela do celular" loading="lazy">
-        <a class="open-model" href="modelos/estetica/">Abrir o modelo <svg width="16" height="16"><use href="#seta"/></svg></a>
-      </div>
-    </div>
-  </article>
-  <article class="case" aria-labelledby="c2">
-    <figure class="t big"><img src="img/tunel/d-amparo.webp" width="1536" height="1024" alt="Tela de computador com a abertura do modelo"></figure>
-    <div class="side">
-      <div class="t t--paper info">
-        <h3 id="c2" class="rv">Amparo Vet</h3>
-        <p class="meta rv" style="--i:1">Modelo · Clínica veterinária · lembrete de vacina</p>
-        <p class="rv" style="--i:2">O batimento se desenha na tela e a carteirinha de vacinação ganha carimbo dose por dose.</p>
-      </div>
-      <div class="t phone">
-        <img src="img/tunel/i-amparo.webp" width="480" height="600" alt="Site do modelo Amparo Vet: veterinário examina um cachorro, na tela do celular" loading="lazy">
-        <a class="open-model" href="modelos/veterinario/">Abrir o modelo <svg width="16" height="16"><use href="#seta"/></svg></a>
-      </div>
-    </div>
-  </article>
-  <article class="case flip" aria-labelledby="c3">
-    <figure class="t big"><img src="img/tunel/d-torque.webp" width="1536" height="1024" alt="Tela de computador com a abertura do modelo"></figure>
-    <div class="side">
-      <div class="t t--paper info">
-        <h3 id="c3" class="rv">Torque Auto Center</h3>
-        <p class="meta rv" style="--i:1">Modelo · Oficina mecânica · orçamento aprovado antes</p>
-        <p class="rv" style="--i:2">O ponteiro sobe, as luzes do painel apagam e a ordem de serviço é impressa item por item.</p>
-      </div>
-      <div class="t phone">
-        <img src="img/tunel/i-torque.webp" width="480" height="600" alt="Site do modelo Torque Auto Center: conta-giros sobre a foto da oficina, na tela do celular" loading="lazy">
-        <a class="open-model" href="modelos/oficina/">Abrir o modelo <svg width="16" height="16"><use href="#seta"/></svg></a>
-      </div>
-    </div>
-  </article>
-</div>
 
 <!-- ============ price ============ -->
-<section class="board" id="preco" aria-labelledby="preco-h">
-  <div class="t t--ink price on-dark">
-    <div class="price-say">
-      <h2 id="preco-h" class="rv">R$ 500. Uma vez só.</h2>
-      <p class="lead rv" style="--i:1">Você paga depois de ver o site pronto no seu celular. Sem entrada, sem mensalidade, hospedagem inclusa.</p>
-      <p class="founder rv" style="--i:2">Oferta de fundador: os 3 primeiros clientes pagam só R$ 200, em troca de um depoimento sincero e de deixar a gente mostrar o site aqui.</p>
-      <a class="btn rv" style="--i:3" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa.">Começar no WhatsApp <svg width="20" height="20"><use href="#seta"/></svg></a>
-    </div>
-    <div class="slip rv" style="--i:1" aria-label="O que o site inclui">
-      <h3>Seu site, item por item</h3>
-      <p class="when">Pagamento único, depois de aprovar</p>
-      <ul>
-        <li><span>Site sob medida, com seu nome e suas cores</span><span>incluso</span></li>
-        <li><span>Abertura animada feita pro seu ramo</span><span>incluso</span></li>
-        <li><span>Botão do WhatsApp em todo lugar</span><span>incluso</span></li>
-        <li><span>Mapa, horário e preços</span><span>incluso</span></li>
-        <li><span>Pronto para aparecer no Google</span><span>incluso</span></li>
-        <li><span>Hospedagem</span><span>R$ 0/mês</span></li>
-        <li><span>Ajustes até você aprovar</span><span>incluso</span></li>
-      </ul>
-      <p class="sum"><span>Total</span><span class="v">R$ 500</span></p>
-      <p class="foot">Pix ou até 12x no cartão, pelo Mercado Pago. 7 dias para desistir depois de pagar, como garante o Código de Defesa do Consumidor.</p>
-    </div>
+<section class="preco" id="preco" aria-labelledby="preco-h">
+  <div class="preco__txt">
+    <h2 id="preco-h">R$ 500.<br>Uma vez só.</h2>
+    <p class="lead">Você paga depois de ver o site pronto no seu celular. Sem entrada, sem mensalidade, hospedagem inclusa.</p>
+    <p class="fundador"><b>Oferta de fundador: R$ 200.</b> Para os 3 primeiros clientes, em troca de um depoimento sincero e de deixar a gente mostrar o site aqui.</p>
+    <a class="btn" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa.">Começar no WhatsApp <svg><use href="#seta"/></svg></a>
   </div>
+  <div class="recibo" aria-label="O que o site inclui">
+    <h3>Seu site, item por item</h3>
+    <p class="recibo__quando">Pagamento único, depois de aprovar</p>
+    <ul>
+      <li><span>Site sob medida, com seu nome e suas cores</span><span>incluso</span></li>
+      <li><span>Abertura animada feita pro seu ramo</span><span>incluso</span></li>
+      <li><span>Botão do WhatsApp em todo lugar</span><span>incluso</span></li>
+      <li><span>Agenda ou pedido que chega escrito no WhatsApp</span><span>incluso</span></li>
+      <li><span>Endereço, horário e "aberto agora"</span><span>incluso</span></li>
+      <li><span>Pronto para aparecer no Google</span><span>incluso</span></li>
+      <li><span>Hospedagem</span><span>R$ 0/mês</span></li>
+      <li><span>Ajustes até você aprovar</span><span>incluso</span></li>
+    </ul>
+    <p class="recibo__total"><span>Total</span><span>R$ 500</span></p>
+    <p class="recibo__pe">Pix ou até 12x no cartão, pelo Mercado Pago.</p>
+  </div>
+  <ul class="garantias">
+    <li><b>Sem entrada.</b> A gente cria, você vê pronto e só então decide.</li>
+    <li><b>Sem mensalidade.</b> O site é seu, com a hospedagem inclusa.</li>
+    <li><b>7 dias pra desistir.</b> Mesmo depois de pagar, como garante o Código de Defesa do Consumidor.</li>
+  </ul>
 </section>
 
 <!-- ============ faq ============ -->
-<section class="board" id="duvidas" aria-labelledby="faq-h">
-  <div class="t t--paper faq">
-    <ul class="faq-list" id="faq">
-      <li><h2 id="faq-h">Dúvidas</h2></li>
-      <li><button class="faq-q" aria-expanded="true" type="button">Todo site vem com o quê?</button><p class="faq-a-in">Abertura animada feita pro seu negócio, botão do WhatsApp em todo lugar, mapa, horário e preços, preparado para aparecer no Google, rápido no celular e hospedagem inclusa.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">Tem mensalidade?</button><p class="faq-a-in" hidden>Não. O site é pagamento único, com hospedagem inclusa.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">Preciso pagar alguma coisa antes?</button><p class="faq-a-in" hidden>Não. A gente cria, você vê pronto no seu celular e só paga depois de aprovar.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">E se eu desistir?</button><p class="faq-a-in" hidden>Antes de aprovar, você desiste quando quiser e não paga nada. Depois de pagar, você ainda tem 7 dias para desistir e receber o dinheiro de volta, como garante o Código de Defesa do Consumidor.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">Dá pra parcelar?</button><p class="faq-a-in" hidden>Sim. Depois de aprovar, você paga no Pix ou parcela em até 12x no cartão, pelo Mercado Pago.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">Já uso um app de agenda grátis. Preciso de site?</button><p class="faq-a-in" hidden>Continua com ele. O app agenda quem já te conhece; o site faz quem ainda não te conhece te achar no Google, e o botão leva direto pra sua agenda.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">Isso vai me trazer clientes?</button><p class="faq-a-in" hidden>Ninguém sério promete número de vendas. O que o site faz é tirar os obstáculos do caminho: quem procura te acha no Google, entende o que você faz e chama no WhatsApp em um toque, a qualquer hora.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">Pode ser do meu jeito?</button><p class="faq-a-in" hidden>Pode. Cores, textos, fotos e o que o site mostra: tudo do jeito que você pedir. Se preferir, a gente monta no nosso padrão e você só aprova.</p></li>
-      <li><button class="faq-q" aria-expanded="false" type="button">Preciso mandar fotos e textos?</button><p class="faq-a-in" hidden>Não precisa. A gente usa o que já está no seu Google e no seu Instagram. Se quiser mandar outras fotos, melhor ainda.</p></li>
-    </ul>
-    <p class="faq-pane" id="faq-pane" aria-live="polite">Abertura animada feita pro seu negócio, botão do WhatsApp em todo lugar, mapa, horário e preços, preparado para aparecer no Google, rápido no celular e hospedagem inclusa.</p>
+<section class="duvidas" id="duvidas" aria-labelledby="faq-h">
+  <div class="duvidas__lado">
+    <h2 id="faq-h">Dúvidas</h2>
+    <p class="lead">Não achou a sua? Pergunta no WhatsApp: a gente responde de segunda a sexta, das 9h às 18h.</p>
+    <a class="btn btn--tinta" href="https://wa.me/5511927013668?text=Oi!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20site.">Perguntar <svg><use href="#seta"/></svg></a>
+  </div>
+  <div class="duvidas__lista">
+    <details open><summary>Todo site vem com o quê?</summary><p>Abertura animada feita pro seu negócio, botão do WhatsApp em todo lugar, agenda ou pedido que chega escrito, endereço e horário, preparado para aparecer no Google, rápido no celular e hospedagem inclusa.</p></details>
+    <details><summary>Tem mensalidade?</summary><p>Não. O site é pagamento único, com hospedagem inclusa.</p></details>
+    <details><summary>Preciso pagar alguma coisa antes?</summary><p>Não. A gente cria, você vê pronto no seu celular e só paga depois de aprovar.</p></details>
+    <details><summary>E se eu desistir?</summary><p>Antes de aprovar, você desiste quando quiser e não paga nada. Depois de pagar, você ainda tem 7 dias para desistir e receber o dinheiro de volta, como garante o Código de Defesa do Consumidor.</p></details>
+    <details><summary>Dá pra parcelar?</summary><p>Sim. Depois de aprovar, você paga no Pix ou parcela em até 12x no cartão, pelo Mercado Pago.</p></details>
+    <details><summary>Já uso um app de agenda grátis. Preciso de site?</summary><p>Continua com ele. O app agenda quem já te conhece; o site faz quem ainda não te conhece te achar no Google, e o botão leva direto pra sua agenda.</p></details>
+    <details><summary>Isso vai me trazer clientes?</summary><p>Ninguém sério promete número de vendas. O que o site faz é tirar os obstáculos do caminho: quem procura te acha no Google, entende o que você faz e chama no WhatsApp em um toque, a qualquer hora.</p></details>
+    <details><summary>Pode ser do meu jeito?</summary><p>Pode. Cores, textos, fotos e o que o site mostra: tudo do jeito que você pedir. Se preferir, a gente monta no nosso padrão e você só aprova.</p></details>
+    <details><summary>Preciso mandar fotos e textos?</summary><p>Não precisa. A gente usa o que já está no seu Google e no seu Instagram. Se quiser mandar outras fotos, melhor ainda.</p></details>
   </div>
 </section>
 </main>
 
 <!-- ============ footer ============ -->
-<footer class="board foot-board">
-  <div class="t t--paper f-say">
-    <p>Tem uma empresa pra colocar no ar?</p>
-    <p class="small soft">Este site não coleta dados nem usa rastreamento. Os modelos usam nomes e preços fictícios. Fotos: Pexels (licença livre), créditos em cada modelo.</p>
+<footer class="rodape">
+  <div class="rodape__chama">
+    <p class="rodape__h">Tem uma empresa pra colocar no ar?</p>
+    <a class="btn btn--g" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa.">Chamar no WhatsApp <svg><use href="#seta"/></svg></a>
   </div>
-  <nav class="t t--paper f-nav" aria-label="Rodapé">
-    <ul>
-      <li><a href="#modelos">Modelos</a></li>
-      <li><a href="#como">Como funciona</a></li>
-      <li><a href="#preco">Preço</a></li>
-      <li><a href="#duvidas">Dúvidas</a></li>
-    </ul>
-  </nav>
-  <div class="t t--paper f-time">
-    <p>Seg a sex,<br>9h às 18h</p>
-    <p class="now" id="agora">Atendimento pelo WhatsApp</p>
+  <div class="rodape__cols">
+    <nav aria-label="Rodapé">
+      <a href="#modelos">Modelos</a>
+      <a href="#como">Como funciona</a>
+      <a href="#preco">Preço</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <p>Seg a sex, 9h às 18h<br><span id="agora">Atendimento pelo WhatsApp</span></p>
+    <p>WhatsApp<br><a class="rodape__tel" href="https://wa.me/5511927013668">(11) 92701-3668</a></p>
   </div>
-  <div class="t t--paper f-wa">
-    <p class="small soft">WhatsApp</p>
-    <a href="https://wa.me/5511927013668">(11) 92701-3668</a>
-  </div>
-  <div class="t t--ink f-mark" aria-hidden="true"><span>orbi</span></div>
-  <a class="t t--lime f-go" href="https://wa.me/5511927013668?text=Oi!%20Quero%20o%20site%20da%20minha%20empresa.">
-    <p>Chamar no WhatsApp</p>
-    <svg><use href="#seta"/></svg>
-  </a>
+  <p class="rodape__nota">Este site não coleta dados nem usa rastreamento. Os modelos usam nomes, preços e endereços fictícios. Fotos dos modelos: Pexels (licença livre), créditos em cada modelo.</p>
+  <p class="rodape__nome" aria-hidden="true"><span id="nome">orbi</span></p>
 </footer>
 
 <script src="orbi.js" defer></script>

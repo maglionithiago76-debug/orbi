@@ -10,8 +10,8 @@ window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
     tl.fromTo(pizza, { rotation: 0, scale: 0.92 }, { rotation: -60 * n, scale: 1.04, duration: n + 0.8 }, 0);
     falas.forEach((f, i) => {
       const at = 0.6 + i;
-      tl.fromTo(f, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.3 }, at);
-      if (i < n - 1) tl.to(f, { autoAlpha: 0, y: -40, duration: 0.25 }, at + 0.75);
+      tl.fromTo(f, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.1 }, at + 0.05);
+      if (i < n - 1) tl.to(f, { autoAlpha: 0, y: -40, duration: 0.1 }, at + 0.9);
     });
     tl.to({}, { duration: 0.4 });
     ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * (falas.length * 0.75 + 0.8), pin: true, scrub: true, animation: tl });

@@ -5,7 +5,7 @@
 /* 1 · cortina */
 .cortina{position:relative;height:100svh;overflow:hidden;background:var(--base);color:#fff;--p:0%}
 .co__depois,.co__antes{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.co__antes{filter:grayscale(1) sepia(.7) brightness(.42) contrast(.85) blur(2.5px);clip-path:inset(0 0 0 var(--p))}
+.co__antes{filter:grayscale(1) brightness(.8) contrast(.95);clip-path:inset(0 0 0 var(--p))}
 .cortina::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,30,110,.85));pointer-events:none}
 .co__linha{position:absolute;top:0;bottom:0;left:var(--p);width:4px;margin-left:-2px;background:#fff;box-shadow:0 0 24px rgba(255,255,255,.8);z-index:2}
 .co__bolhas{position:absolute;left:50%;top:0;bottom:0;width:180px;translate:-50% 0}
@@ -25,7 +25,7 @@
 .pt__bola{position:relative;justify-self:center;width:min(56vh,40vw);aspect-ratio:1;border-radius:50%;background:var(--acc);overflow:hidden;transform:scale(.55);will-change:transform}
 .pt__bola img{position:absolute;inset:8% 8% 0;width:84%;height:92%;object-fit:contain;object-position:bottom;opacity:0}
 .pt__bola img[data-i="0"]{opacity:1}
-.pt__bola img[data-i="2"]{inset:0;width:100%;height:100%;object-fit:cover}
+.pt__bola img[data-i="2"]{inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
 .pt__falas{position:relative;height:16em}
 .pt__fala{position:absolute;inset:0;opacity:0}
 .pt__fala[data-i="0"]{opacity:1}
@@ -45,8 +45,8 @@
 .ro__mapa text{font:700 24px var(--sans);fill:var(--on-neu)}
 .ro__van{fill:var(--base);stroke:#fff;stroke-width:5}
 .ro__passos{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;font-size:18px}
-.ro__passos li{opacity:.3;transition:opacity .3s;border-top:4px solid var(--base);padding-top:12px}
-.ro__passos li.on{opacity:1}
+.ro__passos li{border-top:5px solid #D5DDEC;transition:border-color .3s;padding-top:12px}
+.ro__passos li.on{border-top-color:var(--base)}
 .ro__passos b{display:block;font-size:24px}
 
 /* 4 · serviços */
@@ -61,7 +61,7 @@
 .item__desc{grid-column:1;font-size:16px;opacity:.9}
 .item__preco{grid-column:2;grid-row:1/3;font-size:22px;font-weight:800}
 .item__acao{grid-column:3;grid-row:1/3}
-.item__tag{display:inline-block;vertical-align:middle;margin-left:10px;padding:4px 9px;border-radius:999px;background:#fff;color:var(--base);font:700 12px/1 var(--sans);letter-spacing:0}
+.item__tag{display:inline-block;vertical-align:middle;margin-left:10px;padding:4px 9px;border-radius:999px;background:#fff;color:var(--base);font:700 14px/1 var(--sans);letter-spacing:0}
 
 /* agenda */
 .agenda__titulo{font-size:clamp(50px,6.6vw,116px);line-height:.88;letter-spacing:-.045em;margin-bottom:14px;color:var(--base)}
@@ -71,7 +71,7 @@
 /* footer */
 .rodape{position:relative;background:var(--base);color:#fff}
 .rd__bolhas{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.rd__bolhas i{position:absolute;bottom:-40px;border-radius:50%;border:2px solid rgba(255,255,255,.5);animation:bolha linear infinite}
+.rd__bolhas i{position:absolute;bottom:-40px;border-radius:50%;border:2px solid rgba(255,255,255,.22);animation:bolha linear infinite}
 .rodape__cols,.rodape__nota{position:relative}
 
 @media (max-width:760px){
@@ -80,7 +80,7 @@
   .pt__bola{width:62vw}
   .pt__falas{height:9em;text-align:center}
   .pt__letra{font-size:26vw}
-  .ro__passos{grid-template-columns:1fr;gap:8px;font-size:15px}
+  .ro__passos{grid-template-columns:1fr;gap:8px;font-size:16px}
   .ro__passos b{font-size:18px}
   .item{grid-template-columns:1fr auto;padding:18px}
   .item__preco{grid-column:1;grid-row:auto}

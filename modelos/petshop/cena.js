@@ -8,12 +8,10 @@ window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
 
   // 1 · before/after wipe
   const co = $(".cortina");
-  if (reduz) { co.style.setProperty("--p", "100%"); gsap.set(".co__rot--d", { opacity: 1 }); }
+  if (reduz) { co.style.setProperty("--p", "100%"); }
   else {
     const tl = gsap.timeline({ defaults: { ease: "none" } })
       .to(co, { "--p": "100%", duration: 1 }, 0)
-      .to(".co__rot--a", { opacity: 0, duration: 0.2 }, 0.75)
-      .to(".co__rot--d", { opacity: 1, duration: 0.2 }, 0.15)
       .to({}, { duration: 0.2 });
     ScrollTrigger.create({ trigger: co, start: "top top", end: () => "+=" + innerHeight * 2, pin: true, scrub: true, animation: tl });
   }
@@ -25,8 +23,8 @@ window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
     [0.55, 0.8, 1.08].forEach((s, i) => {
       if (i) {
         tp.to(bola, { scale: s, duration: 1, ease: "power2.inOut" }, i - 1 + 0.4);
-        tp.to(imgs[i - 1], { opacity: 0, duration: 0.3 }, i - 1 + 0.7).to(imgs[i], { opacity: 1, duration: 0.3 }, i - 1 + 0.7);
-        tp.to(falas[i - 1], { opacity: 0, y: -30, duration: 0.25 }, i - 1 + 0.7).fromTo(falas[i], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.25 }, i - 1 + 0.8);
+        tp.to(imgs[i - 1], { opacity: 0, duration: 0.08 }, i - 1 + 0.7).to(imgs[i], { opacity: 1, duration: 0.08 }, i - 1 + 0.78);
+        tp.to(falas[i - 1], { opacity: 0, y: -30, duration: 0.08 }, i - 1 + 0.7).fromTo(falas[i], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.1 }, i - 1 + 0.78);
       }
     });
     tp.to({}, { duration: 0.4 });

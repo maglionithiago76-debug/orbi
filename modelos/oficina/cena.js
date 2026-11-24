@@ -1,34 +1,38 @@
-// Torque Auto Center scenes: the rev needle sweeps, the odometer counts to the 10k service and the warning lights go off;
-// then the service order prints out and every item gets checked.
-window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
-  const pn = $(".painel"), agulha = $(".pn__agulha", pn), km = $(".pn__km span", pn), luzes = $$(".luz", pn), ok = $(".pn__ok", pn);
+// Torque Auto Center scenes: the rev needle sweeps, the odometer counts to the 10k service and the warning lights go off.
+// Then the service order prints out and every item gets checked.
+window.cena = (kit) => {
+  const { gsap, ScrollTrigger, reduz } = kit, q = kit.$, qa = kit.$$;
+  const pn = q(".painel"), agulha = q(".pn__agulha", pn), km = q(".pn__km span", pn), luzes = qa(".luz", pn), ok = q(".pn__ok", pn);
   const kmTxt = (v) => String(Math.round(v)).padStart(6, "0");
-  if (reduz) { gsap.set(agulha, { rotation: -60, svgOrigin: "200 200" }); km.textContent = kmTxt(10000); gsap.set(ok, { opacity: 1 }); }
+  if (reduz) { gsap.set(agulha, { rotation: -60, svgOrigin: "200 200" }); km.textContent = kmTxt(10000); }
   else {
     luzes.forEach((l) => l.classList.add("on"));
+    gsap.set(ok, { autoAlpha: 0 });
     gsap.set(agulha, { rotation: -120, svgOrigin: "200 200" });
-    gsap.to(agulha, { rotation: -80, svgOrigin: "200 200", duration: 0.6, ease: "power2.out", delay: 0.3, yoyo: true, repeat: 1 }); // engine start on open
+    gsap.to(agulha, { rotation: -70, svgOrigin: "200 200", duration: 0.7, ease: "power2.out", delay: 0.3 }); // engine start on arrival
     const o = { k: 0 };
     const tl = gsap.timeline({ defaults: { ease: "none" } })
-      .to(agulha, { rotation: 75, svgOrigin: "200 200", duration: 0.8, ease: "power2.in" }, 0)
-      .to(agulha, { rotation: -60, svgOrigin: "200 200", duration: 0.6, ease: "power2.out" }, 0.8)
-      .to(o, { k: 10000, duration: 1.2, onUpdate: () => (km.textContent = kmTxt(o.k)) }, 0);
-    tl.to(ok, { opacity: 1, duration: 0.2 }, 1.6).to({}, { duration: 0.3 });
-    ScrollTrigger.create({ trigger: pn, start: "top top", end: () => "+=" + innerHeight * 1.8, pin: true, scrub: true, animation: tl,
-      onUpdate: () => luzes.forEach((l, i) => l.classList.toggle("on", tl.time() < 0.6 + i * 0.25)) });
-  }
-
-  const os = $(".ordem"), papel = $(".os__papel", os), checks = $$(".os__check", os), pe = $(".os__pe", os);
-  if (reduz) { papel.style.clipPath = "none"; checks.forEach((c) => c.classList.add("on")); gsap.set(pe, { opacity: 1 }); }
-  else {
-    const o = { p: 100 };
-    const to = gsap.timeline({ defaults: { ease: "none" } })
-      .to(o, { p: 0, duration: 0.8, onUpdate: () => (papel.style.clipPath = `inset(0 0 ${o.p}% 0)`) }, 0)
-      .to(pe, { opacity: 1, duration: 0.2 }, 0.8 + checks.length * 0.18)
+      .fromTo(agulha, { rotation: -70 }, { rotation: 75, svgOrigin: "200 200", duration: 0.7, ease: "power2.in", immediateRender: false }, 0)
+      .to(agulha, { rotation: -60, svgOrigin: "200 200", duration: 0.5, ease: "power2.out" }, 0.7)
+      .to(o, { k: 10000, duration: 1.1, onUpdate: () => (km.textContent = kmTxt(o.k)) }, 0)
+      .to(ok, { autoAlpha: 1, duration: 0.05 }, 1.25)
       .to({}, { duration: 0.3 });
-    ScrollTrigger.create({ trigger: os, start: "top top", end: () => "+=" + innerHeight * 1.8, pin: true, scrub: true, animation: to,
-      onUpdate: () => checks.forEach((c, i) => c.classList.toggle("on", to.time() > 0.85 + i * 0.18)) });
+    const apagar = () => luzes.forEach((l, i) => l.classList.toggle("on", 0.4 + i * 0.22 - tl.time() > 0));
+    ScrollTrigger.create({ trigger: pn, start: "top top", end: () => "+=" + innerHeight * 1.4, pin: true, scrub: true, animation: tl, onUpdate: apagar });
   }
 
-  if (!reduz) $$(".galpao img").forEach((im, i) => gsap.fromTo(im, { yPercent: -16 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".galpao", start: "top bottom", end: "bottom top", scrub: true } }));
+  const folha = q(".ordem"), papel = q(".os__papel", folha), checks = qa(".os__check", folha), pe = q(".os__pe", folha);
+  if (reduz) checks.forEach((c) => c.classList.add("on"));
+  else {
+    // the first lines are already printed on arrival: scrolling prints the rest line by line, then checks each one
+    const linhas = qa(".os__item", folha).slice(3);
+    gsap.set(pe, { autoAlpha: 0 });
+    gsap.set(linhas, { autoAlpha: 0 });
+    const to = gsap.timeline({ defaults: { ease: "none" } });
+    linhas.forEach((l, i) => to.to(l, { autoAlpha: 1, duration: 0.04 }, 0.05 + i * 0.1));
+    to.to(pe, { autoAlpha: 1, duration: 0.05 }, 0.42 + checks.length * 0.1)
+      .to({}, { duration: 0.6 });
+    const marcar = () => checks.forEach((c, i) => c.classList.toggle("on", to.time() - 0.4 - i * 0.1 > 0));
+    ScrollTrigger.create({ trigger: folha, start: "top top", end: () => "+=" + innerHeight * 1.4, pin: true, scrub: true, animation: to, onUpdate: marcar });
+  }
 };

@@ -1,14 +1,16 @@
 // Navalha Club scenes: zoom through the letters of the name into the photo; services swap the chair photo; the clock follows the booking.
 window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
-  const sec = $(".letra"), svg = $(".lt__mascara", sec), txt = $("text", svg);
+  const sec = $(".letra"), svg = $(".lt__mascara", sec), txt = $("text", svg), txts = $$("text", svg);
 
   // fit the word to what the viewport shows of the 1600x900 "slice" viewBox
   const caber = () => {
     const a = innerWidth / innerHeight, vis = a < 16 / 9 ? 900 * a : 1600;
-    txt.setAttribute("font-size", 330);
+    txt.style.fontSize = "330px";
     const L = txt.getComputedTextLength() || 1300;
-    txt.setAttribute("font-size", Math.min(330, (330 * vis * 0.88) / L));
+    txts.forEach((t) => (t.style.fontSize = Math.min(330, (330 * vis * 0.88) / L) + "px"));
   };
+  const fone = innerWidth < 760;   // phone: the word sits higher and the headline is on the first screen
+  if (fone) txts.forEach((t) => t.setAttribute("y", 340));
   caber(); document.fonts && document.fonts.ready.then(caber); addEventListener("resize", caber);
 
   if (reduz) {
@@ -16,11 +18,11 @@ window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
   } else {
     const tl = gsap.timeline({ defaults: { ease: "none" } });
     tl.to($(".lt__dica", sec), { opacity: 0, duration: 0.2 }, 0)
-      .to($(".lt__g", sec), { scale: 16, svgOrigin: "800 470", duration: 1.2, ease: "power2.in" }, 0)
-      .to($(".lt__preto", sec), { opacity: 0, duration: 0.45 }, 0.75)
+      .to($$(".lt__g", sec), { scale: 16, svgOrigin: fone ? "800 250" : "800 470", duration: 1.2, ease: "power2.in" }, 0)
+      .to([$(".lt__preto", sec), $(".lt__contorno", sec)], { opacity: 0, duration: 0.45 }, 0.75)
       .to($(".lt__foto", sec), { scale: 1, duration: 1.4 }, 0)
-      .to(sec, { "--veu": 1, duration: 0.4 }, 1.2)
-      .fromTo($(".lt__texto", sec), { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.45 }, 1.3)
+      .to(sec, { "--veu": 1, duration: 0.4 }, fone ? 0.5 : 1.2)
+      .fromTo($(".lt__texto", sec), { autoAlpha: fone ? 1 : 0, y: fone ? 0 : 40 }, { autoAlpha: 1, y: 0, duration: 0.15 }, 1.5)
       .to({}, { duration: 0.4 });
     ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * 2.4, pin: true, scrub: true, animation: tl });
   }
