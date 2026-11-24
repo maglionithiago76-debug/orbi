@@ -6,7 +6,7 @@
 /* 1 · the wheel */
 .roda{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--base);color:var(--on-base)}
 .rd__texto{position:absolute;left:var(--m);top:50%;translate:0 -50%;z-index:2;width:min(44vw,720px)}
-.rd__abre h1{font-size:clamp(50px,6.6vw,124px);line-height:.94;margin-bottom:clamp(16px,2vw,26px)}
+.rd__abre h1{font-size:clamp(44px,5.3vw,100px);line-height:.94;margin-bottom:clamp(16px,2vw,26px)}
 .rd__falas{list-style:none;display:none}
 .roda.girando .rd__abre{display:none}
 .roda.girando .rd__falas{display:block}
@@ -54,7 +54,7 @@
 .ms__f{margin:0;border-radius:var(--raio);overflow:hidden}
 .ms__f img{width:100%;height:100%;object-fit:cover}
 .ms__f--a{aspect-ratio:4/5}
-.ms__f--b{position:absolute;right:0;bottom:0;width:46%;aspect-ratio:3/4;box-shadow:0 0 0 10px var(--base)}
+.ms__f--b{position:absolute;right:0;bottom:0;width:46%;aspect-ratio:3/4;border:10px solid var(--base)}
 .ms__texto h2{font-size:clamp(44px,5.6vw,104px);line-height:.96;margin-bottom:clamp(20px,3vh,36px)}
 .ms__fatos{list-style:none;display:grid;gap:10px}
 .ms__fatos li{padding:18px 22px;border-radius:18px;background:rgba(251,245,234,.1)}
@@ -63,7 +63,7 @@
 
 /* footer */
 .rodape{background:var(--base);color:var(--on-base);padding-top:0}
-.toldo{height:44px;margin:0 calc(var(--m) * -1) clamp(48px,8vh,80px);background:repeating-linear-gradient(90deg,var(--acc) 0 30px,var(--neu) 30px 60px)}
+.toldo{height:22px;margin:0 calc(var(--m) * -1) clamp(48px,8vh,80px);background:var(--acc)}
 .rd__nome{line-height:.86;margin-top:28px;font-style:italic;color:var(--neu)}
 
 @media (max-width:760px){

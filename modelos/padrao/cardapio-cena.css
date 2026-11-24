@@ -18,7 +18,7 @@
 .item__preco{grid-column:1;font-weight:700;font-size:var(--t-l);line-height:1.2}
 .item__acao{grid-column:2;grid-row:1/4}
 .rodape{background:var(--base);color:var(--on-base)}
-.rd__nome{line-height:.9;margin-top:28px;color:var(--acc)}
+.rd__nome{line-height:.9;margin-top:28px}
 @media (max-width:760px){
   .cd-lista{grid-template-columns:1fr}
   .cd-abre h1{font-size:22vw}

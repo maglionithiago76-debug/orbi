@@ -5,9 +5,9 @@
 h1,h2,h3{letter-spacing:-.03em}
 
 /* 1 · opening */
-.abre{position:relative;min-height:100svh;background:var(--base);color:var(--on-base);display:grid;grid-template-columns:minmax(0,1fr) 54vw;align-items:center}
+.abre{position:relative;min-height:100svh;background:var(--base);color:var(--on-base);display:grid;grid-template-columns:minmax(0,1fr) 44vw;align-items:center}
 .ab__texto{position:relative;z-index:2;padding:96px 28px 40px var(--m)}
-.ab__texto h1{font-size:clamp(46px,6.2vw,118px);line-height:.92;margin-bottom:clamp(16px,2vw,26px)}
+.ab__texto h1{font-size:clamp(40px,4.7vw,90px);line-height:.92;margin-bottom:clamp(16px,2vw,26px)}
 .ab__foto{position:relative;align-self:stretch;margin:0;overflow:hidden;border-radius:clamp(80px,14vw,220px) 0 0 clamp(80px,14vw,220px);background:#111}
 .ab__foto img{width:100%;height:100%;object-fit:cover}
 
@@ -35,12 +35,12 @@ h1,h2,h3{letter-spacing:-.03em}
 /* 3 · the grill: sideways menu */
 .chapa{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#000;color:#fff}
 .ch__trilho{display:flex;align-items:center;gap:clamp(24px,3vw,56px);height:100%;width:max-content;padding:84px var(--m) 48px;will-change:transform}
-.ch__intro{flex:none;width:min(34vw,520px)}
-.ch__intro h2{font-size:clamp(44px,5.4vw,100px);line-height:.92;margin-bottom:18px}
+.ch__intro{flex:none;width:min(46vw,680px)}
+.ch__intro h2{font-size:clamp(40px,4.4vw,80px);line-height:.92;margin-bottom:18px}
 .card{flex:none;width:min(36vw,540px);display:grid;gap:8px;align-content:start}
 .card figure{margin:0;border-radius:var(--raio);overflow:hidden;aspect-ratio:4/3;background:#222}
 .card img{width:100%;height:100%;object-fit:cover;object-position:50% 72%}
-.card__tag{justify-self:start;margin-top:8px;padding:6px 12px;border-radius:999px;background:var(--base);color:var(--on-base);font-weight:700;font-size:14px}
+.card__tag{justify-self:start;margin-top:4px;padding:6px 12px;border-radius:999px;background:var(--base);color:var(--on-base);font-weight:700;font-size:14px}
 .card h3{font-size:clamp(40px,4.6vw,84px);line-height:.92}
 .card__desc{max-width:34ch}
 .card__pe{display:flex;align-items:center;gap:16px;margin-top:6px}
