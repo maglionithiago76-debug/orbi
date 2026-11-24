@@ -6,7 +6,7 @@
 /* 1 · pulse */
 .pulso{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--base);color:var(--on-base);display:grid;grid-template-columns:minmax(0,1fr) min(38vw,600px);gap:clamp(20px,4vw,64px);padding:0 var(--m)}
 .pu__texto{position:relative;z-index:3;align-self:start;padding-top:clamp(120px,17vh,170px)}
-.pu__texto h1{font-size:clamp(40px,4.6vw,88px);line-height:1.03;letter-spacing:-.01em;margin-bottom:clamp(16px,2vw,26px)}
+.pu__texto h1{font-size:clamp(38px,4.1vw,80px);line-height:1.03;letter-spacing:-.01em;margin-bottom:clamp(16px,2vw,26px)}
 .pu__texto .fatos{display:none}
 .pu__foto{position:relative;z-index:2;align-self:end;margin:0;height:min(80svh,840px);border-radius:44% 44% 0 0 / 30% 30% 0 0;overflow:hidden}
 .pu__foto img{width:100%;height:100%;object-fit:cover;object-position:28% 50%}
