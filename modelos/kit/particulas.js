@@ -70,8 +70,8 @@ gl_FragColor=vec4(mix(c1,c2,smoothstep(.55,.95,q)),v*smoothstep(.5,.2,d));}`;
   const rgb = (el, prop) => { const s = document.createElement("i"); s.style.color = `var(${prop})`; s.hidden = true; el.append(s); const c = getComputedStyle(s).color.match(/[\d.]+/g).slice(0, 3).map((v) => v / 255); s.remove(); return c; };
   function cena(el) {
     const cv = el.querySelector("canvas"), gl = cv.getContext("webgl", { alpha: true, antialias: false, premultipliedAlpha: false, powerPreference: "low-power" });
-    if (!gl) { el.classList.add("luz--sem"); return; }
-    const nomes = el.dataset.formas.split(","), auto = "auto" in el.dataset, falas = [...el.querySelectorAll(".luz__fala")];
+    if (!gl) { el.classList.add("ptcl--sem"); return; }
+    const nomes = el.dataset.formas.split(","), auto = "auto" in el.dataset, falas = [...el.querySelectorAll(".ptcl__fala")];
     const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
     const pr = gl.createProgram();
     for (const [tp, src] of [[gl.VERTEX_SHADER, VS], [gl.FRAGMENT_SHADER, FS]]) { const s = gl.createShader(tp); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s)); gl.attachShader(pr, s); }
@@ -109,8 +109,8 @@ gl_FragColor=vec4(mix(c1,c2,smoothstep(.55,.95,q)),v*smoothstep(.5,.2,d));}`;
     new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis && !raf) raf = requestAnimationFrame(laco); }).observe(el);
     new ResizeObserver(tam).observe(cv); tam(); quadro(ini);
     addEventListener("pointermove", (e) => { mx = e.clientX / innerWidth * 2 - 1; my = e.clientY / innerHeight * 2 - 1; }, { passive: true });
-    cv.addEventListener("webglcontextlost", () => { vis = false; el.classList.add("luz--sem"); });
-    el.classList.add("luz--ok");
+    cv.addEventListener("webglcontextlost", () => { vis = false; el.classList.add("ptcl--sem"); });
+    el.classList.add("ptcl--ok");
   }
   document.querySelectorAll("[data-formas]").forEach((el) => {
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); cena(el); } }, { rootMargin: "600px 0px" }); io.observe(el);

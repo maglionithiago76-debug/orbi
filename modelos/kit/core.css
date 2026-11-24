@@ -86,27 +86,27 @@ dialog h2{font-size:32px;line-height:1.05}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important}}
 
 /* particle scene (kit/particulas.js): the business's objects made of light, morphing on scroll */
-.luz{position:relative;height:320svh;background:var(--ptf);color:var(--ptt)}
-.luz__palco{position:sticky;top:0;height:100svh;overflow:hidden}
-.luz canvas{position:absolute;inset:0;width:100%;height:100%}
-.luz__palco canvas{left:30%;width:70%}
-.luz--esq .luz__palco canvas{left:0}
-.luz--meio .luz__palco canvas{left:0;width:100%;height:78%}
-.luz__fala{position:absolute;left:var(--m);top:50%;width:min(460px,38vw);translate:0 -50%;opacity:0;transform:translateY(36px);transition:opacity .5s,transform .7s var(--ease);visibility:hidden}
-.luz__fala.on{opacity:1;transform:none;visibility:visible}
-.luz--esq .luz__fala{left:auto;right:var(--m)}
-.luz--meio .luz__fala{left:50%;top:auto;bottom:7vh;width:min(760px,88vw);translate:-50% 0;text-align:center}
-.luz__fala h2{font-size:clamp(44px,5.6vw,96px);line-height:.95;margin-bottom:14px}
-.luz__fala p{font-size:19px;max-width:34ch}
-.luz--meio .luz__fala p{margin-inline:auto}
-.luz--meio .luz__fala h2{font-size:clamp(40px,4.6vw,78px)}
-.luz--sem{height:auto}.luz--sem .luz__palco{position:static;height:auto;padding:90px var(--m)}.luz--sem canvas{display:none}
-.luz--sem .luz__fala{position:static;opacity:1;visibility:visible;transform:none;translate:none;margin-bottom:40px}
+.ptcl{position:relative;height:320svh;background:var(--ptf);color:var(--ptt)}
+.ptcl__palco{position:sticky;top:0;height:100svh;overflow:hidden}
+.ptcl canvas{position:absolute;inset:0;width:100%;height:100%}
+.ptcl__palco canvas{left:30%;width:70%}
+.ptcl--esq .ptcl__palco canvas{left:0}
+.ptcl--meio .ptcl__palco canvas{left:0;width:100%;height:78%}
+.ptcl__fala{position:absolute;left:var(--m);top:50%;width:min(460px,38vw);translate:0 -50%;opacity:0;transform:translateY(36px);transition:opacity .5s,transform .7s var(--ease);visibility:hidden}
+.ptcl__fala.on{opacity:1;transform:none;visibility:visible}
+.ptcl--esq .ptcl__fala{left:auto;right:var(--m)}
+.ptcl--meio .ptcl__fala{left:50%;top:auto;bottom:7vh;width:min(760px,88vw);translate:-50% 0;text-align:center}
+.ptcl__fala h2{font-size:clamp(44px,5.6vw,96px);line-height:.95;margin-bottom:14px}
+.ptcl__fala p{font-size:19px;max-width:34ch}
+.ptcl--meio .ptcl__fala p{margin-inline:auto}
+.ptcl--meio .ptcl__fala h2{font-size:clamp(40px,4.6vw,78px)}
+.ptcl--sem{height:auto}.ptcl--sem .ptcl__palco{position:static;height:auto;padding:90px var(--m)}.ptcl--sem canvas{display:none}
+.ptcl--sem .ptcl__fala{position:static;opacity:1;visibility:visible;transform:none;translate:none;margin-bottom:40px}
 @media (max-width:760px){
-  .luz__palco canvas,.luz--esq .luz__palco canvas,.luz--meio .luz__palco canvas{left:0;width:100%;height:66%;top:4%}
-  .luz__fala,.luz--esq .luz__fala,.luz--meio .luz__fala{left:var(--m);right:var(--m);width:auto;top:auto;bottom:9svh;translate:none;text-align:left}
-  .luz--meio .luz__fala p{margin-inline:0}
-  .luz__fala h2,.luz--meio .luz__fala h2{font-size:clamp(38px,11vw,60px)}
-  .luz__fala p{font-size:17px}
+  .ptcl__palco canvas,.ptcl--esq .ptcl__palco canvas,.ptcl--meio .ptcl__palco canvas{left:0;width:100%;height:66%;top:4%}
+  .ptcl__fala,.ptcl--esq .ptcl__fala,.ptcl--meio .ptcl__fala{left:var(--m);right:var(--m);width:auto;top:auto;bottom:9svh;translate:none;text-align:left}
+  .ptcl--meio .ptcl__fala p{margin-inline:0}
+  .ptcl__fala h2,.ptcl--meio .ptcl__fala h2{font-size:clamp(38px,11vw,60px)}
+  .ptcl__fala p{font-size:17px}
 }
-@media (prefers-reduced-motion:reduce){.luz__fala{transition:none;transform:none}}
+@media (prefers-reduced-motion:reduce){.ptcl__fala{transition:none;transform:none}}
