@@ -188,8 +188,9 @@ p{text-wrap:pretty}
 /* entrances: the first screen on load, then the parts of each section once, as they come into view */
 .js .rv{opacity:0;transform:translateY(34px)}
 .js .rv.in{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .8s var(--ease)}
-.js .hero h1,.js .hero__txt,.js .fone{opacity:0;transform:translateY(28px)}
-.js .pronto .hero h1,.js .pronto .hero__txt,.js .pronto .fone{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .9s var(--ease)}
+/* the headline is the first thing painted, so it never waits for an entrance */
+.js .hero__txt,.js .fone{opacity:0;transform:translateY(28px)}
+.js .pronto .hero__txt,.js .pronto .fone{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .9s var(--ease)}
 .js .pronto .hero__txt{transition-delay:.1s}
 .js .pronto .fone:nth-child(1){transition-delay:.18s}.js .pronto .fone:nth-child(2){transition-delay:.26s}.js .pronto .fone:nth-child(3){transition-delay:.34s}.js .pronto .fone:nth-child(4){transition-delay:.42s}
 
@@ -233,5 +234,5 @@ p{text-wrap:pretty}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{animation:none!important;transition:none!important}
-  .js .hero h1,.js .hero__txt,.js .fone,.js .rv{opacity:1;transform:none}
+  .js .hero__txt,.js .fone,.js .rv{opacity:1;transform:none}
 }
