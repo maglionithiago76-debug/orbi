@@ -11,17 +11,16 @@ window.cena = (kit) => {
     txts.forEach((t) => (t.style.fontSize = Math.min(330, (330 * vis * 0.88) / L) + "px"));
   };
   const fone = innerWidth < 760;   // phone: the word sits higher, above the headline
-  if (fone) txts.forEach((t) => t.setAttribute("y", 330));
+  if (fone) txts.forEach((t) => t.setAttribute("y", 260));
   caber(); document.fonts && document.fonts.ready.then(caber); addEventListener("resize", caber);
 
-  if (reduz) gsap.set([q(".lt__preto", sec), q(".lt__contorno", sec)], { opacity: 0 });
-  else {
+  if (!reduz) {
     const tl = gsap.timeline({ defaults: { ease: "none" } });
-    tl.to(qa(".lt__g", sec), { scale: 16, svgOrigin: fone ? "800 240" : "800 300", duration: 1.2, ease: "power2.in" }, 0)
-      .to([q(".lt__preto", sec), q(".lt__contorno", sec)], { opacity: 0, duration: 0.45 }, 0.75)
-      .to(q(".lt__foto", sec), { scale: 1, duration: 1.4 }, 0)
-      .to({}, { duration: 0.3 });
-    ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * 1.8, pin: true, scrub: true, animation: tl });
+    tl.to(q(".lt__g", sec), { scale: 9, svgOrigin: fone ? "800 180" : "800 230", duration: 1, ease: "power2.in" }, 0)
+      .to(q(".lt__g", sec), { opacity: 0, duration: 0.5 }, 0.3)
+      .to(q(".lt__foto", sec), { scale: 1, duration: 1.2 }, 0)
+      .to({}, { duration: 0.2 });
+    ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * 1.4, pin: true, scrub: true, animation: tl });
   }
 
   // chair: each service swaps the sticky photo

@@ -11,7 +11,7 @@ h1,h2,h3{letter-spacing:-.03em}
 .ab__foto{position:relative;align-self:stretch;margin:0;overflow:hidden;border-radius:clamp(80px,14vw,220px) 0 0 clamp(80px,14vw,220px);background:#111}
 .ab__foto img{width:100%;height:100%;object-fit:cover}
 
-/* 2 · the build: one real photo, uncovered layer by layer from the plate up */
+/* 2 · the build: the real burger, with a marker that climbs it and names each layer */
 .montagem{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#000;color:#fff;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(20px,4vw,64px);padding:92px var(--m) 28px}
 .montagem h2{font-size:clamp(26px,2.6vw,44px);line-height:1;margin-bottom:clamp(18px,3vh,36px);color:var(--base)}
 .mt__nomes{list-style:none;position:relative;min-height:clamp(170px,26vh,300px)}
@@ -27,8 +27,10 @@ h1,h2,h3{letter-spacing:-.03em}
 .mt__pips i{width:38px;height:10px;border-radius:10px;background:rgba(255,255,255,.2)}
 .mt__pips i.on{background:var(--acc)}
 /* the figure shows the part of the photo that holds the burger: x 20-80%, y 15-100% */
-.mt__pilha{--t:64%;position:relative;justify-self:center;width:min(100%,82svh);aspect-ratio:1080/1020;margin:0;overflow:hidden}
-.mt__pilha img{position:absolute;left:-33.33%;top:-17.65%;width:166.67%;height:117.65%;max-width:none;object-fit:fill;clip-path:inset(var(--t) 0 0 0)}
+.mt__pilha{--y:67%;position:relative;justify-self:center;width:min(100%,82svh);aspect-ratio:1080/1020;margin:0;-webkit-mask-image:radial-gradient(ellipse 60% 58% at 50% 56%,#000 68%,transparent 100%);mask-image:radial-gradient(ellipse 60% 58% at 50% 56%,#000 68%,transparent 100%)}
+.mt__pilha img{position:absolute;left:-33.33%;top:-17.65%;width:166.67%;height:117.65%;max-width:none;object-fit:fill}
+.mt__marca{position:absolute;left:0;top:calc((var(--y) - 15%) / .85);width:17%;height:8px;margin-top:-4px;border-radius:8px;background:var(--acc);transition:top .45s var(--ease)}
+.mt__marca::after{content:"";position:absolute;right:-9px;top:-5px;width:18px;height:18px;border-radius:50%;background:var(--acc)}
 
 /* 3 · the grill: sideways menu */
 .chapa{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#111;color:#fff}

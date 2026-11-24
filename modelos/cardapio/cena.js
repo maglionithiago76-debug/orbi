@@ -10,7 +10,7 @@ window.cena = (kit) => {
   };
   ir(0);
   if (!reduz) {
-    gsap.fromTo(pizza, { rotation: 0, scale: 1.22 }, { rotation: -300, scale: 1.22, ease: "none",
+    gsap.fromTo(pizza, { rotation: 0, scale: 1.3 }, { rotation: -300, scale: 1.3, ease: "none",
       scrollTrigger: { trigger: sec, start: "top top", end: () => "+=" + innerHeight * 3, pin: true, scrub: true, onUpdate: (s) => ir(s.progress) } });
   }
 

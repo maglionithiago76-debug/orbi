@@ -9,7 +9,7 @@ h1,h2,h3{letter-spacing:-.04em}
 .ab__texto{position:relative;z-index:2;padding:96px 0 40px}
 .ab__texto h1{font-size:clamp(52px,7.4vw,140px);line-height:.88;margin-bottom:clamp(16px,2vw,28px)}
 .ab__foto{justify-self:center;width:min(100%,82svh);aspect-ratio:1;margin:60px 0 0;border-radius:50%;overflow:hidden;background:var(--acc)}
-.ab__foto img{width:100%;height:100%;object-fit:cover;object-position:34% 40%}
+.ab__foto img{width:100%;height:100%;object-fit:cover;object-position:60% 42%}
 
 /* 2 · the visit, wiped by foam */
 .espuma{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--neu);color:var(--on-neu);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,64px);align-items:center;padding:92px var(--m) 28px}
@@ -27,14 +27,15 @@ h1,h2,h3{letter-spacing:-.04em}
 .es__linha{position:absolute;top:0;bottom:0;left:var(--px);z-index:2;width:6px;margin-left:-3px;background:#fff}
 .es__bolhas{position:absolute;left:50%;top:0;bottom:0;width:150px;translate:-50% 0}
 .es__bolhas i,.rd__bolhas i{position:absolute;bottom:-44px;border-radius:50%;animation:bolha linear infinite}
-.es__bolhas i{background:#fff}
+.es__bolhas i{background:radial-gradient(circle at 32% 30%,#fff 0 13%,rgba(255,255,255,.4) 14% 100%);border:2px solid #fff}
+.es__palco .cred{z-index:3}
 @keyframes bolha{to{transform:translate(var(--dx,0),-110vh)}}
 
 /* 3 · sizes */
 .portes-sec{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--base);color:#fff;display:grid;grid-template-rows:auto minmax(0,1fr);gap:12px;padding:92px var(--m) 32px}
 .portes-sec h2{font-size:clamp(40px,5.4vw,100px);line-height:.92;max-width:14ch}
 .pt__palco{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:30px;min-height:0}
-.pt__bola{position:relative;justify-self:center;width:min(58svh,40vw);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--acc);transform:scale(.62);will-change:transform}
+.pt__bola{position:relative;justify-self:center;width:min(64svh,44vw);aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--acc);transform:scale(.74);will-change:transform}
 .pt__bola img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;visibility:hidden}
 .pt__bola img.on{visibility:visible}
 .pt__falas{list-style:none;position:relative;min-height:15em}
@@ -51,9 +52,13 @@ h1,h2,h3{letter-spacing:-.04em}
 .ro__mapa{width:100%;height:100%;overflow:visible}
 .ro__rua{fill:none;stroke:#E4E9F1;stroke-width:34;stroke-linecap:round}
 .ro__linha{fill:none;stroke:var(--base);stroke-width:9;stroke-linecap:round}
+.ro__quadras rect{fill:#EEF2F8}
 .ro__casa circle,.ro__loja circle{fill:var(--acc)}
+.ro__casa path,.ro__loja path{fill:#fff}
 .ro__mapa text{font:700 26px var(--sans);fill:var(--on-neu)}
-.ro__van{fill:var(--base);stroke:#fff;stroke-width:6}
+.ro__van rect{fill:var(--base);stroke:#fff;stroke-width:5}
+.ro__van .ro__vidro{fill:#fff;stroke:none}
+.ro__van .ro__pneu{fill:var(--on-neu);stroke:#fff;stroke-width:4}
 .ro__passos{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .ro__passos li{padding:16px 20px;border-radius:20px;background:color-mix(in srgb,var(--base) 9%,transparent);transition:background-color .3s,color .3s}
 .ro__passos li.on{background:var(--base);color:#fff}
@@ -92,20 +97,22 @@ h1,h2,h3{letter-spacing:-.04em}
   .abre{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:0;align-items:start;padding-bottom:22px}
   .ab__texto{padding:84px 0 22px}
   .ab__texto h1{font-size:15vw}
-  .ab__foto{width:min(86vw,46svh);margin:0}
+  .ab__foto{align-self:center;width:min(90vw,50svh);margin:0}
   .abre .cred{display:none}
   .espuma{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:14px;padding-top:84px}
   .espuma h2{font-size:10.6vw;margin-bottom:12px}
   .es__passo{padding:9px 16px}
   .es__passo h3{font-size:25px}
-  .es__palco{height:100%;min-height:36svh}
+  .espuma{align-content:center}
+  .es__palco{height:auto;aspect-ratio:1;align-self:start}
   .portes-sec{padding-top:84px}
   .portes-sec h2{font-size:10.6vw}
   .pt__palco{grid-template-columns:1fr;gap:6px;align-content:center}
-  .pt__bola{width:min(62vw,34svh)}
+  .pt__bola{width:min(80vw,40svh)}
   .pt__falas{min-height:11.5em;text-align:center}
   .pt__letra{font-size:26vw}
-  .rota{padding-top:84px}
+  .rota{height:auto;min-height:0;padding:64px var(--m) 56px;gap:18px}
+  .ro__mapa{height:auto}
   .rota h2{font-size:10.6vw}
   .ro__mapa text{font-size:38px}
   .ro__passos{grid-template-columns:1fr;gap:6px}

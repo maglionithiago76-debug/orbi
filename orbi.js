@@ -5,6 +5,13 @@
   const get = (id) => d.getElementById(id);
   requestAnimationFrame(() => d.body.classList.add("pronto"));
 
+  /* ---------- entrances: each marked part rises in once ---------- */
+  const rv = [...d.querySelectorAll(".rv")];
+  if ("IntersectionObserver" in window && !reduz) {
+    const ver = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); ver.unobserve(e.target); } }), { rootMargin: "0px 0px -10% 0px" });
+    rv.forEach((el) => ver.observe(el));
+  } else rv.forEach((el) => el.classList.add("in"));
+
   /* ---------- model clips: load and play only while on screen, stay as a still for reduced motion ---------- */
   const clips = [...d.querySelectorAll("video[data-src]")];
   if (!reduz && "IntersectionObserver" in window) {

@@ -11,7 +11,8 @@ window.cena = (kit) => {
   // 1 · the visit: two wipes, three photos, the step list follows
   const es = q(".espuma"), palco = q(".es__palco", es), linha = q(".es__linha", es), passos = qa(".es__passo", es);
   const visita = (p) => {
-    const w1 = lim(p / 0.42), w2 = lim((p - 0.5) / 0.42), x = w1 - 1 < 0 ? 1 - w1 : 1 - w2;
+    const w1 = lim((p - 0.14) / 0.18), w2 = lim((p - 0.58) / 0.18),   // quick wipes, long looks at each whole photo
+    x = w1 - 1 < 0 ? 1 - w1 : 1 - w2;
     palco.style.setProperty("--p1", (1 - w1) * 100 + "%"); palco.style.setProperty("--p2", (1 - w2) * 100 + "%");
     palco.style.setProperty("--px", x * 100 + "%");
     linha.style.visibility = x > 0.005 && x - 0.995 < 0 ? "visible" : "hidden";
@@ -28,7 +29,7 @@ window.cena = (kit) => {
   if (reduz) gsap.set(bola, { scale: 0.9 });
   else {
     const tp = gsap.timeline({ defaults: { ease: "power2.inOut" } })
-      .fromTo(bola, { scale: 0.62 }, { scale: 0.8, duration: 0.6 }, 0.5)
+      .fromTo(bola, { scale: 0.74 }, { scale: 0.84, duration: 0.6 }, 0.5)
       .to(bola, { scale: 1, duration: 0.6 }, 1.6)
       .to({}, { duration: 0.6 });
     ScrollTrigger.create({ trigger: ps, start: "top top", end: () => "+=" + innerHeight * 2, pin: true, scrub: true, animation: tp,
@@ -39,12 +40,17 @@ window.cena = (kit) => {
   const ro = q(".rota"), traco = q(".ro__linha", ro), van = q(".ro__van", ro), etapas = qa(".ro__passos li", ro);
   const L = traco.getTotalLength();
   traco.style.strokeDasharray = L;
+  // a round trip: out to the shop in the first half, back home in the second
   const ir = (p) => {
-    traco.style.strokeDashoffset = L * (1 - p);
-    const pt = traco.getPointAtLength(L * p); van.setAttribute("cx", pt.x); van.setAttribute("cy", pt.y);
-    const k = p - 0.9 > 0 ? 2 : p - 0.45 > 0 ? 1 : 0;
+    const d = p - 0.5 > 0 ? (1 - p) * 2 : p * 2;
+    traco.style.strokeDashoffset = L * (1 - Math.max(d, p - 0.5 > 0 ? 1 : 0));
+    const pt = traco.getPointAtLength(L * d); van.setAttribute("transform", "translate(" + pt.x + " " + (pt.y - 14) + ")");
+    const k = p - 0.58 > 0 ? 2 : p - 0.44 > 0 ? 1 : 0;
     etapas.forEach((li, i) => li.classList.toggle("on", i === k));
   };
-  ir(reduz ? 1 : 0.06);
-  if (!reduz) ScrollTrigger.create({ trigger: ro, start: "top top", end: () => "+=" + innerHeight * 1.5, pin: true, scrub: true, onUpdate: (s) => ir(0.06 + s.progress * 0.94) });
+  ir(reduz ? 0.5 : 0.04);
+  if (!reduz) ScrollTrigger.matchMedia({
+    "(min-width: 761px)": () => { ScrollTrigger.create({ trigger: ro, start: "top top", end: () => "+=" + innerHeight * 1.6, pin: true, scrub: true, onUpdate: (s) => ir(0.04 + s.progress * 0.96) }); },
+    "(max-width: 760px)": () => { ScrollTrigger.create({ trigger: ro, start: "top 70%", end: "bottom 55%", scrub: true, onUpdate: (s) => ir(0.04 + s.progress * 0.96) }); },
+  });
 };
