@@ -1,0 +1,25 @@
+/* Digital menu base (site/gen.py render_cardapio), on the shared kit: big "Cardápio", section bar that follows the scroll,
+   items with price and the add button of the order bag. Colours and faces come from site/themes.py. */
+.nav{color:var(--on-base)}
+.nav__marca{max-width:46vw;font-size:clamp(20px,1.8vw,28px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cd-abre{background:var(--base);color:var(--on-base);padding:clamp(110px,18vh,190px) var(--m) clamp(36px,6vh,72px)}
+.cd-abre h1{font-size:clamp(72px,15vw,260px);line-height:.86;letter-spacing:-.03em;margin-bottom:clamp(14px,2vw,24px)}
+.cd-abre .sub{max-width:40ch}
+.cd-nav{position:sticky;top:62px;z-index:40;display:flex;gap:8px;overflow-x:auto;padding:12px var(--m);background:var(--neu);scrollbar-width:none}
+.cd-nav a{flex:none;display:inline-flex;align-items:center;min-height:46px;padding:0 18px;border-radius:999px;background:color-mix(in srgb,currentColor 10%,transparent);font-weight:600;font-size:16px;transition:background-color .2s,color .2s}
+.cd-nav a.on{background:var(--on-neu);color:var(--neu)}
+.cd-sec{padding:clamp(40px,7vh,88px) var(--m) 0;scroll-margin-top:130px}
+.cd-sec:last-of-type{padding-bottom:var(--sec)}
+.cd-sec h2{font-size:clamp(44px,6.4vw,112px);line-height:.94;margin-bottom:clamp(16px,2.4vh,28px)}
+.cd-lista{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 18px;padding:clamp(16px,1.8vw,26px);border-radius:var(--raio);background:color-mix(in srgb,currentColor 6%,transparent)}
+.item__nome{grid-column:1;font-size:clamp(22px,2vw,32px);line-height:1.1}
+.item__desc{grid-column:1}
+.item__preco{grid-column:1;font-weight:700;font-size:var(--t-l);line-height:1.2}
+.item__acao{grid-column:2;grid-row:1/4}
+.rodape{background:var(--base);color:var(--on-base)}
+.rd__nome{line-height:.9;margin-top:28px;color:var(--acc)}
+@media (max-width:760px){
+  .cd-lista{grid-template-columns:1fr}
+  .cd-abre h1{font-size:22vw}
+}

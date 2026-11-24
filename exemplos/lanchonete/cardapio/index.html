@@ -1,31 +1,56 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cardápio – Lanchonete Exemplo</title>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800;900&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root { --ink:#231A0E; --paper:#FBF1DC; --sign:#D6452B; --signText:#FFF4D6; --accent:#D6452B; }
-* { box-sizing:border-box; margin:0; }
-body { background:var(--paper); color:var(--ink); font:400 1rem/1.5 "Rubik", system-ui, sans-serif; }
-.preview { background:var(--ink); color:var(--paper); text-align:center; padding:.5rem 1rem; font-size:.85rem; }
-header { background:var(--sign); color:var(--signText); padding:2rem 1.25rem 1.5rem; }
-header h1 { font:900 clamp(2rem,8vw,3.5rem)/.95 "Rubik", serif; max-width:40rem; margin:0 auto; }
-header p { max-width:40rem; margin:.5rem auto 0; opacity:.9; }
-nav { position:sticky; top:0; background:var(--paper); display:flex; gap:.5rem; overflow-x:auto; padding:.75rem 1.25rem;
-  border-bottom:1px solid color-mix(in srgb, var(--ink) 15%, transparent); }
-nav a { white-space:nowrap; text-decoration:none; color:var(--ink); border:1.5px solid var(--ink); border-radius:99px; padding:.3rem .9rem; font-weight:600; font-size:.9rem; }
-main { max-width:40rem; margin:0 auto; padding:0 1.25rem 4rem; }
-h2 { font:700 1.6rem/1.1 "Rubik", serif; margin:2rem 0 .75rem; }
-ul { list-style:none; padding:0; }
-li { display:flex; justify-content:space-between; gap:1rem; padding:.9rem 0; border-bottom:1px dashed color-mix(in srgb, var(--ink) 25%, transparent); }
-h3 { font:700 1.05rem/1.3 "Rubik", sans-serif; } li p { font-size:.9rem; opacity:.8; }
-.r { display:flex; flex-direction:column; align-items:flex-end; gap:.35rem; white-space:nowrap; }
-.r a { background:var(--accent); color:#fff; text-decoration:none; font-weight:600; font-size:.85rem; padding:.3rem .8rem; border-radius:6px; }
-:focus-visible { outline:3px solid var(--accent); outline-offset:2px; }
-footer { text-align:center; font-size:.85rem; opacity:.7; padding:2rem 1rem; }
-</style></head><body>
+<html lang="pt-BR" style="--base:#D6452B;--on-base:#060504;--neu:#FBF1DC;--on-neu:#231A0E;--acc:#BC3C25;--on-acc:#FBF1DC;--disp:'Rubik',Georgia,serif;--disp-w:700;--disp-s:normal;--sans:'Rubik',system-ui,sans-serif">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardápio · Lanchonete Exemplo</title>
+<meta name="description" content="Cardápio da Lanchonete Exemplo: escolha, monte o pedido e mande pelo WhatsApp.">
+<meta name="theme-color" content="#D6452B">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23D6452B%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-size%3D%2236%22%20font-family%3D%22Georgia%2Cserif%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23FFF4D6%22%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@800;900&family=Rubik:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800;900&family=Rubik:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@800;900&family=Rubik:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
-<header><h1>Lanchonete Exemplo</h1><p>Cardápio · peça direto pelo WhatsApp (11) 92701-3668</p></header>
-<nav><a href="#s0">Lanches</a><a href="#s1">Porções</a><a href="#s2">Bebidas</a></nav>
-<main><section id="s0"><h2>Lanches</h2><ul><li><div><h3>X-Burger</h3><p>Pão, carne 150 g, queijo e salada</p></div><div class="r"><b>R$ 24</b><a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Quero%20pedir%3A%20X-Burger">Pedir</a></div></li><li><div><h3>X-Bacon</h3><p>Pão, carne, queijo, bacon e salada</p></div><div class="r"><b>R$ 28</b><a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Quero%20pedir%3A%20X-Bacon">Pedir</a></div></li><li><div><h3>X-Tudo</h3><p>O completo da casa</p></div><div class="r"><b>R$ 34</b><a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Quero%20pedir%3A%20X-Tudo">Pedir</a></div></li></ul></section><section id="s1"><h2>Porções</h2><ul><li><div><h3>Batata frita</h3><p>Porção média</p></div><div class="r"><b>R$ 22</b><a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Quero%20pedir%3A%20Batata%20frita">Pedir</a></div></li><li><div><h3>Batata com cheddar e bacon</h3><p>Porção média</p></div><div class="r"><b>R$ 30</b><a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Quero%20pedir%3A%20Batata%20com%20cheddar%20e%20bacon">Pedir</a></div></li></ul></section><section id="s2"><h2>Bebidas</h2><ul><li><div><h3>Refrigerante lata</h3></div><div class="r"><b>R$ 6</b><a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Quero%20pedir%3A%20Refrigerante%20lata">Pedir</a></div></li><li><div><h3>Suco natural</h3><p>Laranja, maracujá ou abacaxi</p></div><div class="r"><b>R$ 9</b><a href="https://wa.me/5511927013668?text=Ol%C3%A1%21%20Quero%20pedir%3A%20Suco%20natural">Pedir</a></div></li></ul></section></main>
-<footer>Cardápio digital feito pela Orbi.</footer>
-</body></html>
+<link rel="stylesheet" href="../../../modelos/kit/core.css">
+<link rel="stylesheet" href="../../../modelos/padrao/cardapio-cena.css">
+</head>
+<body>
+<p class="fita"><span>Exemplo de cardápio feito pela Orbi<span class="fita__d"> · nome, itens e preços fictícios</span></span> <a href="https://wa.me/5511927013668?text=Oi%21%20Vi%20o%20exemplo%20de%20card%C3%A1pio%20e%20quero%20um%20assim%20pra%20minha%20empresa." target="_blank" rel="noopener">Quero um assim</a></p>
+<header class="nav"><a class="nav__marca disp" href="#">Lanchonete Exemplo</a><nav class="nav__links" aria-label="Principal"><a href="#s0">Lanches</a><a href="#s1">Porções</a><a class="btn btn--p" href="#s0">Ver pedido</a></nav></header>
+<main>
+<section class="cd-abre" aria-labelledby="cd-t">
+  <h1 class="disp" id="cd-t">Cardápio</h1>
+  <p class="sub">Lanchonete Exemplo. Escolha, monte o pedido e mande pelo WhatsApp: ele chega escrito, sem taxa de aplicativo.</p>
+</section>
+<nav class="cd-nav" aria-label="Seções do cardápio"><a href="#s0">Lanches</a><a href="#s1">Porções</a><a href="#s2">Bebidas</a></nav>
+<section class="cd-sec" id="s0" aria-labelledby="s0-t"><h2 class="disp" id="s0-t">Lanches</h2><ul class="cd-lista"><li class="item"><span class="item__nome disp">X-Burger</span><span class="item__desc">Pão, carne 150 g, queijo e salada</span><span class="item__preco">R$ 24,00</span><span class="item__acao"><span data-ctl="i0"></span></span></li><li class="item"><span class="item__nome disp">X-Bacon</span><span class="item__desc">Pão, carne, queijo, bacon e salada</span><span class="item__preco">R$ 28,00</span><span class="item__acao"><span data-ctl="i1"></span></span></li><li class="item"><span class="item__nome disp">X-Tudo</span><span class="item__desc">O completo da casa</span><span class="item__preco">R$ 34,00</span><span class="item__acao"><span data-ctl="i2"></span></span></li></ul></section>
+<section class="cd-sec" id="s1" aria-labelledby="s1-t"><h2 class="disp" id="s1-t">Porções</h2><ul class="cd-lista"><li class="item"><span class="item__nome disp">Batata frita</span><span class="item__desc">Porção média</span><span class="item__preco">R$ 22,00</span><span class="item__acao"><span data-ctl="i3"></span></span></li><li class="item"><span class="item__nome disp">Batata com cheddar e bacon</span><span class="item__desc">Porção média</span><span class="item__preco">R$ 30,00</span><span class="item__acao"><span data-ctl="i4"></span></span></li></ul></section>
+<section class="cd-sec" id="s2" aria-labelledby="s2-t"><h2 class="disp" id="s2-t">Bebidas</h2><ul class="cd-lista"><li class="item"><span class="item__nome disp">Refrigerante lata</span><span class="item__preco">R$ 6,00</span><span class="item__acao"><span data-ctl="i5"></span></span></li><li class="item"><span class="item__nome disp">Suco natural</span><span class="item__desc">Laranja, maracujá ou abacaxi</span><span class="item__preco">R$ 9,00</span><span class="item__acao"><span data-ctl="i6"></span></span></li></ul></section>
+</main>
+<footer class="rodape"><p class="rodape__nota">Lanchonete Exemplo é um modelo fictício para demonstração, feito pela <a href="../../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p><p class="rd__nome disp" data-fit aria-hidden="true">Lanchonete Exemplo</p></footer>
+<div class="sacola" role="region" aria-label="Seu pedido"><span data-n>0 itens</span><button class="btn btn--p">Ver pedido</button></div>
+<dialog id="sacola-painel" aria-labelledby="sp-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <h2 class="disp" id="sp-t">Seu pedido</h2><ul class="itens"></ul>
+  <div class="chips" style="margin-top:16px" role="group" aria-label="Como receber"><button class="chip" data-opc="Retirada" aria-pressed="false">Retirada</button><button class="chip" data-opc="Entrega" aria-pressed="false">Entrega</button></div>
+  <label class="campo">Seu nome<input id="f-nome" autocomplete="name"></label>
+  <label class="campo" data-campo><span></span><input id="f-campo"></label>
+  <label class="campo">Observação<textarea id="f-obs" rows="2" placeholder="Ex.: sem cebola"></textarea></label>
+  <p class="aviso" data-taxa></p><p class="total"><span>Total</span><span data-total>R$ 0,00</span></p>
+  <button class="btn" style="width:100%;margin-top:16px" data-enviar>Enviar pedido pelo WhatsApp</button>
+</dialog>
+<dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
+  <h2 class="disp" id="mo-t">Assim funciona no site de verdade</h2><p class="bolha-wa"></p>
+  <p class="aviso">Este é um modelo. No site de verdade, a mensagem vai direto para o WhatsApp do seu negócio.</p>
+  <div class="botoes"><a class="btn" data-orbi target="_blank" rel="noopener">Quero um site assim</a><button class="btn btn--alt" data-fechar>Fechar</button></div>
+</dialog>
+<script type="application/json" id="site">{"nome": "Lanchonete Exemplo", "modo": "pedido", "menu": [{"id": "i0", "nome": "X-Burger", "preco": 24.0}, {"id": "i1", "nome": "X-Bacon", "preco": 28.0}, {"id": "i2", "nome": "X-Tudo", "preco": 34.0}, {"id": "i3", "nome": "Batata frita", "preco": 22.0}, {"id": "i4", "nome": "Batata com cheddar e bacon", "preco": 30.0}, {"id": "i5", "nome": "Refrigerante lata", "preco": 6.0}, {"id": "i6", "nome": "Suco natural", "preco": 9.0}], "opcoes": [{"k": "Retirada", "taxa": 0, "campo": ""}, {"k": "Entrega", "taxa": 0, "campo": "Endereço de entrega"}], "portes": null, "extra": null, "dias": null, "horas": null, "semPreco": false, "desde": false, "horario": null, "wa": "", "orbi": "5511927013668"}</script>
+<script src="../../../vendor/gsap.min.js" defer></script>
+<script src="../../../vendor/ScrollTrigger.min.js" defer></script>
+<script src="../../../vendor/lenis.min.js" defer></script>
+<script src="../../../modelos/padrao/cardapio-cena.js" defer></script>
+
+<script type="module" src="../../../modelos/kit/core.js"></script>
+</body>
+</html>
