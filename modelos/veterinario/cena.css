@@ -68,8 +68,8 @@
 
 @media (max-width:760px){
   .pulso{grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);gap:10px;padding-top:84px}
-  .pu__texto{grid-row:1}
-  .pu__foto{grid-row:3}
+  .pu__texto{grid-row:1;grid-column:1}
+  .pu__foto{grid-row:3;grid-column:1}
   .pu__texto{padding-top:0}
   .pu__texto h1{font-size:11.2vw}
   .pu__foto{height:auto;align-self:stretch}

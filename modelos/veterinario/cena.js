@@ -8,10 +8,10 @@ window.cena = (kit) => {
   if (reduz) { linha.style.strokeDashoffset = 0; bpm.textContent = "92"; }
   else {
     linha.style.strokeDashoffset = L;
-    const o = { b: 0 };
+    const o = { b: 64 };   // o.b = 64 on arrival: the counter is already running
     // first beat on arrival: the line and the counter are already alive on the first screen
     gsap.to(linha, { strokeDashoffset: L * 0.6, duration: 1.6, ease: "power2.out", delay: 0.2 });
-    gsap.to(o, { b: 64, duration: 1.6, ease: "power2.out", delay: 0.2, onUpdate: () => (bpm.textContent = Math.round(o.b)) });
+    bpm.textContent = "64";
     const tl = gsap.timeline({ defaults: { ease: "none" } })
       .fromTo(linha, { strokeDashoffset: L * 0.6 }, { strokeDashoffset: 0, duration: 1, immediateRender: false }, 0)
       .fromTo(o, { b: 64 }, { b: 92, duration: 1, immediateRender: false, onUpdate: () => (bpm.textContent = Math.round(o.b)) }, 0)

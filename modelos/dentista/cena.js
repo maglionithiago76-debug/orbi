@@ -9,7 +9,8 @@ window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
   if (reduz) { abas.forEach((a, i) => gsap.set(a, { rotation: ang(i) })); marcar(N - 1); gsap.set(foto, { filter: "brightness(1.04) saturate(1)", scale: 1 }); }
   else {
     // already half open on arrival, so the first screen shows the idea without scrolling
-    gsap.fromTo(abas, { y: 260, rotation: 0 }, { y: 0, rotation: (i) => ang(i) * 0.85, duration: 1.1, stagger: 0.03, ease: "power3.out", delay: 0.15 });
+    if (innerWidth < 760) gsap.set(abas, { rotation: (i) => ang(i) * 0.85 });   // phones: no entrance, the fan is simply there
+    else gsap.fromTo(abas, { y: 260, rotation: 0 }, { y: 0, rotation: (i) => ang(i) * 0.85, duration: 1.1, stagger: 0.03, ease: "power3.out", delay: 0.15 });
     const o = { k: 0 };
     const tl = gsap.timeline({ defaults: { ease: "none" } });
     abas.forEach((a, i) => tl.fromTo(a, { rotation: () => ang(i) * 0.85 }, { rotation: () => ang(i), duration: 0.8, immediateRender: false }, 0));
