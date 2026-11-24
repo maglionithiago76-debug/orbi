@@ -1,30 +1,28 @@
-// Cantina Rossi scenes: the pizza turns like a wheel and each slice brings a flavour; the oven counts to 90 seconds.
-window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
-  const sec = $(".roda"), falas = $$(".rd-p", sec), pizza = $(".rd__pizza", sec);
-  if (reduz) {
-    gsap.set(falas[0], { autoAlpha: 1 });
-  } else {
-    const tl = gsap.timeline({ defaults: { ease: "none" } });
-    const n = falas.length;
-    tl.to($(".rd__abre", sec), { y: -40, autoAlpha: 0, duration: 0.5 }, 0.1);
-    tl.fromTo(pizza, { rotation: 0, scale: 0.92 }, { rotation: -60 * n, scale: 1.04, duration: n + 0.8 }, 0);
-    falas.forEach((f, i) => {
-      const at = 0.6 + i;
-      tl.fromTo(f, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.1 }, at + 0.05);
-      if (i < n - 1) tl.to(f, { autoAlpha: 0, y: -40, duration: 0.1 }, at + 0.9);
-    });
-    tl.to({}, { duration: 0.4 });
-    ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * (falas.length * 0.75 + 0.8), pin: true, scrub: true, animation: tl });
+// Cantina Rossi scenes: the house Margherita turns like a wheel while its six steps pass one at a time; the oven counts to 90 seconds.
+window.cena = (kit) => {
+  const { gsap, ScrollTrigger, reduz } = kit, q = kit.$, qa = kit.$$;
+  const sec = q(".roda"), pizza = q(".rd__pizza img", sec), falas = qa(".rd-p", sec), n = falas.length;
+  // k = -1 is the opening (headline and button); then one step at a time, switched cleanly
+  const ir = (p) => {
+    const k = p - 0.1 < 0 ? -1 : Math.min(n - 1, Math.floor(((p - 0.1) / 0.9) * n * 1.0001));
+    sec.classList.toggle("girando", k >= 0);
+    falas.forEach((f, i) => f.classList.toggle("on", i === k));
+  };
+  ir(0);
+  if (!reduz) {
+    gsap.fromTo(pizza, { rotation: 0, scale: 1.22 }, { rotation: -300, scale: 1.22, ease: "none",
+      scrollTrigger: { trigger: sec, start: "top top", end: () => "+=" + innerHeight * 3, pin: true, scrub: true, onUpdate: (s) => ir(s.progress) } });
   }
 
-  // oven: photo heats up, counter runs to 90 seconds, embers rise
-  const fn = $(".forno"), num = $(".fn__num span", fn);
-  $$(".fn__brasas i", fn).forEach((b, i) => Object.assign(b.style, { left: ((i * 37) % 100) + "%", animationDuration: 3 + ((i * 7) % 5) + "s", animationDelay: -((i * 13) % 50) / 10 + "s", "--dx": ((i * 29) % 80) - 40 + "px" }));
-  if (reduz) { num.textContent = "90"; gsap.set($(".fn__foto", fn), { filter: "brightness(1) saturate(1)", scale: 1 }); return; }
-  const o = { s: 0 };
+  // oven: the photo heats up, the counter runs to 90 seconds, embers rise
+  const fn = q(".forno"), num = q(".fn__num span", fn), foto = q(".fn__foto", fn);
+  qa(".fn__brasas i", fn).forEach((b, i) => Object.assign(b.style, { left: ((i * 37) % 100) + "%", animationDuration: 3 + ((i * 7) % 5) + "s", animationDelay: -((i * 13) % 50) / 10 + "s", "--dx": ((i * 29) % 80) - 40 + "px" }));
+  if (reduz) { num.textContent = "90"; gsap.set(foto, { filter: "brightness(.8) saturate(1)", scale: 1 }); return; }
+  const o = { s: 12 };   // already counting on arrival
+  num.textContent = "12";
   const tf = gsap.timeline({ defaults: { ease: "none" } })
-    .to($(".fn__foto", fn), { scale: 1, filter: "brightness(1.05) saturate(1.1)", duration: 1 }, 0)
+    .to(foto, { scale: 1, filter: "brightness(.95) saturate(1.1)", duration: 1 }, 0)
     .to(o, { s: 90, duration: 1, onUpdate: () => (num.textContent = Math.round(o.s)) }, 0)
     .to({}, { duration: 0.25 });
-  ScrollTrigger.create({ trigger: fn, start: "top top", end: () => "+=" + innerHeight * 1.6, pin: true, scrub: true, animation: tf });
+  ScrollTrigger.create({ trigger: fn, start: "top top", end: () => "+=" + innerHeight * 1.4, pin: true, scrub: true, animation: tf });
 };

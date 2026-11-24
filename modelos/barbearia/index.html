@@ -12,7 +12,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600;1,9..144,800&family=Figtree:wght@400;500;600;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600;1,9..144,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,600;1,9..144,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-
+<link rel="preload" as="image" href="../img/nv-hero.webp" imagesrcset="../img/nv-hero-900.webp 900w, ../img/nv-hero.webp 1800w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="../kit/core.css">
 <link rel="stylesheet" href="cena.css">
 </head>
@@ -21,15 +21,16 @@
 <header class="nav"><a class="nav__marca disp" href="#">Navalha</a><nav class="nav__links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a class="btn btn--p" href="#agenda">Agendar</a></nav></header>
 <main>
 <section class="letra" aria-labelledby="lt-t">
-  <img class="lt__foto" src="../img/barber-hero.webp" alt="Barbeiro fazendo um degradê na máquina">
+  <img class="lt__foto" src="../img/nv-hero.webp" srcset="../img/nv-hero-900.webp 900w, ../img/nv-hero.webp 1800w" sizes="(max-width:760px) 260vw, 100vw" width="1800" height="1200" alt="Barbeiro passa a máquina no cabelo de um cliente de barba, sob luz quente" fetchpriority="high">
   <svg class="lt__mascara" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs><mask id="lt-m" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900"><rect width="1600" height="900" fill="#fff"/><g class="lt__g"><text x="800" y="560" text-anchor="middle">Navalha</text></g></mask></defs>
-    <rect class="lt__preto" width="1600" height="900" mask="url(#lt-m)"/><g class="lt__g lt__contorno"><text x="800" y="560" text-anchor="middle">Navalha</text></g></svg>
-  <p class="lt__dica">role devagar</p>
-  <div class="lt__texto"><p class="lt__kicker">Barbearia no Centro · desde 2014</p><h1 class="disp" id="lt-t">Corte de respeito,<br>na hora marcada.</h1>
-    <p>Você escolhe o horário pelo celular, chega e senta. Ninguém fica esperando.</p><a class="btn" href="#agenda">Agendar meu horário</a></div>
+    <defs><mask id="lt-m" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900"><rect width="1600" height="900" fill="#fff"/><g class="lt__g"><text x="800" y="400" text-anchor="middle">Navalha</text></g></mask></defs>
+    <rect class="lt__preto" width="1600" height="900" mask="url(#lt-m)"/><g class="lt__g lt__contorno"><text x="800" y="400" text-anchor="middle">Navalha</text></g></svg>
+  <div class="lt__texto"><h1 class="disp" id="lt-t">Corte de respeito, na hora marcada.</h1>
+    <p class="sub">Barbearia no Centro, desde 2014.<span class="so-d"> Você escolhe o horário pelo celular, chega e senta. Ninguém fica esperando.</span></p>
+    <div class="acoes"><a class="btn" href="#agenda">Agendar meu horário <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="link so-d" href="#servicos">Serviços e preços</a></div><p class="fatos so-d"><span>Seg a sáb, 9h às 20h</span><span>Rua das Palmeiras, 210</span></p></div>
 </section>
 <section class="ptcl ptcl--meio" data-formas="navalha,tesoura,bigode" data-modo="vento" aria-label="Destaques" style="--ptf:#0B0B0B;--ptt:#F1E8D8;--pt1:#F1E8D8;--pt2:#E0607A"><div class="ptcl__palco"><canvas aria-hidden="true"></canvas><div class="ptcl__fala on"><h2 class="disp">No fio.</h2><p>Barba feita com calma.</p></div><div class="ptcl__fala"><h2 class="disp">Na medida.</h2><p>Corte do seu jeito.</p></div><div class="ptcl__fala"><h2 class="disp">No estilo.</h2><p>Você sai outro.</p></div></div></section>
+<div class="faixa" aria-hidden="true"><div class="faixa__trilho"><span>Corte</span><span>Barba</span><span>Combo</span><span>Pigmentação</span><span>Hora marcada</span><span>Corte</span><span>Barba</span><span>Combo</span><span>Pigmentação</span><span>Hora marcada</span></div></div>
 <section class="cadeira" id="servicos" aria-labelledby="cd-t">
   <div class="cd__topo"><h2 class="disp" id="cd-t">Serviços e preços</h2><div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="cabelo" aria-pressed="false">Cabelo</button><button class="chip" data-filtro="barba" aria-pressed="false">Barba</button></div></div>
   <div class="cd__grade"><div class="cd__fotos" aria-hidden="true"><img src="../img/cx-b-fade.webp" alt="" data-i="0" class=on><img src="../img/cx-b-beard.webp" alt="" data-i="1"><img src="../img/cx-b-combo.webp" alt="" data-i="2"><img src="../img/cx-b-shave.webp" alt="" data-i="3"><img src="../img/cx-b-chair.webp" alt="" data-i="4"><img src="../img/cx-b-moody.webp" alt="" data-i="5"></div><div class="cd__lista"><article class="sv" data-cat="cabelo" data-foto="0"><img class="sv__foto" src="../img/cx-b-fade.webp" srcset="../img/cx-b-fade-900.webp 900w, ../img/cx-b-fade.webp 933w" sizes="100vw" width="933" height="1400" alt="" loading="lazy" decoding="async"><p class="sv__n">01</p>
@@ -61,13 +62,14 @@
       <small>Pagamento no local: Pix, cartão ou dinheiro.</small></aside>
   </div>
 </section>
+<section class="duvidas" aria-labelledby="dv-t"><div class="dv__lado"><h2 class="disp" id="dv-t">Dúvidas</h2><p class="sub">Não achou a sua? Pergunte pelo WhatsApp.</p><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Perguntar no WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></div><div><details open><summary>Precisa marcar horário?</summary><p>Precisa. É hora marcada pra ninguém ficar esperando, e leva três toques aqui no site.</p></details><details><summary>Atrasei. E agora?</summary><p>Avise pelo WhatsApp. Com até 10 minutos de atraso o horário continua seu; passou disso, a gente encaixa no próximo livre.</p></details><details><summary>Vocês cortam cabelo de criança?</summary><p>Cortamos. Até 12 anos tem corte infantil, com preço próprio.</p></details><details><summary>Como eu pago?</summary><p>Pix, cartão ou dinheiro, no balcão.</p></details></div></section>
 <section class="onde" id="onde" aria-labelledby="on-t">
   <div><h2 class="disp" id="on-t">Onde estamos</h2><p class="onde__end">Rua das Palmeiras, 210 · Centro (endereço fictício)</p>
     <p class="onde__agora" data-aberto></p><div class="botoes"><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o mapa com a rota até a sua empresa.">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="btn btn--alt" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Chamar no WhatsApp</a></div></div>
   <dl class="horas"><div data-d="1,2,3,4,5,6"><dt>Seg a sáb</dt><dd>9h às 20h</dd></div><div data-d="0"><dt>Dom</dt><dd>fechado</dd></div></dl>
 </section>
 </main>
-<footer class="rodape"><div class="poste" aria-hidden="true"></div><p class="rodape__nota">Navalha Club é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Nenad Stojkovic (CC BY 2.0). Demais fotos: Pexels (licença livre).</p><p class="rd__nome disp" aria-hidden="true">Navalha Club</p></footer>
+<footer class="rodape"><div class="poste" aria-hidden="true"></div><nav class="rodape__links" aria-label="Rodapé"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a href="#agenda">Agendar</a></nav><p class="rodape__nota">Navalha Club é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p><p class="rd__nome disp" data-fit aria-hidden="true">Navalha Club</p></footer>
 
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
   <h2 class="disp" id="mo-t">Assim funciona no site de verdade</h2><p class="bolha-wa"></p>

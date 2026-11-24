@@ -1,70 +1,83 @@
-/* Cantina Rossi: green base, cream, tomato accent. Scenes: the pizza turns like a wheel showing each flavour; oven counter; paper menu. */
+/* Cantina Rossi: deep green base, cream neutral, tomato accent.
+   Scenes: the house Margherita turns like a wheel while its six steps pass; the oven counts to ninety seconds; the paper menu. */
 .nav{color:var(--on-base)}
-.nav__marca{font-size:30px}
+.nav__marca{font-size:32px}
 
-/* 1 · roda */
-.roda{position:relative;height:100svh;overflow:hidden;background:var(--base);color:var(--on-base)}
-.rd__pizza{position:absolute;left:74%;top:100%;width:min(122vh,104vw);aspect-ratio:1;translate:-50% -50%;filter:drop-shadow(0 40px 60px rgba(0,0,0,.45));will-change:transform}
-.rd__abre{position:absolute;left:var(--m);top:clamp(100px,15vh,150px);z-index:2}
-.rd__marca{font-size:clamp(20px,1.8vw,28px);font-style:italic;opacity:.85;margin-bottom:10px}
-.rd__abre h1{max-width:9.5ch;font-size:clamp(54px,7vw,128px);line-height:.92;letter-spacing:-.01em}
-.rd__dica{margin-top:22px;font-weight:600}
-.rd__falas{position:absolute;left:var(--m);top:50%;translate:0 -50%;width:min(42vw,620px);z-index:2}
-.rd-p{position:absolute;left:0;top:0;translate:0 -50%;opacity:0;visibility:hidden}
-.rd-p__n{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
-.rd-p h3{font-size:clamp(60px,7.4vw,136px);line-height:.92;margin:8px 0 14px}
-.rd-p__desc{font-size:19px;max-width:30ch}
-.rd-p__pe{display:flex;align-items:center;gap:18px;margin-top:20px}
-.rd-p__pe .disp{font-size:clamp(32px,3vw,48px)}
+/* 1 · the wheel */
+.roda{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--base);color:var(--on-base)}
+.rd__texto{position:absolute;left:var(--m);top:50%;translate:0 -50%;z-index:2;width:min(44vw,720px)}
+.rd__abre h1{font-size:clamp(50px,6.6vw,124px);line-height:.94;margin-bottom:clamp(16px,2vw,26px)}
+.rd__falas{list-style:none;display:none}
+.roda.girando .rd__abre{display:none}
+.roda.girando .rd__falas{display:block}
+.rd-p{display:none}
+.rd-p.on{display:block}
+.rd-p h3{font-size:clamp(56px,7.6vw,140px);line-height:.92;margin-bottom:16px}
+.rd-p p{font-size:var(--t-l);line-height:1.3;max-width:26ch}
+.rd-p .btn{margin-top:24px}
+.rd__pizza{position:absolute;right:-4vw;top:55%;width:min(82svh,50vw);aspect-ratio:1;margin:0;translate:0 -50%;border-radius:50%;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.rd__pizza img{width:100%;height:100%;object-fit:cover;transform:scale(1.22);will-change:transform}
 
-/* 2 · forno */
-.forno{position:relative;height:100svh;overflow:hidden;background:#000;color:var(--on-base)}
-.fn__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3) saturate(.6);transform:scale(1.3);will-change:transform,filter}
-.forno::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.6) 46%,rgba(0,0,0,0) 78%)}
-.fn__texto{position:absolute;left:var(--m);top:50%;translate:0 -50%;z-index:2;max-width:640px}
-.fn__texto .fn__num{font-size:clamp(150px,24vw,380px);line-height:.8;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+/* 2 · the oven */
+.forno{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#000;color:var(--on-base)}
+.fn__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.8);transform:scale(1.25);will-change:transform,filter}
+.forno::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.62) 46%,rgba(0,0,0,0) 78%)}
+.fn__texto{position:absolute;left:var(--m);top:50%;translate:0 -50%;z-index:2;max-width:min(640px,88vw)}
+.fn__num{font-size:clamp(150px,24vw,380px);line-height:.8;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .fn__num small{font-size:.32em;margin-left:.08em}
 .fn__texto h2{font-size:clamp(32px,3.4vw,56px);line-height:1;margin:14px 0 16px}
-.fn__texto p{font-size:18px;max-width:40ch}
 .fn__brasas{position:absolute;inset:0;z-index:1;pointer-events:none}
-.fn__brasas i{position:absolute;bottom:-10px;width:5px;height:5px;border-radius:50%;background:#FF7A3D;box-shadow:0 0 10px 3px rgba(255,110,40,.7);animation:sobe linear infinite;opacity:0}
+.fn__brasas i{position:absolute;bottom:-10px;width:5px;height:5px;border-radius:50%;background:#FF7A3D;animation:sobe linear infinite;opacity:0}
 @keyframes sobe{0%{transform:translate(0,0);opacity:0}10%{opacity:1}100%{transform:translate(var(--dx,20px),-90vh);opacity:0}}
 
-/* 3 · carta */
-.carta{background:var(--neu);color:var(--on-neu);padding:clamp(90px,13vh,150px) var(--m)}
-.carta__topo{display:grid;gap:14px;justify-items:start;margin-bottom:46px}
-.carta__topo h2{font-size:clamp(60px,8vw,140px);line-height:.9}
-.carta__topo p{font-size:18px;max-width:46ch}
+/* 3 · the menu */
+.carta{background:var(--neu);color:var(--on-neu);padding:var(--sec) var(--m)}
+.carta__topo{display:grid;gap:14px;justify-items:start;margin-bottom:clamp(28px,4vw,56px)}
+.carta__topo h2{font-size:clamp(56px,9vw,168px);line-height:.9}
 .carta__folha{column-count:2;column-gap:clamp(30px,5vw,90px)}
 .carta__cat{break-inside:avoid;margin-bottom:46px}
 .carta__cat[hidden]{display:none}
-.carta__cat h3{font-size:clamp(36px,3.4vw,56px);font-style:italic;color:var(--acc);margin-bottom:10px}
+.carta__cat h3{font-size:clamp(34px,3.4vw,56px);font-style:italic;color:var(--acc);margin-bottom:6px}
 .carta__cat ul{list-style:none}
-.item{display:grid;grid-template-columns:auto 1fr auto auto;align-items:baseline;gap:2px 12px;padding:14px 0;border-bottom:1px solid rgba(42,26,18,.14)}
-.item__nome{font-size:clamp(22px,1.8vw,28px)}
-.item__pontos{border-bottom:2px dotted rgba(42,26,18,.35);transform:translateY(-6px)}
-.item__preco{font-weight:700;font-size:17px}
-.item__desc{grid-column:1/4;font-size:16px;color:#5F4C3F}
+.item{display:grid;grid-template-columns:auto 1fr auto auto;align-items:baseline;gap:2px 12px;padding:16px 0;border-bottom:2px solid rgba(42,26,18,.12)}
+.item__nome{font-size:clamp(22px,1.9vw,30px)}
+.item__pontos{border-bottom:3px dotted rgba(42,26,18,.3);transform:translateY(-6px)}
+.item__preco{font-weight:700}
+.item__desc{grid-column:1/4;color:#5F4C3F}
 .item__acao{grid-column:4;grid-row:1/3;align-self:center}
-.item__tag{display:inline-block;vertical-align:middle;margin-left:8px;padding:4px 8px;border-radius:999px;background:var(--base);color:var(--on-base);font:700 14px/1 var(--sans)}
+.item__tag{display:inline-block;vertical-align:middle;margin-left:10px;padding:4px 9px;border-radius:999px;background:var(--base);color:var(--on-base);font:700 14px/1 var(--sans)}
+.carta .mais{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 2px var(--acc)}
+
+/* 4 · the room */
+.mesa{background:var(--base);color:var(--on-base);padding:var(--sec) var(--m);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:center}
+.ms__fotos{position:relative;padding:0 14% 12% 0}
+.ms__f{margin:0;border-radius:var(--raio);overflow:hidden}
+.ms__f img{width:100%;height:100%;object-fit:cover}
+.ms__f--a{aspect-ratio:4/5}
+.ms__f--b{position:absolute;right:0;bottom:0;width:46%;aspect-ratio:3/4;box-shadow:0 0 0 10px var(--base)}
+.ms__texto h2{font-size:clamp(44px,5.6vw,104px);line-height:.96;margin-bottom:clamp(20px,3vh,36px)}
+.ms__fatos{list-style:none;display:grid;gap:10px}
+.ms__fatos li{padding:18px 22px;border-radius:18px;background:rgba(251,245,234,.1)}
+.ms__fatos b{display:block;font-size:clamp(26px,2.4vw,38px);line-height:1.05;font-style:italic}
+.ms__cred{margin-top:16px;font-size:15px}
 
 /* footer */
 .rodape{background:var(--base);color:var(--on-base);padding-top:0}
-.toalha{height:44px;margin:0 calc(var(--m) * -1) 70px;background:repeating-linear-gradient(90deg,var(--acc) 0 30px,var(--neu) 30px 60px)}
-.carta .mais{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 2px var(--acc)}
+.toldo{height:44px;margin:0 calc(var(--m) * -1) clamp(48px,8vh,80px);background:repeating-linear-gradient(90deg,var(--acc) 0 30px,var(--neu) 30px 60px)}
+.rd__nome{line-height:.86;margin-top:28px;font-style:italic;color:var(--neu)}
 
 @media (max-width:760px){
-  .rd__pizza{left:50%;top:92%;width:132vw}
-  .rd__abre h1{font-size:13vw}
-  .rd__falas{top:28%;width:92vw}
-  .rd-p{translate:0 0}
+  .rd__texto{top:84px;translate:0 0;width:auto;right:var(--m)}
+  .rd__abre h1{font-size:12.4vw}
   .rd-p h3{font-size:14vw}
-  .fn__texto .fn__num{font-size:42vw}
-  .forno::after{background:rgba(0,0,0,.6)}
+  .rd__pizza{right:auto;left:50%;top:auto;bottom:-38vw;width:128vw;translate:-50% 0}
+  .forno::after{background:rgba(0,0,0,.62)}
+  .fn__num{font-size:42vw}
   .carta__folha{column-count:1}
   .item{grid-template-columns:1fr auto}
   .item__pontos{display:none}
   .item__desc{grid-column:1}
   .item__preco{grid-column:1}
   .item__acao{grid-column:2;grid-row:1/4}
+  .mesa{grid-template-columns:1fr}
 }

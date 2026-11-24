@@ -12,7 +12,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
-
+<link rel="preload" as="image" href="../img/pt-hero.webp" imagesrcset="../img/pt-hero-900.webp 900w, ../img/pt-hero.webp 1800w" imagesizes="(max-width:760px) 100vw, 50vw" fetchpriority="high">
 <link rel="stylesheet" href="../kit/core.css">
 <link rel="stylesheet" href="cena.css">
 </head>
@@ -20,27 +20,32 @@
 <p class="fita"><span>Modelo de site feito pela Orbi<span class="fita__d"> · nome, preços e endereço fictícios</span></span> <a href="https://wa.me/5511927013668?text=Oi! Vi o modelo Pelúcia Pet e quero um site assim pra minha empresa." target="_blank" rel="noopener">Quero um assim</a></p>
 <header class="nav"><a class="nav__marca disp" href="#">Pelúcia</a><nav class="nav__links" aria-label="Principal"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a class="btn btn--p" href="#agenda">Agendar banho</a></nav></header>
 <main>
-<section class="cortina" aria-labelledby="co-t">
-  <img class="co__depois" src="../img/pet-hero.webp" alt="Filhote limpinho depois do banho">
-  <img class="co__antes" src="../img/pet-hero.webp" alt="" aria-hidden="true">
-  <div class="co__linha" aria-hidden="true"><div class="co__bolhas"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
-  <div class="co__texto"><h1 class="disp" id="co-t">Seu pet volta<br>outro bicho.</h1><p>Banho e tosa no Jardim América, com leva e traz.</p><a class="btn" href="#agenda">Agendar o banho</a></div>
+<section class="abre" aria-labelledby="ab-t">
+  <div class="ab__texto"><h1 class="disp" id="ab-t">Seu pet volta outro bicho.</h1>
+    <p class="sub">Banho e tosa no Jardim América.<span class="so-d"> Preço pelo porte, hora marcada e leva e traz pra quem não pode vir.</span></p>
+    <div class="acoes"><a class="btn" href="#agenda">Agendar o banho <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="link so-d" href="#servicos">Ver serviços e preços</a></div><p class="fatos so-d"><span>Seg a sáb, 8h às 18h</span><span>Av. das Acácias, 480</span></p></div>
+  <figure class="ab__foto"><img src="../img/pt-hero.webp" srcset="../img/pt-hero-900.webp 900w, ../img/pt-hero.webp 1800w" sizes="(max-width:760px) 100vw, 50vw" width="1800" height="1200" alt="Labrador amarelo sorrindo, de língua de fora, num fundo azul" fetchpriority="high"></figure>
+  <p class="cred">Imagem ilustrativa</p>
 </section>
 <section class="ptcl ptcl--esq" data-formas="osso,pata,casa" data-modo="gira" aria-label="Destaques" style="--ptf:#0047F7;--ptt:#FFFFFF;--pt1:#FFFFFF;--pt2:#FFB48A"><div class="ptcl__palco"><canvas aria-hidden="true"></canvas><div class="ptcl__fala on"><h2 class="disp">Oi, amigão.</h2><p>Recebido com festa.</p></div><div class="ptcl__fala"><h2 class="disp">Banho de mimo.</h2><p>Do focinho à pata.</p></div><div class="ptcl__fala"><h2 class="disp">De volta pra casa.</h2><p>Cheiroso e feliz.</p></div></div></section>
+<div class="faixa" aria-hidden="true"><div class="faixa__trilho"><span>Banho</span><span>Tosa higiênica</span><span>Tosa completa</span><span>Hidratação</span><span>Leva e traz</span><span>Banho</span><span>Tosa higiênica</span><span>Tosa completa</span><span>Hidratação</span><span>Leva e traz</span></div></div>
+<section class="espuma" aria-labelledby="es-t">
+  <div class="es__texto"><h2 class="disp" id="es-t">Uma visita, do banho ao laço.</h2><ol class="es__passos"><li class="es__passo" data-i="0"><h3 class="disp">Banho morno</h3><p>Shampoo neutro, água na temperatura certa e nada de pressa.</p></li><li class="es__passo" data-i="1"><h3 class="disp">Tosa na tesoura</h3><p>Do jeito que você pedir: higiênica, na máquina ou na tesoura.</p></li><li class="es__passo" data-i="2"><h3 class="disp">Prontinho</h3><p>Seco, escovado e cheiroso, esperando você ou a carona de volta.</p></li></ol></div>
+  <div class="es__palco"><img data-i="0" src="../img/pt-espuma.webp" srcset="../img/pt-espuma-900.webp 900w, ../img/pt-espuma.webp 1800w" sizes="(max-width:760px) 100vw, 56vw" width="1800" height="1201" alt="Cachorro pequeno ensaboado no banho, com espuma no pelo" loading="lazy" decoding="async"><img data-i="1" src="../img/pt-tosa.webp" srcset="../img/pt-tosa-900.webp 900w, ../img/pt-tosa.webp 1800w" sizes="(max-width:760px) 100vw, 56vw" width="1800" height="1201" alt="Tosadora apara o pelo de um yorkshire com a tesoura" loading="lazy" decoding="async"><img data-i="2" src="../img/pt-fofo.webp" srcset="../img/pt-fofo-900.webp 900w, ../img/pt-fofo.webp 1800w" sizes="(max-width:760px) 100vw, 56vw" width="1800" height="2700" alt="Cachorro branco de pelo fofo, com a língua de fora" loading="lazy" decoding="async"><div class="es__linha" aria-hidden="true"><div class="es__bolhas"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><p class="cred">Imagens ilustrativas</p></div>
+</section>
 <section class="portes-sec" aria-labelledby="pt-t">
   <h2 class="disp" id="pt-t">O preço muda só pelo porte.</h2>
-  <div class="pt__palco"><div class="pt__bola"><img src="../img/pt-shihtzu.webp" alt="" data-i="0"><img src="../img/pt-frenchie.webp" alt="" data-i="1"><img src="../img/cx-d-golden.webp" alt="" data-i="2"></div><div class="pt__falas"><div class="pt__fala" data-i="0"><p class="pt__letra disp">P</p><p class="pt__kg">até 10 kg</p><p class="pt__preco">Banho <b class="disp">R$ 50,00</b></p></div><div class="pt__fala" data-i="1"><p class="pt__letra disp">M</p><p class="pt__kg">10 a 25 kg</p><p class="pt__preco">Banho <b class="disp">R$ 65,00</b></p></div><div class="pt__fala" data-i="2"><p class="pt__letra disp">G</p><p class="pt__kg">acima de 25 kg</p><p class="pt__preco">Banho <b class="disp">R$ 85,00</b></p></div></div></div>
-  <p class="pt__dica">Sem surpresa no balcão.</p>
+  <div class="pt__palco"><div class="pt__bola"><img data-i="0" style="object-position:80% 6%" src="../img/pt-p.webp" srcset="../img/pt-p-900.webp 900w, ../img/pt-p.webp 1800w" sizes="(max-width:760px) 70vw, 40vw" width="1800" height="2700" alt="Maltês branco de laço laranja, de boca aberta" loading="lazy" decoding="async"><img data-i="1" style="object-position:50% 16%" src="../img/pt-m.webp" srcset="../img/pt-m-900.webp 900w, ../img/pt-m.webp 1800w" sizes="(max-width:760px) 70vw, 40vw" width="1800" height="2696" alt="Cachorro médio laranja e branco, rindo" loading="lazy" decoding="async"><img data-i="2" style="object-position:58% 12%" src="../img/pt-g.webp" srcset="../img/pt-g-900.webp 900w, ../img/pt-g.webp 1800w" sizes="(max-width:760px) 70vw, 40vw" width="1800" height="2700" alt="Cachorro grande de pelo cheio, castanho e branco" loading="lazy" decoding="async"></div><ol class="pt__falas"><li class="pt__fala" data-i="0"><p class="pt__letra disp">P</p><p class="pt__kg">até 10 kg</p><p class="pt__preco">Banho <b class="disp">R$ 50,00</b></p></li><li class="pt__fala" data-i="1"><p class="pt__letra disp">M</p><p class="pt__kg">10 a 25 kg</p><p class="pt__preco">Banho <b class="disp">R$ 65,00</b></p></li><li class="pt__fala" data-i="2"><p class="pt__letra disp">G</p><p class="pt__kg">acima de 25 kg</p><p class="pt__preco">Banho <b class="disp">R$ 85,00</b></p></li></ol></div>
 </section>
 <section class="rota" aria-labelledby="ro-t">
-  <h2 class="disp" id="ro-t">A gente busca.<br>A gente devolve.</h2>
+  <h2 class="disp" id="ro-t">A gente busca. A gente devolve.</h2>
   <svg class="ro__mapa" viewBox="0 0 1000 420" aria-hidden="true">
     <path class="ro__rua" d="M80 330 C 240 330, 260 120, 420 140 S 640 330, 760 250 S 900 90, 930 90"/>
     <path class="ro__linha" d="M80 330 C 240 330, 260 120, 420 140 S 640 330, 760 250 S 900 90, 930 90"/>
-    <g class="ro__casa" transform="translate(80 330)"><circle r="26"/><text y="62" text-anchor="middle">sua casa</text></g>
-    <g class="ro__loja" transform="translate(930 90)"><circle r="26"/><text y="-40" text-anchor="middle">Pelúcia</text></g>
-    <circle class="ro__van" r="14"/></svg>
-  <ol class="ro__passos"><li><b>Buscamos</b> no horário marcado</li><li><b>Banho e tosa</b> com calma</li><li><b>Devolvemos</b> no mesmo dia, por R$ 15</li></ol>
+    <g class="ro__casa" transform="translate(80 330)"><circle r="26"/><text y="66" text-anchor="middle">sua casa</text></g>
+    <g class="ro__loja" transform="translate(930 90)"><circle r="26"/><text y="-42" text-anchor="middle">Pelúcia</text></g>
+    <circle class="ro__van" r="16"/></svg>
+  <ol class="ro__passos"><li><b class="disp">Buscamos</b>no horário marcado</li><li><b class="disp">Banho e tosa</b>com calma, sem gaiola cheia</li><li><b class="disp">Devolvemos</b>no mesmo dia, por R$ 15</li></ol>
 </section>
 <section class="servicos" id="servicos" aria-labelledby="sv-t">
   <div class="sv__topo"><h2 class="disp" id="sv-t">Serviços e preços</h2><div class="chips portes" role="group" aria-label="Porte do pet"><button class="chip" data-porte="P" aria-pressed="true">P · até 10 kg</button><button class="chip" data-porte="M" aria-pressed="false">M · 10 a 25 kg</button><button class="chip" data-porte="G" aria-pressed="false">G · acima de 25 kg</button></div><div class="chips" role="group" aria-label="Filtrar"><button class="chip" data-filtro="todos" aria-pressed="true">Todos</button><button class="chip" data-filtro="banho" aria-pressed="false">Banho</button><button class="chip" data-filtro="tosa" aria-pressed="false">Tosa</button><button class="chip" data-filtro="extras" aria-pressed="false">Extras</button></div></div>
@@ -48,25 +53,26 @@
 </section>
 <section class="agenda" id="agenda" aria-labelledby="ag-t">
   <div class="agenda__grade">
-    <div><h2 class="agenda__titulo disp" id="ag-t">Agende em<br>um minuto.</h2><p class="agenda__sub">Escolha o serviço, o dia e o horário. O pedido chega no WhatsApp do pet shop já preenchido.</p>
+    <div><h2 class="agenda__titulo disp" id="ag-t">Agende em um minuto.</h2><p class="agenda__sub">Escolha o serviço, o dia e o horário. O pedido chega no WhatsApp do pet shop já preenchido.</p>
       <div class="passo"><h3>1. Serviço</h3><div class="chips"><button class="chip" data-serv="banho" aria-pressed="false">Banho</button><button class="chip" data-serv="higienica" aria-pressed="false">Banho + tosa higiênica</button><button class="chip" data-serv="tosa" aria-pressed="false">Tosa completa</button><button class="chip" data-serv="hidratacao" aria-pressed="false">Hidratação</button><button class="chip" data-serv="unhas" aria-pressed="false">Corte de unhas</button></div></div>
       <div class="passo"><h3>2. Dia</h3><div class="chips" data-dias></div></div>
       <div class="passo"><h3>3. Horário</h3><div class="chips" data-horas></div></div><div class="passo"><h3>4. Extra</h3><label class="troca"><input type="checkbox" id="f-extra"> Leva e traz · R$ 15,00</label></div>
     </div>
-    <aside class="resumo" aria-label="Seu horário"><p class="resumo__t disp">Seu horário</p>
+    <aside class="resumo" aria-label="Seu banho"><p class="resumo__t disp">Seu banho</p>
       <dl><dt>Serviço</dt><dd data-r-serv>a escolher</dd><dt>Porte</dt><dd data-r-porte>—</dd><dt>Dia</dt><dd data-r-dia>a escolher</dd><dt>Horário</dt><dd data-r-hora>a escolher</dd><dt>Leva e traz</dt><dd data-r-extra>Não</dd></dl>
       <p class="resumo__total"><span>Total</span><b class="disp" data-r-total>—</b></p>
       <button class="btn" data-confirmar>Confirmar pelo WhatsApp</button>
       <small>Pagamento no local: Pix, cartão ou dinheiro.</small></aside>
   </div>
 </section>
+<section class="duvidas" aria-labelledby="dv-t"><div class="dv__lado"><h2 class="disp" id="dv-t">Dúvidas</h2><p class="sub">Não achou a sua? Pergunte pelo WhatsApp.</p><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Perguntar no WhatsApp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a></div><div><details open><summary>Quanto tempo demora o banho?</summary><p>De uma a duas horas, conforme o porte e o pelo. A gente avisa no WhatsApp quando estiver pronto.</p></details><details><summary>Meu cachorro tem medo. E agora?</summary><p>Conte no agendamento. Ele entra sem pressa, com pausa e sem focinheira à toa.</p></details><details><summary>Como funciona o leva e traz?</summary><p>Buscamos no horário marcado e devolvemos no mesmo dia. Custa R$ 15, somado ao serviço.</p></details><details><summary>Precisa estar com as vacinas em dia?</summary><p>Sim. Peça a carteirinha na mão no primeiro banho: é a segurança de todos os pets.</p></details></div></section>
 <section class="onde" id="onde" aria-labelledby="on-t">
   <div><h2 class="disp" id="on-t">Onde estamos</h2><p class="onde__end">Av. das Acácias, 480 · Jardim América (endereço fictício)</p>
     <p class="onde__agora" data-aberto></p><div class="botoes"><a class="btn" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o mapa com a rota até a sua empresa.">Como chegar <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18 18 6M8 6h10v10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg></a><a class="btn btn--alt" href="#onde" data-demo="Este é um modelo. No site de verdade, este botão abre o WhatsApp da sua empresa.">Chamar no WhatsApp</a></div></div>
   <dl class="horas"><div data-d="1,2,3,4,5,6"><dt>Seg a sáb</dt><dd>8h às 18h</dd></div><div data-d="0"><dt>Dom</dt><dd>fechado</dd></div></dl>
 </section>
 </main>
-<footer class="rodape"><div class="rd__bolhas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="rodape__nota">Pelúcia Pet é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Wikimedia Commons: Marilyn Peddle (CC BY 2.0). Demais fotos: Pexels (licença livre).</p></footer>
+<footer class="rodape"><div class="rd__bolhas" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><nav class="rodape__links" aria-label="Rodapé"><a href="#servicos">Serviços</a><a href="#onde">Onde</a><a href="#agenda">Agendar banho</a></nav><p class="rodape__nota">Pelúcia Pet é um modelo fictício para demonstração, feito pela <a href="../../">Orbi</a>. Este site não coleta dados nem usa rastreamento: o pedido só abre uma mensagem no WhatsApp. Fotos: Pexels (licença livre).</p><p class="rd__nome disp" data-fit aria-hidden="true">Pelúcia</p></footer>
 
 <dialog id="modelo" aria-labelledby="mo-t"><button class="fechar" data-fechar aria-label="Fechar">×</button>
   <h2 class="disp" id="mo-t">Assim funciona no site de verdade</h2><p class="bolha-wa"></p>

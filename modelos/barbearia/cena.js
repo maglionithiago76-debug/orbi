@@ -1,5 +1,6 @@
 // Navalha Club scenes: zoom through the letters of the name into the photo; services swap the chair photo; the clock follows the booking.
-window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
+window.cena = (kit) => {
+  const { gsap, ScrollTrigger, reduz } = kit, q = kit.$, qa = kit.$$, $ = q, $$ = qa;
   const sec = $(".letra"), svg = $(".lt__mascara", sec), txt = $("text", svg), txts = $$("text", svg);
 
   // fit the word to what the viewport shows of the 1600x900 "slice" viewBox
@@ -9,22 +10,18 @@ window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
     const L = txt.getComputedTextLength() || 1300;
     txts.forEach((t) => (t.style.fontSize = Math.min(330, (330 * vis * 0.88) / L) + "px"));
   };
-  const fone = innerWidth < 760;   // phone: the word sits higher and the headline is on the first screen
-  if (fone) txts.forEach((t) => t.setAttribute("y", 340));
+  const fone = innerWidth < 760;   // phone: the word sits higher, above the headline
+  if (fone) txts.forEach((t) => t.setAttribute("y", 330));
   caber(); document.fonts && document.fonts.ready.then(caber); addEventListener("resize", caber);
 
-  if (reduz) {
-    gsap.set($(".lt__preto", sec), { opacity: 0 }); gsap.set($(".lt__texto", sec), { autoAlpha: 1 }); sec.style.setProperty("--veu", 1);
-  } else {
+  if (reduz) gsap.set([q(".lt__preto", sec), q(".lt__contorno", sec)], { opacity: 0 });
+  else {
     const tl = gsap.timeline({ defaults: { ease: "none" } });
-    tl.to($(".lt__dica", sec), { opacity: 0, duration: 0.2 }, 0)
-      .to($$(".lt__g", sec), { scale: 16, svgOrigin: fone ? "800 250" : "800 470", duration: 1.2, ease: "power2.in" }, 0)
-      .to([$(".lt__preto", sec), $(".lt__contorno", sec)], { opacity: 0, duration: 0.45 }, 0.75)
-      .to($(".lt__foto", sec), { scale: 1, duration: 1.4 }, 0)
-      .to(sec, { "--veu": 1, duration: 0.4 }, fone ? 0.5 : 1.2)
-      .fromTo($(".lt__texto", sec), { autoAlpha: fone ? 1 : 0, y: fone ? 0 : 40 }, { autoAlpha: 1, y: 0, duration: 0.15 }, 1.5)
-      .to({}, { duration: 0.4 });
-    ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * 2.4, pin: true, scrub: true, animation: tl });
+    tl.to(qa(".lt__g", sec), { scale: 16, svgOrigin: fone ? "800 240" : "800 300", duration: 1.2, ease: "power2.in" }, 0)
+      .to([q(".lt__preto", sec), q(".lt__contorno", sec)], { opacity: 0, duration: 0.45 }, 0.75)
+      .to(q(".lt__foto", sec), { scale: 1, duration: 1.4 }, 0)
+      .to({}, { duration: 0.3 });
+    ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * 1.8, pin: true, scrub: true, animation: tl });
   }
 
   // chair: each service swaps the sticky photo

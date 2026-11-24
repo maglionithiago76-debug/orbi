@@ -1,40 +1,37 @@
-// Brasa Burger scenes: the burger builds itself while you scroll; the menu slides sideways like a grill.
-window.cena = ({ gsap, ScrollTrigger, reduz, $, $$ }) => {
-  const sec = $(".montagem"), cams = $$(".cam", sec), nomes = $$(".mt__nomes li", sec), conta = $(".mt__conta span", sec);
-  const pilha = $(".mt__pilha", sec);
-  if (reduz) {
-    gsap.set([$(".mt__fim", sec)], { autoAlpha: 1 }); gsap.set(nomes, { opacity: 0 });
-  } else {
-    const tl = gsap.timeline({ defaults: { ease: "none" } });
-    // the burger is built on the first screen; the layers lift away top first, then fall back one by one
-    tl.to(cams, { y: () => -innerHeight * 1.15, rotation: (i) => (i % 2 ? 1 : -1) * (12 + i * 4), duration: 0.3, ease: "power2.in", stagger: { each: 0.02, from: "end" } }, 0);
-    tl.to($(".mt__abre", sec), { y: -40, autoAlpha: 0, duration: 0.6 }, 0);
-    tl.to($(".mt__conta", sec), { opacity: 1, duration: 0.3 }, 0.4);
-    cams.forEach((c, i) => {
-      const at = 0.5 + i;
-      (tl.to(c, { y: 0, rotation: 0, duration: 0.8, ease: "bounce.out" }, at));
-      tl.fromTo(nomes[i], { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.12 }, at + 0.02);
-      if (i < cams.length - 1) tl.to(nomes[i], { opacity: 0, x: 30, duration: 0.1 }, at + 0.88);
-    });
-    tl.to(pilha, { "--sombra": 1, duration: cams.length }, 0.5);
-    const fim = 0.5 + cams.length;
-    tl.to(nomes[cams.length - 1], { opacity: 0, duration: 0.3 }, fim);
-    tl.to($(".mt__conta", sec), { opacity: 0, duration: 0.3 }, fim);
-    tl.to(pilha, { scale: 1.08, duration: 0.6 }, fim);
-    tl.to($(".mt__fim", sec), { autoAlpha: 1, y: 0, duration: 0.5 }, fim + 0.2);
-    tl.to({}, { duration: 0.5 });
-    ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * 3.4, pin: true, scrub: true, animation: tl, invalidateOnRefresh: true,
-      onUpdate: () => { const n = Math.min(cams.length, Math.max(1, Math.floor(tl.time() - 0.3) + 1)); conta.textContent = String(n).padStart(2, "0"); } });
-    gsap.to($(".mt__fita span", sec), { xPercent: -45, ease: "none", scrollTrigger: { trigger: sec, start: "top top", end: () => "+=" + innerHeight * 3.4, scrub: true } });
+// Brasa Burger scenes: the Clássico is built layer by layer (two layers are already down on arrival);
+// on wide screens the menu slides sideways like a grill, on phones it is a swipe row.
+window.cena = (kit) => {
+  const { gsap, ScrollTrigger, reduz } = kit, q = kit.$, qa = kit.$$;
+  const sec = q(".montagem"), foto = q(".mt__pilha", sec), nomes = qa(".mt__nomes li", sec), pips = qa(".mt__pips i", sec);
+  const T = nomes.map((li) => +li.dataset.t), N = T.length, N0 = 2;
+  // n = layers on the plate; N + 1 = finished
+  const mostrar = (n) => {
+    nomes.forEach((li, i) => li.classList.toggle("on", i === Math.min(n, N) - 1));
+    pips.forEach((p, i) => p.classList.toggle("on", n - i > 0));
+    sec.classList.toggle("fim", n - N > 0);
+  };
+  if (reduz) { foto.style.setProperty("--t", "0%"); mostrar(N + 1); }
+  else {
+    const o = { t: T[N0 - 1] };
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    T.slice(N0).forEach((t, k) => tl.to(o, { t, duration: 0.55, onUpdate: () => foto.style.setProperty("--t", o.t + "%") }, k));
+    tl.to(o, { t: 0, duration: 0.3, onUpdate: () => foto.style.setProperty("--t", o.t + "%") }, N - N0).to({}, { duration: 0.6 });
+    const upd = () => {
+      const t = tl.time();
+      mostrar(t - (N - N0) - 0.2 >= 0 ? N + 1 : N0 + T.slice(N0).filter((_, k) => t - k - 0.3 >= 0).length);
+    };
+    upd();
+    ScrollTrigger.create({ trigger: sec, start: "top top", end: () => "+=" + innerHeight * 2.6, pin: true, scrub: true, animation: tl, onUpdate: upd });
   }
 
-  // grill: horizontal menu
-  const ch = $(".chapa"), trilho = $(".ch__trilho", ch), barra = $(".ch__barra i", ch);
-  const anda = gsap.to(trilho, { x: () => -Math.max(0, trilho.scrollWidth - innerWidth), ease: "none",
-    scrollTrigger: { trigger: ch, start: "top top", end: () => "+=" + Math.max(innerHeight, trilho.scrollWidth - innerWidth), pin: true, scrub: true,
-      invalidateOnRefresh: true, onUpdate: (s) => { barra.style.transform = `scaleX(${s.progress})`; } } });
-  if (!reduz) $$(".card img", ch).forEach((im, i) => gsap.fromTo(im, { rotation: i % 2 ? 14 : -14, scale: 0.85 }, { rotation: 0, scale: 1, ease: "none",
-    scrollTrigger: { trigger: im.parentElement, containerAnimation: anda, start: "left right", end: "center center", scrub: true } }));
-
-  if (!reduz) gsap.to(".rd__fita span", { xPercent: -30, ease: "none", scrollTrigger: { trigger: ".rodape", start: "top bottom", end: "bottom bottom", scrub: true } });
+  // the grill: pinned sideways track on wide screens only
+  const ch = q(".chapa"), trilho = q(".ch__trilho", ch), barra = q(".ch__barra i", ch);
+  ScrollTrigger.matchMedia({
+    "(min-width: 761px)": () => {
+      gsap.to(trilho, { x: () => -Math.max(0, trilho.scrollWidth - innerWidth), ease: "none",
+        scrollTrigger: { trigger: ch, start: "top top", end: () => "+=" + Math.max(innerHeight, trilho.scrollWidth - innerWidth), pin: true, scrub: true,
+          invalidateOnRefresh: true, onUpdate: (s) => { barra.style.transform = "scaleX(" + s.progress + ")"; } } });
+    },
+  });
+  if (!reduz) gsap.fromTo(".fg__foto", { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: { trigger: ".fogo", start: "top bottom", end: "bottom bottom", scrub: true } });
 };

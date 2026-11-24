@@ -1,73 +1,97 @@
-/* Brasa Burger: orange base, white, lime accent. Scenes: burger builds layer by layer; menu slides like a grill. */
-.nav{color:var(--on-base)}
-.nav__marca{font-size:28px;letter-spacing:-.02em}
+/* Brasa Burger: orange base, white neutral, lime accent; black only as the ground of the food photos.
+   Scenes: the Clássico is built layer by layer (drawn, so every layer matches); the menu slides sideways like a grill. */
+.nav{color:#fff}
+.nav__marca{font-size:30px;letter-spacing:-.02em}
+h1,h2,h3{letter-spacing:-.03em}
 
-/* 1 · montagem */
-.montagem{position:relative;height:100svh;overflow:hidden;background:var(--base);color:var(--on-base)}
-.mt__fita{position:absolute;left:0;top:16%;white-space:nowrap;font-size:17vw;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.55);pointer-events:none}
-.mt__fita span{display:inline-block}
-.mt__abre{position:absolute;left:var(--m);top:clamp(96px,14vh,140px);z-index:5}
-.mt__abre h1{max-width:9ch;font-size:clamp(46px,6.6vw,118px);line-height:.88;letter-spacing:-.03em}
-.mt__dica{margin-top:20px;font-weight:700;font-size:16px}
-.mt__pilha{--W:min(38vw,54vh);position:absolute;left:64%;bottom:9vh;width:var(--W);height:calc(var(--W) * .86);translate:-50% 0}
-.mt__pilha::after{content:"";position:absolute;left:8%;right:8%;bottom:calc(var(--W) * -.05);height:calc(var(--W) * .09);border-radius:50%;background:rgba(0,0,0,.28);filter:blur(10px);z-index:-1;transform:scaleX(var(--sombra,.4))}
-.mt__capa{position:absolute;left:64%;bottom:9vh;z-index:3;width:min(38vw,54vh);height:auto;translate:-50% 0;filter:drop-shadow(0 30px 30px rgba(0,0,0,.25));visibility:hidden}
-.cam{position:absolute;left:50%;translate:-50% 0;height:auto;will-change:transform}
-.mt__nomes{list-style:none;position:absolute;left:var(--m);top:50%;width:min(44vw,640px);z-index:4}
-.mt__nomes li{position:absolute;left:0;top:0;opacity:0}
-.mt__nomes b{display:block;font-size:clamp(48px,7vw,124px);line-height:.88;letter-spacing:-.03em}
-.mt__nomes span{display:block;margin-top:10px;font-size:18px;font-weight:700}
-.mt__conta{position:absolute;right:var(--m);top:clamp(96px,14vh,140px);font-size:clamp(28px,3vw,48px);opacity:0}
-.mt__fim{position:absolute;left:var(--m);bottom:12vh;z-index:5;max-width:42vw;opacity:0;visibility:hidden}
-.mt__fim p{font-size:clamp(46px,5.2vw,92px);line-height:.88;letter-spacing:-.03em;margin-bottom:24px}
+/* 1 · opening */
+.abre{position:relative;min-height:100svh;background:var(--base);color:var(--on-base);display:grid;grid-template-columns:minmax(0,1fr) 54vw;align-items:center}
+.ab__texto{position:relative;z-index:2;padding:96px 28px 40px var(--m)}
+.ab__texto h1{font-size:clamp(46px,6.2vw,118px);line-height:.92;margin-bottom:clamp(16px,2vw,26px)}
+.ab__foto{position:relative;align-self:stretch;margin:0;overflow:hidden;border-radius:clamp(80px,14vw,220px) 0 0 clamp(80px,14vw,220px);background:#111}
+.ab__foto img{width:100%;height:100%;object-fit:cover}
 
-/* 2 · chapa (horizontal menu) */
-.chapa{position:relative;height:100svh;overflow:hidden;background:var(--neu);color:var(--on-neu)}
-.ch__trilho{display:flex;align-items:center;gap:clamp(30px,5vw,90px);height:100%;width:max-content;padding:70px var(--m) 40px;will-change:transform}
-.ch__intro{width:min(34vw,500px);flex:none}
-.ch__kicker{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--acc);font-weight:700;font-size:14px;margin-bottom:18px}
-.ch__intro h2{font-size:clamp(46px,5.6vw,100px);line-height:.9;letter-spacing:-.03em;margin-bottom:20px}
-.ch__intro p{font-size:18px;max-width:30ch}
-.card{width:min(38vw,560px);flex:none;display:grid;gap:8px}
-.card img{width:100%;height:min(40vh,420px);object-fit:contain;filter:drop-shadow(0 30px 30px rgba(0,0,0,.22));will-change:transform}
-.card__tag{justify-self:start;padding:5px 11px;border-radius:999px;background:var(--base);color:var(--on-base);font-weight:700;font-size:14px}
-.card h3{font-size:clamp(50px,6vw,108px);line-height:.88;letter-spacing:-.03em}
-.card__desc{font-size:17px;max-width:34ch}
-.card__pe{display:flex;align-items:center;gap:16px;margin-top:8px}
-.card__preco{font-size:clamp(30px,2.8vw,46px);color:var(--base)}
-.ch__barra{position:absolute;left:var(--m);right:var(--m);bottom:22px;height:4px;border-radius:4px;background:rgba(0,0,0,.08)}
-.ch__barra i{display:block;height:100%;border-radius:4px;background:var(--base);transform-origin:left;transform:scaleX(0)}
+/* 2 · the build: one real photo, uncovered layer by layer from the plate up */
+.montagem{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#000;color:#fff;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(20px,4vw,64px);padding:92px var(--m) 28px}
+.montagem h2{font-size:clamp(26px,2.6vw,44px);line-height:1;margin-bottom:clamp(18px,3vh,36px);color:var(--base)}
+.mt__nomes{list-style:none;position:relative;min-height:clamp(170px,26vh,300px)}
+.mt__nomes li{position:absolute;inset:0;visibility:hidden}
+.mt__nomes li.on{visibility:visible}
+.mt__nomes b{display:block;font-size:clamp(52px,7.4vw,136px);line-height:.9}
+.mt__nomes span{display:block;margin-top:12px;font-size:var(--t-l);font-weight:600}
+.mt__fim{display:none;min-height:clamp(170px,26vh,300px)}
+.mt__fim p{font-size:clamp(44px,5.6vw,104px);line-height:.92;margin-bottom:22px}
+.montagem.fim .mt__nomes{display:none}
+.montagem.fim .mt__fim{display:block}
+.mt__pips{display:flex;gap:8px;margin-top:clamp(18px,3vh,32px)}
+.mt__pips i{width:38px;height:10px;border-radius:10px;background:rgba(255,255,255,.2)}
+.mt__pips i.on{background:var(--acc)}
+/* the figure shows the part of the photo that holds the burger: x 20-80%, y 15-100% */
+.mt__pilha{--t:64%;position:relative;justify-self:center;width:min(100%,82svh);aspect-ratio:1080/1020;margin:0;overflow:hidden}
+.mt__pilha img{position:absolute;left:-33.33%;top:-17.65%;width:166.67%;height:117.65%;max-width:none;object-fit:fill;clip-path:inset(var(--t) 0 0 0)}
 
-/* 3 · junto */
-.junto{background:var(--base);color:var(--on-base);padding:clamp(80px,12vh,140px) var(--m)}
-.junto h2{font-size:clamp(46px,6vw,104px);line-height:.9;letter-spacing:-.03em;margin-bottom:30px}
-.lista{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 48px;border-top:2px solid var(--on-base)}
-.item{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:4px 16px;padding:18px 0;border-bottom:2px solid var(--on-base)}
-.item__nome{font-size:clamp(22px,2vw,32px);grid-column:1}
-.item__desc{grid-column:1;font-size:16px;font-weight:600}
-.item__preco{grid-column:2;grid-row:1/3;font-weight:800;font-size:18px}
+/* 3 · the grill: sideways menu */
+.chapa{position:relative;height:100svh;min-height:640px;overflow:hidden;background:#111;color:#fff}
+.ch__trilho{display:flex;align-items:center;gap:clamp(24px,3vw,56px);height:100%;width:max-content;padding:84px var(--m) 48px;will-change:transform}
+.ch__intro{flex:none;width:min(34vw,520px)}
+.ch__intro h2{font-size:clamp(44px,5.4vw,100px);line-height:.92;margin-bottom:18px}
+.card{flex:none;width:min(36vw,540px);display:grid;gap:8px;align-content:start}
+.card figure{margin:0;border-radius:var(--raio);overflow:hidden;aspect-ratio:4/3;background:#222}
+.card img{width:100%;height:100%;object-fit:cover}
+.card__tag{justify-self:start;margin-top:8px;padding:6px 12px;border-radius:999px;background:var(--base);color:var(--on-base);font-weight:700;font-size:14px}
+.card h3{font-size:clamp(40px,4.6vw,84px);line-height:.92}
+.card__desc{max-width:34ch}
+.card__pe{display:flex;align-items:center;gap:16px;margin-top:6px}
+.card__preco{font-size:clamp(28px,2.6vw,44px);color:var(--acc)}
+.ch__barra{position:absolute;left:var(--m);right:var(--m);bottom:20px;height:8px;border-radius:8px;background:rgba(255,255,255,.14)}
+.ch__barra i{display:block;height:100%;border-radius:8px;background:var(--acc);transform-origin:left;transform:scaleX(0)}
+
+/* 4 · sides and drinks */
+.junto{background:var(--base);color:var(--on-base);padding:var(--sec) var(--m)}
+.junto h2{font-size:clamp(48px,7vw,128px);line-height:.92;margin-bottom:clamp(22px,3.4vh,40px)}
+.lista{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.item{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:4px 18px;padding:18px 24px;border-radius:22px;background:rgba(17,17,17,.1)}
+.item__nome{grid-column:1;font-size:clamp(22px,2vw,32px);line-height:1.1}
+.item__desc{grid-column:1;font-weight:600}
+.item__preco{grid-column:2;grid-row:1/3;font-weight:800;font-size:var(--t-l)}
 .item__acao{grid-column:3;grid-row:1/3}
-.item__tag{margin-left:8px;font:700 14px/1 var(--sans);padding:4px 8px;border-radius:999px;background:var(--acc)}
-.junto .mais,.junto .qtd{background:var(--on-base);color:var(--acc)}
+.item__tag{margin-left:8px;padding:4px 9px;border-radius:999px;background:var(--acc);font:700 14px/1 var(--sans)}
+
+/* 5 · the fire */
+.fogo{position:relative;min-height:min(96vh,900px);display:grid;align-items:end;padding:var(--sec) var(--m) clamp(28px,5vh,56px);color:#fff;overflow:hidden;background:#111}
+.fg__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fogo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(17,17,17,.95),rgba(17,17,17,.45) 46%,rgba(17,17,17,0) 74%)}
+.fg__texto{position:relative;z-index:2}
+.fg__texto h2{font-size:clamp(48px,8vw,150px);line-height:.9;margin-bottom:clamp(18px,3vh,32px)}
+.fg__fatos{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.fg__fatos li{padding:20px 22px;border-radius:22px;background:var(--base);color:var(--on-base);font-weight:600}
+.fg__fatos b{display:block;margin-bottom:6px;font-size:clamp(28px,3vw,48px);line-height:1}
+.fogo .cred{z-index:2;bottom:auto;top:16px}
 
 /* footer */
 .rodape{background:#111;color:#fff}
-.rd__fita{white-space:nowrap;font-size:clamp(40px,6vw,96px);line-height:1;color:var(--base);margin:0 calc(var(--m) * -1) 60px}
-.rd__fita span{display:inline-block}
+.rd__nome{line-height:.9;margin-top:28px;color:var(--base)}
 
 @media (max-width:760px){
-  .mt__abre h1{max-width:9ch;font-size:13vw}
-  .mt__pilha{--W:80vw;left:50%;bottom:10vh}
-  .mt__nomes{top:25%;width:92vw}
+  .abre{grid-template-columns:1fr;grid-template-rows:auto minmax(44svh,1fr);align-items:start}
+  .ab__texto{padding:84px var(--m) 22px}
+  .ab__texto h1{font-size:12.6vw}
+  .ab__foto{border-radius:90px 90px 0 0}
+  .ab__foto .cred{display:none}
+  .montagem{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:8px;padding-top:84px}
+  .mt__nomes,.mt__fim{min-height:150px}
   .mt__nomes b{font-size:14vw}
-  .mt__conta{top:auto;bottom:calc(10vh + 80vw * .86 + 14px);right:16px}
-  .mt__fim{bottom:auto;top:96px;z-index:6;max-width:none}
-  .mt__capa{left:50%;width:80vw;bottom:10vh}
-  .ch__intro h2{font-size:11vw}
-  .mt__fim p{font-size:14vw}
-  .ch__intro{width:80vw}
-  .card{width:80vw}
-  .card img{height:34vh}
-  .card h3{font-size:12.5vw}
-  .lista{grid-template-columns:1fr}
+  .mt__fim p{font-size:11vw;margin-bottom:14px}
+  .mt__pips i{width:28px}
+  .mt__pilha{width:min(100%,46svh)}
+  .chapa{height:auto;min-height:0}
+  .ch__trilho{width:auto;height:auto;align-items:flex-start;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--m);padding:64px var(--m) 44px;scrollbar-width:none}
+  .ch__intro,.card{width:80vw;scroll-snap-align:start}
+  .ch__intro h2{font-size:11.5vw}
+  .card h3{font-size:12vw}
+  .ch__barra{display:none}
+  .lista,.fg__fatos{grid-template-columns:1fr}
+  .item{grid-template-columns:minmax(0,1fr) auto;padding:16px 18px}
+  .item__preco{grid-column:1;grid-row:auto}
+  .item__acao{grid-column:2;grid-row:1/4}
 }
