@@ -70,8 +70,9 @@
   .rd__texto{top:84px;translate:0 0;width:auto;right:var(--m)}
   .rd__abre h1{font-size:12.4vw}
   .rd-p h3{font-size:14vw}
-  .rd__pizza{right:auto;left:50%;top:auto;bottom:-38vw;width:128vw;translate:-50% 0}
-  .forno::after{background:rgba(0,0,0,.62)}
+  .rd__pizza{right:auto;left:50%;top:auto;bottom:-48vw;width:152vw;translate:-50% 0}
+  .forno::after{background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.86) 56%)}
+  .fn__texto{top:auto;bottom:7vh;translate:none}
   .fn__num{font-size:42vw}
   .carta__folha{column-count:1}
   .item{grid-template-columns:1fr auto}

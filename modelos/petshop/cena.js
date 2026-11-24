@@ -44,7 +44,7 @@ window.cena = (kit) => {
   const ir = (p) => {
     const d = p - 0.5 > 0 ? (1 - p) * 2 : p * 2;
     traco.style.strokeDashoffset = L * (1 - Math.max(d, p - 0.5 > 0 ? 1 : 0));
-    const pt = traco.getPointAtLength(L * d); van.setAttribute("transform", "translate(" + pt.x + " " + (pt.y - 14) + ")");
+    const pt = traco.getPointAtLength(L * d); van.setAttribute("transform", "translate(" + pt.x + " " + (pt.y - 14) + ")" + (p - 0.5 > 0 ? " scale(-1 1)" : ""));
     const k = p - 0.58 > 0 ? 2 : p - 0.44 > 0 ? 1 : 0;
     etapas.forEach((li, i) => li.classList.toggle("on", i === k));
   };
