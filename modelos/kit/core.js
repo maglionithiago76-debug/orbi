@@ -181,8 +181,11 @@ if (!reduz && Lenis) {
   gsap.ticker.add((t) => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
   $$("dialog").forEach((d) => new MutationObserver(() => (d.open ? lenis.stop() : lenis.start())).observe(d, { attributes: true, attributeFilter: ["open"] }));
 }
-// one measuring pass in the usual order (fonts, then load); a second only when the fonts arrive late
-document.fonts && document.fonts.ready.then(() => { ajustar(); if (document.readyState === "complete") ScrollTrigger.refresh(); });
-addEventListener("load", () => { ajustar(); ScrollTrigger.refresh(); });
-// web fonts load without blocking the first paint, so measure again whenever a batch of them lands
-document.fonts && document.fonts.addEventListener && document.fonts.addEventListener("loadingdone", () => { ajustar(); ScrollTrigger.refresh(); });
+// measure once things settle: fit the footer name and recompute the pinned scenes after load, and again only if web fonts land later
+let medirT = 0;
+const medir = () => { clearTimeout(medirT); medirT = setTimeout(() => { ajustar(); ScrollTrigger.refresh(); }, 250); };
+addEventListener("load", medir);
+if (document.fonts) {
+  document.fonts.ready.then(ajustar);
+  document.fonts.addEventListener && document.fonts.addEventListener("loadingdone", () => { ajustar(); if (document.readyState === "complete") medir(); });
+}
